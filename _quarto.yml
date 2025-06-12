@@ -16,7 +16,7 @@ project:
     
 website:
   #page-navigation: true
-  title: "{{< var my_title_web >}}"
+  title: "Intro to Quarto (SFPIE, 2025)" #- "{{< var my_title_web >}}"
   favicon: imagenes/uv.jpeg
   site-url: "{{< var my_url_web >}}"
   repo-url: "{{< var my_url_repo_github >}}"
