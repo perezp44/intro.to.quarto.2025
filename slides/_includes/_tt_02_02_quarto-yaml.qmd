@@ -1,0 +1,6 @@
+::: {layout-ncol=2}
+![Contenido original de `_quarto.yml`](./imagenes/tt_01/img_09.png){fig-align="center"}
+
+![<mark>Así dejaremos el fichero</mark> `_quarto.yml`](./imagenes/tt_01/img_10.png){fig-align="center"}
+:::
+

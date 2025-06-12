@@ -1,0 +1,177 @@
+---
+title: "Mi Segundo post con Quarto"
+author: "Nosotros"
+date: 2023-02-01
+categories: [Taller, soluciones practica nº 5]
+embed-resources: true
+image: "./thumbnails/thumbnail_66.png"
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Soluciones a la Práctica 5.1 del curso
+---
+
+Este ya es mi segundo post con Quarto. En él voy a hacer lo siguiente:
+
+
+## Insertar 2 imágenes side-by-side
+
+```{r, eval = FALSE}
+
+::: {layout-ncol=2}
+
+![Imágen 1](thumbnail.jpg){#fig-2.1}
+
+![Imágen 2](thumbnail.jpg){#fig-2.2}
+
+2 imágenes alineadas
+:::
+```
+
+
+::: {layout-ncol=2}
+
+![Imágen 1](thumbnail.jpg){#fig-2.1}
+
+![Imágen 2](thumbnail.jpg){#fig-2.2}
+
+2 imágenes alineadas
+:::
+
+<br>
+
+
+## Inserta un tweet
+
+
+```{r, eval = FALSE}
+{{< tweet user=Culturas2_tve id=1589703143562309632 >}}
+```
+
+
+{{< tweet user=Culturas2_tve id=1589703143562309632 >}}
+
+<br>
+
+
+## Inserta un `tab-set`
+
+```{r, eval = FALSE}
+::: panel-tabset
+#### Para hacer esto ...
+
+
+::: {layout-ncol=2}
+
+![Imágen 1](thumbnail.jpg){#fig-2.1}
+
+![Imágen 2](thumbnail.jpg){#fig-2.2}
+
+Dos imágenes alineadas
+:::
+
+
+#### Has de escribir
+
+
+``` markdown
+::: {layout-ncol=2}
+
+![Imágen 1](thumbnail.jpg){#fig-2.1}
+
+![Imágen 2](thumbnail.jpg){#fig-2.2}
+
+2 imágenes alineadas
+:::
+    
+```
+
+
+::: panel-tabset
+#### Para hacer esto ...
+
+
+::: { layout-ncol=2}
+
+![Imágen 1](thumbnail.jpg){#fig-2.1}
+
+![Imágen 2](thumbnail.jpg){#fig-2.2}
+
+Dos imágenes alineadas
+:::
+
+
+#### Has de escribir
+
+
+``` markdown
+::: {layout-ncol=2}
+
+![Imágen 1](thumbnail.jpg){#fig-2.1}
+
+![Imágen 2](thumbnail.jpg){#fig-2.2}
+
+2 imágenes alineadas
+:::
+```
+
+:::
+
+
+<br>
+
+
+## Inserta un call-out
+
+```{r, eval = FALSE}
+::: {.callout-important icon="false"}
+
+#### Tarea xx
+- Tendremos que hacer esto 
+
+- y esto otro
+:::
+```
+
+
+
+::: {.callout-important icon="false"}
+
+#### Tarea xx
+- Tendremos que hacer esto 
+
+- y esto otro
+:::
+
+<br>
+
+## Inserta un gráfico en el margen
+
+```{r}
+#| eval: true
+#| column: margin
+#| echo: fenced
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng = -4.7880, lat = 37.885, popup = "Rectorado de la Universidad de Córdoba\n (Sede de las XII Jornadas de usuarios de R)")
+```
+
+<br><br><br><br><br><br><br><br>
+
+
+```{r}
+#| column: margin
+#| echo: fenced
+library(ggplot2)
+ggplot(iris) + geom_point(aes(x = Sepal.Length, y = Petal.Length, color = Species))
+```
+
+
+<br>
+
+Prueba superada!!
+
+
+Acabé con mi segundo post. FIN
+

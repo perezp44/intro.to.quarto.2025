@@ -1,0 +1,16 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.1: Dar ordenes a R (a través de RStudio) desde la Consola
+
+**Desde la Consola** de RStudio haz que R haga las siguientes operaciones:
+
+
+```{r}
+#| eval: false
+2 + 2
+sqrt(9)
+```
+
+<br>
+
+:::
+

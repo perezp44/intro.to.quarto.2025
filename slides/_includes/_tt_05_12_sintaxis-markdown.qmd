@@ -1,0 +1,5 @@
+::: { layout-ncol=1}
+
+![](./imagenes/tt_01/img_20_markdown.png){fig-align="center"  width="100%"}
+
+:::

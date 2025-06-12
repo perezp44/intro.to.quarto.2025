@@ -1,0 +1,234 @@
+---
+title: "Usando shortcodes"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+  Cómo usar *shortcodes* en Quarto para, entre otras cosas, poder incluir el mismo contenido en varios documentos.
+date: 2023-01-22
+categories: [quarto, shortcodes]
+image: "./thumbnails/thumbnail_22_shortcodes.png"
+title-block-banner: true #- {true, false }
+draft: false
+toc: true
+#toc-location: left
+toc-depth: 3
+#css: assets/my_css_file.css
+bibliography: bib_files/22_shortcodes.bib
+nocite: |
+  @*
+---
+
+
+## ¿Qué son los *shortcodes*?
+
+La [documentación oficial de Quarto](https://quarto.org/docs/extensions/shortcodes.html) señala que:
+
+> Shortcodes are special markdown directives that generate various types of content.
+
+Un shortcode es un código (una etiqueta, un elemento) que puedes insertar en tus documentos .qmd para añadir algún tipo de contenido en ellos sin tener que escribirlo directamente. 
+
+¿Y por qué querríamos hacer esto? Pues resulta que muchas veces, en un proyecto, queremos incluir el mismo contenido en varios sitios o en varios documentos; esto es facilitado al usar shortcodes.
+
+Más que qué son, lo importante es para lo que sirven, y sirven para poder insertar fácilmente contenido que se repite.
+
+### Beneficios de usar shortcodes
+
+Lo más evidente es que si hemos de insertar el mismo contenido varias veces o en varios documentos es más fácil hacerlo con shortcodes; además, si el contenido que gestionas con shortcodes cambia, solo tendrás que modificarlo una vez y automáticamente se cambiara en todos los sitios en los que hayan incluido tu shortcode.
+
+Por ejemplo, es muy probable que incluyas tu dirección de contacto en varios sitios de una página web o en varios archivos de tu Qproject, así que mejor gestionar e incluir este contenido en tus documentos a través de shortcodes, porque si esta dirección cambia solo tendrás que modificarla una vez.
+
+### Un ejemplo de uso
+
+El título de este post es "Usando shortcodes". Imagina que ahora mismo necesito incluir el título del post en esta sección. No nos costaría mucho copiarlo y pegarlo pero ... ¿y si luego decido cambiar el título? Es evidente, que si hay algún tipo de contenido que se repite, quizás debamos plantearnos la posibilidad de gestionarlo con shortcodes. Veamos un primer ejemplo. 
+
+
+Por ejemplo,  `{{</* meta */>}}` es un shortcode que permite incluir elementos de los metadatos de un archivo quarto: si incluimos `{{</* meta title */>}}` estaríamos insertando el título del documento; mientras que si incluimos `{{{< meta date >}}}` incluiríamos la fecha de creación del documento. 
+
+Veamos como podemos usarlo:
+
+::: panel-tabset
+##### Para que se muestre esto ...
+
+El título de este post es "{{< meta title >}}", y fue creado el {{< meta date >}}. 
+
+El objetivo del post es:  "{{< meta description >}}"
+
+##### Has de escribir
+
+```{shortcodes=false}
+El título de este post es "{{< meta title >}}", y fue creado el {{< meta date >}}. 
+
+El objetivo del post es:  "{{< meta description >}}"
+```
+:::
+
+
+## Tipos de shortcodes
+
+De momento, los que yo he usado son:
+
+-  `{{</* meta */>}}` : permite incluir elementos de los metadatos de un documento
+
+-  `{{</* var */>}}` : permite incluir elementos definidos en el fichero `_variables.yml`. Este fichero es de nivel proyecto
+
+Además:
+
+-  `{{</* include */>}}` : permite incluir el contenido de un archivo .qmd. Documentación oficial [aquí](https://quarto.org/docs/authoring/includes.html)
+
+-  `{{</* video */>}}` : permite incluir vídeos
+
+<br>
+
+## Más ejemplos
+
+<br>
+
+### Incluir contenido de `_variables.yml`
+
+Dentro de un proyecto, podemos crear un fichero llamado `_variables.yml` donde podemos definir variables con contenido para ser incluido en nuestros documentos `.qmd` con el shortcode `{{</* var */>}}`. El fichero `_variables.yml` tiene que residir en la carpeta raíz del proyecto.
+
+Vamos a ver un ejemplo de uso: 
+
+::: panel-tabset
+
+##### Si el contenido de `_variables.yml` es ...
+
+```yaml
+email:
+  pedro: pedro@uvv.es
+  juan: juan@gmaillll.com
+
+pedroblog: "[Uno de mis blogs](https://perezp44.github.io/pjperez.web/01_blog.html)"
+```
+
+##### ... puedes escribir lo siguiente ....
+
+El email de Pedro es {{{< var email.pedro >}}} y el de Juan es  {{{< var email.juan >}}}.
+
+Uno de los blogs de Pedro es {{{< var pedroblog >}}} .
+
+##### ... para que se muestre ....
+
+El email de Pedro es {{< var email.pedro >}} y el de Juan es  {{< var email.juan >}}. 
+
+Uno de los blogs de Pedro es {{< var pedroblog >}} .
+
+:::
+
+<br>
+
+### Incluir contenido de un archivo
+
+En un proyecto en el que elaboraba tutoriales y slides con el mismo contenido en algunas partes, usé muchas veces el shortcode `{{</* include */>}}`. Me permitió incluir el mismo contenido en varios ficheros. Además, tuve que modificarlo varias veces, pero como gestionaba ese contenido con `{{</* include */>}}` solo tenía que modificarlo en un sitio. Os cuento con un ejemplo cómo se hace.
+
+Si crees que un determinado contenido puede ser utilizado en varios sitios, quizá sea más eficiente tener ese contenido en un fichero independiente e incluirlo a través del shortcode `{{</* include */>}}`.
+
+Imagina que quieres incluir este contenido:
+
+
+::: panel-tabset
+
+##### Quieres incluir este contenido ...
+
+El conjunto de datos iris tiene `r ncol(iris)` variables y `r nrow(iris)` filas. Veamos un resumen con `summary()`
+
+```{r}
+summary(iris)
+```
+
+##### ... contenido que es generado con este código
+
+El conjunto de datos iris tiene `` `r "\u0060r ncol(iris)\u0060"` ``  variables y `` `r "\u0060r nrow(iris)\u0060"` `` filas. Veamos un resumen con `` `summary()` ``
+
+```{{r}}
+summary(iris)
+```
+
+:::
+
+Para poder incluir ese contenido haciendo uso de `{{{< include >}}}` deberás:
+
+- Crear un documento, llamado por ejemplo `_my_include_01.qmd`, que contenga el código que hemos visto anteriormente.
+
+    - El nombre del fichero es conveniente que empiece por `_` porque eso hace que cuando hagamos un render del proyecto, este archivo no se procese. No queremos procesarlo, queremos que su contenido se incluya en otro documento y eso lo haremos utilizando el shortcode `{{{< include >}}}`.
+    
+- Una vez hemos creado el documento `_my_include_01.qmd` para que su contenido aparezca (y se ejecute, si tiene código ejecutable) en el documento que nosotros queramos, tendremos que incluir en este último documento lo siguiente: `{{{< include _my_include_01.qmd >}}}`
+
+  - Realmente `{{{< include _my_include_01.qmd >}}}` funcionará si el fichero `_my_include_01.qmd` está en la misma carpeta que el documento en el que queremos que parezca su contenido; si estuviese en otra ubicación habría que proporcionar la ruta relativa a `_my_include_01.qmd`.
+  
+<br>
+
+### Incluir videos
+
+Se pueden incluir vídeos usando paquetes de R, también con extensiones de Quarto, pero es más cómodo hacerlo con el shortcode `{{{< video >}}}`
+
+
+
+::: panel-tabset
+
+##### Para incluir este video ...
+
+{{< video https://www.youtube.com/embed/ZkECLuuRwTg >}}
+
+
+##### ... has de ...
+Has de usar este shortcode:
+
+`{{{< video video https://www.youtube.com/embed/ZkECLuuRwTg >}}}`
+
+No es tan-tan sencillo porque cuando vas a Youtube a ver ese vídeo lo ves en esta dirección: <https://www.youtube.com/watch?v=ZkECLuuRwTg>; como ves hay que sustituir `watch?v=` por `embed/`.
+
+:::
+
+<br>
+
+### Saltos de página
+
+Como casi siempre uso Quarto para generar documentos html, no me suelo preocupar por los saltos de página; aunque es verdad que si luego quiero imprimir el documento html como un pdf me arrepiento de no haberlo hecho; vamos que conviene pensar en los saltos de página y además es muy fácil incorporarlos con el shortcode `{{{< pagebreak >}}}`. Además, como se cuenta [aquí](https://quarto.org/docs/authoring/markdown-basics.html#page-breaks), estos saltos de página funcionan para diferentes formatos de salida:
+
+> Native pagebreaks are supported for HTML, LaTeX, Context, MS Word, Open Document, and ePub
+
+
+
+
+### Teclitas de ordenador
+
+- En Quarto 1.3 apareció esto los [Keyboard Shortcuts](https://quarto.org/docs/authoring/markdown-basics.html#keyboard-shortcuts). Se insertan "iconos" que simulan unas tecitas con el shortcode "kbd". 
+
+- Por ejemplo, 
+
+::: {.panel-tabset}
+### Si escribes esto:
+
+
+``` md
+To print, press {{{< kbd Shift-Ctrl-P >}}}. 
+
+To open an existing new project, 
+
+press {{{< kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L >}}}.
+```
+
+
+### Se verá lo siguiente:
+
+To print, press {{< kbd Shift-Ctrl-P >}}. 
+
+To open an existing new project, 
+
+press {{< kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L >}}.
+:::
+<br>
+
+
+
+
+<br>
+
+## Referencias {.unnumbered}
+
+(Algunos artículos que hablan de esto ...)
+
+::: {#refs}
+:::
+

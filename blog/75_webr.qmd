@@ -1,0 +1,151 @@
+---
+title: "Webr"
+date: 2024-02-12
+categories: [Webr]
+image: "./thumbnails/thumbnail_75_webr.png"
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Entender un poco qué es y como funciona Webr
+engine: knitr
+filters:
+  - webr
+---
+
+## Intro 
+
+
+Para ejecutar código R se necesita tener instalado R en tu ordenado: sí, se necesita un interprete de R. Pero resulta que, **Webr** es una versión de R que se ejecuta directamente en el navegador. ¿Y cómo puede R ejecutarse en el navegador? pues usando **WebAssembly**(wasm), un estándar abierto que ha revolucionado el desarrollo web al proporcionar un nuevo enfoque para ejecutar código en los navegadores. Si te interesa el tema,  [aquí](https://www.nature.com/articles/d41586-024-00725-1?utm_campaign=Data_Elixir&utm_source=Data_Elixir_477) puedes empezar. El caso es que ahora, con WebAssembly y Webr, **podemos ejecutar R en el navegador**. 
+
+
+La [documentación oficial](https://docs.r-wasm.org/webr/latest/) de **Webr** nos dice que:  
+
+> WebR is a version of the statistical language R compiled for the browser and Node.js using 
+> [WebAssembly](https://webassembly.org/), via Emscripten.  
+
+
+Así que con Webr **tenemos la posibilidad de ejecutar R en el navegador**. Genial!! [Aquí](https://webr.r-wasm.org/latest/) tienes una demo del webR IDE donde puedes probarlo. 
+
+
+## `quarto-webr`
+
+Genial que ahora se pueda ejecutar R en el navegador, pero este curso va sobre Quarto, así que me voy a centrar en 
+[quarto-webr](https://github.com/coatless/quarto-webr), una extensión de Quarto que facilita la inserción de **chunks de código WebR** en documentos generados con Quarto de Quarto^[Evidentemente sólo funcionará para documentos en HTML, ya sean RevealJS slides, Websites, Blogs, etc ... Olvídate de que funcione en un pdf].
+
+¿Y para que puede ser de utilidad `quarto-webr`? Pues para hacer documentos interactivos, en el sentido de que se puedan ejecutar código R en ellos ... **sin tener instalado R en el ordenador!!**
+
+
+
+[Aquí](https://quarto-webr.thecoatlessprofessor.com/) tienes la documentación de `quarto-webr`, y [aquí](https://r.iresmi.net/posts/2024/webr/index.html) tienes un post llamado "Playing with webr" que si te fijas te permite descargarte el documento fuente
+
+
+<br>
+
+## ¿Cómo usamos `quarto-webr`?
+
+Para empezar a usar Webr no hace falta más que [este video](https://www.youtube.com/watch?v=DoRR2S5lLvk&t=5s). Básicamente hay que:
+
+1. añadir la extensión:
+
+```markdown
+quarto add coatless/quarto-webr
+```
+
+
+2. Para usarla hay que añadir `webr` en el YAML, también hay que poner `engine: knitr`. Además se pueden añadir paquetes adicionales: El YAML podría quedar como: 
+
+
+````md
+---
+title: webR in Quarto HTML Documents
+format: html
+engine: knitr
+filters:
+  - webr
+webr:
+  packages:
+    - "dplyr"
+    - "ggplot2"
+---
+
+This is a webr-enabled code cell in a Quarto HTML document.
+
+```{webr-r}
+fit = lm(mpg ~ am, data = mtcars)
+summary(fit)
+```
+
+
+````
+
+3. Y ya podríamos introducir en nuestros `.qmd`, chunks de código R ejecutables. Para ello solo hay que marcar los chunks with `{webr-r}` en lugar de con `{r}`. Algo como:
+
+````md
+```{webr-r}
+fit = lm(mpg ~ am, data = mtcars)
+summary(fit)
+```
+````
+
+
+Lo bueno de estos nuevos webr-chunks es que **son editables** y se pueden **ejecutar en el navegador**.
+
+
+## Un ejemplo
+
+Un ejemplo de celda/chunk de Webr
+
+Si escribes esto:
+
+
+````md
+```{webr-r}
+plot(iris)
+```
+````
+
+Generará la siguiente celda:
+
+
+```{webr-r}
+plot(iris)
+```
+
+<br>
+
+## Más ejemplos
+
+
+- [Aquí](https://rd.thecoatlessprofessor.com/webR-quarto-demos/webr-quarto-html-demo.html#ggplot2-graphics) se usa `webr`. Una cosa que hace es instalar un paquete con el sistema propio de WebR con: `webr::install("ggplot2")`; aunque esto puede estar superado pues se pueden cargar pkgs no R-base desde el YAML. Lo investigaré. Sí ahora se puede usar el YAML para "instalar" paquetes, pero supongo que también funcionará el método anterior
+
+
+- [Aquí](https://jabberwocky.weecology.org/2023/03/13/a-brief-introduction-to-using-webr-and-quarto-for-client-side-interactive-lesson-material/) otro tutorial. Habla de Bob Rudis
+
+- [Aquí](https://interactive-lessons.weecology.org/) una web con varios ejemplos de uso de WebR. [Aquí](https://github.com/ethanwhite/datacarp-interactive) está el repo.
+
+- Un [post](https://rud.is/b/2023/03/12/almost-bare-bones-webr-starter-app/)  de Bob Rudis que fue de los primeros en trabajar en WebR
+
+- Nicola Rennie explica en este [toot](https://fosstodon.org/@nrennie/111201081075205677) que ha hecho un **Shiny con WebR**. La ventaja es que puedes hacer el deply sin teer R en el backend. Otro [toot](https://fosstodon.org/@nrennie/111018268188523183) con una charla de Nicola.
+
+- Un [video](https://www.youtube.com/watch?v=Mpq9a6yMl_w) de 16 minutos y sus [slides](https://gws.quarto.pub/introduction-to-webr-2023/#/title-slide) para posit::conference 2023
+
+- [webR 0.2.0 has been released](https://www.tidyverse.org/blog/2023/08/webr-0-2-0/)
+
+- [Danielle: How to run R code in the browser with webR](https://blog.djnavarro.net/posts/2023-04-09_webr/)
+
+
+<br>
+
+## Algunas noticias sobre WebR
+
+WebR es bastante nuevo, así que hasta que se "estabilice la cosa"  y yo pilote un poco, apuntaré aquí algunas news sobre WebR:
+
+
+- la extensión quarto-webr ya está en la [version 0.4](https://mastodon.social/@coatless/111879020912097930)
+
+
+- Parece que había problemas para usar Webr en revealjs slides. Con Quarto 1.4 ya está solucionado, parece que era un problema de Pandoc, pero [aquí](https://github.com/coatless/quarto-webr/issues/14) está la issue. La guardo porque tiene cosas como, por ejemplo, hacer un downgrade de una extensión.
+
+
+
+- Se ha creado una [Awesome WebR](https://github.com/nanxstats/awesome-webr) list.

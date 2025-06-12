@@ -1,0 +1,35 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.3:  **opciones de los chunks** <mark>en el YAML</mark>
+
+- Utiliza el archivo `prueba_01.qmd` para insertar las **opciones de los chunks en el YAML** del documento
+
+
+- Por ejemplo, indica en el YAML que &emsp; `echo: true` &emsp; &emsp; pero &emsp; &emsp; `eval: false`
+:::
+
+<br>
+
+::: {.fragment}
+::: {.callout-important icon="false"}
+#### Tarea 3.3:  Solución
+
+```yaml
+execute:
+  echo: true
+  eval: false
+```
+:::
+:::
+
+<br>
+
+::: {.fragment}
+
+::: {.callout-warning icon="false"}
+#### Extensión: uso de la opción `include`
+
+- ¿Se puede poner la opción `include: ` en el YAML?
+:::
+:::
+
+<br>

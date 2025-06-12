@@ -1,0 +1,11 @@
+::: {.callout-important icon="false"}
+#### Tarea 4.1: Creando un nuevo post
+
+- Crea una nueva subcarpeta en `./posts/`
+
+- Ponle nombre, por ejemplo: "my-primer-post"
+
+- Copia en la carpeta que hemos creado el contenido de la carpeta de uno de los 2 posts. Por ejemplo copia los 2 archivos que hay en &ensp; `./posts/welcome/` &ensp; y pégalos en &ensp; `./posts/my-primer-post/` &ensp; ; es decir, pegamos el archivo &ensp; `index.qmd` &ensp; y &ensp; `tumbnail.jpg` &ensp; en nuestra nueva carpeta.
+
+- Vuelve a regenerar el blog: `Build > Render Website` y verás que ahora nuestro blog ya tiene tres posts.
+:::

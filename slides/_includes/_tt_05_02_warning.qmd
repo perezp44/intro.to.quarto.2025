@@ -1,0 +1,28 @@
+##
+
+::: {.callout-warning  appearance="default" icon="true"}
+
+-  ~~Voy a **suponer que los asistentes al taller**, y posibles lectores de estos tutoriales, **conocen Rmarkdown**~~
+
+- El paso de `.Rmd` a `.qmd` es sencillo. 
+
+- En cualquier caso, [aquí](https://quarto.org/docs/faq/rmarkdown.html) tienes unas FAQ's para usuarios de .Rmd que se preguntan si pasarse a Quarto, y [aquí](https://laderast.github.io/qmd_rmd/#/title-slide) unas slides sobre las diferencias entre `.qmd` y `.Rmd`.
+
+- [Aquí](https://jthomasmock.github.io/quarto-2hr-webinar/materials/02-authoring.html#/section) y [aquí](https://jthomasmock.github.io/quarto-2hr-webinar/materials/02-authoring.html#/quarto-and-rmarkdown)  slides sobre cómo convertir ficheros `.Rmd` a `.qmd`
+
+- Aquellos que no sepan qué es Rmarkdown pueden empezar por [aquí](https://perezp44.github.io/intro-ds-22-23-web/tutoriales/tt_07_Rmarkdown.html) o [aquí](https://perezp44.github.io/intro-ds-22-23-web/slides/slides_07_rmarkdown.html#1).
+
+
+:::
+
+<br>
+
+::: {.callout-tip  appearance="default" icon="false"}
+## En realidad la advertencia no aplica  a los asistentes al "curso de intro a Quarto"
+
+
+- Lógicamente, a los asistentes al curso [no os hace falta conocer Rmarkdown]{.underline}, porque ya estáis aprendiendo Quarto,  la segunda generación de `.Rmd`
+
+- Ya vimos con las [Slides 03: Aprendiendo a escribir en QMD](./03_aprendiendo_Qmd.qmd){target="_blank"} cómo escribir con `.qmd`
+
+:::

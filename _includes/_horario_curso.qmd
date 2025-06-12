@@ -1,0 +1,15 @@
+##
+
+| Día                     | Hora          | Lugar                           |
+|---------------------|------------------|----------------------------------|
+| 8 de julio (martes)     | 10:00 a 14:00 | Aula 0.1 (SFPIE, Campus Tarongers) |
+| 9 de julio (miércoles) | 10:00 a 14:00 | Aula 0.1 (SFPIE, Campus Tarongers) |
+| 10 de julio (jueves)      | 10:00 a 14:00 | Aula 0.1 (SFPIE, Campus Tarongers) |
+| 16 de julio (miércoles)      | 10:00 a 13:00 | Aula 0.1 (SFPIE, Campus Tarongers) |
+
+<br>
+
+Las clases se desarrollarán en el **Campus de Tarongers**, concretamente en el **aula 0.1 del SFPIE** (Servicio de Formación Permanente e Innovación Educativa) de la Universitat de València. 
+
+El SFPIE está en el edificio "Centro de Formación y Calidad Manuel Sanchis Guarner" que está en la C/ Serpis, 29, 46022 València. Tienes un **mapa** de Google [aquí](https://www.google.es/maps/place/Centro+de+Formaci%C3%B3n+y+Calidad+Manuel+Sanchis+Guarner/@39.4750955,-0.346133,17z/data=!3m1!4b1!4m6!3m5!1s0xd6049dbfd241e75:0xc257e3f91a60e197!8m2!3d39.4750914!4d-0.3435581!16s%2Fg%2F11r_fpk8ms?hl=es&entry=ttu){target="_blank"}, y [aquí](https://www.uv.es/uvweb/centro-formacion-calidad-manuel-sanchis-guarner/es/centro-formacion-calidad-sanchis-guarner-1285909558032.html){target="_blank"} la web del centro.
+

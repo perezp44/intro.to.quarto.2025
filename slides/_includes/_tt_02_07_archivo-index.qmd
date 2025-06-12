@@ -1,0 +1,5 @@
+::: {layout-ncol=2}
+![Contenido original de `index.qmd`](./imagenes/tt_01/img_11.png){fig-align="center"}
+
+![<mark>Así dejaremos</mark> el fichero `index.qmd`](./imagenes/tt_01/img_12.png){fig-align="center"}
+:::

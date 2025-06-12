@@ -1,0 +1,157 @@
+---
+title: "EXTRAS de Quarto"
+date: 2024-02-26
+categories: [Quarto]
+image: "./thumbnails/thumbnail_generico.png"
+#toc-location: left
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Cosas EXTRA de Quarto y también trucos más rarunos (ó EXTRA) sobre Quarto.
+toc-depth: 3
+toc-expand: 1
+---
+
+# FORMATOS
+
+## Quarto Manuscripts
+
+Quarto manuscript projects provide a framework for writing and publishing scholarly articles.
+
+- Documentación oficial [aquí](https://quarto.org/docs/manuscripts/). Un [ejemplo](https://dragonstyle.github.io/submission-quarto-lite-r/)
+
+- Unas [slides](https://mine.quarto.pub/manuscripts-conf23/#/title-slide) de Mine. Permite usar Binder
+
+- Unas slides de JJ Allaire hablando sobre el proyecto [aquí](https://jjallaire.quarto.pub/reproducible-manuscripts-with-quarto/#/title-slide)
+
+- Charla de Mine [aquí](https://www.youtube.com/watch?v=NK1onTLcgY4),  y el post [aquí](https://quarto.org/docs/blog/posts/2024-04-01-manuscripts-rmedicine/)
+
+<br>
+
+
+
+<br>
+
+## pdf's
+
+- En [Making Pretty PDFs with Quarto](https://nrennie.rbind.io/blog/making-pretty-pdf-quarto/) Nicola Rennie explica cómo crear una extensión de Quarto para una plantilla de un pretty-pdf
+
+<br>
+
+
+## like Storyteller
+
+- como storytelling: <https://mastodon.social/@benschneider/111354305395601257>
+
+- como un storyteller: <https://github.com/andrewpbray/gg-close-read>
+
+
+## Flipbook
+
+- Yo usaba Flipbook en Xaringan slides. [Aquí](https://kieranhealy.org/blog/archives/2023/08/10/flipbookr-for-quarto/) hay un port de `flipbook` a Revealjs. Ya no es tan-tan necesario pero igual lo uso para teach ggplot2
+
+## Word
+
+- Un [post](https://fortune9.netlify.app/2024/01/28/rmarkdown-automate-word-document-generation-using-rmarkdown/) de 2024 sobre creación de word's
+
+## Google Docs
+
+- Para convertir un Google Doc en un Quarto book puedes usar el pkg  [quartificate](https://docs.ropensci.org/quartificate/)
+
+
+
+
+
+<br>
+
+--------------------------
+
+<br>
+
+# Docencia
+
+Cosillas que pueden ser útiles en Docencia
+
+## quarto-assign 
+
+- Es una extensión de Quarto que permite generar problemas y sus soluciones en un único `.qmd`. Está [aquí](https://github.com/coatless-quarto/assign)
+
+
+<br>
+
+--------------------------
+
+<br>
+
+
+# MÁs COSAS
+
+- Piden una extensión para poder escribir en Revealjs sin tener que recompilar y parace que sólo funciona lo que funcionaba en Xaringan: <https://podcastindex.social/@rpodcast/111307693923576084>. Try using `xaringanExtra::use_editable()` in an R chunk. 
+
+
+## ChatGPT
+
+- **chatgpt-from-r**: <https://www.sumsar.net/blog/call-chatgpt-from-r/>
+
+
+## Publicaciones
+
+- El paquete [Rcademy](https://github.com/robjhyndman/Rcademy) permite buscar y pasar a df tus publicaciones y hace bastantes más cosas
+
+```r
+devtools::install_github("ropenscilabs/Rcademy")
+library(Rcademy)
+mypubs_bib <- read_bib("mypubs.bib")
+mypubs_pubmed <- read_pubmed("Rob Hyndman")
+mypubs_scholar <- read_scholar("PXaWcW4AAAAJ")     #- ok
+mypubs_orcid <- read_orcid("0000-0001-9375-6330")  #- ok
+```
+
+
+- El paquete [pubmedr](https://github.com/jaytimm/pubmedr) busca en PubMed
+
+```md
+med_cannabis <- pubmedr::pmed_search_pubmed(search_term = 
+"medical marijuana", fields = c('TIAB','MH'))
+```
+
+- **Scholia**: is a service that creates visual scholarly profiles for topics, people, organizations, species, chemicals, etc using bibliographic and other information in Wikidata <https://scholia.toolforge.org/>
+
+
+- **Zenodo**: un repositorio de acceso abierto donde quienes investigan depositan artículos, datos, software, informes, etc. Puede venir bien al buscar info para trabajos universitarios 😉
+<https://zenodo.org/>  desarrollado bajo el programa europeo OpenAIRE y operado por CERN . Permite a cualquier  artefacto digital relacionado con la investigación. Para cada envío, se acuña un identificador de objeto digital persistente (DOI), lo que hace que los elementos almacenados se puedan citar fácilmente. 
+
+<br>
+
+----------------
+
+<br>
+
+## TRULETES
+
+Son trucos q no los voy a utilizar **nunca** pero quiero guardarlos
+
+
+- @andrewheiss: Regular reminder that **@tjmahr's trick of storing model results as tab-completable lists** (by feeding data frames to split()) is ingenious and will forever change how you use inline chunks with <https://www.tjmahr.com/lists-knitr-secret-weapon/>
+
+- buscar archivos que tengan `draft: true : grep -rl "draft: true"  `: <https://isaac-flath.tech/til/quartodrafts>
+
+- `Hmisc::rendHTML()`: <https://fosstodon.org/@smach/110006219843294743>
+
+- Mostrar las rows de una tabla poco a poco: <https://fosstodon.org/@yabellini/110097048443787861>
+
+- el ejemplo redefinitivo: <https://rd.thecoatlessprofessor.com/webR-quarto-demos/webr-quarto-html-demo.html>
+
+
+
+<br>
+
+----------------
+
+<br>
+
+
+## "Biblio"
+
+- Más trucos (complicaetes y algunos rarunos para mi) de `.Rmd` de Elio Campitelli: <https://mastodon.social/@eliocamp/110209569783331181>
+

@@ -1,0 +1,7 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.3: Renombrar el archivo about.qmd
+
+- Cambia el nombre del fichero &ensp; `about.qmd` &ensp; a &ensp; `index.qmd`, con lo que pasará ser nuestra "landing page". 
+
+- Como el antiguo fichero &ensp; `about` &ensp; contenía nuestra foto parece que es un buen candidato a ser nuestra "Home"
+:::

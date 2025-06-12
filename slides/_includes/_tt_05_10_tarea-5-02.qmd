@@ -1,0 +1,42 @@
+::: {.callout-important icon="false"}
+#### Tarea 5.2: Modificar `./posts/_metadata.yml` 
+
+- Tenemos que dejar el archivo `./posts/_metadata.yml`  así:
+
+
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+# IMPORTANTE: options specified here will apply to all posts in this folder
+
+# freeze: controla la ejecución de los .qmd durante un global project render
+# https://quarto.org/docs/projects/code-execution.html#freeze)
+freeze: auto   #- {false, true, auto}
+
+#- Quarto incluye un title-block al principio de los artículos con elementos como: title, subtitle, authors, date, doi, and abstract.
+
+# title-block-banner: pone un banner en el title-block: pondrá el title, subtitle, description, y categories dentro del banner
+# https://quarto.org/docs/authoring/title-blocks.html#title-banners
+title-block-banner: true  #- {true, false, "#FFDDFF",  "image.jpg"}
+
+# title-block-style: modifica el estilo del title-block
+# https://quarto.org/docs/authoring/title-blocks.html
+title-block-style: default #- {default, plain, none}
+
+# tb se puede especificar el color del texto dentro del banner
+title-block-banner-color: red
+```
+
+ **IMPORTANTE**: las opciones que especifiques en `_metadata.yml` afectarán a todos los .qmd de la carpeta.
+
+- `freeze (linea 5): {false, true, auto}` controla la ejecución de los .qmd durante el procesado completo del Qproject. Documentación [aquí](https://quarto.org/docs/projects/code-execution.html#freeze).
+
+- `title-block-banner (linea 11): {true, false, "#FFDDFF",  "image.jpg"}` controla la presencia y apariencia de los "banners" para dar más importancia a los títulos de los posts. Puedes controlar el color, incluso poner una imagen. Documentación [aquí](https://quarto.org/docs/authoring/title-blocks.html#title-banners). 
+
+- `title-block-style (linea 15):  {default, plain, none}` modifica el estilo del title-block
+
+
+- `title-block-banner-color(linea 18): {black, "#FFDDFF"}` controla el color del título del post
+
+:::

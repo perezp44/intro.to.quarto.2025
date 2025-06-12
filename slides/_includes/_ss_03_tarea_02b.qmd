@@ -1,0 +1,20 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.2b: Vamos a jugar con la **opciones de los chunks**
+
+::: {.fragment}
+- Incorpora al chunk las siguientes opciones: `echo` y `eval`
+
+
+- ¿Cuales son las opciones por defecto para `echo` y `eval`?
+::: 
+
+::: {.fragment}
+
+- Incorpora también al chunk las siguientes opciones: `message` y `label`
+
+:::
+
+<br>
+
+
+:::

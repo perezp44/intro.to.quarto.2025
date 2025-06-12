@@ -1,0 +1,183 @@
+---
+title: "Generando botoncitos de descarga en mi web"
+date: 2023-02-02
+categories: [Tuneando la web]
+image: "./thumbnails/thumbnail_70_botoncitos.png"
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Insertar un link de descarga en nuestra web es muy fácil pero quedará más chulo si generamos unos botoncitos de descarga.
+---
+
+## Intro
+
+Durante el curso, concretamente cuando aprendimos a crear una web personal con las [slides_05](/slides/05_primer_web.html){target="_blank"}, vimos cómo podíamos podíamos facilitar la descarga de documentos: es muy sencillo, solo hemos de insertar un hyperlink que apunte a un recurso de nuestra web.
+
+Por ejemplo, Si escribo lo siguiente: `[Mi publicación](/recursos/mi_articulo_01.pdf)` en un documento `.qmd`, se generará el siguiente hyperlink [Mi publicación](/recursos/mi_articulo_01.pdf){target="_blank"}. Si pinchamos en el anterior hyperlink, hará que se visualice en el navegador (o se descargue) el archivo `mi_articulo_01` que tenemos en la carpeta `./recursos/` dentro del Qproject de nuestra web. Puedes probar a hacerlo.
+
+La anterior forma de proceder es fácil y funciona perfectamente, pero queda mucho más chulo si insertamos un botones parecidos a [estos](https://shafayetshafee.github.io/downloadthis/example.html). Para ello hay que instalar y usar la extensión [downloadthis](https://github.com/shafayetShafee/downloadthis). Vamos a ver si lo conseguimos!!
+
+Otra posibilidad, que no intentaremos, es usar [este tipo de botones](https://dajmcdon.github.io/research/). Puedes ver el código que los genera [aquí](https://github.com/dajmcdon/dajmcdon.github.io/blob/main/research/index.qmd), además genera el listado de sus publicaciones automáticamente. Llegué a esta posibilidad a través de [este hilo](https://twitter.com/allison_horst/status/1580706829696348161) de Twitter.
+
+También podríamos utilizar los botones de descarga que utiliza Ilya Kashnitsky [aquí](https://ikashnitsky.github.io/me.html) . El código que los genera está [aquí](https://github.com/ikashnitsky/ikashnitsky.github.io/blob/main/me.qmd).
+
+También podríamos hacerlo [así](https://stackoverflow.com/questions/16631913/have-button-with-custom-image-and-link), pero nosotros vamos a probar a hacerlo con `downloadthis`.
+
+## Creando botoncitos de descarga con [downloadthis](https://github.com/shafayetShafee/downloadthis)
+
+`Downloadthis` es una extensión para Quarto y sus [instrucciones](https://github.com/shafayetShafee/downloadthis) son muy claras:
+
+-   Primero hay que instalar la extensión, así que hay que ejecutar en la Terminal lo siguiente:
+
+    ``` bash
+    quarto add shafayetShafee/downloadthis
+    ```
+
+    Nos preguntará dos veces si estamos seguros. Yo la acabo de instalar
+
+-   Luego sólo queda usarla.
+
+## Botoncitos con `downloadthis`
+
+La verdad es que las instrucciones son muy claras: para incluir un botón de descarga en una web (o documento html) generada con Quarto solo hay que incluir el siguiente **shortcode**: `{{{< downloadthis image.png >}}}`. Ya está, ya funcionaría si hubiese un fichero llamado `image.png` en la misma carpeta donde se procesa el fichero `.qmd` en el que estamos escribiendo.
+
+La extensión, el shortcode `{{{< downloadthis >}}}` es más flexible, permite hacer más cosas. De hecho tiene 6 argumentos que podemos usar para tunear nuestro "botoncito de descarga". Puedes ver esas 6 opciones [aquí](https://github.com/shafayetShafee/downloadthis#options).
+
+Como ejemplo, si incluimos en nuestro qmd lo siguiente:
+
+``` r
+{{{< downloadthis recursos/ababol.jpg>}}}
+```
+
+Nos generará el botoncito de más abajo, que si lo pinchas hará que se descargue la foto de "mi" ababol.
+
+{{< downloadthis imagenes/ababol.jpg >}}
+
+Si no te funciona es por la ruta. La carpeta "recursos" que contiene el archivo "ababol.jpg" debe estar en la misma carpeta en la que esté el archivo qmd que estamos escribiendo.
+
+Una pega es que el fichero "ababol.jpg" se descargará en el archivo "file.jpg" pero si esto no nos conviene, podemos cambiar el nombre de descarga con:
+
+``` r
+
+{{{< downloadthis imagenes/ababol.jpg dname= "mi_ababol.jpg" >}}}
+```
+
+### Tuneando los botoncitos
+
+Podemos cambiar el nombre que se verá dentro del botón, su color, poner un icono, ... casi mejor es que veas los ejemplos [aquí](https://shafayetshafee.github.io/downloadthis/example.html)
+
+Por ejemplo, el siguiente código:
+
+``` r
+{{{< downloadthis recursos/ababol.jpg  label="Descarga mi ababol" icon=file-earmark-pdf type=success >}}}
+```
+
+{{< downloadthis imagenes/ababol.jpg label="Descarga mi ababol" icon=file-earmark-pdf type=success >}}
+
+<br>
+
+## Otras posibilidades
+
+Ya sabemos que podemos generar enlaces de descarga con QMD, o botoncitos con la extensión `downloadthis`. Otras posibilidades son:
+
+-   Con html:
+
+``` html
+<a id="download_image_1" href="https://cdn.glitch.global/ab1f9eaf-3be9-411b-9fa4-81a39033290e/1650333182176.png?v=1650469623980" download>Descarga de una afoto</a>
+```
+
+Genera lo siguiente:
+
+<a id="download_image_1" href="https://cdn.glitch.global/ab1f9eaf-3be9-411b-9fa4-81a39033290e/1650333182176.png?v=1650469623980" download>Descarga de una afoto</a>
+
+-   Se pueden generar botoncitos Con html, usando la etiqueta <button>
+
+``` html
+<button type="button" class="btn btn-primary">Mi botoncito</button>
+```
+
+<button type="button" class="btn btn-primary">
+
+Mi botoncito
+
+</button>
+
+<br>
+
+y podemos incrustar en el botoncito una imagen:
+
+``` html
+<button type="button" class="btn btn-primary"  style="width:55px;">
+<img src="recursos/ababol.jpg" style="width:55px;" alt="buttonpng" border="0" />
+</button>
+```
+
+<button type="button" class="btn btn-primary" style="width:55px;">
+
+<img src="imagenes/ababol.jpg" alt="buttonpng" style="width:55px;" border="0"/>
+
+</button>
+
+<br>
+
+-   Ahora un botoncito con imagen incrustada y que al pinchar te la descargues:
+
+``` html
+<button type="button" class="btn btn-primary">
+[![](recursos/ababol.jpg)](recursos/ababol.jpg)
+</button>
+```
+
+<button type="button" class="btn btn-primary">
+
+[![](imagenes/ababol.jpg)](imagenes/ababol.jpg)
+
+</button>
+
+<br>
+
+-   Ahora botoncito con imagen incrustada y que al pinchar lleva a una dirección web (además con sintaxis MD):
+
+``` html
+<button type="button" class="btn btn-primary" style="width:55px;">
+[![](https://www.lineex.es/wp-content/uploads/2016/07/logo-UV.gif)](https://www.uv.es)
+</button>
+```
+
+<button type="button" class="btn btn-primary" style="width:55px;">
+
+[![](https://www.lineex.es/wp-content/uploads/2016/07/logo-UV.gif)](https://www.uv.es)
+
+</button>
+
+<br>
+
+-   Pb: el botoncito con la imagen ha salido muy grande, vamos, tenemos un super-botón en lugar de un botoncito. Vamos a ver si se soluciona redimensionando la imagen:
+
+```{r, eval = FALSE, echo = FALSE}
+<button type="button" class="btn btn-primary">
+[<img src="recursos/ababol.jpg" alt="buttonpng" width="4" height="5" border="0"/>)](https://www.uv.es)
+</button>
+
+<button type="button" class="btn btn-primary">
+[![](imagenes/ababol.jpg){height="90%"}](https://www.uv.es)
+</button>
+```
+
+-   Como veis, no me acaba de salir!!!! 😥 Pero ya no pruebo más 😞🤕
+
+<br>
+
+-   Otra posibilidad, para los botoncitos que aparecen en las About's pages generadas con plantillas de Quarto es usar la estrategia de Pilar Beneito. En [su web](https://www.uv.es/beneito/) tiene en su home page, que en realidad es una About page generada con `distill` unos botoncitos muy chulos para ir por ejemplo a su departamento, que también es el mio. No podemos ver el código porque su web no está alojada en Github, pero Pilar amablemente me proporciono el código para meter dentro de ellos una imagen. Simplemente hay que poner en el archivo `index.qmd`, que genera la Home/About, lo siguiente[^O algo parecido: no lo he probado 😃.]:
+
+``` html
+ links:
+  - label: '<img style="width:95px;" src="logo_AE.jpg" border="0" alt=""/></i>'
+    url: "https://www.uv.es/"
+  - icon: globe
+    text: UV web
+    href: https://www.uv.es/pjperez/
+    target: _blank
+```
+
+

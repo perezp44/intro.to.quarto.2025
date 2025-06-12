@@ -1,0 +1,614 @@
+---
+title: "Más cosas con Quarto"
+#date: 2024-05-20  #- ISO8601 YYYY-MM-DD format 
+subtitle: | 
+  {{< var my_subtitle2 >}}
+date-format: long
+lang: es
+format: 
+  revealjs:
+#    theme: dark
+    scrollable: true
+    slide-level: 3
+    height: 900
+    width: 1600
+    toc: false
+    from: markdown+emoji  #- usar emojis https://gist.github.com/rxaviers/7360908)
+    center-title-slide: true
+    title-slide-attributes: #- atributos para la slide de titulo
+      data-background-color: "#562457"   #- color de R-ladies
+      #data-background-image: /imagenes/economia.gif
+      #data-background-size: contain      
+    preview-links: auto  #- true: abre un iframe en lugar de abrir ventana
+    #multiplex: true  #- para que puedas manejar las slides del publico
+    link-external-newwindow: true
+    transition: fade
+    #height: 900
+    #width: 1600
+    fontcolor: "#262d36"
+    highlight-style: a11y
+    code-line-numbers: true
+    number-sections: false
+    slide-number: c/t   # https://pandoc.org/MANUAL.html#structuring-the-slide-show
+    incremental: false   # https://quarto.org/docs/presentations/#incremental-lists
+    #code-link: true
+
+#logo: imagenes/economia.gif
+#footer: |
+#        {{< var webcurso >}}
+revealjs-plugins: [pointer]
+#include-after-body: [./webexercises/webex.js]
+#css: [webexercises/webex.css]
+#include-after-body: [webexercises/webex.js]
+
+  # - lightbox
+  # - pointer  # hay q apretar q
+#css: assets/styles_slides_intro.css
+    #theme: [moon, custom.scss]
+embed-resources: true
+bibliography: references.bib
+---
+
+## Con Quarto se pueden hacer muu:scream_cat:uuchas más cosas!!! {.unnumbered background-color="#ebf5fb"}
+
+{{< var lineanaranja >}}
+
+<br>
+
+Veamos algunas de ellas
+
+### 6.1 Subir nuestras web's a la UV
+
+
+-   Una vez hemos generado nuestra web en local con Quarto nos queda **subirla a Internet**. La documentación oficial de Quarto está [aquí](https://quarto.org/docs/publishing/)
+
+<br>
+
+. . . 
+
+- Hay muchos servicios de alojamiento, puedes ver algunos de ellos [aquí](https://info5940.infosci.cornell.edu/slides/publishing-reproducible-documents/#/publishing).
+
+- Por ejemplo, [aquí](https://jadeyryan.com/blog/2023-11-19_publish-quarto-website/) explican las ventajas y cómo subir una web a [Netlify](https://www.netlify.com/).
+
+<br>
+
+. . .
+
+-   Pero ... nosotros tenemos un **espacio en la web de la UV**, así que ...
+
+
+### Práctica: Subir nuestras web's
+
+
+<br>
+
+::: {.callout-important icon="false"}
+#### Tarea 6.1a: Subir tu web
+
+- Sí, tienes que subir **tu** web a tu espacio en el servidor web de la UV
+:::
+
+<br>
+
+. . . 
+
+- Ya Pedro, pero no me ha dado tiempo a hacerme la web 🙆‍♂️, ¿qué hago?
+
+. . . 
+
+
+- Puedes usar [esta plantilla](../recursos/plantilla_web.zip){target="_blank"}  hecha por mi o una plantilla chulísima hecha por Marvin Schmitt. Marvin nos explica cómo usarla en [este post](https://www.marvinschmitt.com/blog/website-tutorial-quarto/)
+
+--- 
+
+
+- Ahora ya no hay excusa para hacer la tarea 😉
+
+::: {.callout-important icon="false"}
+#### Tarea 6.1a: Subir tu web
+
+::: panel-tabset
+## Tarea
+
+- Sí, tienes que subir **tu** web a tu espacio en el servidor web de la UV
+
+
+
+## Pistas
+
+-   Para subir nuestra web a nuestro espacio UV, solo **tenemos que subir los ficheros** de la carpeta `docs` o `_site` a la web de la UV
+
+-   Pero antes, **hay que tener activado vuestro espacio web en UV**. Veamos cómo hacerlo con [este post](../blog/72_publicando-en-UV.qmd){target="_blank"}
+:::
+:::
+
+. . .
+
+-   Perfecto!!, pero, imagina que te vas a un congreso y ahora **quieres subir unas slides** para poder hacer la presentación desde la web. ¿Cómo lo haces?
+
+::: {.callout-important icon="false"}
+#### Tarea 6.1b: Subir unas slides
+
+::: panel-tabset
+## Tarea
+
+-   Sí, tienes que subir unas revealjs slides a tu espacio web en la UV
+
+## Pistas
+
+-   Si has hecho las slides autocontenidas, entonces sólo tendrás que subir el fichero `my_slides.html` a tu espacio web en la UV
+
+-   Consejo: yo alojaría las slides en un directorio llamado `slides` o `presentaciones` o algo similar
+:::
+:::
+
+### 6.2 Gestión de bibliografia
+
+-   Imagina que queremos **incorporar referencias bibliográficas** en uno de nuestros post; y además queremos **referenciarlas** en el cuerpo del artículo ¿te suena, no?
+
+. . .
+
+Además,
+
+-   **no queremos tener que copiar a mano las referencias** y
+
+-   tampoco queremos tener que **cambiar el formato 😱😱 de las referencias** si es que decidimos cambiar de revista
+
+. . .
+
+<br>
+
+#### ¿Cómo lo hacemos?
+
+-   Os lo cuento en [este post](../blog/20_referencias-bibliograficas.qmd){target="_blank"}, y vamos a practicarlo con una tarea
+
+
+### Práctica: Gestión de bibliografía
+
+- Para ello, vamos a utilizar el archivo: `./tareas/tarea_6.2_biblio.qmd` que puedes encontrar en el  "Qproj_01_eurovision" que puedes descargarte [aquí](../recursos/Qproj_01_eurovision.zip)
+
+. . . 
+
+::: {.callout-important icon="false"}
+#### Tarea 6.2: Incorporar y gestionar referencias bibliográficas
+
+::: panel-tabset
+## Tarea 6.2.a
+
+- Resulta que ya tenemos el documento `.bib` con la información de nuestras refrencias. Está en: `./assets/refrences.bib`
+
+- Tenemos que referenciar el documento `.bib` en el yaml del `.qmd`. Algo como: 
+
+```yaml
+bibliography: <ruta-a-my_references.bib>
+```
+
+<br>
+
+- Pero ... tenéis que **pensar como poner la ruta** a:  `./assets/references.bib`
+
+<br>
+
+- Una vez hecho, procesa el `.qmd` . ¿Qué ha pasado? ¿Se han incorporado las referencias?
+
+- No. ¿Por qué? 🤔
+
+## Tarea 6.2.b
+
+- Por defecto solo se muestran las referencias que hemos utilizado en nuestro `.qmd`
+
+- Así que, vamos a incorporar en el texto de nuestro `.qmd` algunas alusiones a nuestras referencias.
+
+- Para ello vamos a utilizar el editor Visual de RStudio. 
+
+
+## Tarea 6.2.c
+
+
+- Ahora vamos a **añadir una nueva referencia** a nuestro fichero `.bib`. Por ejemplo [esta](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1356747?casa_token=PfUP1HKCHbAAAAAA%3As_TIIDxWNKpmZJ7p5NVU_NIaYQoES0D0JgszZxIMtEGLsJVZpwvzxuIsGwJvat2qIo-FbxSNg0lv)
+
+- Para ello, también vamos a usar el editor Visual de RStudio
+
+- Insertemos una alusión a esta nueva referencia en el texto de nuestro `.qmd`; si no, no apareceré en el listado de referencias.
+
+## Tarea 6.2.d
+
+- Por defecto Pandoc, y por ende Quarto, usa el ["Chicago Manual of Style"](https://www.chicagomanualofstyle.org/home.html), pero podemos cambiarlo.
+
+- Por ejemplo, vamos a cambiar el estilo de las referencias a ["American Psychological Association"](https://apastyle.apa.org/)
+
+- Para ellos hay que obtener/usar un archivo [CSL (Citation Style Language)](https://citationstyles.org/)
+
+- Puedes obtener ficheros `.csl` para multitud de formatos [aquí](https://www.zotero.org/styles). Solo tenemos que buscar el estilo que queremos y descargarlo.
+
+- Por ejemplo, nos descargamos el fichero para el formato APA 7th edition. [Este](https://www.zotero.org/styles/apa) es el enlace de descarga
+
+- Para usar el archivo `.csl` que acabamos de descargar hay que referenciarlo en el yaml, añadiendo algo como:
+
+```yaml
+csl: <ruta-a-my-fichero.csl>
+```
+
+- Vuelve a procesar el `.qmd`. ¿Qué ha pasado? ¿Se han cambiado las referencias?
+
+
+:::
+:::
+
+<br><br>
+
+### 6.3 Generar el mismo documento en múltiples formatos
+
+- Sí, una de las múltiples ventajas de Quarto es que, con un mismo documento `.qmd` (o documento fuente) podemos generar **documentos en múltiples formatos**. Por ejemplo, `.html`, `.docx`, `.pdf`, `.epub` etc.
+
+<br>
+
+. . .
+
+<center>¿Cómo? [Solo hay que hacer **2 cosas**]{.underline} : </center>
+
+::: {.incremental}
+1) especificarlo en el YAML, por ejemplo:
+
+    ``` yaml
+    title: Mi documento
+    author: Pedro J. Pérez
+    toc: true
+    format: 
+      html: default
+      epub: default
+      docx: default
+    ```
+
+2) El render del documento se ha de hacer **desde la Terminal**:
+
+    ``` bash
+    quarto render mi-multi-format-document.qmd
+    ```
+:::
+
+
+### Múltiples formatos (más posibilidades)
+
+<br>
+
+::: {.callout icon="false"}
+
+### Render, con opciones, desde la Terminal
+
+- Otra posibilidad es hacer el Render desde la Terminal con opciones. Algo como:
+
+    ```bash
+    quarto render my-document.qmd --to pdf
+
+    quarto render tareas/tarea_6.3_varios-formatos.qmd --to epub
+    ```
+:::
+
+<br>
+
+. . . 
+
+::: {.callout icon="false"}
+
+### Otra posibilidad
+
+- Los documentos `.html` que generemos, ya sean estos documentos individuales o dentro de una web, pueden incluir [links al mismo documento en **otros formatos**]{.underline}. Documentación [aquí](https://quarto.org/docs/output-formats/html-multi-format.html).
+
+- El YAML del documento tendría que quedar algo como:
+
+  ```bash
+  format: 
+    html: default
+    docx: default
+  format-links: [docx]
+  ```
+:::
+
+
+
+### Práctica: Documentos con varios formatos
+
+<br>
+
+::: {.callout-important icon="false"}
+#### Tarea 6.3: Obtener varios formatos con el mismo `.qmd`
+
+::: panel-tabset
+## Tarea
+
+- Procesa el documento: `./tareas/tarea_6.3_varios-formatos.qmd`. Lo puedes encontrar en el  "Qproj_01_eurovision" que puedes descargarte [aquí](../recursos/Qproj_01_eurovision.zip)
+
+- Fíjate que el yaml ya está preparado para generar 2 formatos: `.html` y `.docx`
+
+- Recuerda que hay que hacer el Render desde la Terminal  🤔
+
+## Solución
+
+- En la terminal has de escribir algo como:
+
+```bash
+quarto render tareas/tarea_6.3_varios-formatos.qmd
+```
+:::
+:::
+
+
+
+### 6.4 Ejercicios interactivos
+
+-   Hay varios paquetes como [learnr](https://rstudio.github.io/learnr/) que permiten incorporar **ejercicios interactivos** a documentos `.html` generados con Quarto, pero ...
+
+. . .
+
+|       ... tienen un **inconveniente**: los tutoriales deben ser ejecutados locamente
+|           o alojados en un servidor shiny
+
+. . .
+
+<br>
+
+-   El paquete [webexercises](https://github.com/PsyTeachR/webexercises) **soluciona ese problema** ya que genera "standalone HTML files that require only a JavaScript-enabled browser".
+
+-   El objetivo de **webexercises** es:
+
+> To enable instructors to easily **create interactive web pages** that students can use in **self-guided learning**
+
+
+
+### Práctica: Ejercicios interactivos con [webexercises](https://github.com/PsyTeachR/webexercises)
+
+<br>
+
+
+::: {.callout-important icon="false"}
+#### Tarea 6.4: Jugar un poco con webexercises
+
+::: panel-tabset
+## Tarea 6.4.a
+
+- Abre el documento: `tareas/tarea_6.4_webexercises.qmd` que puedes encontrar en el  "Qproj_01_eurovision" que puedes descargarte [aquí](../recursos/Qproj_01_eurovision.zip)
+
+- Mira su contenido
+
+- Procesa el documento 
+
+- Abre el documento html que se ha generado y ... trata de resolver las preguntas
+
+## Tarea 6.4.b
+
+- Añade una nueva pregunta
+
+## Una solución a  6.4.b
+
+<br>
+
+```{{{r}}}
+#| results: asis
+opts <- c(
+   "Quarto es cuatro en balinés",
+   answer = "Un sistema de publicación científico-técnica de acceso abierto que es lo más!!!",
+   "Quarto es una marca de muebles sueca"
+)
+
+cat("¿Qué es Quarto?", longmcq(opts))
+```
+
+<br>
+
+
+## Algunos detalles
+
+- Para usar el paquete hay que instalarlo, por ejemplo con: `pak::pak("webexercises")`
+
+<br>
+
+- Para procesar correctamente los ficheros "webexercises" hay que tener los .css y .js necesarios. Para ello: 
+  ```r
+  webexercises::add_to_quarto(include_dir = "assets/webexercises")
+
+  ```
+
+  - Cuidado porque genera ruta a los assets en el YAML del fichero `.qmd`, pero también en el fichero `_quarto.yml` (mejor quitarlos de _quarto.yml)
+
+<br>
+
+
+- Nosotros ya teníamos una plantilla "webexercises" en la carpeta `./tareas/tarea_6.4_webexercises.qmd`. La creé con algo como: 
+  
+  ```r
+  webexercises::create_quarto_doc(name = "my_titulo", open = interactive())
+
+  ```
+
+:::
+:::
+
+
+### 6.5 Incorporar tablas 
+
+-   A veces veces tenemos **unos datos**, o un listado de algo como: tareas, estudiantes, calendario etc... **en un fichero Excel**, o Google Sheet, que queremos incorporar a nuestros documentos, ¿Cómo lo hacemos?
+
+. . .
+
+- Si tenemos los datos en el fichero `datos/matriculados.xlsx` solo habría que:
+
+:::: columns
+::: {.column width="50%"}
+
+```{{r}}
+df <- rio::import("./datos/matriculados.xlsx")
+gt::gt(df)
+```
+:::
+
+::: {.column width="50%"}
+```{{r}}
+df <- rio::import("./datos/matriculados.xlsx")
+DT::datatable(df)
+```
+:::
+::::
+
+. . .
+
+<br>
+
+::: {.callout icon="false"}
+#### Si los datos los tuviesemos **en Google Sheets**:
+
+```r
+# googlesheets4::gs4_deauth() #- si tuvieses q autorizar
+my_url <- "https://docs.google.com/spreadsheets/d/16XpV9I0_hoyPqV6o7Pkir4c_mmwgHM4UuGXuM7t7vUc/edit?usp=sharing"
+df <- googlesheets4::read_sheet(my_url)
+gt::gt(df)
+```
+<br>
+
+-   Un ejemplo en [esta web](https://vizdata.org/). Es un curso de Mine Çetinkaya-Rundel en el que el calendario de sesiones se carga desde un archivo de Google Sheets. El código para hacer la tabla puedes verlo [aquí](https://github.com/vizdata-s23/vizdata-s23/blob/main/index.qmd). El documento de Google está [aquí](https://docs.google.com/spreadsheets/d/1Qj2rcIqFGwOosr9Yiyo-MaeFSZ7KOYNn8Ph1kebgDuY/edit)
+
+:::
+
+
+### 6.5 Un poco más de tablas 
+
+
+<br>
+
+. . . 
+
+**¿Cómo hacer tablas más chulas?**
+
+-   En [este post](../blog/71_tablas-con-R.html){target="_blank"} explica en detalle cómo se pueden hacer tablas muy chulas con R
+
+
+. . . 
+
+
+<br>
+
+**Tablas estadísticas**
+
+
+- Muchas veces hay que **presentar los resultados** de contrastes o de la **estimación de modelos estadísticos**. En estos casos, **las tablas** son una herramienta muy útil para **presentar los resultados** de una manera clara y concisa.
+
+<br>
+
+-   Vamos a profundizar en ello con [este post](../blog/73_tablas-de-modelos.qmd){target="_blank"} del blog
+
+
+
+### 6.6 Informes parametrizados
+
+- A veces necesitamos **generar informes** con **datos diferentes**. Por ejemplo, un informe de ventas de diferentes productos, o un informe para cada municipio, o un informe para cada periodo
+
+- En [este post](../blog/30_informes-parametrizados.qmd){target="_blank"} del blog se explica cómo hacerlo.
+
+
+<br>
+
+. . .
+
+
+- Muchas veces es más fácil hacerlo que contarlo, así que:
+
+
+::: {.callout-important icon="false"}
+#### Tarea 6.6: Aprender a hacer informes parametrizados
+
+- Para ello, vamos a usar el Qproject llamado "Qproj_02_param-rep" que puedes descargarte [aquí](../recursos/Qproj_02_param-rep.zip){target="_blank"}
+:::
+
+
+<br>
+
+
+
+
+
+### 6.7 "Reutilizar" unas slides
+
+- Imagina que has visto unas slides chulisimas y quieres ~~copiarlas~~ **inspirarte **en ellas para hacer las tuyas propias. ¿Cómo lo haces?
+
+. . . 
+
+- Es muy habitual que la comunidad R comparta el código de sus materiales; principalmente en [GitHub](https://github.com/)
+
+<br>
+
+. . . 
+
+- Por ejemplo [estas slides](https://mine-cetinkaya-rundel.github.io/2022-repro-toronto/#/title-slide) hechas por [Mine Çetinkaya-Rundel](https://mine-cr.com/) son relativamente simples, pero muy chulas. Vamos a ver el código que genera las slides: está [aquí](https://github.com/mine-cetinkaya-rundel/2022-repro-toronto)
+
+<br>
+
+. . .
+
+- Otro ejemplo son [estas slides](https://colorado.posit.co/rsc/inflation-explorer-slides/automated-quarto-dashboards.html) de [Isabella Velásquez](https://fosstodon.org/@ivelasq3). El repo de las slides está [aquí](https://github.com/ivelasq/automated-quarto-dashboards-slides/blob/main/index.qmd), la charla está  [aquí](https://www.youtube.com/watch?v=xnJuXOw7iu8) y el repo para el dashboard [aquí](https://github.com/posit-marketing/inflation-explorer)
+
+---
+
+
+::: {.callout-important icon="false"}
+#### Tarea 6.7: Aprender a "reutilizar" materiales
+
+- Vamos a reutilizar el código de una de las 2 slides anteriores. 
+
+- Sí, se aprende mucho viendo el código de otros
+
+:::
+
+
+
+
+
+
+### 6.8 Typst (en Quarto)
+
+
+- [Typst](https://typst.app/) es un sistema de tipografía moderno inspirado en Markdown, diseñado para ser tan potente como LaTeX pero **más fácil de aprender y usar**. 
+
+- Typst se incorporó en Quarto en la versión 1.4
+
+
+- Puedes ver algunas de sus ventajas [aquí](https://tex.stackexchange.com/questions/705199/latex-v-s-typst-what-is-tex-communitys-future-plan), [aquí](https://all-dressed-programming.com/posts/amazing-typst/) o [aquí](https://github.com/typst/typst)
+
+<br>
+
+. . .
+
+
+- Aunque ya que estamos en un curso de Quarto, prefiero [estas slides](https://fosstodon.org/@nrennie/112344186236225190) de Nicola Rennie o [este video](https://www.youtube.com/watch?v=t30sqFch2v0&list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&index=74) de Carlos Scheidiger en `posit::conf(2023)` donde presenta typst y explica cómo se usa desde Quarto.
+
+- La [documentación oficial](https://quarto.org/docs/output-formats/typst.html) de Quarto sobre Typst
+
+. . . 
+
+
+### Typst (en Quarto)
+
+::: {.callout}
+## Plantillas Typst en Quarto
+
+- Plantillas Quarto oficiales de typst [aquí](https://quarto.org/docs/output-formats/typst-custom.html)
+
+- Plantillas typst de Andrew Heiss [aquí](https://fediscience.org/@andrew/112303731677325053).
+
+- Puedes buscar más plantillas [aquí](https://m.canouil.dev/quarto-extensions/extensions.html)
+:::
+
+. . . 
+
+
+<br>
+
+
+::: {.callout}
+
+## Plantillas Typst "originales"
+
+- Las [plantillas oficiales](https://typst.app/universe/search/?kind=templates&category=components%2Cvisualization%2Cmodel%2Clayout%2Ctext%2Clanguages%2Cscripting%2Cintegration%2Cutility%2Cfun%2Cbook%2Creport%2Cpaper%2Cthesis%2Coffice%2Ccv%2Cpresentation%2Cflyer%2Cposter) de Typst
+
+- Por ejemplo, una [plantilla para un poster](https://jonaspleyer.github.io/peace-of-posters/showcase/2023-10-23-bwhpc-symposium/)
+
+:::

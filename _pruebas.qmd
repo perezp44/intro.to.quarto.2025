@@ -1,0 +1,51 @@
+---
+title: "Untitled"
+format: revealjs
+---
+
+The date `r lubridate::today()` is produced by \`&#8203;r lubridate::today()\` 
+
+Hola `r emoji::emoji("smile")`
+
+Hola `r emoji::emoji("star-struck")` 
+
+
+
+::: columns
+::: {.column width="50%"}
+What is [Quarto 
+:::
+
+::: {.column .fragment width="50%"}
+[Quarto] is an
+
+open-source
+
+scientific and technical
+
+publishing system
+
+built on Pandoc.
+:::
+:::
+
+
+
+```{r}
+format(Sys.Date(), "%d %B")
+
+format(Sys.Date(), "%Y")
+
+```
+
+Some additional markdown content.
+
+Quiero incluir una nota al pie en esta frase, concretamente aquí^[Este es el contenido de la nota al pie, 
+Como ves el contenido de la nota al pie va dentro de los corchetes], para poder explicar algo con más detalle.
+
+
+Aquí voy a poner otra nota al píe [^1] , y otra más aquí[^b]
+
+[^1]: Esta otra sintaxis me gusta menos. Pero igual es más clara
+
+[^b]: No sufras por la numerácion. lo hará Pandoc!!

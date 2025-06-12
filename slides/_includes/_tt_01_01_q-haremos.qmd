@@ -1,0 +1,9 @@
+::: {.callout-tip collapse="false" appearance="default" icon="false"}
+## ¿Qué haremos en este tutorial?
+
+- Veremos de forma rápida el  **proceso de creación** y la **estructura de ficheros** de un blog creado con Quarto. La documentación oficial está [aquí](https://quarto.org/docs/websites/website-blog.html).
+
+- Alojaremos el blog en [Quarto Pub](https://quartopub.com). 
+
+- Será un **blog básico pero completamente operativo**. Ya tendremos tiempo de mejorarlo, o tunearlo, en las siguientes secciones del taller.
+:::

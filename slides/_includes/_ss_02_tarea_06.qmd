@@ -1,0 +1,68 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.6a: Creamos un nuevo qmd: `"prueba_01.qmd"`
+
+- Vamos a crear un nuevo documento ".qmd". 
+
+- Procésalo. Esta vez  <mark>llámalo `prueba_01.qmd`</mark>
+
+:::
+
+<br><br>
+
+
+::: {.fragment}
+::: {.callout-important icon="false"}
+#### Tarea 2.6b: Creamos un nuevo qmd: `"prueba_02.qmd"`
+
+- Vamos a crear un nuevo documento ".qmd". 
+
+- Procésalo. Esta vez llámalo <mark>llámalo `prueba_02.qmd`</mark>
+:::
+:::
+
+<br>
+
+---
+
+#### Vamos a reusar  `prueba_02.qmd`
+
+<br>
+
+::: {.fragment}
+
+::: {.callout-important icon="false"}
+#### Tarea 2.6c: Reusamos `"prueba_02.qmd"` para crear un pdf
+
+- Vamos a reusar el fichero fuente `prueba_02.qmd` para generar un pdf. Para ello:
+
+  - En el encabezamiento has de cambiar  &emsp; "`format: html`" &emsp; por &emsp; "`format: pdf`"
+  
+  - **PERO** si al intentar procesarlo te dice que instales "tinytex", entonces para,  **no lo hagas!!**, ya lo haremos en el descanso. 
+  
+  <br>
+  
+- Aquellos que no tengáis  "tinytex" instalado, podéis poner  "`format: typst`"
+:::
+:::
+
+
+<br>
+
+::: {.fragment}
+::: {.callout-caution collapse="true" icon="false" }
+#### Instalación de `tinytext`
+
+Si no tuvieses una distribución de Latex y quisieras instalar `tinytext`  tendrías que :
+  
+  - o ejecutar en la Terminal `quarto install tinytext`  
+  
+  - o ejecutar en la Consola lo siguiente
+  
+  ```r
+  install.packages("tinytex")
+  tinytex::install_tinytex()
+  ```
+  
+:::
+:::
+

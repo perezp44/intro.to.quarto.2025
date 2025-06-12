@@ -1,0 +1,18 @@
+En el yaml del propio documento que genera un post se pueden introducir la mayoría de opciones de yaml pero parece lógico que los posts de un blog compartan estilo y, por tanto, las principales opciones del yaml creo que es mejor establcerlas a nivel de carpeta en `metadata.yml`. De esta forma, en el yaml del propio documento quedarían opciones como el título del post, categorías, fecha e imagen.
+
+
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+#- YAML de un post ------------------------------
+---
+title: "Mi primer post con Quarto"
+author: "Pedro J. Pérez"
+date: 2022-10-25
+date-format: short
+categories: [R, quarto]
+image: "thumbnail.jpg"
+---
+
+```

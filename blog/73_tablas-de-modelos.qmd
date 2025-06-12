@@ -1,0 +1,85 @@
+---
+title: "Generando tablas de modelos y contrastes"
+date: 2023-02-05
+categories: [tablas estadísticas]
+image: "./thumbnails/thumbnail_generico.png"
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Post en proceso de elaboración
+---
+
+## Intro
+
+De momento, hasta que tenga tiempo, simplemente voy a dejar **2 links a materiales sobre el tema** que hice para un curso de introducción a la Ciencia de datos con R:
+
+- [Tablas para modelos](https://perezp44.github.io/intro-ds-22-23-web/tutoriales/tt_08_tablas-Rmarkdown.html#6_Tablas_para_modelos)
+
+- [Un poco de modelos](https://perezp44.github.io/intro-ds-22-23-web/tutoriales/tt_10_EDA.html#6_Modelos). Una sección, dentro de un tutorial sobre EDA (análisis exploratorio de datos) sobre modelos estadísticos con R
+
+
+Además, por si interesa el tema, voy a dejar aquí 3 scripts que he utilizado en clase para practicar sobre modelos y técnicas estadísticas:
+
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Script (tablas y tablas para modelos)
+
+```{r}
+#| echo: false
+#| warning: false
+#| class-output: "sourceCode r"
+
+cat(readLines("./_ejercicios_blog/script_clase_10_tablas-easy.R"), sep = "\n")
+```
+:::
+
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Script (EDA)
+
+```{r}
+#| echo: false
+#| warning: false
+#| class-output: "sourceCode r"
+
+cat(readLines("./_ejercicios_blog/script_01_EDA.R"), sep = "\n")
+```
+:::
+
+
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Script (easystats package)
+
+```{r}
+#| echo: false
+#| warning: false
+#| class-output: "sourceCode r"
+
+cat(readLines("./_ejercicios_blog/ej_xxx_easystats.R"), sep = "\n")
+```
+:::
+
+
+<br><br>
+
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión:  Algunas referencias para cuando retome el tema
+
+- [Esto](https://tidytales.ca/series/2023-01-24_reproducible-data-science/posts/technical-writing.html#using-inline-r-code-in-math-equations) puede ayudar a escribir ecuaciones/modelos estimados
+
+- [Quarto con gt](https://gt.albert-rapp.de/quarto_gt.html) de A. Rapp
+
+- [Making APA Tables with the gt Package](https://www.anthonyschmidt.co/post/2020-06-03-making-apa-tables-with-gt/)
+
+
+- [Tablas de MRLM con pkg finalfit](https://github.com/ewenharrison/finalfit)
+
+- [paquete `rempsyc`: Convenience functions for psychology](https://rempsyc.remi-theriault.com/). Hace tablas APA
+
+- [Tablas side by side](https://twitter.com/quarto_pub/status/1541811597210968066/photo/1)
+
+- [Copy Table in Excel and Paste as a Markdown Table](https://thisdavej.com/copy-table-in-excel-and-paste-as-a-markdown-table/)
+
+:::

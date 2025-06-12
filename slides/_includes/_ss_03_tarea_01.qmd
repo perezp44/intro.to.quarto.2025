@@ -1,0 +1,12 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.1: Vamos a jugar con el `yaml`
+
+- Utiliza el archivo `prueba_01.qmd` para probar como quedaría `prueba_01.html` al usar los 3 anteriores `yaml's`
+
+<br>
+
+- Una vez hayas probado a usar el tercer YAML, prueba algún otro `theme` de los 25 disponibles. [Aquí](https://quarto.org/docs/output-formats/html-themes.html) tienes el listado, y [aquí](https://druedin.com/2023/03/07/quarto-html-themes-gallery/) hay ejemplos para ver cómo quedan y decidir cual te gusta más.
+
+<br>
+
+:::

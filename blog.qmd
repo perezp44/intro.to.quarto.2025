@@ -1,0 +1,19 @@
+---
+title: 'Blog del curso "Escribiendo con R y Quarto"'
+subtitle: Este "blog" es un recurso más dentro del curso. 
+page-layout: full
+title-block-banner: true
+listing:
+  contents: blog
+  sort: "date asc"    #-"title"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  type: default
+  #feed: true
+  fields: [image, date, description, categories, title, author, reading-time]
+  #fields: [image, date, categories, title]
+  field-display-names:
+    # title: "Report"
+    date_format: medium
+---

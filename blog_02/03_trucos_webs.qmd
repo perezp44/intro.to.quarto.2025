@@ -1,0 +1,111 @@
+---
+title: "Trucos: Webs (blogs y books) con Quarto"
+date: 2024-02-21
+categories: [Quarto]
+image: "./thumbnails/thumbnail_generico.png"
+#toc-location: left
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Recopilando **trucos** sobre webs, blogs y books hechos con Quarto
+filters:
+  - collapse-social-embeds
+toc-depth: 3
+toc-expand: 1
+---
+
+
+# Web's
+
+<br>
+
+## Biblio
+
+- [A beginner’s guide to building a simple website with Quarto & Netlify](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/) de Jade Ryan.
+
+
+- Video de `@ggnot` sobre cómo publicar una web en Github [aquí](https://www.youtube.com/watch?v=DDQO_3R-q74). Hace el render en Github con Github Actions
+
+
+
+<br>
+
+## Ejemplos de web's
+
+- Un [listado de web's](https://qmdclub.com/) confeccionado por QMDclub
+
+- Web muy chula de Jade Ryan [aquí](https://jadeyryan.com/blog/2024-01-22_package-review/). Tiene un post sobre [crear una web](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
+
+- Un [post](https://www.crumplab.com/blog/662_quarto_portfolio/) sobre cómo crear una web para un portfolio. Lo que hace es tunear un poco más una listing page. Pero es que además, su [web](https://www.crumplab.com/) es muy chula y él es un psicólogo con cursos etc... por ejemplo este de [DS](https://www.crumplab.com/psyc3470/)
+
+- Otra [web](https://www.r4photobiology.info/). La landing page tiene varias secciones donde muestra los 3 últimos post etc...
+
+
+- Luke Pembleton [web](https://lpembleton.rbind.io/). El repo [https://github.com/lpembleton/lpembleton.blog]
+
+- Jim Gadner [web](https://jimgar.github.io/). El [repo](https://github.com/jimgar/jimgar.github.io)
+
+- Elya Kaye [web template](https://ellakaye.github.io/advent-of-code-website-template/) para hacer una web para publicar Advent of Code solutions. Essentially, each year is a listing page, and each day is a post. El [toot](https://fosstodon.org/@ellakaye/111495933386039967). El [repo](https://github.com/EllaKaye/advent-of-code-website-template)
+
+- Web super-chula de una revista,[Real World DS](https://realworlddatascience.net/). El [repo](https://github.com/realworlddatascience/realworlddatascience.github.io). Una [charla](https://github.com/realworlddatascience/realworlddatascience.github.io) en `post::config(2023)` donde explican la creación
+
+- [Web super-chula](https://dwayzer.netlify.app/), pero no está el repo en Github: hace cosas de Wikidata y bibliometría y CC en ggplot2.
+
+<br>
+
+---------------------
+
+<br>
+
+
+# Book's
+
+<br>
+
+
+###  Que tengan pdf tb
+
+- For colleagues that don't have experience with Git or Markdown, a great way to enable collaboration is to use the `repo-actions: [issue, source]` en tus Quarto projects, y dejar que se descarguen el pdf
+
+```yaml
+project:
+  type: book
+  output-dir: public
+
+book:
+  title: "Title goes here"
+  repo-url: https://wwww.your_url_here.com
+  repo-actions: [issue, source]
+  downloads: [pdf, docx]
+```
+
+
+<br>
+
+-------------------------
+
+<br>
+
+
+
+# Trucos
+
+### Listing page a archivos
+
+Si quieres crear una "listing page" que contenga links a algunos archivos. Lo explican [aquí](https://mastodon.cloud/@nxskok/111576766289359321). Para ello has de: 
+
+```yaml
+---
+title: "Mis extra-files"
+listing: 
+  type: table
+  contents: 
+    - "*.csv"
+    - "*.txt"
+  fields: [last-modified, filename]
+  sort: filename
+---
+```
+
+
+

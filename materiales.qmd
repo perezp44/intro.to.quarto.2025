@@ -1,0 +1,147 @@
+---
+title: ""
+---
+
+::: {.callout-important appearance="default" icon="false"}
+#### Importante!!
+
+-   Durante el curso interactuaremos con [R](https://cran.r-project.org/) y [Quarto](https://quarto.org/) a través de [RStudio](https://www.rstudio.com/products/rstudio/). Se recomienda tener instaladas **versiones recientes** de los 3 programas. En [Info](info.qmd) tienes los links de instalación.
+:::
+
+<br>
+
+# Materiales para el curso
+
+En clase me apoyaré en las **slides** que hay más abajo, pero también trabajaremos con algunos scripts, ejemplos, datos etc ... que están todos juntos en uno o varios **Qprojects**[^1] que también tenéis más abajo y que tendréis que descargaros más adelante durante el curso.
+
+[^1]: De momento podemos pensar que un Qproject no es más que una carpeta con materiales. Ya os explicaré un poco más en clase y os diré cuando descargarlos
+
+## Slides
+
+Durante el curso utilizaremos, en clase, las siguientes **slides**:
+
+-   [Slides 01: Presentación](./slides/01_presentacion.qmd){target="_blank"}
+
+-   [Slides 02: Primeros pasos](./slides/02_primeros_pasos.qmd){target="_blank"}
+
+-   [Slides 03: Aprendiendo a escribir en QMD](./slides/03_aprendiendo_Qmd.qmd){target="_blank"}
+
+-   [Slides 04: Revealjs slides](./slides/04_revealjs.qmd){target="_blank"}
+
+-   [Slides 05: Webs/blogs con Quarto](./slides/05_primer_web.qmd){target="_blank"}
+
+-   [Slides 06: Más cosas con Quarto](./slides/06_mas_cosas.qmd){target="_blank"}
+
+-   [Slides 07: Aún más cosas con Quarto](./slides/07_aun_mas_cosas.qmd){target="_blank"}
+
+<br>
+
+Si quieres, puedes descargar todas las slides en formato html [aquí](./recursos/slides_en_html.zip){target="_blank"}.
+
+<br>
+
+## Qproject's (a descargar)
+
+En clase también usaremos dos Qproject's:
+
+- El **primer Qproject**, llamado  `Qproj_01_eurovision` puedes descargarlo [aquí](./recursos/Qproj_01_eurovision.zip){target="_blank"}.
+
+    (Al pinchar, se te descargará una archivo comprimido llamado `Qproj_01_eurovision.zip`. Descomprime el archivo y así tendrás en tu ordenador el Qproject con los materiales (scripts, ejemplos, datos, ...) que utilizaremos en clase.)
+
+
+- El **segundo Qproject**, llamado `Qproj_02_param-rep` puedes descargarlo, también comprimido, [aquí](./recursos/Qproj_02_param-rep.zip){target="_blank"}. Lo usaremos cuando hagamos "informes parametrizados".
+
+<!-- 
+-   El Qproject llamado "parametrised_reports" que podrás descargar [aquí](/cuestionario/parametrised_reports.zip){target="_blank"}, también comprimido en formato .zip Write 
+--> 
+
+<br><br>
+
+# Recursos adicionales
+
+Los materiales que usaremos durante el curso están más arriba; abajo solamente son links a recursos adicionales.
+
+## Blog
+
+En los artículos del [Blog](blog.qmd){target="_blank"} se desarrollan algunos de los tópicos que iremos viendo durante el curso.
+
+La sección [Truquillos](blog_02.qmd){target="_blank"} es en realidad otro blog con una recopilación de pequeños consejos y trucos que te pueden ser útiles en tu día a día con Quarto.
+
+<br>
+
+## Logística (enlaces)
+
+Son simplemente enlaces para mi, para tenerlos a mano por si los necesito durante las clases:
+
+-   [Etherpad](https://etherpad.wikimedia.org/p/curso_intro_DS_UV)
+
+-   {{< var my_posit_cloud_project >}}  <!-- Posit Cloud project -->
+
+-   {{< var my_curso_BigData >}}  <!-- Programación y manejo de datos con R -->
+
+-   {{< var my_curso_R_sfpie >}}  <!-- Curso R SFPIE -->
+
+-   {{< var my_aula_virtual >}}  <!-- Aula Virtual del curso Quarto -->
+
+
+
+<br>
+
+## Bibliografía/Recursos
+
+Desde que **Quarto** se hizo publico con [We don't talk about Quarto](https://www.apreshill.com/blog/2022-04-we-dont-talk-about-quarto/){target="_blank"} ha sido un no parar de workshops, posts, etc ... En esta página tienes una selección de recursos sobre Quarto.
+
+La **principal referencia** es la [web de Quarto](https://quarto.org/){target="_blank"}: **absolutamente fantástica**!!! En ella hay, entre otras secciones, una [Guide](https://quarto.org/docs/guide/){target="_blank"}, una [Reference](https://quarto.org/docs/reference/){target="_blank"} y una [Gallery](https://quarto.org/docs/gallery/){target="_blank"}.
+
+Quarto continúa estando en constante evolución. Para estar al día sobre las novedades leyendo el [blog](https://quarto.org/docs/blog/). Por ejemplo, en [quarto 1.4](https://quarto.org/docs/blog/posts/2024-01-24-1.4-release/),  [quarto 1.5](https://quarto.org/docs/blog/posts/2024-07-11-1.5-release/) y [quarto 1.6](https://quarto.org/docs/blog/posts/2024-11-25-1.6-release/) puedes ver las novedades de esas versiones de Quarto.
+
+
+A destacar también el listado de recursos [Awesome Quarto](https://github.com/mcanouil/awesome-quarto){target="_blank"} mantenida por Mickaël Canouil.
+
+<br>
+
+Para dudas, consejos, trucos:
+
+-   Quarto CLI-dev repo: [Issues](https://github.com/quarto-dev/quarto-cli/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc){target="_blank"} and [Discussions](https://github.com/quarto-dev/quarto-cli/discussions){target="_blank"}.
+
+-   Stackoverflow: preguntas sobre Quarto [aquí](https://stackoverflow.com/questions/tagged/quarto){target="_blank"}
+
+-   Tabla con "useful Quarto tips" de [Sharon Machlis](https://fosstodon.org/@smach){target="_blank"}, [aquí](https://apps.machlis.com/shiny/quartotips/){target="_blank"}
+
+- [Quarto Tips Chatbot Search](https://apps.machlis.com/shiny/quartotips/). Saron Machlis lo presentaba en [este toot](https://masto.machlis.com/@smach/114304291936873335)
+
+<br>
+
+Entre los materiales sobre Quarto, **destacar los siguientes**:
+
+-   [Quarto tip a day](http://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/){target="_blank"}: Un blog de Mine Çetinkaya-Rundel con consejos y tips sobre Quarto.
+
+-   [Get Started with Quarto](https://jthomasmock.github.io/quarto-2hr-webinar/){target="_blank"}: un workshop de Thomas Mock. El [video](https://youtu.be/yvi5uXQMvu4), y [otro video de 3h](https://www.youtube.com/watch?v=KnwQFph3s94&list=PL4IzsxWztPdmSeucR67EH_8_hzldqYZX4&index=8){target="_blank"}.
+
+-   [Beautiful Reports and Presentations with Quarto](https://thomasmock.quarto.pub/reports-presentations/#/title-slide){target="_blank"}: un workshop de Thomas Mock. El [video](https://www.youtube.com/watch?v=hbf7Ai3jnxY){target="_blank"} y el [repo](https://github.com/jthomasmock/quarto-reporting){target="_blank"}.
+
+-   [Introducción a RMarkdown, creando reportes con R y Python en RStudio](https://www.youtube.com/watch?v=d8jSN998Mtw){target="_blank"}: workshop de Renzo Cáceres para LatinR 2022.
+
+-   [Making shareable documents with Quarto](https://openscapes.github.io/quarto-website-tutorial/){target="_blank"}: una web de Openscapes.
+
+-   [Quarto/RMarkdown - What’s Different?](https://laderast.github.io/qmd_rmd/#/title-slide){target="_blank"}: unas slides de Ted Laderas.
+
+-   [Rstudio::conf(2022) Playlist](https://www.youtube.com/playlist?list=PL9HYL-VRX0oTOwqzVtL_q5T8MNrzn0mdH){target="_blank"}: la presentación en sociedad de Quarto con varias charlas sobre Quarto, [Hello Quarto: Share, Collaborate, Teach, Reimagine](https://www.youtube.com/watch?v=p7Hxu4coDl8&list=PL9HYL-VRX0oTOwqzVtL_q5T8MNrzn0mdH&index=4){target="_blank"}, [Websites & Books & Blogs, oh my! Creating Rich Content with Quarto](https://www.youtube.com/watch?v=A9QRN4cpsDY&list=PL9HYL-VRX0oTOwqzVtL_q5T8MNrzn0mdH&index=49){target="_blank"}, [Quarto for the Curious](https://www.youtube.com/watch?v=mrvhk2XUfWo&list=PL9HYL-VRX0oTOwqzVtL_q5T8MNrzn0mdH&index=55){target="_blank"} entre otras.
+
+-   [Rstudio::conf(2022) Workshops](https://github.com/rstudio-conf-2022){target="_blank"}: por ejemplo, [Get Started with Quarto](https://github.com/rstudio-conf-2022/get-started-quarto){target="_blank"} o [Rmarkdown to Quarto](https://github.com/rstudio-conf-2022/rmd-to-quarto){target="_blank"}.
+
+-   [Reproducible authoring with Quarto](https://www.youtube.com/watch?v=6p4vOKS6Xls){target="_blank"}: un vídeo de Mine Çetinkaya-Rundel donde se hace evidente las ventajas de Quarto y la utilidad del editor visual de RStudio. Sus slides [aquí](https://mine-cetinkaya-rundel.github.io/2022-repro-toronto/#/title-slide){target="_blank"}.
+
+-   [Building a blog with Quarto](https://ivelasq.quarto.pub/building-a-blog-with-quarto/){target="_blank"}: un workshop de Isabella Velásquez acerca de cómo construir un blog con Quarto. El [repo de los ejercicios](https://github.com/ivelasq/build-your-own-blog-exercises){target="_blank"}, [video](https://www.youtube.com/watch?v=CVcvXfRyfE0){target="_blank"} y [RStudioCloud project](https://rstudio.cloud/project/4404816){target="_blank"}.
+
+-   [Websites & Books & Blogs, oh my! Creating Rich Content with Quarto](https://www.youtube.com/watch?v=A9QRN4cpsDY&list=PL9HYL-VRX0oTOwqzVtL_q5T8MNrzn0mdH&index=49){target="_blank"}: ponencia de Devin Pastoor en el marco de RStudio::conf(2022).
+
+<br>
+
+##### Otros recursos
+
+-   Una fantástica [guía sobre **Markdown**](https://www.markdownguide.org/){target="_blank"}
+
+##### Más recursos
+
+-   [Aquí](https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html#create-your-own-series) y [aquí](https://ellakaye.co.uk/posts/2022-12-11_welcome-quarto/) dos posts sobre tunear un Quarto blog

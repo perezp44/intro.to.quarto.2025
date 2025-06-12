@@ -1,0 +1,50 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.7: texto en markdown
+
+Para practicar a escribir con Markdown podemos:
+
+  - Hacerlo en RStudio, por ejemplo podemos utilizar el archivo `prueba_01.qmd` para incorporar un párrafo que contenga los elementos que hemos visto en la tabla anterior
+  
+  
+  - Alternativamente, podemos usar editores online como [este](https://dillinger.io/) o [este](https://vuejs.org/examples/#markdown)
+
+
+<br>
+
+
+- Aquí tienes un ejemplo:
+
+```markdown
+Cuando quise darme cuenta la **clase había terminado** ....
+```
+
+<br>
+
+:::
+
+
+::: {.fragment}
+::: {.callout-important icon="false"}
+#### Tarea 3.7: una "solución"
+
+```markdown
+texto en **negrita**  
+
+texto en *cursiva*   
+
+un superíndice^2^    
+
+un subíndice~2~  
+
+palabras ~~tachadas~~ 
+
+`verbatim code`  
+
+ > un blockquote  
+
+```
+
+<br>
+
+:::
+:::

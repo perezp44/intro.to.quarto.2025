@@ -1,0 +1,8 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.1: Renombrar el archivo index.qmd
+
+- Cambia el nombre del fichero &ensp; `index.qmd` &ensp; a &ensp; `blog.qmd`
+
+- Ahora este archivo no está referenciado en &ensp; `_quarto.yml` &ensp; , por lo que [no se mostraría]{.underline} si hacemos un rebuild^[Además, como nuestro Qproject ahora no tiene fichero `index.qmd` el rebuild no funcionaría].
+
+:::

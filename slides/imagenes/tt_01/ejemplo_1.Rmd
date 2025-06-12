@@ -1,0 +1,34 @@
+---
+title: "Mi documento"
+author: "Pedro J. Pérez"
+date: "2022-10-19"
+output: html_document
+---
+
+## Introducción a Rmd
+
+Este es un documento Rmarkdown. 
+Para saber más sobre Rmd : <http://rmarkdown.rstudio.com>.
+
+```{r cars}
+summary(cars)
+```
+
+El trozo de arriba es un chunk de código
+
+Al hacer clic en el botón **Knitr**, se ejecutará el código y se generará 
+un documento que incluirá tanto el texto, como el código (o chunks) y 
+la evaluación de este.
+
+Con esto acabamos el informe
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

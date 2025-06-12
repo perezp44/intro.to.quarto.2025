@@ -1,0 +1,24 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.7: Vamos a usar nuestro Qproject para generar una página web
+
+- Modifica el archivo  `_quarto.yml` para que su contenido sea:
+
+<br>
+
+```yaml
+project:
+  type: website
+ 
+website:
+  navbar:
+    right: 
+      - index.qmd
+```
+
+<br>
+
+- Para generar la página web tienes que hacer un "Build > Render Project"
+
+<br>
+
+:::

@@ -1,0 +1,20 @@
+::: {.callout-note collapse="true" appearance="default" icon="false"}
+#### Resumen (tutorial nº 2)
+
+- En esta tercera parte del taller hemos aprendido a **mejorar/tunear un poco nuestro blog**.
+
+<br>
+
+- [Hemos modificado 3 archivos]{.underline}: 
+
+  1. `_quarto.yml`: hemos modificado el título del blog y la estructura de la barra de navegación; concretamente hemos añadido una página nueva.
+
+  2. `index.qmd`: construye la Home Page de nuestra web. La opción `listing:` hace que nuestra web es en realidad un blog.
+    
+  3. `about.qmd`: hemos utilizado las plantillas de Quarto para configurar nuestra About page.
+
+<br>
+
+- Finalmente hemos modificado (mínimamente) el archivo `styles.css`.
+
+:::

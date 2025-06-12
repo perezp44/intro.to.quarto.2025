@@ -1,0 +1,45 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.2: Incluir `blog.qmd` en la web
+
+- Para que `blog.qmd`, la página que contiene el listado de posts, se muestre en nuestra web hay que refrenciarlo/incluirlo en `_quarto.yml`
+
+
+
+- Simplemente, tendríamos que modificar las lineas 8 y 9 que ahora están referenciando al fichero `about.qmd`. Por ejemplo podríamos **dejar las lineas 8 y 9 como se ve abajo** (a la derecha):
+
+::: {layout="[45,-10,45]"}
+
+
+![](./imagenes/tt_01/img_13gg.png){fig-align="center"}
+
+
+```{r, eval = FALSE}
+#| code-overflow: wrap   #- {scroll, wrap}
+#| code-line-numbers: true
+ 
+#- 2/ Opciones referentes a la estructura de la web -----------------
+
+website:
+  title: "Mi blog (aún en pruebas)"
+  navbar:
+    logo: "profile.jpg"
+    right:
+      - text: "Mi blog"
+        href: blog.qmd
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail@alumni.uv.es>"
+
+```
+
+
+:::
+
+- Aún no podemos refrescar la web porque ahora no tenemos archivo `index.qmd`. 
+
+
+:::
+

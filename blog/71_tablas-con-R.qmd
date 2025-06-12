@@ -1,0 +1,205 @@
+---
+title: "Generando tablas con R"
+date: 2023-02-03
+categories: [tablas]
+image: "./thumbnails/thumbnail_generico.png"
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Se pueden hacer tablas muy chulas con R. Por ejemplo mira [aquí](https://posit.co/blog/winners-of-the-2022-table-contest/)
+---
+
+## Intro
+
+Durante el curso vimos que se podían insertar tablas en nuestros documentos QMD de dos formas:
+
+- usando Markdown
+
+- usando R (o otro lenguaje de programación)
+
+Solo vimos un ejemplo muy sencillo, concretamente [este](https://perezp44.github.io/intro.to.quarto/slides/03_aprendiendo_Qmd.html#/iv-m%C3%A1s-elementos-tablas-con-r){target="_blank"} pero dije que se podían hacer tablas muy chulas con R. Vamos a profundizar en ello.
+
+
+## Datos
+
+Para ello vamos a usar datos de inflación de la OCDE. Vamos a descargar los datos:
+
+
+```{r}
+library(tidyverse)
+
+#- Datos de inflación de la OCDE 
+ruta_inflation <- "https://raw.githubusercontent.com/perezp44/archivos.download.2023/main/DP_LIVE_22032023113248591.csv"
+inflation_orig <- readr::read_csv(ruta_inflation)
+inflation_dicc <- pjpv.curso.R.2022::pjp_dicc(inflation_orig)
+
+#- seleccionamos CPI mensual
+inflation <- inflation_orig %>% 
+  dplyr::filter(FREQUENCY == "M" & MEASURE == "AGRWTH") %>% 
+  select(place = LOCATION, date = TIME, cpi = Value, tipo = SUBJECT) 
+
+#- nos quedamos solo con el último dato: 2023-02 (y arreglamos)
+inflation <- inflation %>% dplyr::filter(date == "2023-02") %>% 
+  tidyr::pivot_wider(names_from = tipo, values_from = cpi) %>% 
+  dplyr::arrange(desc(TOT))
+
+```
+
+## Tablas básicas
+
+Una vez tenemos los datos que queremos mostrar en una tabla, es muy fácil usar varios paquetes para mostrarlos en una tabla. Para saber un poco más sobre tablas en Quarto, puedes ir [aquí](https://perezp44.github.io/intro-ds-22-23-web/tutoriales/tt_08_tablas-Rmarkdown.html)
+
+### Con `gt`
+
+
+```{r}
+gt::gt(inflation %>% slice(1:10))
+```
+
+
+### Con `DT`
+
+```{r}
+#| eval: true
+DT::datatable(inflation)
+```
+
+
+### Con `reactable`
+
+```{r}
+#| eval: true
+reactable::reactable(inflation)
+```
+
+
+## Tuneando
+
+
+
+```{r}
+library(gt)
+tt <- gt::gt(inflation %>% slice(1:10))
+
+tt %>% tab_header(title = md("**Tasa de inflación**"),
+                      subtitle = md("TOT: total; FOOD: alimentos; ENRG: energía")) %>% 
+    tab_source_note(md("Fuente: datos de [OCDE](https://raw.githubusercontent.com/perezp44/archivos.download.2023/main/DP_LIVE_22032023113248591.csv)")) 
+
+```
+
+
+
+Pongamos banderitas y alguna cosas más
+
+
+```{r}
+#- data munging
+inflation <- inflation_orig %>%
+  dplyr::filter(FREQUENCY == "M") %>% 
+  dplyr::filter(MEASURE == "AGRWTH") %>% 
+  dplyr::mutate(fecha = lubridate::ym(TIME)) %>% 
+  select(pais = LOCATION, fecha, inflacion = Value, tipo_inf = SUBJECT)
+
+#- incorporar region para filtrar grupos de países
+zz <- countrycode::codelist %>% select(iso.name.en, region, region23, wb, fips, ioc, imf, iso2c, iso3c, ecb, eurostat, continent, eu28, un, un.region.name)
+
+inflation <- left_join(inflation, zz, by = join_by(pais == iso3c) ) 
+
+#- solo Europa (q no sea Europa del Este) --------------------------------------
+df <- inflation %>% 
+  dplyr::filter(un.region.name %in% c("Europe")) %>% 
+  dplyr::filter(!(region23 %in% c("Eastern Europe"))) 
+
+my_title <- "Tasas de inflación interanual en Europa (febrero 2023)"
+my_subtitle <- "Países europeos y <span style='color:#3569a4'> España </span> "
+
+#- paso a ancho ----------------------------------------------------------------
+df <- df %>% 
+  select(pais, iso.name.en, fecha, inflacion, tipo_inf) %>% 
+  pivot_wider(names_from = tipo_inf, values_from = inflacion)
+
+#- banderas --------------------------------------------------------------------
+df <- df %>% #- fips
+  mutate(iso2 = countrycode::countrycode(sourcevar = pais, origin = "iso3c", destination = "iso2c", warn = FALSE)) %>% 
+  mutate(iso2 = tolower(iso2)) %>% 
+  mutate(flag_URL = glue::glue('https://hatscripts.github.io/circle-flags/flags/{iso2}.svg')) 
+  
+#- selecciono fecha ------------------------------------------------------------
+my_fecha <-  max(inflation$fecha)
+my_fecha <-  "2023-02-01"
+
+df <- df %>% dplyr::filter(fecha == my_fecha) 
+
+#- ordeno de + a - la inf. total -----------------------------------------------
+df <- df %>% select(1,2, flag_URL, 3, 6, everything()) %>% arrange(desc(TOT), ENRG) %>% select(-iso2)
+
+df <- df %>% mutate(FOOD = FOOD/max(FOOD))
+```
+
+Me he quedado solo con los países de Europa 
+
+
+```{r}
+#| eval: true
+
+#- con DT: https://rstudio.github.io/DT/
+df_DT <- df %>% select(-flag_URL)
+DT::datatable(df_DT, filter = 'top', extensions = "Scroller")
+```
+
+
+```{r}
+#| eval: true
+#- con reactable: https://glin.github.io/reactable/index.html
+library(reactable)
+reactable::reactable(df_DT, pagination = FALSE, height = 850, 
+                     filterable = TRUE, searchable = TRUE, highlight = TRUE, 
+                     columns = list( variable = colDef(
+     # sticky = "left",
+      # Add a right border style to visually distinguish the sticky column
+      style = list(borderRight = "1px solid #eee"),
+      headerStyle = list(borderRight = "1px solid #eee")
+    )),
+  defaultColDef = colDef(minWidth = 50)
+)
+```
+
+
+```{r}
+#| eval: true
+tt_6 <- df %>%  
+  gt(rowname_col = "pais") %>% 
+  tab_header(title = my_title, subtitle = md(my_subtitle))  %>% 
+  tab_source_note(md("Fuente: datos proveniente de la [OCDE](http://www.oecd.org/)")) %>%
+  gtExtras::gt_theme_nytimes() %>%
+  gtExtras::gt_img_rows(flag_URL, height = 25) %>% 
+  gtExtras::gt_merge_stack(col2 = iso.name.en, col1 = pais) %>% 
+  tab_footnote(footnote = "Tasa de inflación eliminando el efecto de la energía y los alimentos", 
+               location = cells_column_labels(columns = TOT_FOODENRG)) %>% 
+  cols_label(TOT = md("**Total**"), ENRG = "Energética", FOOD = "Alimentos", TOT_FOODENRG = "Total sin ..." )  %>% 
+  cols_align(align = "center") %>% 
+  cols_align(align = "left", columns = fecha) %>% 
+  cols_width(columns = TOT ~ px(120)) %>% 
+  fmt_percent(columns = c(TOT, ENRG, FOOD, TOT_FOODENRG), scale_values = FALSE) %>% 
+  tab_style(style = cell_text(color = "#f97d64"),
+            locations = cells_body(columns = TOT,
+            rows = TOT >= mean(TOT))) %>% 
+  tab_style(style = cell_text(color = "#f97d64"),
+            locations = cells_body(columns = FOOD,
+            rows = FOOD >= mean(FOOD))) %>% 
+   tab_style(style = cell_text(color = "#f97d64"),
+            locations = cells_body(columns = ENRG,
+            rows = ENRG >= mean(ENRG))) %>% 
+   tab_style(style = cell_text(color = "#3569a4"),
+            locations = cells_body(rows = pais == "ESP")) %>% 
+   data_color(columns = c(TOT_FOODENRG),
+              colors = scales::col_numeric(palette = "Reds", domain = NULL)) 
+  
+tt_6  
+```
+
+
+<br>
+
+Algún día lo retomaré!!
+

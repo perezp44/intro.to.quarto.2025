@@ -1,0 +1,24 @@
+Además de los elementos básicos de escritura que nos ofrece la sintaxis básica de `markdown`, **Quarto nos ofrece más posibilidades**. Por ejemplo:
+
+<br>
+
+
+
+- **Layout** (documentación [aquí](https://quarto.org/docs/authoring/article-layout.html) y [aquí](https://quarto.org/docs/output-formats/page-layout.html#grid-customization))
+
+- **Imágenes** (documentación [aquí](https://quarto.org/docs/authoring/figures.html)) y sus [opciones](https://quarto.org/docs/computations/execution-options.html#figure-options)
+
+- **Extensiones** (documentación [aquí](https://quarto.org/docs/extensions/starter-templates.html)) . Listado de extensiones oficiales [aquí](https://quarto.org/docs/extensions/listing-filters.html)
+
+- **Shortcodes** (documentación [aquí](https://quarto.org/docs/extensions/shortcodes.html))
+
+- **Callout blocks**  (documentación [aquí](https://quarto.org/docs/authoring/markdown-basics.html#callout-blocks))  
+
+- **Divs & spans**  (documentación [aquí](https://quarto.org/docs/authoring/markdown-basics.html#divs-and-spans))  
+
+
+<br>
+
+Veamos algunos de estos elementos con un poco de detalle. Después lo recordaremos con una Práctica.
+
+

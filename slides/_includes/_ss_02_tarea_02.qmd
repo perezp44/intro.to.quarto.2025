@@ -1,0 +1,21 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.2: Dar ordenes a R con **scripts**
+
+Crea un script (o fichero `.R`) para que R haga las siguientes operaciones:
+
+<br>
+
+```{r}
+#| eval: false
+# operaciones básicas con R
+2 + 2    
+2 - 2    
+2 * 2    
+2 / 2 
+
+# raíz cuadrada
+sqrt(9)
+```
+
+:::
+

@@ -1,0 +1,33 @@
+---
+title: "<br>**Bienvenidos al curso!!!**<br>"
+image: imagenes/portada_web_01.png
+about:
+  #- https://quarto.org/docs/websites/website-about.html#templates
+  template: trestles  #- {jolla, solana, trestles}
+  #- https://quarto.org/docs/websites/website-about.html#image
+  image-width: 35em  #- 39
+  image-shape: rectangle
+  #- https://quarto.org/docs/websites/website-about.html#links
+---
+
+**Bienvenidos** a la web del curso "Creación de documentos reproducibles y webs con R y Quarto" del SFPIE, Universitat de València, {{< var my_anyo_edicion >}}. Un título más amable del curso podría ser "**Escribiendo con R y Quarto**".
+
+<br>
+
+
+En el curso usaremos **Quarto** y **R** a través de **RStudio**. En [Info](info.qmd) tienes las **instrucciones de instalación** de los 3 programas.
+
+<br>
+
+
+- Los **detalles sobre el curso** (horario, aula, ...) están en [Info](info.qmd).
+
+
+- Los **materiales** que usaremos en clase están en [Materiales](materiales.qmd).
+
+
+- Puedes encontrar [recursos adicionales]{style="text-decoration: underline;"} en [Blog](blog.qmd) y  [Truquillos](blog_02.qmd)
+
+<br><br>
+
+Nos vemos pronto en {{< var my_aula >}}

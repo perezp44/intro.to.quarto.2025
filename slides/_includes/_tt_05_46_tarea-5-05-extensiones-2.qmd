@@ -1,0 +1,35 @@
+::: {.callout-important icon="false"}
+#### Tarea 5.5: Instalar y usar la extensión "Lightbox"
+
+Vamos a instalar y usar una nueva extensión, concretamente la extensión "Lightbox". Su repo [aquí](https://github.com/quarto-ext/lightbox)
+
+- Lo primero es instalar la extensión desde la Terminal:
+
+
+```{bash}
+#| code-line-numbers: false
+#| eval: false
+quarto install extension quarto-ext/lightbox
+```
+
+
+Esta vez, para poder usar la extension en un documento `.qmd` hemos de incluir en el yaml del documento lo siguiente:
+
+```yaml
+---
+title: Simple Lightbox Example
+filters:
+   - lightbox
+---
+
+![Mi imagen con Lighbox activado](./imagenes/economia.gif){.lightbox description="El logo-nano de la facultad de Economía de la Universtat de València"
+desc-position="left"}
+```
+
+
+y veríamos algo como:
+
+:::
+
+
+

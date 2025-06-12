@@ -1,0 +1,411 @@
+---
+title: "Trucos: Quarto"
+date: 2024-02-19
+categories: [Quarto]
+image: "./thumbnails/thumbnail_generico.png"
+toc-depth: 3
+toc-expand: 2
+number-depth: 3
+#toc-location: left
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Recopilando **trucos sobre Quarto**.
+filters:
+  - collapse-social-embeds
+---
+
+En este post voy recopilando Trucos de Quarto en general. Hay una página especifica para trucos de Revealjs slides y otra para webs/blogs
+
+
+
+# Versiones de Quarto
+
+Quarto está en constante evolución, por lo que es importante estar al tanto de las nuevas versiones.
+
+
+## Quarto 1.4 (enero 2024)
+
+Algunos enlaces interesantes sobre Quarto 1.4:
+
+
+- Quarto 1.4 [release](https://quarto.org/docs/blog/posts/2024-01-24-1.4-release/). Algunas **novedades** son: [Dashboards](https://quarto.org/docs/dashboards/index.html), [Typst](https://quarto.org/docs/output-formats/typst.html), [cross-references](https://quarto.org/docs/authoring/cross-references-divs.htmls), [manuscripts](https://quarto.org/docs/manuscripts/), [Binder with Quarto](https://quarto.org/docs/projects/binder.html), [Lightbox Figures](https://quarto.org/docs/output-formats/html-lightbox-figures.html)
+
+- Quarto 1.4 [complete release notes](https://quarto.org/docs/download/release.html)
+
+- Quarto 1.4 pre-procesa las tablas, si no quieres que lo haga entonces [aquí](https://hachyderm.io/@jimgar/111816035893143025) explican que hay que poner `html-table-processing: none` en el YAML
+
+
+
+<br>
+
+-----------------------
+
+<br>
+
+# Trucos de Quarto
+
+Trucos de Quarto en general. Hay una página aparte para Revealjs slides y otra para webs
+
+## Yaml
+
+<br>
+
+### Varios autores 
+
+- ¿Cómo añadir múltiples autores y afiliaciones con Quarto? Pues la verdad es que Quarto 1.4 lo hace super-fácil. Puedes verlo [aquí](https://quarto.org/docs/journals/authors.html#author-metadata)
+
+- Aquí tienes un [ejemplo](https://stackoverflow.com/questions/75347447/how-to-add-multiple-authors-and-multiple-affiliations-with-quarto-and-export-it) con multiples autores y que se exporta a MS word 
+
+
+<br>
+
+### Varios themes
+- Puedes tener varios themes en el `_quarto.yml`. Por ejemplo puedes poner un theme light y otro dark. También se puede usar un theme para HTML y otro para Revealjs. Por ejemplo: 
+
+```yaml
+format:
+  revealjs:
+	theme:  theme.scss
+  html:
+	 theme:
+		light: theme
+		dark: [default, cosmos,darl-theme.scss]
+```
+
+<br>
+
+### Varios formatos 
+
+- Se puede hacer que un mismo source document genere varios outputs
+
+```yaml
+---
+title: "My Report"         
+format: 
+  html: default
+  epub: default
+  docx: default                                                         
+---
+```
+
+- Hay que hacer el render desde la Terminal con: 
+
+```bash
+quarto render my-report.qmd
+```
+
+
+<br>
+
+
+### Code in the yaml
+
+- Puedes correr código R en el YAML: <https://twitter.com/sharon000/status/1557060949613445120>, también en las opciones de los chunks. 
+
+- Por ejemplo: `#| fig-cap: !expr glue::glue("The mean was {mean(airquality$Temp) |> round()}")`. 
+
+- Otro ejemplo: `#| fig-cap: !expr 'paste("Air", "Quality")` [aquí](https://quarto.org/docs/computations/r.html#chunk-options)
+
+
+<br>
+
+-----------------------
+
+<br>
+
+
+## Texto
+
+
+### Tamaño texto con `:::`
+
+
+
+
+:::: {.columns}
+::: {.column width="35%" style="text-align:left;"}
+Si escribes esto: 
+```markdown
+::: {style="font-size: 2.5em"}
+First we take ...
+:::
+```
+:::
+
+::: {.column width="2%" style="text-align:right;"}
+:::
+
+::: {.column width="52%" style="text-align:right;"}
+Veras esto: 
+
+::: {style="font-size: 2.5em"}
+First we take ...
+:::
+
+:::
+::::
+
+
+
+
+
+
+
+
+
+
+<br>
+
+-----------------------
+
+<br>
+
+
+## Body
+
+<br>
+
+### Color en un trozo del documento
+
+:::: columns
+::: {.column width="40%"}
+[Si escribes esto:]{.underline}
+
+
+```md
+:::{style="color:#9A4665;"}
+Esto se verá en rojito
+:::
+```
+:::
+
+::: {.column width="10%"}
+:::
+
+:::{.column width="40%"}
+[Verás esto:]{.underline}
+
+:::{style="color:#9A4665;"}
+Esto se verá en rojito
+:::
+:::
+::::
+
+<br>
+
+### Alinear texto de una columna
+
+- Funciona tanto en html como en revealjs. 
+
+- Hay que poner: `style="text-align:left;"` . Para alinear imágenes es: `fig-align="center"`
+
+- Esto de abajo no me acaba de funcionar la alineación del texto, no acabo de descubrir porque. Puede que sea porque aplico `css` o porque para que se  pueda ver el código y el resultado, he de anidar y "hackear" las marcas `:::`; pero no lo tengo claro, ya lo descubriré; pero a ti, si pegas el código en tus documentos, sí te funcionará.
+
+::::: {.panel-tabset}
+##### Si escribes esto:
+
+``` markdown
+:::: {.columns}
+::: {.column width="50%" style="text-align:left;"}
+Primera columna (**left aligned**)
+:::
+
+::: {.column width="50%" style="text-align:right;"}
+Segunda columna (**right aligned**)
+:::
+::::
+```
+
+##### Verás esto
+
+:::: {.columns}
+::: {.column width="50%" style="text-align:left;"}
+Primera columna (**left aligned**)
+:::
+
+::: {.column width="50%" style="text-align:right;"}
+Segunda columna (**right aligned**)
+:::
+::::
+
+:::::
+
+
+
+
+<br>
+
+
+### Conditional content
+
+- Es posible que quieras que algúna parte de un documento sólo se vea en un formato concreto. Por ejemplo, que una imagen sólo se vea en HTML y no en PDF.
+
+- Documentación oficial [aquí](https://quarto.org/docs/authoring/conditional.html). 
+
+- Se hace uso de `.content-visible` and `.content-hidden` classes. Por ejemplo:
+
+```md
+::: {.content-visible when-format="html"}
+![](my_image.gif)
+:::
+```
+- También se puede aplicar a contenido `in-line`:
+
+```md
+Para contenido inline has de: [Will only appear in pdf. (inline)]{.content-visible when-format="pdf"}
+```
+
+<br>
+
+###  Incluir toots, etc... en callouts
+
+- Se pueden incluir: toots, gists, tweets, videos etc... Es fácil con la extensión [collapse-social-embeds](https://github.com/shafayetShafee/collapse-social-embeds). En realidad es una "mejora" de la extensión [social-embeds](https://github.com/sellorm/quarto-social-embeds)
+
+
+-  Por ejemplo, para incluir en un callout el siguiente gist <https://gist.github.com/tarleb/852f6ae98764bea56aeeac979f3c17be> hay que: 
+
+
+:::: {.columns}
+::: {.column width="50%"}
+```md
+
+::: {.gist user=tarleb gist_id=852f6ae98764bea56aeeac979f3c17be }
+:::
+
+```
+:::
+::: {.column width="5%"}
+:::
+::: {.column width="40%"}
+::: {.gist user=tarleb gist_id=852f6ae98764bea56aeeac979f3c17be }
+:::
+:::
+::::
+
+
+
+<br>
+
+------------------
+
+<br>
+
+
+
+## Chunks
+
+### Folding chunks no ejecutables
+
+- Puedes hacerlo con `<details>`
+
+:::: {.columns}
+::: {.column width="40%"}
+
+- [Si escribes esto:]{.underline}
+
+```md
+<details>
+<summary>Mi (foldable) chunk no-ejecutable</summary>
+``r
+print(2 +2)
+``
+</details>
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="40%"}
+- [Verás esto:]{.underline}
+
+
+<details>
+<summary>Mi (foldable) chunk no-ejecutable</summary>
+```r
+print(2 +2)
+```
+</details>
+:::
+::::
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+------------------
+
+<br>
+
+
+## Captions
+
+
+### Code en captions
+
+- Puedes correr código R en el YAML: <https://twitter.com/sharon000/status/1557060949613445120>, pero también en las opciones de los chunks. 
+
+- Por ejemplo: `#| fig-cap: !expr glue::glue("The mean was {mean(airquality$Temp) |> round()}")`. 
+
+- Otro ejemplo: `#| fig-cap: !expr 'paste("Air", "Quality")` [aquí](https://quarto.org/docs/computations/r.html#chunk-options)
+
+<br>
+
+### Latex en captions
+
+Para poner ecuaciones Latex en las captions de las figures, tablas etc ... [Aquí](https://fosstodon.org/@juli_nagel/110146398766389608) lo explican. Se pone así:
+
+```md
+#| fig-cap: "This is a caption at $\\alpha =$ .05."
+```
+
+
+
+
+<br>
+
+------------------
+
+<br>
+
+# Extensiones
+
+<br>
+
+## Extensiones
+
+- [now](https://pkg.garrickadenbuie.com/quarto-now/): extensión de Garrick Aden-Buie que permite **insertar** (y formatear) **la fecha de creación** y de actualización de los .qmd's. En [este post](https://www.garrickadenbuie.com/blog/quarto-now/) explica su uso
+
+
+<br>
+
+- [embedio](https://github.com/coatless-quarto/embedio): permite insertar different file types into Quarto HTML documents. Los archivos pueden ser: archivos de audio, pdf's y revealjs slides.
+
+
+<br>
+
+## Paquetes
+
+ - [quartostamp](https://matt-dray.github.io/quartostamp/index.html): no es una extensión, es un paquete que contiene RStudio addings para insertar divs, callouts etc... Para mi es un poco ptse, PERO en [este post](https://www.rostrum.blog/2022/08/11/quartostamp-snorkel/) les encanta.
+ 
+ - [quartools](https://github.com/ElianHugh/quartools): es un paquete de que permite la creación de "quarto-compliant markdown" vía R function calls. As quartools generates quarto-compliant markdown, and not HTML tags, the content will work on any quarto output format. Sí, pero para mi también ptse.
+
+
+<br>
+
+----------------------------
+
+<br>
+
+
+# ZZ. Biblio
+
+- [RMarkdown/Quarto Tips and Tricks](https://indrajeetpatil.github.io/RmarkdownTips/#xaringan-to-quarto-conversion): recopilación de truquillos de Rmarkdown y Quarto
+

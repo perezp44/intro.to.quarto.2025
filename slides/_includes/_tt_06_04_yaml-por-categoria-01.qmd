@@ -1,0 +1,58 @@
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+  
+   
+#- formato de salida ---------------------------
+format:
+  html:
+    #- https://quarto.org/docs/output-formats/html-themes.html
+    #theme:
+    #  light: [flatly, theme.scss]  
+    css: styles.css
+    toc: true
+    #- https://quarto.org/docs/output-formats/html-code.html#highlighting
+    highlight-style: a11y
+    code-copy: true
+    code-overflow: wrap
+    #include-after-body: js.html
+    theme:
+      light: flatly
+      dark: [darkly, theme-dark.scss]
+    linkcolor: "red"
+    monobackgroundcolor: "green" #- color de los cuadros de resultados de evaluar código
+    fontsize: 0.8em
+    linestretch: 1.3
+    
+#- opciones para TOC ---------------------------
+toc: true
+toc-title: Índice
+toc-location: left
+
+# author ---------------------------------------
+author:
+  - name: Pedro J. Pérez
+    #url: https://
+    affiliation: Universitat de València
+    affiliation-url: https://www.uv.es
+    orcid: 0000-0001-9375-6330
+
+# opciones para chunks --------------------------
+# https://quarto.org/docs/computations/execution-options.html#output-options
+execute:
+  echo: true    #- {true, false, fenced}
+  message: false
+  warning: false
+  eval: true
+
+
+#- opciones knitr ---------------------------------
+#- https://yihui.org/knitr/options/
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true
+
+```

@@ -1,0 +1,31 @@
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+#- About page ---------------------------------
+#- Pages: https://quarto.org/docs/websites/website-about.html
+---
+title: Yo mismo
+image: profile.jpg
+about:
+  template: trestles    #- {jolla, solana, ...}
+  image-width: 10em     #- https://cybmeta.com/em-y-rem
+  image-shape: round    #- rectangle, round, rounded
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com
+    - icon: github
+      text: Github
+      href: https://github.com
+    - icon: envelope
+      text: email
+      url: "mailto:<tu-mail@uv.es>"
+---
+
+```
+
+La documentación oficial para las About Pages está [aquí](https://quarto.org/docs/websites/website-about.html)

@@ -1,0 +1,20 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.4: Abriendo y cerrando  **Q**project's
+
+- Cierra RStudio 
+
+- Vuelve a abrir el Qproject `"my_primer_qproject"`
+
+- Asegúrate de que realmente "estás" en `"my_primer_qproject"`
+
+<br>
+
+::: {.fragment}
+
+- Pega un vistazo a los 3 documentos que hay dentro del Qproject
+
+:::
+
+<br>
+
+:::

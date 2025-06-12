@@ -1,0 +1,38 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.5: Código **inline**
+
+- Utiliza el archivo `prueba_01.qmd` para incorporar un párrafo de texto que contenga código inline.
+
+- Por ejemplo, puedes incorporar este párrafo:
+
+
+>  Este archivo que estoy escribiendo lo hice el 20 de mayo de 2024.
+
+  
+  pero lo que queremos es que la fecha se modifique cada vez que se procese el documento `prueba_01.qmd`
+
+
+<br>
+
+
+:::{.callout-warning icon="false" }
+#### **Pista:** puedes probar a usar parte del siguiente código R
+
+```r
+Sys.Date()
+format(Sys.Date(), "%d %B, %Y")
+```
+:::
+
+
+<br>
+
+- Si quieres entender cómo funciona el código, puedes consultarlo [aquí](https://campus.datacamp.com/courses/intermediate-r/chapter-5-utilities?ex=14) o [aquí](https://bookdown.org/yihui/rmarkdown-cookbook/update-date.html)
+
+
+<br>
+
+
+
+
+:::

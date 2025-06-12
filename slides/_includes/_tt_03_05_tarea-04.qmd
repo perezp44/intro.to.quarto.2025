@@ -1,0 +1,7 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.4: Hacemos un rebuild de la web
+
+- Ahora ya tenemos fichero `index.qmd`, por lo que ya podemos hacer un rebuild de nuestra web y veremos la nueva estructura de nuestra web, con una foto nuestra en la "landing page".
+
+- Para ello: `Build > Render Website` en RStudio.
+:::

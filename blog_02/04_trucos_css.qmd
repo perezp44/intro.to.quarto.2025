@@ -1,0 +1,295 @@
+---
+title: "Trucos: CSS y SASS"
+date: 2024-02-22
+categories: [CSS , SASS]
+image: "./thumbnails/thumbnail_generico.png"
+#toc-location: left
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Recopilando trucos/ejemplos de CSS y SASS
+toc-depth: 3
+toc-expand: 1
+---
+
+
+
+# CSS
+
+Para incorporar CSS en un documento `.qmd` se han de hacer dos cosas: 1) crear un documento `.css` , y 2) referenciarlo en el yaml del `.qmd`. Veámos cómo quedaría el yaml en 2 situaciones:
+
+
+
+:::: {.columns}
+::: {.column width="43%"}
+
+- Si el fichero `.css` estuviese [en la misma carpeta]{.underline} que el `.qmd`, entonces el yaml del documento `.qmd` sería algo como:
+
+```md
+---
+title: "Mi super-título"
+format: html
+css: my_styles.css
+---
+```
+:::
+::: {.column width="12%"}
+:::
+
+::: {.column width="45%"}
+
+- Si el fichero `.css` estuviese [en una subcarpeta]{.underline} llamada, por ejemplo, `assets`, el yaml del documento `.qmd` quedaría como:
+
+
+```md
+---
+title: "Mi super-título"
+format: html
+css: asets/my_styles.css
+---
+```
+:::
+::::
+
+
+<br>
+
+
+### Rotar una imagen
+
+- Esta perfectamente explicado [aquí](https://stackoverflow.com/questions/76069903/rotate-images-in-quarto%3E)
+
+:::: {.columns}
+::: {.column width="42%"}
+- En el `.qmd` tendrías que incluir lo siguiente:
+
+```md
+::: rotate-img
+![](my_imagen.jpg){.absolute height=300}
+:::
+
+```
+:::
+::: {.column width="7%"}
+:::
+::: {.column width="45%"}
+- El fichero `my_styles.css` debería contener:
+
+```css
+.rotate-img img {
+  transform: rotate(40deg);
+}
+```
+:::
+::::
+
+<br>
+
+- También se puede rotar una imagen sin utilizar `.css`. Se haría utilizando un `div` , concretamente así:
+
+```md
+
+:::{.class .absolute top="35%" left="10%" width="350px" style="transform: rotate(-15deg);"}
+
+:::
+
+```
+
+
+<br>
+
+--------------------
+
+<br>
+
+
+# SASS
+
+## Biblio
+
+- [Styling and Templating Quarto Documents](https://emilhvitfeldt.com/talk/2023-09-19-quarto-theming-positconf/) son unas slides, con video y repo sobre, evidentemente, styling qmd`s. Tiene varios ejemplos sobre colores, fuentes y además, sobre como hacer una template.
+
+- [Aquí](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables) tienes las variables SASS de revealjs y sus valores por defectos, y [aquí](https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss) las de html Bootstrap. En [html theming](https://quarto.org/docs/output-formats/html-themes.html) tienes los 25 themes from the Bootswatch project.
+
+- Una [template](https://github.com/emilhvitfeldt/quarto-revealjs-template) vacia q usa Emil Hvitfeldt para sus presentaciones. Esta vacía pero tiene como meter JS en Revelajs y tiene los events de Reveals y en la web de Silvia Canelon lo usa.
+
+<br>
+
+--------------------
+
+<br>
+
+
+## Trucos
+
+<br>
+
+### Cambiar color links
+
+
+- [Aquí](https://github.com/vizdata-s23/vizdata-s23/blob/main/style/sta313.scss) hay un archivo `.scss` de Mine. Pone en el yaml: `linkcolor: “#866fa3”`^[Es el color "Glossy Grape"] y luego lo referencia en el archivo .scss para hacer que los links se hagan más tenues y se subrayen cuando estás sobre ellos^[Para mi gusto se atenúan demasiado, igual en lugar de un 40% hay que poner otro %].
+
+```scss
+$hover-color: lighten($link-color, 40%);
+
+a{
+  color: $link-color;
+  text-decoration: none;
+  
+  &:hover{
+    color: $hover-color;
+    border-bottom: 1px solid $hover-color;
+  }
+  
+}
+```
+
+<br>
+
+
+### Tunear los call-outs
+
+- En este [video](https://www.youtube.com/watch?v=DDQO_3R-q74) `@ggnot` explica cómo crear CUSTOM Callout Boxes in Quarto. Tiene un [repositorio](https://github.com/melissavanbussel/YouTube-Tutorials/blob/main/quarto_custom_callouts/custom_callouts.qmd) con un ejemplo. Hace falta definir un archivo `.scss`.
+
+
+:::: {.columns}
+::: {.column width="50%"}
+- El documento `.qmd` sería así:
+
+```md
+---
+title: "Custom Callouts"
+author: "Melissa Van Bussel"
+format:
+  html:
+    theme: custom.scss
+---
+
+:::::{.solutionbox}
+::::{.solutionbox-header}
+:::{.solutionbox-icon}
+:::
+This is my test solution
+::::
+:::{.solutionbox-body}
+And some content inside of it
+:::
+:::::
+```
+:::
+::: {.column width="50%"}
+- El fichero `custom.scss` sería así:
+
+```scss
+/*-- scss:defaults --*/
+
+// replicate the CSS for a callout box with a custom title, icon, and default appearance
+
+.solutionbox {
+  margin-top: 1em;
+  margin-bottom: 1em;  
+  border-radius: .25rem;
+  border-left: solid #acacac .3rem;
+  border-right: solid 0.5px silver;
+  border-top: solid 0.5px silver;
+  border-bottom: solid 0.5px silver;
+  border-left-color: #9834eb !important;
+}
+
+.solutionbox-icon {
+  height: 0.9rem;
+  width: 0.9rem;
+  display: inline-block;
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 0.9rem 0.9rem;
+  margin-top: .5rem;
+  padding-right: 1.25rem;
+  background-image: url('imagenes/flor.jpg');
+}
+
+.solutionbox-header {
+  //margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  border-bottom: none;
+  font-weight: 600;
+  opacity: 85%;
+  font-size: 0.9rem;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  display: flex;
+  background-color: #f5e8ff;
+  height: 2em;
+  overflow: hidden;
+}
+
+.solutionbox-header p {
+  padding-top: 0.2em;
+}
+
+.solutionbox-body {
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.solutionbox-body > :last-child {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+```
+:::
+::::
+
+<br>
+
+### Colores
+
+- En estas [slides](https://emilhvitfeldt.github.io/talk-quarto-theming-positconf/#/how-to-change-colors) de Emil Hvitfeldt se explica cómo cambiar los colores de un tema. Se hace con un archivo `.scss` y se referencia en el yaml del `.qmd`. Los H1 son el mismo color que H2 pero mas oscuros. El código es:
+
+```scss
+/*-- scss:defaults --*/
+$theme-black: #4c4c4c;
+$theme-white: white;
+$theme-teal: #50847B;
+$theme-blue: #76AADB;
+
+$body-bg: $theme-white;
+$body-color: $theme-black;
+$link-color: $theme-teal;
+$code-color: $theme-teal;
+
+/*-- scss:rules --*/
+h1 {
+  color: darken($theme-blue, 50%);
+}
+
+h2, h3, h4 {
+  color: $theme-blue;
+}
+```
+
+
+<br>
+
+
+### Fuentes
+
+- En estas [slides](https://emilhvitfeldt.github.io/talk-quarto-theming-positconf/#/how-to-change-fonts) de Emil Hvitfeldt se explica cómo cambiar las fuentes de un tema.
+
+<br>
+
+### TOC
+
+- En la [web de Silvia Canelon](https://silvia.rbind.io/2023/09/20/quarto-theming/), concretamente en [este post](https://silviacanelon.com/blog/2023-09-29-hello-quarto/). El fichero scss está [aquí](https://github.com/spcanelon/silvia/blob/main/assets/silvia-theme-dark.scss)
+
+
+```scss
+// Table of contents
+$toc-color:                   $link-color;
+$toc-active-border:           $toc-color;
+$toc-inactive-border:         lighten($toc-color, 50%);
+```
+
+

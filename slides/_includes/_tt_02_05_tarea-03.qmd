@@ -1,0 +1,8 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.3: Crear el archivo `/pdfs/econometria.pdf`
+
+-   Como puedes ver, en el archivo `docencia.qmd` se hace referencia al archivo `/pdfs/econometria.pdf`. [Si quieres que el link funcione]{.underline}, tienes que crear dentro del Qproject, la subcarpeta `pdfs`, y dentro de ella el archivo `econometria.pdf`.
+
+- Puede ser cualquier pdf, siempre que se llame `econometria.pdf`
+
+:::

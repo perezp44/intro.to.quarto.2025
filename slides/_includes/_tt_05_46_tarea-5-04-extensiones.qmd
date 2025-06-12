@@ -1,0 +1,31 @@
+::: {.callout-important icon="false"}
+#### Tarea 5.4: Instalar y usar una extensión
+
+Concretamente instalaremos la extensión "quarto-youtube-embed". El repo [aquí](https://github.com/sellorm/quarto-youtube-embed).
+
+- Lo primero es instalar la extensión de Quarto. Lo haremos desde la Terminal así:
+
+
+```{bash}
+#| code-line-numbers: false
+#| eval: false
+quarto install extension sellorm/quarto-youtube-embed
+```
+
+
+- Una vez instalada, podemos incrustar un video usando el siguiente "shortcode" en nuestro documento .qmd:
+
+
+
+```{r, eval = FALSE}
+{{< youtube zk9zHqXm6m0 >}}
+```
+
+Con lo que habremos incrustado el video en nuestro documento .html final.
+
+{{< youtube zk9zHqXm6m0 >}}
+
+:::
+
+
+

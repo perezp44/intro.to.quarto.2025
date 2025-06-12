@@ -1,0 +1,12 @@
+```{r, eval = FALSE}
+#| code-overflow: scroll   #- {scroll, wrap}
+#| code-line-numbers: true
+
+#- 3/ Opciones referentes al formato de salida  ---------------------
+format:
+  html:
+    theme: flatly  
+    css: styles.css
+    toc: true
+    highlight-style: a11y
+```

@@ -1,0 +1,457 @@
+---
+title: "Primeros pasos con R/RStudio y Quarto"
+date: 2023-06-26  #- ISO8601 YYYY-MM-DD format 
+subtitle: | 
+  {{< var my_subtitle2 >}}
+date-format: long
+lang: es
+format: 
+  revealjs:
+    scrollable: true
+    slide-level: 2
+    height: 900
+    width: 1600
+    toc: false
+    from: markdown+emoji  #- usar emojis https://gist.github.com/rxaviers/7360908)
+    center-title-slide: true
+    title-slide-attributes: #- atributos para la slide de titulo
+      data-background-color: "#562457"   #- color de R-ladies
+      #data-background-image: /imagenes/economia.gif
+      #data-background-size: cover     
+    preview-links: auto  #- true: abre un iframe en lugar de abrir ventana
+    #multiplex: true  #- para que puedas manejar las slides del publico
+    link-external-newwindow: true
+    transition: fade
+    #height: 900
+    #width: 1600
+    fontcolor: "#262d36"
+    highlight-style: a11y
+    code-line-numbers: true
+    number-sections: false
+    slide-number: c/t   # https://pandoc.org/MANUAL.html#structuring-the-slide-show
+    incremental: false   # https://quarto.org/docs/presentations/#incremental-lists
+#logo: imagenes/economia.gif
+footer: |
+        {{< var webcurso >}}
+revealjs-plugins: [lightbox, pointer]
+  # - lightbox
+  # - pointer  # hay q apretar q
+#css: assets/styles_slides_intro.css
+    #theme: [moon, custom.scss]
+embed-resources: true
+---
+
+# Primeras   ideas {background-color="#b8c2aa"}
+
+{{< var lineanaranja >}}
+
+<br>
+
+. . .
+
+1.  Documentos ¿reproducibles?
+
+2.  ¿Qué son R/RStudio y Quarto?
+
+------------------------------------------------------------------------
+
+## Documentos ¿reproducibles?
+
+-   Todos tenemos que hacer documentos con algún **contenido estadístico**: informes o transparencias o ....
+
+-   Al usar **Quarto y R**, nuestros informes serán Reproducibles!!
+
+. . .
+
+-   ¿Cómo lo haremos?
+
+![](imagenes/ss_02_img_00_quarto-workflow.png){#fig-00 fig-align="center" width="40%"}
+
+. . .
+
+::: {columns}
+::: {.column width="42%"}
+#### source code (escrito en QMD)
+
+```{r echo = FALSE, comment = "",  out.width = '100%', fig.align = 'center'}
+knitr::include_graphics(here::here("slides", "imagenes",  "ss_02_img_01.png") )
+```
+:::
+
+::: {.column width="13%"}
+<br><br><br>
+
+```{r echo = FALSE, comment = "",  out.width = '70%', fig.align = 'center'}
+knitr::include_graphics(here::here("slides", "imagenes",  "ss_02_img_01a.png") )
+```
+:::
+
+::: {.column width="42%"}
+#### output
+
+```{r echo = FALSE, comment = "", out.width = '100%', fig.align = 'center'}
+knitr::include_graphics(here::here("slides", "imagenes",  "ss_02_img_01b.png") )
+```
+:::
+:::
+
+<br><br>
+
+
+## Investigación reproducible
+
+. . .
+
+<br>
+
+Es un tema de creciente interés, por ejemplo [aquí](https://www.tandfonline.com/toc/ujse21/30/3?nav=tocList) y [aquí](https://www.whitehouse.gov/ostp/news-updates/2023/01/11/fact-sheet-biden-harris-administration-announces-new-actions-to-advance-open-and-equitable-research/).
+
+> **Reproducibility is the minimum standard in research quality**. When with the same data and analysis we obtain the same results and we are able to check the results of others. -- [Why open science is just good science in a digital era](https://realworlddatascience.net/news-and-views/interviews/posts/02/03/heidi-seibold.html).
+
+. . .
+
+> A core principle of good science is that **results should be repeatable and reproducible** by others. Unfortunately the misuse of data analysis, leading to unreliable results, is a [known issue](https://en.wikipedia.org/wiki/Misuse_of_statistics). -- [Tidyverse blog](https://www.tidyverse.org/blog/2023/03/webr-0-1-0/#reproducible-reports)
+
+<br>
+
+
+## **Ventajas** de la investigación reproducible
+
+<br>
+
+. . .
+
+::: {columns}
+::: {.column width="40%"}
+-   Credibilidad de los resultados
+
+-   Facilidad de replicar
+
+
+-   Detección de errores
+
+-   Facilita la colaboración
+
+:::
+
+
+::: {.column width="59%"}
+![[Some good practices for research with R](https://www.good-practices.etiennebacher.com/#/2/2)](imagenes/ss_02_img_02H.png){fig-align="left" width="65%"}
+:::
+:::
+
+
+## Ventajas de los documentos **reproducibles**
+
+> Un documento reproducible provee a los usuarios todo lo necesario para reproducir (y confirmar) los resultados de este.
+
+. . .
+
+-   Los mismos que la **investigación reproducible**: credibilidad de los resultados, facilidad de replicar, detección de errores, [facilita la colaboración]{.fragment .strike}
+
+. . .
+
+-   Un documento fuente puede **generar documentos de varios tipos** (tutoriales, slides, ...)
+
+. . .
+
+-   Si incluyes código, **se acaba el corta y pega** para gráficos, tablas de resultados, etc...
+
+. . .
+
+-   **Informes periódicos** ([aquí](https://twitter.com/dgkeyes/status/1613247003898826752) una buena justificación)
+
+-   **Informes parametrizados**
+
+. . .
+
+-   Facilidad de generación de **páginas web** ([:thinking:](https://www.youtube.com/watch?v=7e3Xq7jeVMk))
+
+. . .
+
+-   Ahorras tiempo :thinking: :thinking: [:thinking:](https://twitter.com/jburnmurdoch/status/957583871234727936)
+
+<br>
+
+. . .
+
+-   Además, **TODO** puede quedar obsoleto :scream_cat: :scream_cat: con GPT-4 y amigos. Por ejemplo [aquí](https://twitter.com/blader/status/1635792905628712960?t=aRzV2hLOQ5zJQ0_UuvgfCg&s=09), [aquí](https://www.youtube.com/watch?v=8OufESMHw64) y ...
+
+<br>
+
+
+## Entorno R: ¿qué son **Quarto/RStudio/R**?
+
+. . .
+
+<div>
+
+-   Son **3 programas de ordenador**
+
+    -   **R** es un lenguaje de programación y un entorno para hacer análisis estadísticos (y [muchas más cosas](https://book.rwithoutstatistics.com/))
+
+    -   **RStudio** es un IDE (para usar R, y Quarto, de manera más cómoda)
+
+    -   **Quarto** es el que realmente hará los documentos, webs etc ...
+
+<br>
+
+</div>
+
+. . .
+
+<div>
+
+> :warning: Importante!! **sólo interactuaremos con RStudio**
+
+-   No "veremos" a R ni a Quarto.
+
+-   Daremos ordenes a R y Quarto a través de RStudio
+
+-   La [User Guide](https://docs.posit.co/ide/user/) de RStudio
+
+::: footer
+\[Más info [aquí](https://perezp44.github.io/intro.to.quarto/blog/02_que-es-quarto.html){target='blank'}\]
+:::
+
+</div>
+
+------------------------------------------------------------------------
+
+### Más detalles sobre **Quarto**
+
+-   Es un sistema para escribir, para generar **publicaciones científico-técnicas**, dentro del ecosistema R.
+
+-   Es la segunda generación de Rmarkdown
+
+<br><br>
+
+# Primeros pasos {background-color="#b8c2aa"}
+
+{{< var lineanaranja >}}
+
+<br>
+
+. . .
+
+-   Instalación
+
+-   Saber dar órdenes a R a través de RStudio
+
+-   Crear proyectos
+
+------------------------------------------------------------------------
+
+## Instalación
+
+-   Tenemos que instalar los 3 programas.
+
+. . .
+
+-   En este orden:
+
+    -   R: <https://cran.r-project.org/>
+
+    -   RStudio: <https://posit.co/download/rstudio-desktop/>
+
+    -   Quarto: <https://quarto.org/docs/download/>
+
+<br>
+
+-   En los 3 casos has de (logicamente) utilizar el instalador adecuado para tu sistema operativo
+
+------------------------------------------------------------------------
+
+## 2 formas de dar ordenes a R (usando RStudio)
+
+::: panel-tabset
+#### Con la **Consola**
+
+Al abrir RStudio vemos (al ppio) **3 paneles**
+
+-   La **Consola** es el panel de la izquierda
+
+-   El símbolo `>` en la consola se llama *prompt*
+
+```{r, echo = FALSE, out.width = "60%"}
+knitr::include_graphics(here::here("slides", "imagenes", "ss_02_img_02b_RStudio-inicial.png"))
+```
+
+-   Para dar una orden a R (desde la consola) solo tienes que escribir la orden (p.ej. `2 + 2`) y pulsar <kbd>Enter</kbd>
+
+-   Inconveniente: hay que escribir y ejecutar las instrucciones una a una
+
+<br>
+
+{{< include ./_includes/_ss_02_tarea_01.qmd >}}
+
+<br>
+
+#### Con **scripts** ( o ficheros `.R`)
+
+-   Un "script" no es más que un fichero (con extensión `.R`) que contiene instrucciones o código R
+
+-   Podemos crear un fichero `.R` siguiendo esta ruta de menús: `File > New file > R Script`.
+
+-   Se abrirá un cuarto panel en RStudio, justo encima de la Consola
+
+-   Una vez has creado el fichero, escribes la instrucción y pulsas las teclas <kbd>CONTROL</kbd> + <kbd>Enter</kbd>
+
+-   En un script sólo se pueden escribir 2 cosas:
+
+    -   Comentarios (si la linea comienza por el símbolo `#`)
+
+    -   Código R (todas las lineas que **no** empiezan por `#`)
+
+{{< include ./_includes/_ss_02_tarea_02.qmd >}}
+
+<br>
+:::
+
+# Trabajaremos usando proyectos {background-color="#ebf5fb"}
+
+{{< var lineanaranja >}}
+
+. . .
+
+<br>
+
+Repito, vamos a trabajar con proyectos, concretamente con ...
+
+<br>
+
+. . .
+
+... Quarto projects o **Qprojects**
+
+
+## ¿Qué es un **Q**project?
+
+-   Es simplemente una **carpeta** donde tendremos los "materiales" que necesitemos para uno de nuestros proyectos
+
+. . .
+
+-   Pero **usarlos tiene ventajas**. Puedes ver algunas en [este post de Jenny Bryan](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
+
+-   Para nosotros la principal ventaja consiste en que **podremos usar rutas relativas**
+
+<br>
+
+
+## ¿Cómo se crea un Qproject?
+
+-   En RStudio has de seguir la siguiente ruta de menús: `File > New Project > New Directory > Quarto Project` , y ponerle un nombre a la carpeta del Qproject.
+
+. . .
+
+{{< include ./_includes/_ss_02_tarea_03.qmd >}}
+
+<br><br>
+
+
+## Dos cosillas sobre los Qprojects
+
+::: {columns}
+::: {.column width="65%"}
+1.  ¿Cómo abrirlos?
+    -   Siempre desde el fichero con icono azulito y extensión `.Rproj`
+:::
+
+::: {.column width="25%"}
+```{r echo = FALSE, comment = "",  out.width = '95%', fig.align = 'center'}
+knitr::include_graphics(here::here("slides", "imagenes",  "ss_02_img_03a.png") )
+```
+:::
+:::
+
+. . .
+
+::: {columns}
+::: {.column width="65%"}
+2.  ¿Cómo saber si realmente estás dentro de un proyecto?
+    -   En la esquina superior-izquierda de tu RStudio verás el icono azulito junto al nombre de tu proyecto
+:::
+
+::: {.column width="25%"}
+```{r echo = FALSE, comment = "",  out.width = '95%', fig.align = 'center'}
+knitr::include_graphics(here::here("slides", "imagenes",  "ss_02_img_03b.png") )
+```
+:::
+:::
+
+------------------------------------------------------------------------
+
+{{< include ./_includes/_ss_02_tarea_04.qmd >}}
+
+# Creación de documentos `.qmd` {background-color="#b8c2aa"}
+
+{{< var lineanaranja >}}
+
+<br>
+
+. . .
+
+<br>
+
+Vamos ya a crear nuestro primer fichero `.qmd`
+
+... eso sí, lo crearemos **dentro de un Qproject**
+
+------------------------------------------------------------------------
+
+{{< include ./_includes/_ss_02_tarea_05.qmd >}}
+
+<br><br>
+
+## <br><br>Vamos a jugar un rato con RStudio {background-color="#ebf5fb"}
+
+{{< var lineanaranja >}}
+
+. . .
+
+<br>
+
+Nos servirá para familiarizarnos con :
+
+-   la interfaz de Rstudio
+
+-   los conceptos de **documento fuente** (.qmd) y **documento final** (.html, .pdf, etc...)
+
+<br>
+
+. . .
+
+... y empezar a entender la **sintaxis** de "Quarto Markdown"
+
+------------------------------------------------------------------------
+
+{{< include ./_includes/_ss_02_tarea_06.qmd >}}
+
+<br>
+
+------------------------------------------------------------------------
+
+{{< include ./_includes/_ss_02_tarea_06c.qmd >}}
+
+<br>
+
+
+------------------------------------------------------------------------
+
+{{< include ./_includes/_ss_02_tarea_06e.qmd >}}
+
+<br>
+
+------------------------------------------------------------------------
+
+{{< include ./_includes/_ss_02_tarea_07.qmd >}}
+
+<br>
+
+------------------------------------------------------------------------
+
+{{< include ./_includes/_ss_02_tarea_08.qmd >}}
+
+. . . 
+
+{{< include ./_includes/_ss_02_tarea_08_solucion.qmd >}}

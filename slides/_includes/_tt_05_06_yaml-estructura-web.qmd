@@ -1,0 +1,42 @@
+```{r, eval = FALSE}
+#| code-overflow: scroll   #- {scroll, wrap}
+#| code-line-numbers: true
+
+#- 2/ Opciones referentes a la estructura de la web -----------------
+website:
+  title: "Mi blog (aún en pruebas)"
+  favicon: profile.jpg
+  #site-url: https://....
+  #repo-url: https://....
+  open-graph: true #-https://quarto.org/docs/websites/website-tools.html#twitter-cards
+  twitter-card:
+    creator: "@tu-usuario-twitter"
+    card-style: summary_large_image
+  navbar:
+    logo: "profile.jpg"
+    #background: primary    #- pink
+    right:
+      - text: "About me"
+        href: about.qmd
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario-twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail@uv.es>"
+    left: 
+      - icon: house-door
+        href: index.html
+      - text: "Docencia"
+        href: docencia.qmd
+  page-footer:
+    left: "© 2022 Pedro J. Pérez"
+    center: "Hecho con [Quarto](https://quarto.org)"
+    right:
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario-twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail>@uv.es"
+```

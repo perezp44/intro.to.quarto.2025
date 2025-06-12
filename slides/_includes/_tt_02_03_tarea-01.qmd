@@ -1,0 +1,43 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.1: Modificar el contenido de `_quarto.yml`
+
+- Sustituye el contenido original del fichero `_quarto.yml` por el contenido del siguiente chunk.
+
+- Pon un título que te guste a tu blog (línea 5 `title: "titulo-de-mi-blog"`)
+
+- Pon tu usuario de Github y cuenta de Twitter (lineas 12 y 14: `href:`)
+
+- Pon tu email (línea 16: `href:`)
+
+
+````{verbatim, lang="yaml"}
+project:
+  type: website
+
+website:
+  title: "Mi blog (aún en pruebas)"
+  navbar:
+    logo: "profile.jpg"
+    right:
+      - text: "About me"
+        href: about.qmd
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario-twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail@uv.es>"
+    left: 
+      - text: "Docencia"
+        href: docencia.qmd
+ 
+format:
+  html:
+    theme: flatly  
+    css: styles.css
+    toc: true
+    highlight-style: a11y
+````
+
+
+:::

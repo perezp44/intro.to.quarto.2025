@@ -1,0 +1,131 @@
+---
+#title: "Información sobre el curso"
+toc: true
+#self-contained: true
+---
+
+## Información sobre el curso
+
+::: {.callout-note appearance="minimal" icon="false"}
+## 
+
+-   El curso es una **introducción a Quarto**, un nuevo sistema para generar publicaciones (libros, transparencias, blogs, webs, etc...) científicas y técnicas. Puedes ver ejemplos en esta [Gallery](https://quarto.org/docs/gallery/){target="_blank"}.
+
+-   Forma parte de la oferta del [SFPIE](https://www.uv.es/sfpie){target="_blank"} de la Universitat de València. La ficha oficial del curso está [aquí]({{< var my_ficha_oficial_curso >}}){target="_blank"}.
+
+-   En el curso usaremos [R](https://cran.r-project.org/){target="_blank"}, y fundamentalmente [Quarto](https://quarto.org/docs/get-started/){target="_blank"}, a través del IDE [RStudio](https://www.rstudio.com/products/rstudio/download/#download){target="_blank"}.
+
+
+-   Se recomienda tener instaladas **versiones recientes** de los 3 programas. Tienes instrucciones de instalación más abajo
+
+-   Es muy-muy conveniente, acudir al curso con tu **propio ordenador**. Además, es conveniente que traigas **un ratón**: piensa que buena parte de los errores que cometeremos se deberán a la precisión en copy-paste. Evitémoslo!!
+
+
+-   Los materiales que usaremos están en [Materiales](materiales.qmd).
+:::
+
+
+```{r}
+#| echo: false
+#| eval: false
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+addMarkers(lng = -0.34371, lat = 39.47795, popup = "Aulario Sur del Campus de Tarongers)")
+```
+
+## Horario y aula
+
+::: {.callout-note appearance="minimal" icon="false"}
+
+{{< include _includes/_horario_curso.qmd >}}
+
+:::
+
+<br>
+
+## Programas (instalación)
+
+::: {.callout-important collapse="false" appearance="default" icon="false"}
+## Instalación de R, RStudio y Quarto
+
+-   En el curso usaremos 3 programas: R, RStudio y Quarto, así que tenemos que instalarlos
+
+-   Has de instalar los programas en este orden:
+
+    1.  R: <https://cran.r-project.org/>{target="_blank"}
+
+    2.  RStudio: <https://posit.co/download/rstudio-desktop/>{target="_blank"}
+
+    3.  Quarto: <https://quarto.org/docs/download/>{target="_blank"}
+
+-   Solamente has de descargar las versiones de los instaladores adecuadas para tu sistema operativo
+:::
+
+<br>
+
+
+
+::: {.callout-important collapse="true" appearance="default" icon="false"}
+## Instalación de paquetes
+
+- En el curso también usaremos algunos paquetes de R, así que habrá que instalarlos
+
+- Los paquetes se han de instalar una vez hayas instalado los 3 programas (R, RStudio y Quarto)
+
+- Os ayudaré a instalar los paquetes en clase así que no os preocupéis por ellos ahora
+  
+:::
+
+
+
+
+::: {.callout-important collapse="true" appearance="default" icon="false"}
+## ¿Cómo instalar los paquetes?
+
+Recuerda que os enseñaré a instalar los paquetes en clase, pero si quieres ir adelantando trabajo, aquí tienes las instrucciones:
+
+- Algunos paquetes se han de compilar por lo que hay que tener las herramientas necesarias, así que:
+
+    - Si usas Windows instalaremos **Rtools**. [Aquí](https://cran.r-project.org/bin/windows/Rtools/) puedes descargarte el instalador adecuado. Durante el proceso de instalación asegúrate de marcar la casilla que pone "add Rtools to the system PATH".
+    
+    - Si tienes un Mac, tendrás que instalar the **Xcode Command Line Tools**. Lo normal es que lo tengas ya instalado, si no fuese el caso, [aquí](https://www.makeuseof.com/install-xcode-command-line-tools/) te explican como hacerlo. Además, como nos cuentan [aquí](https://psyteachr.github.io/msc-data-skills/installingr.html), si tienes un Mac, es conveniente instalar **XQuartz**, para ello sólo tienes que buscar el instalador en <https://www.xquartz.org/>
+
+  
+- Finalmente, para instalar los paquetes que usaremos durante el curso tendremos que **ejecutar las siguientes instrucciones**:
+
+```{r}
+#| eval: false
+#| code-line-numbers: false
+#| code-overflow: wrap
+#| code-fold: true
+#| code-summary: "Código para instalar los paquetes"
+
+#- instalación de paquetes ---------------------------------
+
+install.packages("pak")
+
+pak::pak(c("tidyverse", "ggtext",  "curl", "irlba", "widyr", "markdown", "gt", "maps", "mapproj", "DT", "reactable"))
+
+pak::pak(c("showtext", "glue",  "plotly", "fs", "countrycode", "here", "quarto"))
+
+pak::pak(c("webexercises"))
+
+pak::pak(c("perezp44/pjpv.curso.R.2022"))
+
+
+
+#- más cosas ---------------------------------------
+# usethis::edit_rstudio_prefs()
+# usethis::use_blank_slate() 
+
+# quarto install tool tinytext
+# quarto install tinytex --update-path
+# quarto install tool chromium
+```
+
+:::
+
+
+
+

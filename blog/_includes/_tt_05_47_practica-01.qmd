@@ -1,0 +1,22 @@
+::: {.callout-tip collapse="true" appearance="default" icon="false"}
+
+#### Práctica 5.1: Crear un post para tu blog con la siguiente plantilla.
+
+Vamos a usar el ejemplo/plantilla de abajo para elaborar un nuevo post. Para ello:
+
+- Crea una nueva subcarpeta en la carpeta `./posts/`. Por ejemplo llámala: `./posts/my-segundo-post` y copia allí los documentos que haya en la carpeta de otro blog. Es decir, en la nueva subcarpeta que has creado debe haber un fichero `index.qmd` y otro `thumbnail.jpg`.
+
+- Sustituye el contenido del archivo `index.qmd` por el contenido del siguiente chunk y haz un render de `./posts/my-segundo-post/index.qmd`.
+
+- [Aquí](https://perezp44.github.io/taller.primer.blog/taller/ejemplo-de-post.html){target="_blank"} puedes ver como quedaría (más o menos) el post tras procesarlo con Quarto.
+
+- Si quieres que se incluyan más elementos en el title-block has de poner en el archivo `./index.qmd`, anidado en `listing:`  lo siguiente: `fields: [image, date, description, categories, title, author, reading-time]`
+
+
+
+###### Contenido para sustituir en `./posts/my-segundo-post/index.qmd`
+
+
+
+:::
+

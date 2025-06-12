@@ -1,0 +1,21 @@
+Para escribir en Markdown, además de texto, tenemos los siguientes elementos básicos:
+
+
+
+- Links (documentación [aquí](https://quarto.org/docs/authoring/markdown-basics.html#links-images))
+
+- Listas  (documentación [aquí](https://quarto.org/docs/authoring/markdown-basics.html#lists) y [aquí](https://www.markdownguide.org/basic-syntax/#lists-1))  
+
+- Tablas  (documentación [aquí](https://quarto.org/docs/authoring/markdown-basics.html#tables))  
+
+- Código  (documentación [aquí](https://quarto.org/docs/authoring/markdown-basics.html#source-code))  
+
+- Ecuaciones  (documentación [aquí](https://quarto.org/docs/authoring/markdown-basics.html#equations)). Editor de ecuaciones [aquí](https://www.latex4technics.com/)  o [aquí](http://www.sciweavers.org/free-online-latex-equation-editor).
+
+
+- Imágenes (documentación [aquí](https://quarto.org/docs/authoring/figures.html)) y sus [opciones](https://quarto.org/docs/computations/execution-options.html#figure-options)
+
+
+<br>
+
+El [editor visual](https://www.rstudio.com/blog/exploring-rstudio-visual-markdown-editor/) facilita la introducción de estos elementos en tus documentos. En [esta charla](https://www.youtube.com/watch?v=6p4vOKS6Xls) de Mine Çetinkaya-Rundel se aprecia fácilmente la **utilidad del editor visual**.

@@ -1,0 +1,11 @@
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensiones: el fichero `_publish.yml`
+
+Si te fijas, tras haberse publicado el blog en "Quarto Pub", se habrá creado un **nuevo fichero** en nuestro Qproject: es el fichero `_publish.yml`. En él solamente están los metadatos necesarios para publicar y **actualizar nuestro blog**.
+
+::: {layout-ncol=1}
+![](./imagenes/tt_01/img_07.png){fig-align="center"}
+
+:::
+
+:::

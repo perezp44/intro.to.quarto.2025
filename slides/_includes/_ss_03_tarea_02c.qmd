@@ -1,0 +1,17 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.2b: Una solución
+
+
+```{{r}}
+#| eval: true
+#| echo: true
+#| message: false
+#| label: my-primer-chunk
+
+library(tidyverse)
+ggplot(iris, aes(Sepal.Length, Petal.Length)) + geom_point()
+```
+
+<br>
+
+:::

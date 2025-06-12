@@ -1,0 +1,157 @@
+/* css styles */
+
+/* Mine:  */ 
+
+.reveal .takeaway h2 {
+  font-size: 1.7em;
+  font-weight: normal;
+  color: #0F1620;
+  text-align: center;
+}
+
+.reveal .takeaway {
+  background-color: #e1ecf7;
+  text-align: center;
+}
+
+
+
+
+/* definiendo estilos de los párrafos */ 
+p, ul, ol {
+  text-align: justify;         /* justificar el texto del body */      
+      line-height: 1.5; }     /* anchura entre las lineas 1.0 is the default in Firefox. 2.0 provides a large space */  
+
+
+h5 { color: #562457;  font-weight: bold; text-align: center; 
+  font-size: 250%;
+  margin-top: 30px;   
+  margin-bottom: 20px; }  
+
+
+/*  ----------------- Del curso de Earo: https://stats220.earo.me/  -------------- */ 
+
+.rotate-45 {transform: rotate(45deg); }
+.large { font-size: 140%; }
+.small { font-size: 80%; }
+   
+   
+/*  ----------------- colores  -------------- */ 
+.purple{ color: #c077af; font-weight: bold;}
+.purple2{ color: purple;  font-weight: bold;}
+.purple3{ color: #562457;  font-weight: bold;}
+
+
+.red { color: #ef342a; }
+.orange { color: #f57125; }
+.orange2 {color: #F58634; }
+.blue { color: #22b6ed; }
+.green { color: #1fb27f; }
+.green2 {color: #007965; }
+.yellow { color: #faca07; }
+.yellow2 {color: #FFCC29; }
+.brown {color: #a84d18; }
+
+ 
+/*  ----------------- footnote -------------- */ 
+.footnote {
+  position: absolute;
+  bottom: 1em;
+  font-style: italic;
+  font-size: 70%;
+}
+
+
+
+/*  ----------------- una nueva clase de inversa: muy chula  -------------- */ 
+.inverse2 {
+  background: #69686d;
+  color: #f2f2f6;
+}
+.inverse2 p {
+  color: #f2f2f6;
+}
+.inverse2 h1, .inverse2 h2, .inverse2 h3 {
+  font-weight: bold; text-align: center;
+  color: #b2d68c;
+  line-height: 1.2em;
+}
+
+.inverse2 h4, .inverse2 h5 {
+  text-align: center;
+  color: #f2f2f6;
+  line-height: 1.2em;
+}
+
+
+
+/*  ----------------- texto subrayado  amarillo-------------- */ 
+
+.yellow-h{
+   background: #ffff88;
+}
+
+/*  ----------------- texto subrayado verde -------------- */ 
+
+.out-t, remark-inline-code {
+   background: #9fff9f;
+   border-radius: 3px;
+   padding: 4px;
+}
+
+/*  ----------------- texto subrayado gris -------------- */ 
+
+.inline-c, remark-inline-code {
+   background: #e5e5e5;
+   border-radius: 3px;
+   padding: 4px;
+   font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;
+}
+
+
+/* links */
+a { 
+  color: #5ebccf;
+}
+
+a:hover {
+ color: #50a0b0; /* darker color when hovering */
+}
+
+
+
+
+/* de: https://github.com/schochastics/quarto-schochastics/blob/main/styles.css */ 
+
+
+.quarto-grid-item img.thumbnail-image {
+    object-fit: contain;
+}
+
+.thumbnail-image:hover{
+  opacity:75%;
+}
+
+.center{
+   text-align: center;
+}
+
+div.column.col-v-center{
+   vertical-align: middle;
+}
+
+.home-title{
+  font-size: 2em;
+}
+
+.socials{
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+}
+
+.socials a{
+  color: #9EEBCF;
+  margin-left: 0.5em;
+}
+
+

@@ -1,0 +1,40 @@
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+#- LISTING page -----------------------------
+
+---
+title: "Mi listado de post"
+description: |
+  Un blog para aprender y divertirme #- necesario para RSS (https://quarto.org/docs/websites/website-listings.html#feeds)
+listing:
+  contents: posts
+  #- listing options: https://quarto.org/docs/websites/website-listings.html#listing-options
+  #- https://quarto.org/docs/websites/website-listings.html#sorting-items
+  sort: "date desc"
+  #-  https://quarto.org/docs/websites/website-listings.html#listing-types
+  type: default  #- {default, table, grid, custom}
+  categories: true
+  feed: false
+  sort-ui: false
+  filter-ui: false
+  fields: [image, date, title, description, categories, author, reading-time, file-modified]
+  field-display-names:
+    # title: "Report"
+    date_format: medium
+  image: imagenes/thumbnail.jpg
+  image-align: left
+page-layout: full         #- {article, full, custom}
+# title-block-banner: pone un banner en el title-block: pondrá el title, subtitle, description, y categories dentro del banner
+# https://quarto.org/docs/authoring/title-blocks.html
+title-block-banner: true  #- #- {true, false, "#FFDDFF",  "image.jpg"}
+title-block-style: default #- {default, plain, none}
+title-block-banner-color: red  #- {black, "#FFDDFF"} color del texto dentro del banner
+feed: true   #- RSS: https://quarto.org/docs/websites/website-listings.html#feeds
+---
+
+```
+
+
+La documentación oficial está [aquí](https://quarto.org/docs/websites/website-listings.html)

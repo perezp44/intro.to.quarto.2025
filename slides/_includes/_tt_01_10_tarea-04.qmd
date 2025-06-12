@@ -1,0 +1,18 @@
+::: {.callout-important icon="false"}
+#### Tarea 1.4: Alojar el blog en Quarto Pub
+
+Para publicar nuestro blog en Quartopub sólo hay que:
+
+- teclear en la **Terminal** de RStudio (panel inferior-izquierda) lo siguiente:  
+
+  ```{bash, eval = FALSE}
+  #| code-line-numbers: false
+  #| code-fold: false
+  quarto publish quarto-pub
+  ```
+
+- Tras ejecutar lo anterior, se te pedirá que autorices en la Terminal.
+
+- Después se abrirá el navegador, tendrás que logearte en `Quarto Pub` y volverás a autorizar. Además te preguntarán el nombre del blog.
+
+:::

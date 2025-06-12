@@ -1,0 +1,62 @@
+
+
+#### Seguimos reusando  `prueba_02.qmd`
+
+<br>
+
+::: {.callout-important icon="false"}
+#### Tarea 2.6d: Reusamos `"prueba_02.qmd"` para generar unas slides
+
+- Reutiliza `"prueba_02.qmd"` para generar unas "revealjs" slides. Solo has de cambiar el formato de salida!!
+
+
+::: {.fragment}
+- Si avanzas aparecerá la solución. Inténtalo sin mirar la solución!!!!
+:::
+
+::: {.fragment}
+
+- La solución: 
+
+```yaml
+---
+title: "prueba_02"
+format: revealjs
+---
+```    
+
+:::
+:::
+
+<br>
+
+::: {.fragment}
+
+::: {.callout-important icon="false"}
+#### Tarea 2.6d: Vamos a cambiar la apariencia visual de las slides
+
+- Vamos a cambiar el **theme** de las "revealjs" slides. Para ello:
+
+```yaml
+---
+title: "prueba_01"
+format:
+  revealjs:
+    theme: night
+---
+```    
+
+<br>
+
+::: {.fragment}
+- Puedes probar otros themes de [este listado](https://quarto.org/docs/presentations/revealjs/themes.html#using-themes)
+:::
+
+:::
+
+:::
+
+
+<br>
+
+

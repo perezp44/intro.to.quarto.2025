@@ -1,0 +1,294 @@
+---
+title: "Referencias bibliográficas"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+  ¿Cómo incluir referencias bibliográficas en documentos `.qmd`? Una buena opción es a través de ficheros `.bib` creados en [Zotero](https://www.zotero.org/).
+date: 2023-01-20
+categories: [quarto, bibliografía]
+image: "./thumbnails/thumbnail_20_ref-biblio.png"
+title-block-banner: true #- {true, false }
+draft: false
+toc: true
+#toc-location: left
+toc-depth: 3
+#css: assets/my_css_file.css
+bibliography: bib_files/20_referencias-bibliograficas.bib
+csl: bib_files/apa_7.csl
+nocite: |
+  @*
+---
+
+## Intro
+
+Gestionar y poner en el formato adecuado las referencias bibliográficas no es muy divertido; una forma de hacerlo es a mano. No problem, pero creo que es más sensato gestionarlas con un [gestor bibliográfico](https://en.wikipedia.org/wiki/Comparison_of_reference_management_software). Por supuesto que esto tiene un coste de entrada pero no es demasiado alto y el hacerlo facilita después, la gestión de estas. Entre los beneficios que tiene gestionar las referencias con un gestor están: tener las referencias organizadas y a mano para poder reusarlas, evitar errores de la transcripción a mano o por copia y pega, facilita la organización y clasificación de las citas en categorías y, principalmente, posibilita la generación de listados bibliográficos con un simple clic en diversos formatos (APA, Chicago etc ...)
+
+Hay muchos [gestores bibliográficos](https://es.wikipedia.org/wiki/Gestor_de_referencias_bibliogr%C3%A1ficas). Los más usados son [Mendeley](https://www.mendeley.com/) y [Zotero](https://www.zotero.org/), aunque últimamente oigo hablar mucho de [CiteDrive](https://www.overleaf.com/blog/better-bibliography-management-with-overleaf-citedrive-and-bibtex-biblatex).
+
+No soy un power user de gestores bibliográficos pero uso cada vez más [Zotero](https://www.zotero.org/). Zotero es un gestor bibliográfico de código abierto que cuenta con **extensiones para los principales navegadores** (Firefox, Vivaldi, Chrome, Safari, Opera, ...) que **permiten guardar referencias**, ya sean estas artículos, libros, páginas web, libros electrónicos, imágenes, audio, vídeo digital etc ... **con un solo clic**. Una vez añadida una referencia, se pueden añadir, notas, etiquetas y relacionarla con otras referencias; además, las referencias se pueden organizar en colecciones. Ilya Kashnitsky tiene [aquí](https://ikashnitsky.github.io/2019/zotero/) un fantástico post donde explica las ventajas de Zotero y cómo usarlo.
+
+El caso es que los gestores bibliográficos, ademas de ayudarnos a gestionar nuestras referencias bibliográficas, nos permiten exportar y generar listados de referencias en distintos formatos. Veamos cómo hacerlo en el entorno Quarto.
+
+## ¿Cómo gestionar las referencias en Quarto?
+
+Una vez tenemos las referencias en Zotero, o en otro gestor bibliográfico, podemos crear una colección con las referencias que usaremos en un proyecto. A partir de ahí se puede fácilmente crear listados con las referencias en múltiples formatos, incluido BibTeX que es el que usa Latex y el que usaremos con Quarto^[
+BibTex, que fue creado para usar con Latex, utiliza ficheros `.bib` que es una forma conveniente para almacenar bibliografía en texto plano.].
+
+Para generar nuestro listado de referencias con Quarto tenemos que:
+
+1)  Tener las referencias en Zotero, mejor en una colección
+
+2)  generar un fichero `.bib` con los metadatos de las referencias
+
+3)  Incluir la ruta al archivo `.bib` en el yaml de nuestro documento `.qmd`
+
+4)  Por defecto Quarto generará el listado de referencias en formato [Chicago Manual of style 17th ed.](https://www.chicagomanualofstyle.org/home.html) Si quieres usar otro formato tendrás que incluir en el yaml de nuestro documento `.qmd` la ruta al fichero`.csl` con el estilo que queramos dar al listado de referencias.
+
+### 2.1 Introducir la referencias
+
+#### Con Zotero
+
+Lo primero es tener las referencias en un gestor bibliográfico, por ejemplo Zotero. No explicaré en detalle este paso pero puedes ver la documentación oficial, por ejemplo esta [Quick Start Guide](https://www.zotero.org/support/quick_start_guide).
+
+Tienes que instalar Zotero y luego una extensión para tu navegador favorito, de esta forma puedes añadir una referencia a tu base de datos con un solo clic: solo tendrás que ir a la pagina web donde este el articulo/vídeo/libro o lo que sea, y pinchar con el botón derecho del ratón y seleccionar `Zotero Connector > Guardar a Zotero > Save to Zotero (Embedded metadata)`. Puedes ver un ejemplo en la imagen siguiente:
+
+![Guardando una referencia con Zotero Connector](imagenes/post_20_img_01.png){#fig-01 fig-align="center" width="75%"}
+
+#### Desde RStudio
+
+También podemos añadir referencias directamente desde RStudio. Para ello tenemos que **usar el "editor visual" de RStudio**. [Aquí](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/24-citations/) lo explica Mine Çetinkaya-Rundel para el caso de que tengamos el DOI de la referencia. Simplemente hay que:
+
+-   Activar el editor visual \> Insert \> Citation ... \> From DOI (en el menú de la izquierda) \> Pegar el DOI y pinchar en Search \> una vez ha encontrado la referencia, solo queda pinchar en Insert
+
+Con esta secuencia se generará un fichero `.bib` ,si es que no hay uno ya asociado al documento .qmd. Si ya hubiese un documento .bib, se añadiría la referencia a este.
+
+
+### 2.2 Creación del fichero `.bib`
+
+
+Para generar las citas y bibliografía necesitaremos un archivo `.bib` que contenga los metadatos de las referencias que queremos introducir en nuestro archivo `.qmd`. Este archivo `.bib` se puede generar de muchas maneras, por ejemplo a mano copiando y pegando, o con Zotero,  o desde RStudio, o ... Veamos como se hace desde Zotero. Como puedes ver en la imagen de bajo tengo distintas colecciones en Zotero, selecciono la carpeta/colección que quiero exportar con el botón derecho del ratón y pincho en "exportar". Solo queda seleccionar el formato de exportación. Puedes elegir "better BibTex" o "Bibtext", los dos funcionarán. Se nos creará un fichero `.bib` con los metadatos de las referencias bibliográficas que vamos a usar.
+
+::: {layout-ncol=2}
+
+![Exportando una colección de referencias](imagenes/post_20_img_02_zotero.png){#fig-2.1}
+
+![Exportando a formato Bibtex](imagenes/post_20_img_03.png){#fig-2.2}
+
+Creando el fichero `.bib` desde Zotero
+:::
+
+El fichero `.bib` contendrá un listado con los metadatos de nuestras referencias; algo como:
+
+
+```bib
+@article{rodríguez-sanchez2016,
+	title = {Ciencia reproducible: ¿qué, por qué, cómo?},
+	author = {{Rodríguez-Sanchez}, Francisco and {Pérez-Luque}, {Antonio Jesús} and Bartomeus, Ignasi and Varela, Sara},
+	year = {2016},
+	month = {08},
+	date = {2016-08-22},
+	journal = {Ecosistemas},
+	pages = {83--92},
+	volume = {25},
+	number = {2},
+	doi = {10.7818/ecos.2016.25-2.11},
+	url = {http://dx.doi.org/10.7818/ECOS.2016.25-2.11}
+}
+
+@article{wickham2010a,
+	title = {Graphics for Statistics and Data Analysis with{\emph{R}}},
+	author = {Wickham, Hadley and Grolemund, Garrett},
+	year = {2010},
+	date = {2010},
+	journal = {Journal of Statistical Software},
+	volume = {36},
+	number = {Book Review 3},
+	doi = {10.18637/jss.v036.b03},
+	url = {http://dx.doi.org/10.18637/jss.v036.b03},
+	langid = {en}
+}
+```
+
+### 2.3 Referencia el fichero bib` en el yaml
+
+Una vez tenemos el fichero `.bib` con los datos de nuestras referencias, tenemos que referenciarlo en el yaml de nuestro documento `.qmd`; concretamente así:
+
+```yaml
+---
+title: "Mi Documento"
+bibliography: my_references.bib
+---
+```
+
+En este caso el fichero `.bib` y el fichero `.qmd` estarían en la misma carpeta. Si el fichero `.bib` estuviese en una subcarpeta, tendríamos que especificar la ruta, quedando el yaml como:
+
+
+```yaml
+---
+title: "Mi Documento"
+bibliography: my_subcarpeta/my_references.bib
+---
+```
+
+### 2.4 Estilo de las referencias
+
+Ya he dicho que por defecto Zotero (y Pandoc) usan el [Chicago Manual of Style](https://chicagomanualofstyle.org/) pero podemos cambiar el estilo usando un archivo `.csl`y referenciando en nuestro yaml: 
+
+```yaml
+---
+title: "Mi Documento"
+bibliography: my_references.bib
+csl: bib_files/apa_7.csl
+---
+```
+
+
+Podemos descargar ficheros `.csl` con multitud de formatos para nuestras citas del repositorio de Zotero, [aquí](https://www.zotero.org/styles?q=apa) . CSL significa [Citation Style Language](https://citationstyles.org). BibTex es limitado para poder almacenar adecuadamente determinadas referencias, por ejemplo no puede diferenciar entre por ejemplo magazine/newspaper articles and journal articles, por eso finalmente se creó CSL como un lenguaje de estilo de citas más versátil. CSL permite la creación de estilos de citación personalizados para adaptarse a las necesidades y normas de estilo de cada disciplina académica. 
+
+
+## Inclusión de las referencias
+
+En la sección anterior hemos dispuesto todo para poder incluir en nuestros documentos `.qmd` las referencias bibliográficas usando ficheros `.bib`. Sí, pero aún no las hemos incluido, ¿cómo lo hacemos? Sin hacer nada, si el yaml incluye un fichero `.bib`, se incluirá automáticamente un apartado al final con las referencias del fichero que hayamos citado en nuestro `.qmd`. También podemos incluir explícitamente ese apartado así: 
+
+
+``` markdown
+### Referencias {.unnumbered}
+
+::: {#refs}
+:::
+```
+
+
+
+Si quisiéramos incluir todas las referencias presentes en el fichero `.bib`, incluso aunque no las hayamos citado en el texto, tendríamos que incluir en nuestro yaml lo siguiente:
+
+
+    ---
+    nocite: |
+      @*
+    ---
+
+
+## Inclusión de citas
+
+
+Generalmente en el texto de un artículo se citan los artículos que figuran en el apartado de referencias. 
+
+Tenemos ya un fichero `.bib` con las referencias, ¿cómo incluimos citas a ellos en nuestro fichero `.qmd`? Podemos seguir escribiendo y gestionando estas citas a mano, pero si queremos hacerlo "automáticamente"^[En realidad las citas hay que escribirlas a mano, pero si las incluyes con la sintaxis adecuada, hará que cada cita tenga un enlace a la referencia] tenemos que saber cómo hacerlo.
+
+
+Imagina que tenemos un fichero llamado `my_references.bib` con 2 referencias, por ejemplo:
+
+``` bib
+@article{rodríguez-sanchez2016,
+	title = {Ciencia reproducible: ¿qué, por qué, cómo?},
+	author = {{Rodríguez-Sanchez}, Francisco and {Pérez-Luque}, {Antonio Jesús} and Bartomeus, Ignasi and Varela, Sara},
+	year = {2016},
+	month = {08},
+	date = {2016-08-22},
+	journal = {Ecosistemas},
+	pages = {83--92},
+	volume = {25},
+	number = {2},
+	doi = {10.7818/ecos.2016.25-2.11},
+	url = {http://dx.doi.org/10.7818/ECOS.2016.25-2.11}
+}
+
+@article{wickham2010a,
+	title = {Graphics for Statistics and Data Analysis with{\emph{R}}},
+	author = {Wickham, Hadley and Grolemund, Garrett},
+	year = {2010},
+	date = {2010},
+	journal = {Journal of Statistical Software},
+	volume = {36},
+	number = {Book Review 3},
+	doi = {10.18637/jss.v036.b03},
+	url = {http://dx.doi.org/10.18637/jss.v036.b03},
+	langid = {en}
+}
+```
+
+Fíjate que cada referencia tiene una clave que es lo que tendremos que usar para generar citas referentes a ellos; en concreto las claves están en la primera linea de cada referencia; concretamente son: `rodríguez-sanchez2016` y `wickham2010a`
+
+
+### Sintaxís para las citas
+
+En realidad Quarto, utiliza Pandoc, otro programa, para procesar archivos BibTeX y convertirlos al formato de lenguaje de estilo de citas (CSL) estándar, que luego usará para formatear referencias en formato Chicago, APA, MLA o lo que sea^[BibTex fue creado para usar con Latex, utiliza ficheros `.bib` que es una forma conveniente para almacenar bibliografía en texto plano, pero BibTex es limitado para poder almacenar adecuadamente determinadas referencias, por ejemplo no puede diferenciar entre por ejemplo magazine/newspaper articles and journal articles. Zotero usa el estándar CSL que también usa Pandoc.].
+
+
+
+Quarto usa el [mismo estándar que Pandoc para las citas](https://www.uv.es/wikibase/doc/cas/pandoc_manual_2.7.3.wiki?138); de forma que las citas van entre corchetes y separadas por punto y coma (`;`), etc ...
+
+
+Por tanto, una vez tenemos el fichero `.bib` y lo hemos referenciado en nuestro yaml, podemos generar citas de la siguiente manera:
+
+
+
+
+
+
+::: panel-tabset
+##### Si quieres escribir citas como estas:
+
+- "Un estudio científico es reproducible si ..." [@rodríguez-sanchez2016, pp. 84]
+
+- R es un lenguaje de programación ... [véase @rodríguez-sanchez2016, pp. 84; y  @wickham2010a, cap. 1]
+
+- R es al menos tan bueno como Phyton ( @wickham2010a; @rodríguez-sanchez2016)
+
+- Según @rodríguez-sanchez2016, pp. 84, un estudio científico es reproducible si ...
+
+
+- @wickham2010a dicen que ....
+
+- @wickham2010a [p. 33] dicen que ...
+
+- Wickham dice que R es un lenguaje funcional  [-@wickham2010a]
+
+
+##### Has de escribir esto:
+
+```
+
+- "Un estudio científico es reproducible si ..." [@rodríguez-sanchez2016, pp. 84]
+
+- R es un lenguaje de programación ... [véase @rodríguez-sanchez2016, pp. 84; y  @wickham2010a, cap. 1]
+
+- R es al menos tan bueno como Phyton ( @wickham2010a; @rodríguez-sanchez2016)
+
+- Según @rodríguez-sanchez2016, pp. 84, un estudio científico es reproducible si ...
+
+
+- @wickham2010a dicen que ....
+
+- @wickham2010a [p. 33] dicen que ...
+
+- Wickham dice que R es un lenguaje funcional  [-@wickham2010a]
+
+```
+:::
+
+<br>
+
+La documentación oficial de Quarto para citas y bibliografías está [aquí](https://quarto.org/docs/authoring/footnotes-and-citations.html). La documentación de Pandoc para las citas está [aquí](https://pandoc.org/MANUAL.html#citations).
+
+<br>
+
+## Más cosas
+
+- [Using Zotero for citations in Quarto and R Markdown documents](https://tidytales.ca/series/2023-01-24_reproducible-data-science/posts/zotero-setup.html#using-zotero-for-citations-in-quarto-and-r-markdown-documents) es un post que me ayudo; además, lleva a esto de [editor visual de RStudio](https://rstudio.github.io/visual-markdown-editing/citations.html), al [archivo de CSL's](https://citationstyles.org/)
+y al [paquete rbbt](https://github.com/paleolimbot/rbbt), que conecta R con el conector Better Bibtex for Zotero. 
+
+- A veces se necesita controlar/tunear más cómo y qué incluir de las referencias bibliográficas en el texto; para ello puedes usar [citetools](https://github.com/bcdavasconcelos/citetools). Lo vi [aquí](https://mastodon.ie/@DToher/112410536622660400)
+
+-  ¿Se pueden poner varias bibliografías en un sólo documento? Andrew Heiss lo preguntó [aquí](https://fediscience.org/@andrew/111560089164492193) y cuando halló la solución, escribió un [post](https://www.andrewheiss.com/blog/2023/12/11/separate-bibliographies-quarto/) explicándolo; pero resulta que en mayo de 2024 se creó un Pandoc filter precisamente para generar bibliografías diferentes para cada capítulo o para cada top-level section. Puedes verlo [aquí](https://github.com/pandoc-ext/section-bibliographies)
+
+
+
+
+<br>
+
+## Referencias {.unnumbered}
+
+::: {#refs}
+:::

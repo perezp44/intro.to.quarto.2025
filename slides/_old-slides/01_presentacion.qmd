@@ -1,0 +1,187 @@
+---
+title: "Presentación del curso"
+date: 2023-06-26  #- ISO8601 YYYY-MM-DD format 
+subtitle: | 
+  {{< var my_subtitle >}}
+date-format: long
+lang: es
+format: 
+  revealjs:
+    #transition: slide
+    scrollable: true
+    slide-level: 2
+    height: 900
+    width: 1600
+    toc: false
+    from: markdown+emoji  #- usar emojis https://gist.github.com/rxaviers/7360908)
+    center-title-slide: true
+    title-slide-attributes: #- atributos para la slide de titulo
+      data-background-color: "#562457"   #- color de R-ladies
+      #data-background-image: /imagenes/economia.gif
+      #data-background-size: contain      
+    preview-links: auto  #- true: abre un iframe en lugar de abrir ventana
+    #multiplex: true  #- para que puedas manejar las slides del publico
+    link-external-newwindow: true
+    transition: fade
+    #height: 900
+    #width: 1600
+    fontcolor: "#262d36"
+    highlight-style: a11y
+    code-line-numbers: true
+    number-sections: false
+    slide-number: c/t   # https://pandoc.org/MANUAL.html#structuring-the-slide-show
+    incremental: false   # https://quarto.org/docs/presentations/#incremental-lists
+#logo: imagenes/economia.gif
+footer: |
+       [https://go.uv.es/pjperez/intro.to.quarto/slides.01](https://go.uv.es/pjperez/intro.to.quarto/slides.01)
+    #theme: [moon, custom.scss]
+revealjs-plugins:
+  - pointer
+#css: assets/styles_slides.intro.css
+embed-resources: true
+---
+
+# Bienvenidos al curso!! :vulcan_salute::rose: {background-color="#abd2d6"}
+
+# Contenidos/objetivo del curso {background-color="#b8c2aa"}
+
+
+## ¿Qué haremos en el curso? {.color-header}
+
+. . .
+
+-   Aprender a **usar "el entorno R" (:exclamation:)para escribir** [documentos que espero sean útiles para nuestras labores docentes, investigadoras y de gestión.]{.fragment}
+
+. . . 
+
+-   Haremos distintos tipos de documentos: **tutoriales**, **transparencias**, **páginas web**, **blogs**, **...**
+
+. . .
+
+-   Estos documentos serán **reproducibles** (:exclamation:)
+
+. . .
+
+<br>
+
+**¿Documentos reproducibles?**
+
+. . .
+
+-   Sí, generaremos directamente el documento final sin copiar ni pegar nada, sino **usando código**.
+
+    -   Para ello, hemos de aprender a escribir en **QMD** (Quarto Markdown) (❗❗)
+
+
+
+## Forma de trabajar con el "entorno R"
+
+-   **R es un entorno** (y un lenguaje de programación) **para hacer estadística**
+
+. . .
+
+-   Podemos pensar que un **análisis con datos** tiene varias etapas.
+
+
+
+![](./imagenes/ss_01_info-r4ds_01.png){fig-align="center" width="70%"}
+
+. . . 
+
+-   En el curso nos centramos en la última etapa etapa: la **presentación de los resultados**.
+
+
+---------------
+
+
+## ¿Qué tipo de documentos veremos? 
+
+-   Principalmente **tutoriales**, **transparencias**, **páginas web** y **blogs**, ...
+
+. . .
+
+-   ... pero, Con Quarto se pueden generar **documentos de muchos tipos** (artículos académicos, libros, tesis, cartas, cuadros de mando, etc ... etc ...) **y formatos** (html, pdf, epub, docx, beamer, pptx, etc ... etc ...).
+
+. . .
+
+-   Para verlo puedes visitar la [Quarto gallery](https://quarto.org/docs/gallery/){target="blank"}
+
+
+<br>
+
+. . .
+
+
+#### Algunos ejemplos:
+
+-   **Tutoriales**: por ejemplo [este](https://quarto-dev.github.io/quarto-gallery/page-layout/tufte.html){target="blank"} o [este](https://perezp44.github.io/web.Econometria.GADE/materiales/cuestionario_practicas.html){target="blank"}
+
+-   **Slides**: por ejemplo [estas](https://laderast.github.io/qmd_rmd/#/title-slide){target="blank"} o [estas](https://apreshill.github.io/palmerpenguins-useR-2022/#/title-slide){target="blank"}
+
+-   **Páginas web**: por ejemplo [esta](https://nicar.r-journalism.com/), [esta](https://sta210-s22.github.io/website/){target="blank"} o [esta](https://www.mm218.dev/){target="blank"}
+
+-   **Blogs**: por ejemplo [este](https://www.mrworthington.com/){target="blank"} o [este](https://blog.djnavarro.net/){target="blank"}
+
+
+# Calendario {background-color="#b8c2aa"}
+
+## Calendario
+
+<br>
+
++-------------------------+--------------------------------+--------------------+
+| Día                     | Tópico                         |                    |
++=========================+================================+====================+
+| 26 de junio (lunes)     | Presentación\                  | (con slides 01)\   |
+|                         | Primeros pasos\                | (con slides 02)\   |
+|                         | Aprendiendo a escribir en QMD\ | (con slides 03)\   |
+|                         | Slides con Quarto\             | (con slides 04)\   |
++-------------------------+--------------------------------+--------------------+
+| 28 de junio (miércoles) | Mi primer web/blog\            | (con slides 05)\   |
++-------------------------+--------------------------------+--------------------+
+| 3 de julio (lunes)      | Más cosas con Quarto\          | (con slides 06)\   |
++-------------------------+--------------------------------+--------------------+
+
+# Para conocermos un poco mejor {background-color="#b8c2aa"}
+
+---
+
+## Sobre mi (Pedro J. Pérez) {background-color="#abd2d6"}
+
+-   Profesor en la UV (departamento de Análisis Económico) y **entusiasta de R**.
+
+. . .
+
+-   Web de mis **cursos en 2022-23**:
+
+    -   [Econometría](https://perezp44.github.io/web.Econometria.GADE/){target="blank"}
+    -   [Intro a la Ciencia de datos con R](https://perezp44.github.io/intro-ds-22-23-web/){target="blank"} (tenéis que ver [los trabajos de los estudiantes](https://perezp44.github.io/intro-ds-22-23-web/07-trabajos_2022-23.html){target="\"blank”"})
+    -   [Curso de Introducción a R](https://perezp44.github.io/curso_R_SFPIE_2021/){target="blank"} (en el SFPIE).
+
+. . .
+
+-   No soy bloguero pero he impartido el **taller** [Mi primer blog con Quarto](https://perezp44.github.io/taller.primer.blog/){target="blank"} en las XII Jornadas de ususarios de R. Algunos de mis blogs:
+
+    -   [2015, R & flowers](http://perezp44.github.io/){target="blank"} , con Jekyll
+    -   [2018, R & flowers V](https://rflowers5.netlify.app/){target="\"blank”"}, con Hugo y blogdown
+    -   [2020, R & flowers (o casi)](https://perezp44.github.io/my_blog_R-flowers-0.1.3/){target="\"blank”"}, con radix
+    -   [2021, pedro.j.perez blog's](https://perezp44.github.io/pjperez.web/){target="\"blank”"}, con Distill
+    -   [2022, R & flowers](https://perezp44.github.io/pjperez.blog.2022/){target="\"blank”"}, con Quarto
+
+# Os toca presentaros!! <br/> :slightly_smiling_face: {background-color="#abd2d6"}
+
+<br>
+
+-   Nombre
+
+-   Facultad/Departamento/Organismo/Servicio ...
+
+-   Motivaciones y objetivos al apuntaros al curso
+
+-   Experiencia con R y RStudio
+
+-   Experiencia con Rmarkdown y Quarto
+
+-   Experiencia con webs/blogs
+
+# Comenzamos el curso !!!! :computer::crossed_fingers: 💪🏼 💪🏼 {background-color="#562457"}

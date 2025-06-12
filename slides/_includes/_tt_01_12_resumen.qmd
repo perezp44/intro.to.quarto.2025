@@ -1,0 +1,25 @@
+::: {.callout-note collapse="true" appearance="default" icon="false"}
+#### Resumen (tutorial nº 1)
+
+En este tutorial, la **segunda parte del taller**, hemos visto:
+
+- Como crear un Qproject con la estructura de carpetas y archivos necesaria para generar un blog básico
+
+- Hemos visto (de forma rápida) el contenido, los archivos, que hay en el Qproject. 
+
+- El Qproject contiene 3 archivos que serán los importantes, los que trabajaremos en el próximo tutorial, concretamente: &emsp; `_quarto_yml`,  &emsp; `index.qmd` &emsp; y &emsp; `about.qmd`
+
+- Hemos aprendido a generar el blog a través de RStudio, simplemente `Build > Render Website`
+
+- Hemos visto que el blog realmente se aloja en la carpeta &ensp; `_site` &ensp; y que la homepage es &ensp; `index.html`
+
+- La homepage del blog es un listado de post (lógicamente, es un blog!!)
+
+- La homepage (`index.html`) es generada por el archivo &ensp; `index.qmd`
+
+- El archivo &ensp;  `index.qmd` &ensp; solo tiene YAML
+
+- Hemos publicado el blog en Quarto Pub
+
+:::
+

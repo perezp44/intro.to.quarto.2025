@@ -1,0 +1,28 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.3: Modificar el contenido de `index.qmd`
+
+- He cambiado la primera linea (**title:**) para poner un nombre a la página con el listado de posts.
+
+- También podemos añadir una descripción con **description:**.
+
+
+```{yaml}
+---
+title: "Mi listado de post"
+description: |
+  Estoy tratando de hacer mi blog
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+---
+```
+
+:::
+
+

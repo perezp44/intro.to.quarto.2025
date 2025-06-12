@@ -1,0 +1,137 @@
+---
+title: "Votaciones de Eurovisión"
+subtitle: "Ejercicio del curso [Escribiendo con R y Quarto](https://perezp44.github.io/intro.to.quarto/){target='blank'}"
+abstract: Los resultados señalan los siguientes clusters de países .... y
+date: 2023-01-02
+date-modified: last-modified
+author:
+  - name: Pedro J. Pérez
+    url: https://perezp44.github.io/intro.to.quarto/
+    affiliation: Universitat de València
+    affiliation-url: https://www.uv.es
+    orcid: 0000-0001-9375-6330
+  - name: Nosostros y [@juliasilge@fosstodon.org](https://mastodon.social/@juliasilge)
+categories: [Clustering, Eurovision]
+format:
+  html:
+    page-layout: full
+    theme: 
+      - superhero #sketchy #slate #- litera   darkly cosmo
+      - assets/ember.scss
+    css: 
+      - assets/styles.css
+    toc: true
+    toc-title: Índice
+    toc-depth: 3
+    toc-location: right
+    code-line-numbers: true
+    code-copy: true
+    code-overflow: scroll    #- {wrap, scroll}
+    code-fold: show
+    code-tools: false
+    code-link: true
+    
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  
+embed-resources: true
+---
+
+
+# Intro
+
+Estamos en el tercer día del [curso de Introducción a Quarto](https://perezp44.github.io/intro.to.quarto/) y estamos practicando cómo hacer un tutorial. Para ello usamos un [gist de Julia Silge](https://gist.github.com/juliasilge/c5e76731e8dc4e2b709f5afd4ebf9b61
+)
+
+# Marco teórico
+
+Los países tienen afinidades/intereses etc... que **pueden condicionar las votaciones de Eurovisión**. El *prestigioso* diario Marca se hace eco [aquí](https://www.marca.com/tiramillas/musica/2023/05/11/645c8fd1268e3e48528b45c2.html) de esta hipótesis. En el artículo se cita a `@picanumeros` que ha trabajado el tema. Puedes ver su análisis en este [hilo de twitter](https://twitter.com/Picanumeros/status/1525422610179293184).
+
+En la Wikipedia tenemos un largo [artículo sobre Eurovisión](https://es.wikipedia.org/wiki/Festival_de_la_Canci%C3%B3n_de_Eurovisi%C3%B3n) lleno de datos, tablas y mapas. 
+
+Una imagen de WikiCommons de la 3ª edición del festival en la que aparece **Domenico Modugno**
+
+![Domenico Modugno](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Domenico_Modugno_%281958%29%2C_Bestanddeelnr_909-4001.jpg/800px-Domenico_Modugno_%281958%29%2C_Bestanddeelnr_909-4001.jpg){#fig-01 fig-align="center" width="45%"}
+
+
+Por mucho que me empeñe yo cuesta incorporar ecuaciones a un informe sobre Eurovision, pero aquí tenemos una ecuación inline, $A(L)=(I_{K}-A_{1}L^{1}- ... -A_{p}L^{p})$   , más abajo una ecuación independiente:
+
+$$y_{t}=A_{1}y_{t-1}+v_{t}$$
+
+# Datos
+
+Necesitamos datos. Afortunadamente el proyecto `tidytuesday` en su edición del 17 de mayo de 2022 utilizó [datos sobre votaciones en Eurovision](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-05-17#eurovision).
+
+Antes de iniciar el análisis cargamos los paquetes de R que usaremos, solo que no vas a ver el chunk en el output final porque hemos puesto `#| include: false`.
+
+```{r}
+#| label: setup     #- se ejecutará siempre
+#| include: false   #- para que se ejecute pero no se muestre nada en el output
+library(tidyverse)
+library(widyr) #- (irlba, widyr)
+library(maps)
+```
+
+
+Descargamos datos de Eurovision con este chunk de código:
+
+```{r}
+#| echo: true
+#| eval: true
+eurovision_votes <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-17/eurovision-votes.csv')
+```
+
+# Análisis
+
+La verdad es que con esos datos se podrían hacer algún análisis más, por ejemplo tenemos el orden de aparición: igual el orden en el que cantas influye en las votaciones; pero vamos a replicar el [análisis de @juliasilge@fosstodon.org](https://gist.github.com/juliasilge/c5e76731e8dc4e2b709f5afd4ebf9b61)
+
+
+Vamos a utilizar técnicas de clustering implementadas en el paquete `widyr` **Supondremos que hay 4 clusters**.
+
+```{r}
+#- clustering -----
+set.seed(234)
+eurovision_clusters <-  eurovision_votes %>%
+  # dimensionality reduction with SVD: https://www.youtube.com/watch?v=UyAfmAZU_WI
+  widyr::widely_svd(from_country, to_country, points, nv = 24) %>%
+  #- combination of SVD and k-means: https://www.researchgate.net/publication/284617182_Combination_of_Singular_Value_Decomposition_and_K-means_Clustering_Methods_for_Topic_Detection_on_Twitter
+  widyr::widely_kmeans(from_country, dimension, value, k = 4)
+```
+
+
+# Resultados
+
+Los resultados parecen good
+
+## Tabla
+
+```{r}
+#- tabla -----
+table <- eurovision_clusters %>% 
+  group_by(cluster) %>% 
+  summarise(from_country = paste(from_country, collapse = ", ")) 
+gt::gt(table)
+```
+
+## Mapa
+
+```{r}
+#- mapa -----
+map_data("world") %>%
+  filter(region %in% eurovision_clusters$from_country) %>%
+  left_join(eurovision_clusters, by = c("region" = "from_country")) %>%
+  ggplot(aes(long, lat, group = group, fill = cluster)) +
+  geom_polygon(alpha = 0.8) +
+  coord_map() +
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title = "Which countries vote similarly for Eurovision?",
+       subtitle = "Clusters identified with SVD and K-means",
+       caption = "Big thanks to @juliasilge@fosstodon.org") +
+  pjpv.curso.R.2022::theme_pjp_maps() +
+  theme(panel.background = ggplot2::element_rect(fill = "white",  color = NA)) +
+  theme(plot.background = ggplot2::element_rect(colour = "white",fill = "white"))
+```
+

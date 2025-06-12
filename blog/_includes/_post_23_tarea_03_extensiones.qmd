@@ -1,0 +1,47 @@
+::: {.callout-important icon="false"}
+#### Instalar y usar la extensión **Quarto social embeds**
+
+Vamos a instalar y usar una nueva extensión, concretamente la extensión "Quarto social embeds". Su repo está [aquí](https://github.com/sellorm/quarto-social-embeds).
+
+- Lo primero es instalar la extensión desde la Terminal:
+
+
+```{bash}
+#| code-line-numbers: false
+#| eval: false
+quarto install extension sellorm/quarto-social-embeds
+```
+
+<br>
+
+Para insertar un **tweet** has de:
+
+
+```{r, eval = FALSE}
+
+{{< tweet user=<username> id=<id> >}}
+
+por ejemplo:
+
+{{< tweet user=ambitocultural id=1589543369512026112 >}}
+
+```
+
+
+{{< tweet user=ambitocultural id=1589543369512026112 >}}
+
+<br><br>
+
+
+Para insertar un **gist de Github** has de:
+
+```{r, eval = FALSE}
+{{< gist sellorm 20525aff669acafb975b7495b8f2066e >}}
+```
+
+{{< gist sellorm 20525aff669acafb975b7495b8f2066e >}}
+
+
+
+
+:::

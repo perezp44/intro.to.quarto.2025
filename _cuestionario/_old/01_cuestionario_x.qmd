@@ -1,0 +1,435 @@
+---
+title: "Cuestionario"
+subtitle: "Ejercicios para el curso [Escribiendo con R y Quarto](https://perezp44.github.io/intro.to.quarto/){target='blank'}"
+#abstract:
+toc-title: Índice
+from: markdown+emoji  #- usar emojis https://gist.github.com/rxaviers/7360908
+---
+
+::: {.callout-note icon="false" collapse="true"}
+####### Contexto
+
+Este cuestionario, confeccionado para el curso {{< var my_curso >}} contiene cuestiones y ejercicios para recordar, trabajar y profundizar en los conceptos e ideas vistos durante los 2 primeros días del curso.
+
+El curso es una introducción a Quarto en el que vemos como generar documentos (tutoriales, slides, webs ...) con contenido estadístico generado con R. 
+
+Los ejercicios se han pensado para resolver en el Qproject "quarto.ejercicios" que puedes descargarte [aquí](./cuestionario/quarto.ejercicios.zip){target="_blank"}
+
+:::
+
+<br>
+
+------------------------------------------------------------------------
+
+<br>
+
+# 0. Análisis con R
+
+::: {.callout-note icon="false" collapse="true"}
+####### Contexto/Objetivo
+
+Igual algunos de vosotros no sabéis mucho R, pero en este `Ejercicio 0` **os proporciono código R para hacer un análisis** con datos de las votaciones de **Eurovisión**.
+
+No es preocupéis por el código R, sólo vamos a ejecutarlo para que veáis que lo que hace es cargar unos datos, trabajarlos, aplicar una técnica estadística y **crear una tabla y una visualización**.
+
+El ejercicio solo es **una excusa**, una forma de **practicar la creación de documentos con Quarto**.
+
+El código del ejemplo se lo debemos a [@juliasilge@fosstodon.org](https://mastodon.social/@juliasilge). Thanks Julia!!
+:::
+
+### 0.A 
+
+------------------------------------------------------------------------
+
+**Pega el siguiente código R en un script** (fichero .R) llamado `ejercicio_00.R` y ejecuta el código
+
+::: {.callout-warning icon="false" collapse="true"}
+#### :warning: Intalación paquetes
+
+-   Para que te funcione el script necesitarás tener instalados varios paquetes de R:
+
+``` r
+install.packages("pak")
+pak::pak(c("tidyverse", "ggtext",  "curl", "perezp44/pjpv.curso.R.2022", "irlba", "widyr"))
+```
+:::
+
+::: {.callout-warning icon="false" collapse="true"}
+##### Código R 
+
+``` r
+#- ejercicio_00  -----
+#- https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-05-17/readme.md
+#- https://gist.github.com/juliasilge/c5e76731e8dc4e2b709f5afd4ebf9b61
+
+library(tidyverse)
+library(widyr) #- pacman::p_load(irlba, widyr)
+library(maps)
+
+#- cargamos datos -----
+eurovision_votes <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-17/eurovision-votes.csv')
+
+#- clustering -----
+set.seed(234)
+eurovision_clusters <-  eurovision_votes %>%
+  # dimensionality reduction with SVD: https://www.youtube.com/watch?v=UyAfmAZU_WI
+  widyr::widely_svd(from_country, to_country, points, nv = 24) %>%
+  #- combination of SVD and k-means: https://www.researchgate.net/publication/284617182_Combination_of_Singular_Value_Decomposition_and_K-means_Clustering_Methods_for_Topic_Detection_on_Twitter
+  widyr::widely_kmeans(from_country, dimension, value, k = 4)
+
+#- tabla -----
+table <- eurovision_clusters %>% 
+  group_by(cluster) %>% 
+  summarise(from_country = paste(from_country, collapse = ", ")) 
+gt::gt(table)
+
+
+#- mapa -----
+map_data("world") %>%
+  filter(region %in% eurovision_clusters$from_country) %>%
+  left_join(eurovision_clusters, by = c("region" = "from_country")) %>%
+  ggplot(aes(long, lat, group = group, fill = cluster)) +
+  geom_polygon(alpha = 0.8) +
+  coord_map() +
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title = "Which countries vote similarly for Eurovision?",
+       subtitle = "Clusters identified with SVD and K-means",
+       caption = "Big thanks to @juliasilge@fosstodon.org") +
+  pjpv.curso.R.2022::theme_pjp_maps()
+
+
+#- otro análisis con esos datos: https://twitter.com/geokaramanis/status/1527271169447014403
+
+```
+
+:::
+
+<br>
+
+------------------------------------------------------------------------
+
+<br>
+
+# 1. Documentos con QMD
+
+::: {.callout-note icon="false" collapse="false"}
+####### Objetivo
+
+Recordar cómo **escribir en QMD** para crear documentos html. Para ello usamos el código R que os he proporcionado en el ejercicio 00. Se trata de que hagáis lo siguiente:
+:::
+
+### 1.A (informe básico)
+
+------------------------------------------------------------------------
+
+Una vez hemos comprobado que el código de `ejercicio_00.R` nos funciona y tenemos una idea general sobre lo que hace, vamos a confeccionar un informe para mostrar el análisis que hemos realizado. Así que la tarea esta clara: **hay que redactar un informe** (reproducible) que describa y muestre lo que hacemos en el `ejercicio_00.R`. Más abajo os doy instrucciones más precisas para confeccionar el informe.
+
+::: {.callout-note icon="false" collapse="true"}
+####### Instrucciones para confeccionar el informe
+
+Vamos a generar un **informe básico** en formato html que describa lo que hemos hecho en el `ejercicio_00.R`.
+
+Indicaciones:
+
+-   El documento fuente (source document) que generará el informe final ha de llamarse `ejercicio_01.qmd`
+
+-   Informe en formato html, con título y autor.
+
+-   El informe tendrá las siguientes secciones de primer nivel: Intro, Marco teórico, Datos y Resultados
+
+-   El informe ha de contener: párrafos, una imagen, enlaces, una cita, una nota al pie, texto en negrita, una ecuación, una tabla y un gráfico
+
+-   No te preocupes por lo que escribes, preocúpate sólo de la sintaxis y elementos de Quarto.
+:::
+
+Evidentemente, sabrías hacer el informe, solo que necesitarías tiempo. Así que mejor si empiezas, lo intentas un poco, ya veremos cuanto (¿3-4 minutos?) y una vez lo hayas intentado usas lo siguiente:
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Ayudita
+
+``` yaml
+---
+title: "Eurovisión: ¿hay clubs de países?"
+author: Nosotros
+format: html
+---
+
+# Intro
+
+# Marco teórico/Contexto
+
+# Datos 
+
+# Resultados
+
+## Tabla
+
+## Mapa
+
+```
+:::
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Ayuda gorda
+
+```{r}
+#| echo: false
+#| warning: false
+#| class-output: "sourceCode r"
+
+cat(readLines("./ejercicios_cuestionario/ejercicio_01.qmd"), sep = "\n")
+```
+
+:::
+
+### 1.B (tuneando el informe)
+
+------------------------------------------------------------------------
+
+Una vez hemos hecho un informe básico con Quarto, vamos a mejorarlo. Más abajo os doy instrucciones más precisas para tunear el informe.
+
+::: {.callout-note icon="false" collapse="true"}
+####### Instrucciones para tunear el informe
+
+Indicaciones:
+
+-   Para preservar el documento fuente del informe original, guarda una copia con el nombre `ejercicio_01_tuneado.qmd`
+
+-   Pon TOC a la derecha
+
+-   Pon las opciones (las que puedas) de los chunks en el YAML. Aprovecha y haz que no se muestren los mensajes y los warnings que quedan muy feos en el informe final
+
+-   Haz que los chunks sean expandibles
+
+-   Que se pueda descargar el documento fuente
+
+-   ....
+:::
+
+Evidentemente, sabrías tunear el informe, solo que necesitarías tiempo. Así que mejor si empiezas, lo intentas un poco, ya veremos cuanto (¿3 minutos?) y una vez lo hayas intentado (pero fuerte) usas lo siguiente:
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Ayudita
+
+Puedes usar el yaml que ves más abajo. Está un poco cargadito, pero se trata de recordar algunas de las opciones que tenemos en el YAML
+
+``` yaml
+---
+title: "Curva de Phillips, ¿sigue siendo válida?"
+subtitle: "Ejercicio del curso [Escribiendo con R y Quarto](https://perezp44.github.io/intro.to.quarto/){target='blank'}"
+abstract: Los gráficos parecen indicar que durante el periodo 2010-2020 no se mantiene la relación postulada por Phillips, aunque ... y ...
+date: 2023-01-02
+date-modified: last-modified
+author:
+  - name: Pedro J. Pérez
+    url: https://perezp44.github.io/pjperez.web/
+    affiliation: Universitat de València
+    affiliation-url: https://www.uv.es
+    orcid: 0000-0001-9375-6330
+categories: [reproducibilidad]
+from: markdown+emoji  #- usar emojis https://gist.github.com/rxaviers/7360908
+format:
+  html:
+    page-layout: full
+    backgroundcolor: "#F1F3F4"
+    theme: 
+      - litera #sketchy #slate #- litera  superhero darkly cosmo
+      - assets/ember.scss
+    css: 
+      - assets/styles.css
+    toc: true
+    toc-title: Índice
+    toc-depth: 3
+    toc-location: right
+    code-line-numbers: true
+    code-copy: true
+    code-overflow: scroll    #- {wrap, scroll}
+    code-fold: show
+    code-tools: false
+    code-link: true
+    
+execute:
+  freeze: true  # re-render only when source changes
+  echo: true
+  message: false
+  warning: false
+  eval: true
+  
+knitr:
+  opts_knit: 
+    fig-width: 6
+    fig-asp: 0.618
+  
+embed-resources: true
+---
+```
+:::
+
+<br>
+
+------------------------------------------------------------------------
+
+<br>
+
+# 2. Slides con QMD
+
+::: {.callout-note icon="false" collapse="false"}
+####### Objetivo
+
+Recordar cómo crear **slides con Quarto**. Para ello partiremos del informe que hemos creado en el `ejercicio_01`
+
+Se trata de que hagáis lo siguiente:
+:::
+
+### 2.A (slides básicas)
+
+------------------------------------------------------------------------
+
+Utiliza el documento `ejercicio_01.qmd` para generar unas **Revealjs slides** sobre nuestro informe de la inflación. El archivo que generará las slides llámalo `ejercicio_02.qmd`
+
+Evidentemente sabes hacer las slides, inténtalo fuerte (3-4 minutos) y luego mira las ayudas:
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Ayudita
+
+Solo tienes que (desde RStudio) crear un fichero para presentación (File \> New File \> Quarto Presentation). Se creará un fichero con este yaml:
+
+``` yaml
+---
+title: "Untitled"
+format: revealjs
+---
+```
+
+Luego solo tendrás que copiar el contenido de `ejercicio_01.qmd`. Quedará algo como:
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Primera versión de las slides
+
+```{r}
+#| echo: false
+#| warning: false
+#| class-output: "sourceCode r"
+
+cat(readLines("./ejercicios_cuestionario/ejercicio_02.qmd"), sep = "\n")
+```
+:::
+:::
+
+Utilizando la ayudita, salen unas slides, **PERO** no muy bien, porque hay contenido que no se ve: tenemos que dedicar un poco de tiempo a ver como separamos el contenido en slides. Una posibilidad es hacerlo como puedes ver en la siguiente ayuda.
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Ayuda (segunda versión de las slides)
+
+He resumido el contenido del informe y lo he partido en slides. Me ha quedado algo como:
+
+```{r}
+#| echo: false
+#| warning: false
+#| class-output: "sourceCode r"
+
+cat(readLines("./ejercicios_cuestionario/ejercicio_02_v2.qmd"), sep = "\n")
+```
+
+Aún necesitan más trabajo pero en un aprieto podrían valer 😉😉
+:::
+
+### 2.B (tuneando las slides)
+
+Una vez hemos hecho unas slides básicas **vamos a mejorarlas**. Más abajo os doy instrucciones más precisas para tunear las slides
+
+::: {.callout-note icon="false" collapse="true"}
+####### Instrucciones para tunear las slides
+
+Indicaciones:
+
+-   cambia el color de una página
+
+-   ....
+:::
+
+Evidentemente, sabrías tunear las slides, solo que necesitarías tiempo. Así que mejor si empiezas, lo intentas un poco, ya veremos cuanto (¿3 minutos?) y una vez lo hayas intentado (pero fuerte) usas lo siguiente:
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Ayudita
+
+``` yaml
+---
+title: "Curva de Phillips, ¿sigue siendo válida?"
+author: Nosotros
+format: html
+---
+```
+:::
+
+<br>
+
+------------------------------------------------------------------------
+
+<br>
+
+# 3. Web/Blog con Quarto
+
+::: {.callout-note icon="false" collapse="true"}
+####### Contexto/Objetivo
+
+Hemos hecho un análisis que parece poner en cuestión la validez de la curva de Phillips y estamos tan orgullosos de nuestro análisis que, hasta que podamos publicarlo en un Journal, queremos que lo conozca todo el mundo, así que decidimos crear una web para presentarlos al mundo. 😜 😜
+
+Por supuesto esto es un ejercicio para practicar lo que vimos en el segundo día del curso pero ... igual nos hacemos famosos con nuestra web sobre Phillips!!
+:::
+
+
+
+### 1.A (Web básica)
+
+------------------------------------------------------------------------
+
+Vamos a crear una web para mostrar al mundo nuestros hallazgos sobre la curva de Phillips. Abajo tienes las intrucciones
+
+::: {.callout-note icon="false" collapse="true"}
+####### Instrucciones para confeccionar la web
+
+Nuestra web deberá tener los siguientes contenidos/estructura
+
+Indicaciones:
+
+- En la barra de navegación de be haber un link a nuestro informe y otro enlace a nuestras slides
+
+- footer
+
+- CV
+:::
+
+Evidentemente, sabrías hacer el informe, solo que necesitarías tiempo. Así que mejor si empiezas, lo intentas un poco, ya veremos cuanto (¿5 minutos?) y una vez lo hayas intentado (pero fuerte) usas lo siguiente:
+
+::: {.callout-warning icon="false" collapse="true"}
+####### Ayudita
+
+``` yaml
+---
+title: "Curva de Phillips, ¿sigue siendo válida?"
+author: Nosotros
+format: html
+---
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+------------------------------------------------------------------------
+
+<br>
+
+# 4. Tópicos "avanzados"
+
+-   Informes parametrizados etc ....

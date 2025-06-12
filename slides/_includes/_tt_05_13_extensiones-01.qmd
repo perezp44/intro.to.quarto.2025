@@ -1,0 +1,7 @@
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensiones: mi setup chunk
+Cuando usaba `.Rmd` este era habitualmente mi chunk de setup
+
+![](./imagenes/tt_01/img_21.png){fig-align="center"}
+
+:::

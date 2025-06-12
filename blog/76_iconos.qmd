@@ -1,0 +1,200 @@
+---
+title: "Iconos en Quarto"
+date: 2024-02-12
+categories: [iconos, emojis]
+image: "./thumbnails/thumbnail_76_iconos.png"
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Usando emojis e iconos en Quarto
+from: markdown+emoji
+---
+
+## Intro
+
+A todos nos gusta que nuestros documentos sean atractivos y expresivos, así que vamos a ver cómo podemos insertar emojis e iconos en nuestros documentos QMD.
+
+
+## Emojis
+
+Los emojis son una forma sencilla de añadir expresividad a nuestros documentos. Quarto logicamente permite usar emojis. Veamos cómo:
+
+- Para mi, la forma más sencilla de incoporar emojis en nuestros .qmd's es buscar el emoji que quieras en [emojipedia](https://emojipedia.org/), o casi mejor [aquí](https://www.webfx.com/tools/emoji-cheat-sheet/), para después copiarlo y pegarlo en tu documento. E
+
+- También es muy fácil insertar emojis usando el editor visual  de RStudio. Puedes verlo [aquí](https://quarto.org/docs/visual-editor/content.html#emojis) 
+
+- También se pueden usar emojis usando está sintaxis: por ejemplo, si en tu qmd escribes `:smile:` se convertirá en :smile: `:star-struck:`, si escribes  `:rocket:` se convertirá en :rocket: , etc... Para ello, antes hay que activar los emojis, poniendo en el yaml del .qmd lo siguiente: `from: markdown+emoji` 
+
+
+- Quizás es un poco más lioso, pero  también puedes usar el paquete [`emoji`](https://emilhvitfeldt.github.io/emoji/) que cuando lo probé en 2024 tenía 4.702 emojis. Para insertar un emoji en el texto de tu .qmd has de escribir 
+<span style="background-color: #e5e5e5; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"><code>&grave;r emoji::emoji("star-struck")&grave;</code></span> 
+para ver este emoji: `r emoji::emoji("star-struck")`.
+
+Otro ejemplo de uso del paquete `emoji`:
+
+
+```{r}
+emoji::emojis |> 
+  dplyr::select(1:3) |> 
+  dplyr::slice_sample(n = 10) |> gt::gt()  
+```
+
+
+## Iconos
+
+Hay varias extensiones de Quarto para insertar íconos en nuestros documentos. Richard Ianone, en [este repo](https://github.com/rich-iannone/quarto-icons-examples) da ejemplo de cómo utilizar varios de ellos: `fontawesome`, `material-icons`, `bsicons`, `academicons`, `lordicon` e `iconify`. Pero no dice como instalarlas
+
+
+Algunas de ellas son:
+
+### Academicons
+
+[Academicons](https://jpswalsh.github.io/academicons/) contiene iconos relacionados con la academia que no están incluidos en otros paquetes de iconos.
+
+La extensión [`schocastics/academicons`](https://github.com/schochastics/academicons) permite usar academicons (v1.9.4). Solo puede usarse en documentos HTML.
+
+Para instalarla (dentro de un proyecto):
+
+```bash
+quarto install extension schochastics/academicons
+```
+
+
+
+Para usar los iconos:
+
+:::: {.columns}
+::: {.column width="50%"}
+##### Si escribes:
+
+`{{{< ai google-scholar >}}}`  
+
+`{{{< ai google-scholar size=2xl >}}}`
+
+`{{{< ai google-scholar size=2xl color=red >}}}` 
+
+:::
+
+::: {.column width="50%"}
+
+#####  Obtendrás:
+{{< ai google-scholar >}}  
+
+{{< ai google-scholar size=2x >}}
+
+{{< ai google-scholar size=3x color=red >}} 
+:::
+
+::::
+
+### Iconify
+
+[Iconify](https://iconify.design/) contiene una colección de más de 50.000 iconos de diferentes fuentes. Puedes ver los iconos disponibles [aquí](https://icon-sets.iconify.design/). 
+
+Para usar Iconify en Quarto, puedes instalar la extensión `mcanouil/quarto-iconify`. [Aquí](https://github.com/mcanouil/quarto-iconify) tienes el repo con ejemplos e instrucciones de instalación.
+
+
+```bash
+quarto add mcanouil/quarto-iconify
+```
+
+Una vez instalada la extensión, puedes usarlos a través del siguiente shortcode: `{{{< iconify <icon-name> >}}}`. Por ejemplo, si escribes   `{{{< iconify exploding-head >}}}`  obtendrás el siguiente icono: {{< iconify exploding-head >}}.
+
+
+La API de Iconify nos permite personalizar los iconos con diferentes tamaños, rotaciones, colores, etc. Ahora mismo, la extensión  `mcanouil/quarto-iconify` soporta las siguientes opciones: width, height, title, label (i.e., aria-label), flip, and rotate
+
+| Shortcode                                                                              | Icon                                                                   |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `{{{< iconify exploding-head >}}}`                                                     | {{< iconify exploding-head >}}                                         |
+| `{{{< iconify exploding-head size=2xl >}}}`                                            | {{< iconify exploding-head size=2xl >}}                                |
+| `{{{< iconify exploding-head size=5x rotate=180deg >}}}`                               | {{< iconify exploding-head size=5x rotate=180deg >}}                   |
+| `{{{< iconify exploding-head size=Huge >}}}`                                           | {{< iconify exploding-head size=Huge >}}                               |
+| `{{{< iconify fluent-emoji-high-contrast 1st-place-medal >}}}`                         | {{< iconify fluent-emoji-high-contrast 1st-place-medal >}}             |
+| `{{{< iconify twemoji 1st-place-medal >}}}`                                            | {{< iconify twemoji 1st-place-medal >}}                                |
+| `{{{< iconify line-md loading-alt-loop >}}}`                                           | {{< iconify line-md loading-alt-loop >}}                               |
+| `{{{< iconify fa6-brands apple width=50px height=10px rotate=90deg flip=vertical >}}}` | {{< iconify fa6-brands apple width=50px rotate=90deg flip=vertical >}} |
+
+
+### Lordicon
+
+[Lordicon](https://lordicon.com/) contiene una colección de más de 18.000 iconos animados, más de 3.000 de ellos libres. Puedes ver los iconos disponibles [aquí](https://lordicon.com/icons). 
+
+Para usar iconos de Lordicon en Quarto, puedes instalar la extensión `jmgirard/lordicon`. [Aquí](https://github.com/jmgirard/lordicon) tienes el repo con ejemplos e instrucciones de instalación.
+
+
+
+```bash
+quarto add jmgirard/lordicon
+```
+
+Para usar los iconos:
+
+:::: {.columns}
+::: {.column width="50%"}
+##### Si escribes:
+
+`{{{< li wlpxtupd >}}}`
+
+`{{{< li wxnxiano >}}}` 
+
+`{{{< li wxnxiano trigger=hover >}}}`
+
+
+:::
+
+::: {.column width="50%"}
+
+#####  Obtendrás:
+
+{{< li wlpxtupd >}}
+
+{{< li wxnxiano >}}
+
+{{< li wxnxiano trigger=hover >}}
+
+:::
+
+::::
+
+
+
+
+
+### Weather Icons
+
+[Weather Icons](https://erikflowers.github.io/weather-icons/) contiene una colección de 222 iconos sobre el tiempo.
+
+Para usarlos en Quarto, puedes instalar la extensión `andrie/quarto-weather-icons`. [Aquí](https://github.com/andrie/quarto-weather-icons) tienes el repo con ejemplos e instrucciones de instalación.
+
+
+
+
+
+### Font Awesome
+
+
+[Font Awesome](https://fontawesome.com/) contiene una colección de más de 30.000 iconos de diferentes fuentes. 
+
+Para usarlos en Quarto, puedes instalar la extensión `quarto-ext/fontawesome`. [Aquí](https://github.com/quarto-ext/fontawesome) tienes el repo con ejemplos e instrucciones de instalación.
+
+Los iconos pueden usarse en HTML (via Font Awesome 6 Free) and PDF (via the fontawesome5 LaTeX package).
+
+
+
+
+### Material-icons
+
+[Material-icons](https://fonts.google.com/icons?icon.set=Material+Icons&icon.query=chart) contiene una colección de iconos procedentes de Google Fonts
+
+Para usarlos en Quarto, puedes instalar la extensión `shafayetShafee/material-icons`. [Aquí](https://github.com/shafayetShafee/material-icons) tienes el repo con ejemplos e instrucciones de instalación.
+
+
+
+### Bootstrap Icons
+
+[Bootstrap Icons](https://icons.getbootstrap.com/) los iconos de Bootstrap
+
+
+Para usarlos en Quarto, puedes instalar la extensión `shafayetShafee/bsicons`. [Aquí](https://github.com/shafayetShafee/bsicons) tienes el repo con ejemplos e instrucciones de instalación.
+
+

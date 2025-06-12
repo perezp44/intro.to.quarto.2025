@@ -1,0 +1,12 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.3: Creación de un **Q**project
+
+- Simplemente tienes que crear un Qproject que se llame "my_primer_qproject"
+
+- Mejor si creas el Qproject en el Escritorio
+
+- Mira cuantos archivos hay en la carpeta del proyecto 
+
+:::
+
+

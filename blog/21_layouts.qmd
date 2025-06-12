@@ -1,0 +1,128 @@
+---
+title: "Layout's"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+  Viendo las posibilidades de Layout que tenemos en Quarto
+date: 2023-01-21
+categories: [quarto, layout]
+image: "./thumbnails/thumbnail_21_layouts.png"
+title-block-banner: true #- {true, false }
+draft: false
+toc: true
+#toc-location: left
+toc-depth: 3
+#css: assets/my_css_file.css
+#bibliography: references.bib
+#nocite: |
+#  @*
+#embed-resources: true
+---
+
+
+
+## Intro 
+
+Además de yaml, texto y chunks, para escribir con Quarto **conviene conocer la estructura o layout de los artículos** que se generan con él. Las páginas tienen un body, un margin y un área para las sidebars, que en nuestro caso contiene un TOC^[Además, el layout puede venir afectado por la opción `page-layout: custom   #- {article, full, custom}`. Documentación oficial [aquí](https://quarto.org/docs/output-formats/page-layout.html) ].  Documentación oficial [aquí](https://quarto.org/docs/authoring/article-layout.html) y [aquí](https://quarto.org/docs/output-formats/page-layout.html#grid-customization). Además, desde Quarto 1.3 podemos redimensionar los elementos de nuestras webs y documentos .html, para, por ejemplo, dar más espacio a la sidebar o al margin: documentación [aquí](https://quarto.org/docs/output-formats/page-layout.html#grid-customization).
+
+Además, usando [divs y spans](https://quarto.org/docs/authoring/markdown-basics.html#divs-and-spans) podemos añadir clases y atributos, haciendo que determinados elementos de nuestro documento cambien sus "propiedades". En esta sección usaremos divs para hacer que determinadas partes de nuestro post se ajusten a distintos layout's y ocupen más o menos espacio en nuestros documentos.
+
+
+## Ejemplo (con imágenes)
+
+Para ver las distintas posibilidades que tenemos, **insertaremos una imagen** ocupando distintas áreas del artículo. Empezaremos situando la imagen en el margen. para ello habría que hacer lo siguiente: 
+
+```yaml
+::: {.column-margin}
+
+![](imagenes/post_21_img_01.png){fig-align="center"}
+
+:::
+```
+
+::: {.column-margin}
+![](imagenes/post_21_img_01a.png){fig-align="center"}
+:::
+
+:::{.column-body}
+![](imagenes/post_21_img_02a.png){fig-align="center"}
+:::
+
+
+
+:::{.column-body-outset}
+![](imagenes/post_21_img_03.png){fig-align="center"}
+:::
+
+
+:::{.column-page-inset}
+![](imagenes/post_21_img_04.png){fig-align="center"}
+:::
+
+
+:::{.column-page}
+![](imagenes/post_21_img_05.png){fig-align="center"}
+:::
+
+
+::: {.column-screen-inset}
+![](imagenes/post_21_img_06.png){fig-align="center"}
+:::
+
+
+::: {.column-screen}
+![](imagenes/post_21_img_07.png){fig-align="center"}
+:::
+
+
+Si queremos podemos llegar a ocupar el 100% de la pantalla. Sólo habría que indicarlo en las opciones de la imagen con `width="100%"`.
+
+::: {.column-screen}
+![](imagenes/post_21_img_08.png){fig-align="center" width="100%"}
+:::
+
+
+<br>
+
+## Ejemplo (con chunks)
+
+
+El output de los chunks también puede ocupar distintas áreas. Veamos  si un leaflet se puede poner en el margen:
+
+
+```{r}
+#| column: margin
+#| echo: fenced
+#| eval: true
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng = -4.7880, lat = 37.885, popup = "Rectorado de la Universidad de Córdoba\n (Sede de las XII Jornadas de usuarios de R)")
+```
+
+<br>
+
+Y ahora ocupando toda la pantalla:
+
+```{r}
+#| column: screen
+#| echo: fenced
+#| eval: true
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+addMarkers(lng = -4.7880, lat = 37.885, popup = "Rectorado de la Universidad de Córdoba\n (Sede de las XII Jornadas de usuarios de R)")
+```
+
+
+
+<br>
+
+Como no puede ser de otro modo, aún hay más opciones para el layout. Documentación [aquí](https://quarto.org/docs/authoring/article-layout.html#overflowing-content)
+
+<br>
+
+## Layout de las páginas
+
+Además, para el layout de toda la página tienes las opciones [aquí](https://quarto.org/docs/output-formats/page-layout.html#overview). Si quieres crear un "custom layout" quizás tengas que usar [Bootstrap CSS grid](https://getbootstrap.com/docs/5.1/layout/css-grid/).
+

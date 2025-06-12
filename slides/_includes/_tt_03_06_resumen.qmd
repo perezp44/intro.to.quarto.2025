@@ -1,0 +1,14 @@
+::: {.callout-note collapse="true" appearance="default" icon="false"}
+#### Resumen (tutorial nº 3)
+
+- En esta **tercera parte del taller** hemos visto como hacer que nuestro blog se convierta en una página personal con un blog.
+
+- Sólo había que intercambiar 2 ficheros: que `about.qmd` pasase a ser nuestra landing page.
+
+
+
+<br>
+
+- En los **siguientes tutoriales** veremos en profundidad las posibilidades que nos ofrece Quarto para escribir nuestros posts.
+
+:::

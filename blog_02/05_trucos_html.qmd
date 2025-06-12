@@ -1,0 +1,67 @@
+---
+title: "Trucos: html"
+date: 2024-02-23
+categories: [Quarto]
+image: "./thumbnails/thumbnail_generico.png"
+#toc-location: left
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Recopilando trucos sobre **html**.
+toc-depth: 3
+toc-expand: 1
+---
+
+
+
+
+## Trucos
+
+### Enlaces
+
+- Para que los **enlaces se abran en pestaña nueva** has de poner `{target="_blank"}`
+
+<br>
+
+### Añadir iframe
+
+Para añadir (en un documento .qmd) un iframe que contenga una web, se puede hacer de varias formas:
+
+- con `knitr::include_url()`
+
+```{{r}}
+#| echo: true
+knitr::include_url({"https://quarto.org/docs/guide/"})
+```
+
+<br>
+
+- con `<iframe>`: La página que se incrusta se especifica mediante el atributo `src` del elemento iframe. Por ejemplo, este fragmento creará un marco de 500 píxeles de ancho y 300 píxeles de alto donde se situará una página web. Dos ejemplos:
+
+```html
+<iframe src="https://quarto.org/" title="https://quarto.org/" width="960" height="500" data-external="1"></iframe>
+```
+<br>
+
+```html
+<iframe src="https://www.uv.es/" loading="lazy" style="width: 90%; height: 100px; border: 0px none;"></iframe>
+```
+
+<br>
+
+
+### Cuadro de texto con fondo de color
+
+- Lógicamente se puede hacer con css
+
+```markdown
+<style> div.pink { background-color:pink; border-radius: 5px; padding: 20px; height: 100px; width: 50%;} </style> <div class = "pink">
+Cuadro rápido de texto
+</div>
+```
+<style> div.pink { background-color:pink; border-radius: 5px; padding: 20px; height: 100px; width: 50%;} </style> <div class = "pink">
+Cuadro rápido de texto
+</div>
+
+
+

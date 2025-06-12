@@ -1,0 +1,55 @@
+---
+#title: "Mi primer blog con Quarto [(y Rmd)]{.fragment  .strike}"
+#date: 2022-11-24  #- ISO8601 YYYY-MM-DD format 
+#date-format: short
+format: 
+  revealjs:
+    scrollable: true
+    slide-level: 2
+    height: 900
+    width: 1600
+    toc: false
+    from: markdown+emoji  #- usar emojis https://gist.github.com/rxaviers/7360908)
+    center-title-slide: true
+    title-slide-attributes: #- atributos para la slide de titulo
+      data-background-color: "#562457"   #- color de R-ladies
+      #data-background-image: /imagenes/economia.gif
+      #data-background-size: contain      
+    preview-links: auto  #- true: abre un iframe en lugar de abrir ventana
+    #multiplex: true  #- para que puedas manejar las slides del publico
+    link-external-newwindow: true
+    transition: fade
+    #height: 900
+    #width: 1600
+    fontcolor: "#262d36"
+    highlight-style: a11y
+    code-line-numbers: true
+    number-sections: false
+    slide-number: c/t   # https://pandoc.org/MANUAL.html#structuring-the-slide-show
+    incremental: false   # https://quarto.org/docs/presentations/#incremental-lists
+#logo: imagenes/economia.gif
+footer: |
+        Slides hechas con [Quarto](https://quarto.org/) para las [XII Jornadas de Usuarios de R](http://r-es.org/12jr/)
+    #theme: [moon, custom.scss]
+---
+
+
+## Sobre mi
+
+<br>
+
+-   Profesor en la UV: [Econometría](https://perezp44.github.io/web.Econometria.GADE/) e [Intro a la Ciencia de datos con R](https://perezp44.github.io/intro-ds-22-23-web/)
+
+-   Entusiasta de R
+
+<br>
+
+
+-   No soy "bloguero", más bien soy creador y **liquidador de blogs**:
+
+    -   [2015, R & flowers](http://perezp44.github.io/) , con Jekyll
+    -   [2018, R & flowers V](https://rflowers5.netlify.app/), con Hugo y blogdown
+    -   [2020, R & flowers (o casi)](https://perezp44.github.io/my_blog_R-flowers-0.1.3/), con radix
+    -   [2021, pedro.j.perez blog's](https://perezp44.github.io/pjperez.web/), con Distill
+    -   [2022, R & flowers](https://perezp44.github.io/pjperez.blog.2022/), con Quarto
+

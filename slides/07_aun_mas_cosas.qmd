@@ -1,0 +1,769 @@
+---
+title: "Aún más cosas con Quarto"
+#date: 2024-05-20  #- ISO8601 YYYY-MM-DD format 
+subtitle: | 
+  {{< var my_subtitle2 >}}
+date-format: long
+lang: es
+format: 
+  revealjs:
+#    theme: dark
+    scrollable: true
+    slide-level: 3
+    height: 900
+    width: 1600
+    toc: false
+    from: markdown+emoji  #- usar emojis https://gist.github.com/rxaviers/7360908)
+    center-title-slide: true
+    title-slide-attributes: #- atributos para la slide de titulo
+      data-background-color: "#562457"   #- color de R-ladies
+      #data-background-image: /imagenes/economia.gif
+      #data-background-size: contain      
+    preview-links: auto  #- true: abre un iframe en lugar de abrir ventana
+    #multiplex: true  #- para que puedas manejar las slides del publico
+    link-external-newwindow: true
+    transition: fade
+    #height: 900
+    #width: 1600
+    fontcolor: "#262d36"
+    highlight-style: a11y
+    code-line-numbers: true
+    number-sections: false
+    slide-number: c/t   # https://pandoc.org/MANUAL.html#structuring-the-slide-show
+    incremental: false   # https://quarto.org/docs/presentations/#incremental-lists
+    #code-link: true
+
+#logo: imagenes/economia.gif
+#footer: |
+#        {{< var webcurso >}}
+revealjs-plugins: [pointer]
+#include-after-body: [./webexercises/webex.js]
+#css: [webexercises/webex.css]
+#include-after-body: [webexercises/webex.js]
+
+  # - lightbox
+  # - pointer  # hay q apretar q
+#css: assets/styles_slides_intro.css
+    #theme: [moon, custom.scss]
+embed-resources: true
+bibliography: references.bib
+---
+
+## Con Quarto se pueden hacer muu:scream_cat:uuchas más cosas aún!!! {.unnumbered background-color="#ebf5fb"}
+
+{{< var lineanaranja >}}
+
+<br>
+
+Veamos algunas de ellas
+
+
+### 7.0 Diferentes formatos de salida
+
+<br>
+
+
+- El curso se ha centrado en la realización de documentos `.html` pero desde Quarto se pueden generar documentos en [múltiples formatos](https://quarto.org/docs/output-formats/all-formats.html). 
+<br>
+
+- Veamos [aquí](https://quarto.org/docs/output-formats/all-formats.html) algunos de ellos!!!
+
+
+
+### 7.1 Journal articles
+
+- Tenemos disponibles **plantillas** para generar, directamente desde Quarto, documentos en el formato adecuado para un conjunto de Journals.
+
+. . . 
+
+- Puedes ver el **listado de Journals** [aquí](https://quarto.org/docs/journals/), [aquí](https://quarto.org/docs/extensions/listing-journals.html) y [aquí](https://github.com/mcanouil/awesome-quarto#journals). La documentación oficial la tienes [aquí](https://quarto.org/docs/journals/formats.html)
+
+. . . 
+
+::: {.callout}
+
+#### Además del listado digamos oficial hay muchas más plantillas. Por ejemplo:
+
+- La extensión de Quarto [apaquarto](https://github.com/wjschne/apaquarto) provee una template para crear documentos **APA Style 7th Ed** en `.docx`, .html. y `.pdf`. La web del proyecto está [aquí](https://wjschne.github.io/apaquarto/).
+
+
+- La extensión: [apaish](https://github.com/mvuorre/quarto-apaish) permite crear documentos pdf en el estilo de la APA 7th ed. via Typst. Tiene varios tipos: manuscript, document, and Journal (Similar to the APA7 LaTeX package, but  Typst produces them much faster and easier)
+
+
+- Extensión para journals de  **Taylor and Francis Template** [aquí](https://github.com/mikemahoney218/quarto-tandf)
+
+- Extensión para publicar en **arXiv** [aquí](https://github.com/mikemahoney218/quarto-arxiv)
+:::
+
+. . .
+
+::: {.callout}
+### Aún más plantillas
+
+- [Aquí](https://m.canouil.dev/quarto-extensions/extensions.html) puedes buscar si alguien ha escrito ya la plantilla que necesitas. 
+
+- Si nadie la ha escrito, igual [este post](https://christophertkenny.com/posts/2023-07-01-creating-quarto-journal-articles/) te ayuda a crearla
+:::
+
+### Journal articles (más cosas) {background-color="#DCDCDC"}
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión: más sobre publicación en Journals desde **Rmarkdown**
+
+- If you want to type in markdown to create a document in the "APA 6th Ed", I suggest using [papaja](https://frederikaust.com/papaja_man/)
+
+-   En **Rmarkdown** tenemos el paquete [rticles](https://pkgs.rstudio.com/rticles/) con plantillas para generar documentos de un conjunto amplio de [Journals](https://pkgs.rstudio.com/rticles/#templates)
+
+:::
+
+<br>
+
+. . . 
+
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión: más cosas sobre publicación en Journals desde Quarto
+
+-   Un [hilo de Mastodon](https://fosstodon.org/@MikeMahoney218/110016333650289913) con las vicisitudes de M. Mahoney para publicar en Elsevier desde Quarto:
+
+-   [Journals](https://www.software.ac.uk/which-journals-should-i-publish-my-software) para publicar código.
+
+-   [Esta charla](https://fosstodon.org/@Posit/110470020629680463) de Mine Çetinkaya-Rundel habla de este tema en el minuto 14 aprox.
+
+
+- Cómo crear una [Quarto Journal Article Templates](https://christophertkenny.com/posts/2023-07-01-creating-quarto-journal-articles/)
+:::
+
+---
+
+
+::: {.callout-important icon="false"}
+#### Tarea: Practicando con Journal articles
+
+
+::: panel-tabset
+## Tarea
+
+- Primero vamos a generar un paper para JSS (Journal of Statistical Software), y después generaremos un artículo para Elsevier 
+
+
+## JSS Journal
+
+El repo para la plantilla/extensión está [aquí](https://github.com/quarto-journals/elsevier)
+
+1. Instalar la extensión: hay que ejecutar en la Terminal:
+
+    ```bash
+    quarto use template quarto-journals/jss
+    ```
+    
+2. Ver qué se ha creado en el Qproject
+
+3. Procesar el archivo `templates.qmd` que se ha creado
+
+## Elsevier Journal
+
+- El repo para la plantilla/extensión está [aquí](https://github.com/quarto-journals/elsevier). Tiene muchas más variantes y opciones!!
+
+
+1. Instalar la extensión: hay que ejecutar en la Terminal:
+
+    ```bash
+    quarto use template quarto-journals/elsevier
+    ```
+    
+2. Ver qué se ha creado en el Qproject
+
+3. Procesar el archivo `elsevier.qmd` que se ha creado
+
+4. Hay muchas [más opciones](https://github.com/quarto-journals/elsevier?tab=readme-ov-file#format-options)
+
+
+:::
+:::
+
+
+### 7.2 Posters con Quarto
+
+Ahora ya es posible hacer **posters con Quarto**, pero [la gente estaba esperando](https://github.com/quarto-dev/quarto-cli/discussions/2205) hace tiempo. Por ejemplo:
+
+. . . 
+
+::: {.callout}
+
+- [Plantilla oficial](https://github.com/quarto-ext/typst-templates/tree/main/poster) de Quarto para un **typst-poster**. Se presentó en [esta charla](https://www.youtube.com/watch?v=t30sqFch2v0&list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&index=74), concretamente hacia el minuto 6. En el minuto 8 cuenta un poco cómo **trabajar con typst** desde un documento `.qmd`. 
+
+- David Schoch nos cuenta [aquí](https://fosstodon.org/@schochastics/111097462080543727) que él hizo un póster con otra plantilla: [aquí](https://github.com/schochastics/CRAN_collaboration/tree/main/typst-poster) tienes el repo.
+:::
+
+<br>
+
+. . .
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión: Posters con Rmarkdown
+
+-   Con `.Rmd` habían varios paquetes para hacer posters, por ejemplo con [posterdown](https://github.com/brentthorne/posterdown) o con [pagedown::poster_relaxed](https://github.com/rstudio/pagedown#resume-pagedownhtml_resume).
+
+
+- Un [post](https://loreabad6.github.io/posts/2023-04-26-betterposter-at-egu-2023/) de Lorena Abad donde cuenta sus truquillos para hacer un póster con el paquete [posterdown](https://github.com/brentthorne/posterdown)
+
+:::
+
+
+---
+
+::: {.callout-important icon="false"}
+#### Tarea: Creando  un typst-Poster con Quarto
+
+::: panel-tabset
+## Tarea
+
+<br>
+
+- Vamos a generar un póster con la plantilla "oficial" creada por el equipo de Posit.  [Aquí](https://github.com/quarto-ext/typst-templates/tree/main/poster) tienes el repo.
+
+## Pistas
+
+
+1. Para instalar la extensión y crear una plantilla hay que ejecutar en la Terminal:
+
+    ```bash
+    quarto use template quarto-ext/typst-templates/poster
+    ```
+    Durante el proceso nos pedirá un nombre para la carpeta donde crear la plantilla. Por ejemplo, puedes poner `my-poster`
+    
+2. Tendrás que procesar/render el fichero `./my-poster/my-poster.qmd` que se ha creado
+:::
+:::
+
+
+
+
+
+
+### 7. 3 Curriculums con Quarto
+
+- Si te interesa el tema, lo mejor es leer [este post](https://alexespinosaco.github.io/aerovagante/2024-02-18-cv/) de Álex Espinosa-Correa, en el que repasa algunas de las opciones disponibles y finalmente explica de forma muy detallada cómo crea su propia plantilla partiendo de [quarto-cv](https://github.com/mps9506/quarto-cv)
+
+. . .
+
+::: {.callout}
+
+#### CV's con Quarto
+
+
+-   Plantilla para crear CV con Quarto: [quarto-cv](https://github.com/mps9506/quarto-cv). Se inspira en [estas plantillas](https://github.com/svmiller/stevetemplates)
+
+-   Otra plantilla para hacer CV's, de `@BeaMilz`: el [código](https://github.com/beatrizmilz/resume/blob/master/docs/index.qmd) y el [resultado](https://beatrizmilz.github.io/resume/index.pdf). Tiene sus datos almacenados en este [Google Sheet](https://docs.google.com/spreadsheets/d/1iBxpNzwZWOrOwR__Y4FNDQ_3tpw-0trS0PVigsS4z6w/edit#gid=917338460)
+
+- [Aquí](https://github.com/produnis/quarto-cv) otra plantilla con un formato muy chulo
+
+- Otra extensión: [quarto-awesomecv-typst](https://github.com/kazuyanagimoto/quarto-awesomecv-typst). Esta vez contiene una plantilla typst que se inspira en esta [otra plantilla](https://github.com/posquit0/Awesome-CV) Latex y en [esta plantilla de Typst](https://typst.app/universe/package/modern-cv/)
+
+
+:::
+
+### CV's con Quarto (más cosas) {background-color="#DCDCDC"}
+
+
+::: {.callout}
+
+#### Convertir CV's a Quarto
+- Tengo el CV en un `.docx` ¿puedo pasarlo a Quarto? Sí, [aquí](https://sciences.social/@CoffeeBaseball/110027602855581359) la explicación. Aconsejan pasarlo primero a Google doc's
+
+
+- Para convertir un Google Doc en un Quarto book puedes usar el pkg  [quartificate](https://docs.ropensci.org/quartificate/)
+
+
+:::
+
+<br>
+
+. . .
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión: CV's con `.Rmd`
+
+-   Un **currículum** con [pagedown::html_resume](https://github.com/rstudio/pagedown#resume-pagedownhtml_resume).
+
+-   Currículum con [datadrivencv](https://github.com/nstrayer/datadrivencv) package. Tiene sus datos almacenados en un Excel
+
+:::
+
+
+---
+
+
+::: {.callout-important icon="false"}
+#### Tarea: Creando  un CV-typst con Quarto
+
+::: panel-tabset
+## Tarea
+
+<br>
+
+- Vamos a generar un CV con la plantilla creada por Kazuharu Yanagimoto [aquí](https://github.com/kazuyanagimoto/quarto-awesomecv-typst) tienes el repo.
+
+## Pistas
+
+Kazuharu lo explica muy bien, pero:
+
+1. Para instalar la extensión y crear una plantilla hay que ejecutar en la Terminal:
+
+    ```bash
+    quarto use template kazuyanagimoto/quarto-awesomecv-typst
+    ```
+    Durante el proceso nos pedirá un nombre para la carpeta donde crear la plantilla. Por ejemplo, puedes poner `my-cv`
+    
+2. Tendrás que procesar/render el fichero `./my-cv/cv.qmd` que se ha creado
+:::
+:::
+
+
+
+
+
+
+
+### 7.4 Más formatos con Quarto
+
+- Extensión para crear **diplomas**: [quarto-cert](https://github.com/produnis/quarto-cert)
+
+
+- Extensiones para **cartas**: [quarto-letter](https://github.com/mcanouil/quarto-letter) y [qletter](https://github.com/juliantao/qletter)
+
+- Extensión para **invoices**: [quarto-invoice](https://github.com/mcanouil/quarto-invoice)
+
+- [Aquí](https://m.canouil.dev/quarto-extensions/extensions.html#category=template) más extensiones
+
+- En [este toot](https://ruhr.social/@produnis/111766773526870010) de Prodounis puedes encontrar plantillas para: cartas, recibos ... y alguna cosas más.
+
+
+- Quarto [dashboards](https://quarto.org/docs/dashboards/): algunos [ejemplos](https://quarto.org/docs/dashboards/examples/)
+
+
+- **Shiny apps** con el paquete [shiny](https://shiny.posit.co/): algunos [ejemplos](https://shiny.posit.co/r/gallery/)
+
+
+
+### Más formatos con Quarto (más cosas) {background-color="#DCDCDC"}
+
+<br>
+
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión: Más formatos con Rmarkdown
+
+- El paquete [labeleR](https://ecologyr.github.io/labeleR/) permite crear **certificados** de asistencia, badges, ... 
+
+- Plantillas para tesis [aquí](https://llrs.dev/post/2022/05/09/writing-thesis-bookdown/). Más recursos para thesis [aquí](https://social.vivaldi.net/@hsorlie/112405545859681288)
+
+-   **Business cards** con [pagedown::business_card](https://github.com/rstudio/pagedown#business-cards-pagedownbusiness_card)
+
+-   **"Cuadros de mando"** con [flexdashboard](https://pkgs.rstudio.com/flexdashboard/): tienes algunos ejemplos [aquí](https://pkgs.rstudio.com/flexdashboard/articles/examples.html). Permite [distintos layouts](https://pkgs.rstudio.com/flexdashboard/articles/layouts.html), incluidos los [storyboards](https://pkgs.rstudio.com/flexdashboard/articles/using.html#storyboards), por ejemplo [este](https://beta.rstudioconnect.com/jjallaire/htmlwidgets-showcase-storyboard/htmlwidgets-showcase-storyboard.html)
+
+-   Formatos posibles gracias al paquete [rmdformats](https://github.com/juba/rmdformats)
+
+:::
+
+
+### Más formatos con Quarto (cosas de pdf) {background-color="#DCDCDC"}
+
+<br>
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Algunas plantillas para pdf
+
+- Un plantilla muy chula [aquí](https://github.com/mps9506/quarto-lapreprint)
+
+- Plantillas para hacer pretty pdfs: [aquí](https://nrennie.rbind.io/blog/making-pretty-pdf-quarto/) y [aquí](https://rfortherestofus.com/2021/01/announcing-pagedreport/)
+
+- Plantilla para [compact pdf](https://github.com/arcruz0/quarto-compact)
+
+- Nicola Rennie te dice cómo hacer pdfs parámetrizados: [aquí](https://meghan.rbind.io/blog/quarto-pdfs/)
+
+- Quarto YouTube [Playlist](https://www.youtube.com/playlist?list=PLDqZV53PcnYxnBYuEdSBxnOwdKLGaoKGg)
+
+- Title Pages [templates](https://nmfs-opensci.github.io/quarto_titlepages/) for adding a cover page to your Quarto pdf books. Un [ejemplo](https://nmfs-opensci.github.io/quarto_titlepages/titlepages/great-wave/article.pdf)
+
+- Great looking pdf with pagedown: vídeo [aquí](https://www.youtube.com/watch?v=jiYVkyWGrbs)
+
+- Muchísimas más en [Quarto awesome](https://github.com/mcanouil/awesome-quarto)
+
+:::
+
+
+###  7.5 Trabajando con documentos WORD
+
+- A veces necesitamos trabajar con documentos Word 😿 [... pero wait, **Quarto** nos puede ayudar con eso también 😎]{.fragment .fade-up}
+
+. . .
+
+- La documentación oficial de Quarto sobre cómo trabajar con **documentos Word** la tienes [aquí](https://quarto.org/docs/output-formats/ms-word.html)
+
+- Si no nos gusta el formato predeterminado de salida del `.docx` en Quarto, **podemos usar una plantilla/template**. Se explica [aquí](https://quarto.org/docs/output-formats/ms-word-templates.html)
+
+
+. . . 
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión: Más sobre `.docx` en Quarto
+
+Si queremos hacer otro tipo de cosas con documentos `.docx` podemos usar las extensiones: 
+
+-   [officedown](https://davidgohel.github.io/officedown/): facilita el formateo de informe de Word desde R. [Aquí](https://ardata-fr.github.io/officeverse/) un libro y dos posts: [aquí](https://www.business-science.io/code-tools/2024/02/24/make-microsoft-word-reports-officedown.html), otro [aquí](https://www.apreshill.com/blog/2021-07-officedown/)
+
+
+-   [officer](https://davidgohel.github.io/officer/): The officer package lets R users manipulate Word (.docx) and PowerPoint (\*.pptx) documents. In short, one can add images, tables and text into documents from R.
+
+-   [docxtractr](https://gitlab.com/hrbrmstr/docxtractr): Extract Data Tables and Comments from Microsoft Word Documents. [Aquí](https://www.brodrigues.co/blog/2023-03-18-docxtractr/) un post sobre su uso.
+:::
+
+
+###  7.5 Trabajando con documentos WORD
+
+<br>
+
+::: {.callout-important icon="false"}
+#### Tarea: Creando `.docx` desde Quarto
+
+::: panel-tabset
+## Tarea 7.5.a
+
+- Genera un `.docx` desde Quarto
+
+## Solución 7.5.a
+
+Por ejemplo:
+
+
+```yaml
+---
+title: "My Document"
+format:
+  docx:
+    toc: true
+    number-sections: true
+    highlight-style: github
+---
+```
+ 
+## Tarea  7.5.b
+
+- Genera un `.docx` desde Quarto, pero usando una plantilla
+
+## Solución 7.5.b
+
+Por ejemplo:
+
+```yaml
+format:
+  docx:
+    reference-doc: custom-reference-doc.docx
+```
+
+<br>
+
+- Sí, pero ¿cómo se hace una plantilla? En la terminal hay que:
+
+```bash
+quarto pandoc -o custom-reference-doc.docx \
+   --print-default-data-file reference.docx
+
+```
+
+:::
+:::
+
+
+
+
+
+
+## Con Quarto **AÚN** se pueden hacer muu:scream_cat:uuchas más cosas!! {.unnumbered background-color="#ebf5fb"}
+
+{{< var lineanaranja >}}
+
+<br>
+
+Veamos algunas de ellas
+
+
+
+### 7.6 Diagramas (con Mermaid y Graphviz)
+
+-   Quarto permite hacer **diagramas** con [Mermaid](https://mermaid.js.org/#/) y [Graphviz](https://graphviz.org/). Lo que, según la [documentación oficial](https://quarto.org/docs/authoring/diagrams.html#mermaid-theming), posibilita la creación de flowcharts, sequence diagrams, state diagrams, Gantt charts, and more **usando una sintaxis** (de texto) **similar a Markdown**.
+
+. . .
+
+-   Un ejemplo:
+
+<br>
+
+::: columns
+::: {.column witdth="35%"}
+El código
+
+```{{mermaid}}
+flowchart LR
+  qmd --> J([Jupyter])
+  qmd --> K([knitr])
+  J --> md
+  K --> md
+  md --> P([pandoc])
+  P --> pdf
+  P --> html
+  P --> docx
+```
+:::
+
+::: {.column witdth="50%"}
+El resultado:
+
+```{mermaid}
+%%| echo: false
+flowchart LR
+  qmd --> J([Jupyter])
+  qmd --> K([knitr])
+  J --> md
+  K --> md
+  md --> P([pandoc])
+  P --> pdf
+  P --> html
+  P --> docx
+```
+:::
+:::
+
+<br>
+
+---
+
+##### 7.6 Diagramas (con Mermaid y Graphviz)
+
+
+-   Otro ejemplo
+
+```{mermaid}
+%%| echo: fenced
+gantt
+dateFormat  YYYY-MM-DD
+title Adding GANTT diagram to mermaid
+excludes weekdays 2014-01-10
+
+section A section
+Completed task            :done,    des1, 2014-01-06,2014-01-08
+Active task               :active,  des2, 2014-01-09, 3d
+Future task               :         des3, after des2, 5d
+Future task2              :         des4, after des3, 5d
+```
+
+
+<br>
+
+::: {.callout icon="false"}
+- En los  "mermaid diagramms", **se pueden utilizar themes** en los. Documentación [aquí](https://quarto.org/docs/authoring/diagrams.html#using-mermaids-built-in-themes)
+
+- Ejemplos más complejos de Mermaid [aquí](https://mermaid.js.org/intro/)
+
+- Ejemplos de GraphViz [aquí](https://graphviz.org/gallery/)
+:::
+
+<br>
+
+
+### 7.7 Countdown
+
+-   Incluir un **reloj para hacer cuentas atrás** cuando pones un ejercicio a resolver en clase. Documentación [aquí](https://pkg.garrickadenbuie.com/countdown/#1)
+
+. . . 
+
+::: {.callout-important icon="false"}
+#### Tarea: Incorporar un "countdown" a un documento .qmd
+
+```{{r}}
+# devtools::install_github("gadenbuie/countdown")
+countdown::countdown(minutes = 0, seconds = 44)
+```
+:::
+
+<br>
+
+. . . 
+
+- [Aquí](https://github.com/produnis/quarto-timer) otra extensión con otro formato de timer
+
+
+### 7.8 Crear un glosario de términos
+
+-   El paquete [glossary](https://debruine.github.io/glossary/) permite crear un glosario de términos al final de un documento `.html` y referenciar términos del glosario en el texto.
+
+. . .
+
+-   ¿Cómo? No he llegado a probarlo pero básicamente tienes que
+
+|      - crear el glosario de términos en un documento `.yml`,
+
+|      - proporcionar su ruta a la función `glossary_path()`
+
+. . .
+
+-   Para añadir un término al glosario:
+
+```{r}
+#| eval: false
+glossary_add(term = "Ishi",
+             def = "Ishi fue el nombre dado al último miembro de la tribu de los yahi de California, Estados Unidos. La palabra ishi significa hombre en idioma yahi."
+```
+
+. . .
+
+-   Para referenciar palabras del glosario en el texto, se hace algo como:
+
+> Se considera a `glossary::glossary("Ishi")` el último nativo de la California septentrional que vivió fuera de la influencia de la cultura occidental. Su historia se popularizó a raíz de un libro de Theodora Kroeber, madre de Ursula K. Le Guin.
+
+. . .
+
+-   Además, puedes definir el estilo del glosario con `glossary_style()`. Por ejemplo:
+
+```{r}
+#| eval: false
+glossary::glossary_path("psyteachr.yml")
+glossary::glossary_style("purple", "underline")
+```
+
+<br>
+
+### 7.9 Crear botones de descarga
+
+-   Se trata de crear unos botoncitos (chulos!!) en nuestra web que sirvan para descargarse los documentos (o recursos) que queramos
+
+. . .
+
+<br>
+
+-   Vamos a probar a hacer estos botones con la extensión [downloadthis](https://github.com/shafayetShafee/downloadthis).
+
+<br>
+
+-   Para ello vamos a usar la documentación de la extensión y [este post](../blog/70_botoncitos-web.qmd){target="_blank"} del blog del curso.
+
+### 7.10 Extensiones
+
+-   En el curso se habla de las extensiones. En las slides nº 5, concretamente [aquí](https://perezp44.github.io/intro.to.quarto/slides/05_primer_web.html?q=extens#/extensiones) y en [este post](../blog/23_extensiones.qmd#listado-de-extensiones){target="_blank"} y en [este otro](/blog/70_botoncitos-web.html){target="_blank"}
+
+-   [Aquí](https://www.paltmeyer.com/blog/posts/quarto-extensions/) un post que cuenta como hacer extensiones
+
+. . .
+
+-   Por ejemplo podemos probar a usar la extensión [fontawesome](https://github.com/quarto-ext/fontawesome).
+
+
+<br>
+
+### 7.10 Extensiones: algunas extensiones chulas
+
+-   [code-fullscreen](https://github.com/shafayetShafee/code-fullscreen): permite que al pinchar en un **bloque de código**, este pase a estar **a pantalla completa**
+
+-   [nustshell](https://github.com/schochastics/quarto-nutshell): permite crear **"expandable explanations"**. Lo mejor es pinchar y ver los ejemplos
+
+-   [collapse-social-embeds](https://github.com/shafayetShafee/collapse-social-embeds): permite crear 6 tipos de **nuevos callouts** para social contents (Github gist, Twitter tweets, Mastodon toots, y vídeos de Loom, Vimeo y Youtube). Puedes ver un ejemplo [aquí](https://shafayetshafee.github.io/collapse-social-embeds/example.html). Seguramente acabaré usándolo en el curso!!
+
+-   [downloadthis](https://github.com/shafayetShafee/downloadthis): permite crear botones de descargar muy chulos. Ya la hemos usado
+
+-   [pointer](https://github.com/quarto-ext/pointer) y [quarto-spotlight](https://github.com/mcanouil/quarto-spotlight): 2 extensiones para **iluminar**/agrandar el **puntero del ratón** en revealjs slides
+
+-   [line-highlight](https://github.com/shafayetShafee/line-highlight): similar a `code-line-numbers` pero ahora es para documentos html, no para RevealJs slides
+
+-   [webR](https://github.com/coatless/quarto-webr): permite to run R code in the browser without the need for an R server to execute the code!!
+
+-   [Sverto](https://360-info.github.io/sverto/): permite incorporar Svelte components that can seamlessly react to your ObservableJS code!!!
+
+-   [quarto-animate](https://github.com/mcanouil/quarto-animate): permite crear unas animaciones muy "aparatosas". Puedes ver un ejemplo [aquí](https://m.canouil.dev/quarto-animate/)
+
+
+### 7.11 Trucos [CSS](https://www.w3schools.com/css/) y [SASS](https://sass-lang.com/)
+
+<br>
+
+-   En el improbable caso de que tengamos tiempo, veremos **algunos trucos para tunear** algunos aspectos de nuestros documentos y web/blog
+
+<br>
+
+-   Lo haríamos con [este post](../blog_02/04_trucos_css.qmd){target="_blank"} del blog de "truqillos" del curso
+
+# **AÚN** :scream_cat: más cosas!!! {background-color="#b8c2aa"}
+
+{{< var lineanaranja >}}
+
+<br>
+
+Ejemplos que se me han quedado en el tintero (quizás para otra edición)
+
+### 7.12 Runing Stata in Quarto documents
+
+Tampoco lo he probado, entre otras cosas porque no tengo Stata instalado, pero :
+
+. . .
+
+<br>
+
+-   Podemos correr código de Stata en Quarto document: [aquí](https://www.stata.com/python/pystata/notebook/Quick%20Start0.html) se explica cómo usando un paquete de Phyton, `pystata`.
+
+<br>
+
+-   [Stata Facade](https://github.com/CenterOnBudget/quarto-stata-facade): una extensión de Quarto that hides the evidence of faking Stata dynamic content with Python code blocks and Stata cell magic.
+
+<br>
+
+-   También se puede con R: [Statamarkdown](https://rpubs.com/quarcs-lab/stata-from-Rstudio) y [RStata](https://ignacioriveros1.github.io/r/2020/03/22/r_and_stata.html)
+
+### 7.13 Runing SPSS in Quarto documents
+
+<br>
+
+No he visto que sea posible correr SPSS code dentro de R, pero para que tenemos [R GUI's](https://r4stats.com/articles/software-reviews/r-gui-comparison/). Otra [comparación de GUI's](https://www.ubuntupit.com/best-free-graphical-user-interfaces-for-r/). Un post sobre [Jamovi](https://r4stats.com/2018/02/13/jamovi-for-r-easy-but-controversial/)
+
+. . .
+
+<br>
+
+-   [r2spss](https://github.com/aalfons/r2spss) y su [vignette](https://cran.r-project.org/web/packages/r2spss/vignettes/r2spss-intro.pdf)
+
+-   [Rmimic](https://github.com/mattpontifex/Rmimic)
+
+-   [expss](https://cran.r-project.org/web/packages/expss/)
+
+### 7.14 Shiny en Quarto
+
+-   <https://appsilon.com/interactive-quarto-report-translation-tutorial/#final>
+
+### 7.15 Queries to bibliographc databases
+
+-   [**openalexR**](https://docs.ropensci.org/openalexR/): "helps you interface with the [OpenAlex](https://docs.ropensci.org/openalexR/) API to retrieve bibliographic infomation about publications, authors, venues, institutions and **concepts**"
+
+-   [**rscielo**](https://github.com/meirelesff/rscielo): "offers functions to easily scrape bibliometric information from scientific journals and articles hosted on the [Scileo Platform](https://www.scielo.br/)
+
+-   [**JCRImpactFactor**](https://cran.r-project.org/web/packages/JCRImpactFactor/index.html): "JCRImpactFactor: Journal Citation Reports ('JCR') Impact Factor by Clarivate Analytics"
+
+-   [Scrapping WOS](https://stackoverflow.com/questions/27754051/how-to-retrieve-informations-about-journals-from-isi-web-of-knowledge)
+
+-   [Bibliometrix](https://github.com/massimoaria/bibliometrix): "bibliometrix package provides a set of tools for quantitative research in bibliometrics and scientometrics"
+
+-   [RISmed](https://cran.r-project.org/web/packages/RISmed/index.html): A set of tools to extract bibliographic content from the National Center for Biotechnology Information (NCBI) databases, including PubMed.
+
+
+### 7.15 Algunos ejemplitos
+
+- [Quarto sketchy html](https://github.com/schochastics/quarto-sketchy-html)
+
+- [Slides chulas](https://mine-cetinkaya-rundel.github.io/2022-repro-toronto/#/title-slide) pero sencillas de Mine. El repo [aquí](https://github.com/mine-cetinkaya-rundel/2022-repro-toronto)
+
+- Un ejemplo de slides chulas: [Intro to Quarto](https://ivelasq.quarto.pub/intro-to-quarto/), el repo [aquí](https://github.com/ivelasq/2022-10-27_intro-to-quarto).
+
+- Un **póster** con [posterdown](https://github.com/brentthorne/posterdown) o con [pagedown::poster_relaxed](https://github.com/rstudio/pagedown#resume-pagedownhtml_resume).
+
+- **Business cards** con [pagedown::business_card](https://github.com/rstudio/pagedown#business-cards-pagedownbusiness_card)
+
+- **"Cuadros de mando"** con [flexdashboard](https://pkgs.rstudio.com/flexdashboard/): tienes algunos ejemplos [aquí](https://pkgs.rstudio.com/flexdashboard/articles/examples.html). Permite [distintos layouts](https://pkgs.rstudio.com/flexdashboard/articles/layouts.html), incluidos los [storyboards](https://pkgs.rstudio.com/flexdashboard/articles/using.html#storyboards), por ejemplo [este](https://beta.rstudioconnect.com/jjallaire/htmlwidgets-showcase-storyboard/htmlwidgets-showcase-storyboard.html)

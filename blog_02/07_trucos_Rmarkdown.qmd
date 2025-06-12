@@ -1,0 +1,110 @@
+---
+title: "Trucos: Rmarkdown"
+date: 2024-02-25
+categories: [Quarto]
+image: "./thumbnails/thumbnail_generico.png"
+#toc-location: left
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Recopilando trucos sobre **Rmarkdown** y knitr.
+toc-depth: 3
+toc-expand: 1
+---
+
+
+# Rmarkdown
+
+<br>
+
+### Ver todas las opciones de los chunks
+
+- Sale de [este post](https://blog.djnavarro.net/posts/2023-12-30_knitr-hooks/) de Danielle Navarro
+
+```{r}
+#| eval: false
+#- salen las opciones por defecto
+options <- knitr::opts_chunk$get()
+```
+
+<br>
+
+
+### Ejecutar `.R` en chunks
+
+La explicación [aquí](https://bookdown.org/yihui/rmarkdown-cookbook/option-code.html?mkt_tok=NzA5LU5YTi03MDYAAAGQMagsKcpH64qKKl6N7nRXQ1h8czWbEntH51TxrhnxuHUuqnZNna4Pewqn44TlYa2De1mfUXcqH6x5mAJTOgC_00egAEkoM2mGNVTJ7bqHHIY)
+
+```{{r, file = "some-file.R"}}
+```
+
+El archivo `some-file.R` ha de estar en la misma carpeta que el `.qmd`
+
+<br>
+
+
+### convertir Rmd chunks a qmd
+
+- Para convertir Rmd chunks a qmd: 
+
+```r
+knitr::convert_chunk_header("document.qmd", output = identity)
+```
+
+<br>
+
+### Compilar .tex
+
+- Compilar .tex a pdf desde RStudio: `tools::texi2pdf()`
+
+
+<br>
+
+
+
+### CHILD
+
+- truco `knitr::knitr_child()` para generar distintas tablas y títulos en `.qmd` programáticamente: <https://fosstodon.org/@MickaelCanouil/109919710663908424>
+
+<br>
+
+
+### Inline code
+
+- Explican bien lo de scaping back-ticks: <https://www.markdownguide.org/basic-syntax/#escaping-backticks>. Estos [otros](https://rviews.rstudio.com/2017/12/04/how-to-show-r-inline-code-blocks-in-r-markdown/) no lo hacen tan bien
+
+- inline literal code: `` ` r 2+2` ``              `` `abc` ``       ``` `` `abc` `` ```
+
+
+- escribir esto: ``` `` `abc` `` ```   para que se muestre esto: `` `abc` `` 
+
+
+
+<br>
+
+
+
+### Meta-Markdown
+
+- Automatizar la creación de una bullet list: [aquí](https://stackoverflow.com/questions/74185749/automating-bullet-lists-in-quarto-with-word-output)
+
+- Pasar un enlace à la md, a enlace en html. [aquí](https://fosstodon.org/@smach/110028277680618243) hilo de Shanon
+
+<br>
+
+
+### Convertir Inline footnotes
+
+**Convertir Inline footnotes** to Regular footnotes in Markdown: <https://yihui.org/en/2023/02/markdown-footnotes/>
+
+<br>
+
+---------------------
+
+<br>
+
+
+# ZZ. Biblio
+
+- [Writing knitr hooks](https://blog.djnavarro.net/posts/2023-12-30_knitr-hooks/), de danielle Navarro. 
+
+- [Generating dynamic contents in R Markdown and Quarto](https://www.qiushiyan.dev/posts/dynamic-rmd-quarto/): volvio a salir al ver     [este toot](https://mastodon.social/@rmflight/112531882832970164)

@@ -1,0 +1,61 @@
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+
+# options specified here will apply to all posts in this folder
+
+# freeze computational output
+# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+freeze: true
+
+
+# Enable banner style title blocks: https://quarto.org/docs/authoring/title-blocks.html
+title-block-banner: true      #- imagenes/economia.gif
+#title-block-style: default   #- {none, plain, default}
+#title-block-banner-color : "#FFDDFF"
+
+
+
+# Enable CC licence appendix
+license: "CC BY"
+
+# Default for table of contents
+toc: true
+toc-title: Índice
+toc-location: left
+
+
+# Default knitr options
+execute:
+  echo: true
+  message: false
+  warning: false
+  eval: true
+
+# Default author
+author:
+  - name: Pedro J. Pérez
+    #url: https://djnavarro.net
+    affiliation: Universitat de València
+    affiliation-url: https://www.uv.es
+    orcid: 0000-0001-9375-6330
+
+# Default fields for citation
+citation: true
+
+# image as thumbnail
+# image: "imagenes/thumbnail.png"
+
+#- https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/16-code-tools/
+code-fold: true
+code-tools: true
+code-link: true
+
+#- https://quarto.org/docs/authoring/cross-references.html#options
+crossref:
+  fig-title: Gráfico   # (default is "Figure")
+  tbl-title: Tabla     # (default is "Table")
+  #title-delim: —      # (default is ":")
+  
+```

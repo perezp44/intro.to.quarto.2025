@@ -1,0 +1,13 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.6: bloques de **código no ejecutable**
+
+- Utiliza el archivo `prueba_01.qmd` para incorporar:
+
+  - un bloque de código R **no ejecutable**
+  
+  - un bloque de código Phyton **no ejecutable**
+
+
+<br>
+
+:::

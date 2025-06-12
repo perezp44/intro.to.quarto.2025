@@ -1,0 +1,141 @@
+---
+title: "Cross references"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+    ¿Cómo insertar referencias cruzadas en documentos Quarto?
+date: 2023-01-31
+categories: [cross-references]
+image: "./thumbnails/thumbnail_31_cross-references.png"
+title-block-banner: true #- {true, false }
+draft: false
+toc: true
+#toc-location: left
+#toc-depth: 3
+#number-sections: true
+#number-depth: 2
+sort: "date asc"    #-"title"
+fields: [image, date, description, categories, title, author, reading-time]
+code-line-numbers: false
+#css: assets/my_css_file.css
+#bibliography: references.bib
+#nocite: |
+#  @*
+---
+
+En muchos informes/documentos científico-técnicos hay que incluir en el texto referencias a las tablas, ecuaciones, gráficos etc ... [Aquí](https://quarto.org/docs/authoring/cross-references.html) y [aquí](https://quarto.org/docs/books/book-crossrefs.html) la documentación oficial. Vamos a ello.
+
+## Intro
+
+Se pueden gestionar las referencias a tablas, gráficos, ecuaciones etc... como toda la vida; es decir, a mano. Esto implica que si introducimos (o quitamos), por ejemplo una nueva tabla, tendremos que cambiar la numeración a mano. Vamos a ver (un poco) como lo haríamos con Quarto.
+
+Las **ventajas**: (i) no tendremos que hacerlo a mano con el ahorro de tiempo y errores e inconsistencias que eso implica en el documento; (ii) podremos navegar fácilmente entre las referencias y los elementos referenciados, (iii) podremos cambiar "fácilmente" el formato de numeración y (iv) se pueden usar también para incorporar un índice o TOC(table of contents) que permita navegar por el documento.
+
+**Inconveniente**: tenemos que aprender a hacerlo.
+ 
+## Cross-references en Quarto
+
+Quarto permite cross-referencias los siguientes elementos:
+
+- Imágenes (también  gráficos generados con código)
+- Tablas 
+- Secciones dentro del documento (incluso otros documentos)
+
+Para referenciar un elemento hay que introducir lo que se conoce como una "reference tag". 
+
+Cada entidad (sea tabla, gráfico ...) que queramos cross-referenciar necesita dos cosas:
+
+- un `label` que hace de **identificador** único.   
+
+    Este label que hace identificador siempre ha de comenzar con un `#` seguido de unos caracteres que identifican el tipo de elemento (por ejemplo `#fig-`) finalizando con una parte decisión del escritor que para mi es realmente el label. Por ejemplo un label válido para una "figura" sería `#fig-mi-imagen-chula`, para una tabla sería `#tbl-otra-tabla-chula`.
+    
+- un `caption` o descripción
+
+## Hagamos nuestras dos primeras cross-referencias
+
+
+### Primero una imagen
+
+En el texto de nuestro documento hemos de poner algo como:
+
+```markdown
+![Una imagen que vamos a referenciar](./imagenes/post_24_img_01.jpg){#fig-001}
+```
+
+Fíjate que el anterior chunk (no ejecutable) insertará una imagen (la veremos más abajo) y permite referenciarla ya que contiene un caption `[Una imagen que vamos a referenciar]` y un `label` que hace de identificador (`#fig-001`). 
+
+La imagen se mostrará así:
+
+![Una imagen que vamos a referenciar](./imagenes/post_24_img_01.jpg){#fig-001 fig-align="center" width="25%"}
+
+
+Para referenciarla, para hacer referencia a esta imagen, en el texto de nuestro documento hemos de usar unas marcas: `@fig-001`. Por ejemplo si en nuestro documento fuente (.qmd) tenemos un párrafo como este:
+
+```markdown
+Como puede verse en @fig-001 nos hacemos a la idea de que .... Pedro no sabe buscar imÁgenes nuevas
+```
+
+Y veremos algo como esto:
+
+Como puede verse en @fig-001 nos hacemos a la idea de que .... Pedro no sabe buscar imágenes nuevas
+
+### Ahora referenciamos una tabla
+
+Acuérdate que para referenciarla necesitaremos un label y una caption. Más abajo tienes la sintaxis para ello. Es un poco diferente a la de las tablas; ahora es: `: Mys notas {#tbl-001-notas}`
+
+
+```markdown
++-------------------------------------+-----------------------------+
+| Nombre                              | Nota                        |
++=====================================+=============================+
+|     Pedro                           | 5                           |
++-------------------------------------+-----------------------------+
+|     María                           | 11                          |
++-------------------------------------+-----------------------------+
+
+: Mys notas {#tbl-001-notas}
+```
+Abajo puedes ver como quedaría la tabla:
+
++-------------------------------------+-----------------------------+
+| Nombre                              | Nota                        |
++=====================================+=============================+
+|     Pedro                           | 5                           |
++-------------------------------------+-----------------------------+
+|     María                           | 11                          |
++-------------------------------------+-----------------------------+
+
+: Mys notas {#tbl-001-notas}
+
+
+Para referenciarla, para hacer referencia a esta tabla, en el texto de nuestro documento hemos de usar unas marcas, en este caso  `@tbl-001-notas`. Por ejemplo si en nuestro documento fuente (.qmd) tenemos un párrafo como este:
+
+
+
+```markdown
+Como puede verse en @@tbl-001-notas podemos ver las notas que han sacado Pedro y María ... Pedro no molt be!!
+```
+
+Podremos ver algo como lo siguiente:
+
+Como puede verse en @@tbl-001-notas podemos ver las notas que han sacado Pedro y María ... Pedro no molt be!!
+
+## Elementos referenciables
+
+Como puedes ver en la [documentación oficial](https://quarto.org/docs/authoring/cross-references.html), también se pueden referenciar:
+
+- las **imágenes creadas con código** (por ejemplo gráficos). 
+- las **tablas creadas con código**
+- ecuaciones
+- secciones de un documento
+- chunks
+- teoremas y pruebas
+- capítulos
+
+
+## Más cosas
+
+Hay muchos más detalles que nos permiten por ejemplo incluir un listado de figuras o de tablas; también podemos modificar las cross-references a nuestro gusto o al gusto de los editores, pero no los vamos a ver: os remito a la documentación oficial, [aquí](https://quarto.org/docs/authoring/cross-references.html) y [aquí](https://quarto.org/docs/books/book-crossrefs.html)
+
+
+La documentación de las "text-references" y "cross-references" de Bookdown están [aquí](https://bookdown.org/yihui/rmarkdown/bookdown-markdown.html#text-references). No he probado si funcionan en Quarto.

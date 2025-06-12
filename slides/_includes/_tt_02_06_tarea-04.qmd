@@ -1,0 +1,6 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.4: Volver a generar el blog
+
+- Una vez hechas las **tareas 2 y 3**, puedes crear de nuevo el blog con `Build > Web page`.
+
+:::

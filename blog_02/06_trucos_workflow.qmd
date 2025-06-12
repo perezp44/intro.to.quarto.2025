@@ -1,0 +1,137 @@
+---
+title: "Trucos: workflow"
+date: 2024-02-24
+categories: [Quarto]
+image: "./thumbnails/thumbnail_generico.png"
+#toc-location: left
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Recopilando trucos sobre **workflow** en Quarto.
+toc-depth: 3
+toc-expand: 1
+---
+
+
+
+## Render
+
+- Cuando haces el Render de un QMD ocurre lo siguiente: se abre un background job, donde primero, **knitr** ejecuta los chunks y crea un nuevo documento `.md` que ya incluye el código y su output; ese fichero `.md` es procesado por **pandoc** que crea el output final.
+
+
+<br>
+
+### Render
+
+- Se puede hacer el **render de un `.qmd`** de varias formas: 
+
+
+```bash
+#- desde la Terminal
+quarto render document.qmd  # default is html
+quarto render document.qmd --to pdf
+quarto render document.qmd --to docx
+```
+
+```r
+#- desde la Consola
+quarto::quarto_render("document.qmd") # defaults to html
+quarto::quarto_render("document.qmd", output_format = "pdf")
+```
+
+<br>
+
+### Render con opciones
+
+ - También se puede hacer el **render con opciones**, p.ej:     
+
+```bash
+quarto render document.qmd --to html -M code-fold:true                  
+quarto render document.qmd --to html -M code-fold:true -P alpha:0.2 -P ratio:0.3     
+```
+
+<br>
+
+### Render book a epub
+
+- Para crear epub en Quarto bastaría con hacer en la Terminal: 
+
+```bash
+quarto render my_file.qmd --to epub
+```
+
+- Aún así, [Bruno Rodrigues](https://www.brodrigues.co/blog/2023-03-03-quarto_books/) y [Sam Parmar](https://parmsam.medium.com/rendering-r-books-to-epub-using-quarto-for-easier-reading-a5b1bfa575ff) nos cuentan algunos truquillo sobre como hacer render de un **Quarto book a epub**, o a pdf.
+
+<br>
+
+### Parametrised reports
+
+- Para hacer el render desde la Terminal **con parámetros**: 
+
+    ```bash
+     quarto render annual_report.qmd -P year:2024
+    ```
+    
+
+- En parametrised reports, cuando haces el render, me gustaría que los archivos de salida se guardasen en otro directorio, pero se ve que esto no es fácil-fácil, al menos aún. En [este toot](https://fediscience.org/@jhelvy/109801352523104934) explican que como no encontraron la solución, así que lo que hace es hacer el render en la misma carpeta donde está el script, **pero** luego mueve los archivos que se han generado. para moverlos usa
+
+```r
+file.copy(full_path_source, full_path_destination)
+```
+
+<br>
+
+### Ejecutar script from Terminal
+
+
+- Si quieres ejecutar un R script desde la Terminal:  
+
+```bash
+Rscript -e "rmarkdown::render('document.Rmd')"
+```
+
+<br>
+
+### Word a .md
+
+
+- Para pasar un documento Word a `.md` **utilizando Pandoc**. Lo vi en este [toot](https://mathstodon.xyz/@tschenkel/110027618199749971)
+
+```bash
+pandoc -f docx -t markdown foo.docx -o foo.markdown
+```
+
+<br>
+
+- Para pasar un documento Word a `.md` **desde R**:
+
+```r
+rmarkdown::pandoc_convert("input.docx", to = "md")
+```
+
+<br>
+
+### Truqillos to render
+
+
+- Cómo hacer el render rápidamente (ptse): <https://github.com/quarto-dev/quarto-cli/discussions/6173>
+
+
+- Truco para q se haga el render solo en partes; <https://fosstodon.org/@mccarthymg/111889746218019391>. De Rennie.
+
+
+<br>
+
+----------------
+
+<br>
+
+## Instalación
+
+- **prework de T. Mock**: In order to create PDFs you will need to install a recent distribution of LaTeX. We recommend the use of TinyTeX (which is based on TexLive):
+
+```yaml
+quarto install tool tinytext
+quarto install tool chromium
+```
+

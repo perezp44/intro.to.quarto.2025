@@ -1,0 +1,7 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.9: Practicando con el **editor visual**
+
+-   Incorpora una imagen a nuestro `.qmd`
+
+-   Incorpora una tabla
+:::

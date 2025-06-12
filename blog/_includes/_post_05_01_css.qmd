@@ -1,0 +1,43 @@
+```{r, eval = FALSE}
+
+/* css styles: algunos q usaba en xaringan */
+
+.rotate-45 {transform: rotate(45deg); }
+.large { font-size: 140%; }
+.small { font-size: 80%; }
+   
+   
+/*  ----------------- colores  -------------- */ 
+.purple{ color: #c077af; }
+.red { color: #ef342a; }
+.orange { color: #f57125; }
+.orange2 {color: #F58634;}
+.blue { color: #22b6ed; }
+.green { color: #1fb27f; }
+.green2 {color: #007965;}
+.yellow { color: #faca07; }
+.yellow2 {color: #FFCC29;}
+.brown {color: #a84d18; }
+
+
+/*  ----------------- una nueva clase de inversa: muy chula  -------------- */ 
+.inverse2 {
+  background: #69686d;
+  color: #f2f2f6;
+}
+.inverse2 a {
+  color: #b2d68c;
+}
+.inverse2 h1, .inverse2 h2 {
+  color: #f2f2f6;
+  font-size: 72px;
+  line-height: 1.2em;
+}
+
+
+.textverd{
+  color: #b2d68c;
+  font-size: 60px;  
+}
+
+```

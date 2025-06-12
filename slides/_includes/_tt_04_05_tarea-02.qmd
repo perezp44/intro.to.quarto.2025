@@ -1,0 +1,38 @@
+::: {.callout-important icon="false"}
+#### Tarea 4.2: Modificando el tercer post
+
+- Modifica el contenido de `/.posts/my-primer-post/index.qmd`. Por ejemplo, puedes dejarlo así:
+
+
+````markdown
+---
+title: "Mi primer post con Quarto"
+author: "Pedro J. Pérez"
+date: "2022-10-25"
+categories: [R, quarto]
+image: "thumbnail.jpg"
+---
+
+Este es mi **primer post** con Quarto!!!!
+
+```{{r}}
+sqrt(2 + 2)
+```
+
+Voy a poner una imagen:
+
+![](thumbnail.jpg)
+
+
+Acabé con mi primer post. FIN
+  
+````
+
+- Sustituye `thumbnail.jpg` por otro archivo
+
+- La opción de yaml (linea 6): `image: "thumbnail.jpg"` nos permite elegir la imagen que acompañara al post en la listing page. 
+
+
+
+- Vuelve a regenerar el blog: `Build > Render Website`
+:::

@@ -1,0 +1,65 @@
+---
+title: "Tuneado de un post con opciones de YAML"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+  Viendo cómo modificar la apariencia de un post con opciones de YAML.
+date: 2023-01-29
+categories: [Quarto, tuneado yaml]
+image: "./thumbnails/thumbnail_29_tuneado-yaml.png"
+#title-block-banner: true #- {true, false }
+title-block-banner: thumbnails/thumbnail_29_tuneado-yaml.png
+draft: false
+toc: true
+#toc-location: left
+toc-depth: 3
+toc-title: Toc modificado por mi
+#css: assets/my_css_file.css
+#bibliography: references.bib
+#nocite: |
+#  @*
+#- cosas de tuneado yaml
+#format: html
+#linkcolor: "red"
+#monobackgroundcolor: "green" #- color de los cuadros de resultados de evaluar código
+
+fontcolor: green          #- color del texto
+linkcolor: purple         #- color de los enlaces
+monobackgroundcolor: red  #- color de los cuadros de resultados de evaluar código
+fontsize: 0.6em           #- tamaño del texto (más pequeño de lo normal: 1)
+linestretch: 2.3          #- tamaño entre las lineas (1.6 es lo "normal")
+---
+
+A este post le he puesto en el YAML algunas opciones un poco raras. Deberían haberse ejecutado pero ... no ha salido. Si las pusiésemos en el archivo `_quarto.yml` sí funcionaría pero entonces empeoraríamos todo la web, así que mejor no hacerlo.
+
+Concretamente le he puesto estas opciones:
+
+```{r, eval = FALSE}
+fontcolor: green          #- color del texto
+linkcolor: purple         #- color de los enlaces
+monobackgroundcolor: red  #- color de los cuadros de resultados de evaluar código
+fontsize: 0.6em           #- tamaño del texto (más pequeño de lo normal: 1)
+linestretch: 2.3          #- tamaño entre las lineas (1.6 es lo "normal")
+```
+
+
+
+
+## Veamos como queda
+
+Va a empeorar bastante
+
+
+
+```{r}
+2 + 2
+```
+
+## Un enlace
+
+Vamos a ver como quedaría un link. Por ejemplo [este enlace](https://www.wikidata.org/wiki/Wikidata:Main_Page)
+
+
+
+[aqui](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color)
+

@@ -1,0 +1,20 @@
+::: {.callout-warning collapse="true" appearance="default" icon="false" width="100%"}
+#### Extensiones: ver el contenido  del archivo `index.qmd`
+
+- El archivo  `index.qmd` genera a `index.html`:
+
+
+::: { layout-ncol="1"}
+![](./imagenes/tt_01/img_08.png){fig-align="center"}
+:::
+
+- Como vemos, el archivo <mark>`index.qmd`</mark> no tiene contenido, <mark>sólo contiene un `yaml`</mark> o encabezamiento
+
+- Ese encabezamiento <mark>genera una lista</mark> (`listing:`) <mark>con los contenidos</mark> (con los ficheros .qmd) <mark>que haya en la carpeta `posts`</mark>.
+
+- Sí, has imaginado bien, en la carpeta `posts` es donde estarán los ficheros .qmd que generarán los posts
+
+- El resto del yaml son opciones para nuestro blog. Por ejemplo, `sort: "date desc"` ordenará el listado de post de más reciente a más antiguo.
+
+- Lo iremos viendo
+:::

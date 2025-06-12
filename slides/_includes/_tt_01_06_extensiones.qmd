@@ -1,0 +1,27 @@
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensiones: formas alternativas de generar el blog
+
+- También podríamos haber generado el blog usando la Consola o la **Terminal** desde RStudio. 
+
+- En ambos casos hay que estar en el Qproject "blog_prueba_00"; es decir, "blog_prueba_00" es el working directory
+
+- Desde la **Terminal**
+
+  ```{bash}
+  #| code-line-numbers: false
+  #| eval: false  #| code-fold: false
+  quarto render        
+  ```
+  
+- desde la **Consola** de R
+
+
+  ```{r, eval = FALSE}
+  #| code-line-numbers: false
+  #| code-fold: false
+  install.packages("quarto")    
+  quarto::quarto_render("index.qmd")    
+  ```
+
+:::
+

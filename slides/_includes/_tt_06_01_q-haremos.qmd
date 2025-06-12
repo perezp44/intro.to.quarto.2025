@@ -1,0 +1,9 @@
+::: {.callout-tip  appearance="default" icon="false"}
+## ¿Qué haremos en este tutorial?
+
+- Ver distintas opciones para adaptar el blog a nuestras necesidades
+
+
+- En concreto veremos [3 formas de hacerlo]{.underline}: a través de opciones de Quarto en el yaml, con CSS y con SASS
+
+:::

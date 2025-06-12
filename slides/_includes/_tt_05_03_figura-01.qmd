@@ -1,0 +1,4 @@
+::: {layout-ncol=1}
+
+![](./imagenes/tt_01/img_19c.png){fig-align="center"}
+:::

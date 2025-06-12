@@ -1,0 +1,10 @@
+::: {.callout-tip  appearance="default" icon="false"}
+## ¿Qué haremos en este tutorial?
+
+- Convertir nuestro blog en una [web personal]{.underline}.
+
+- Haremos que la "landing page" o Home de  nuestra web no sea una página con el listado de posts, sino que sea una página en la que se reciba a los futuros visitantes de nuestra web
+
+- Para ello solo tendremos que cambiar el nombre de dos ficheros y referenciar uno de ellos en `_quarto.yml`.
+
+:::

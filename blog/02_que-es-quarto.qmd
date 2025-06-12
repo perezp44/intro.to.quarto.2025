@@ -1,0 +1,141 @@
+---
+title: "¿Qué son R, RStudio y Quarto?"
+date: 2023-01-02
+categories: [reproducibilidad]
+image: "./thumbnails/thumbnail_01_R-RStudio.png"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+  En el curso usaremos 3 programas: R, RStudio y Quarto, así que la primera tarea es saber qué son y para qué sirven: conviene saber diferenciar entre ellos.
+---
+
+
+En el curso usaremos R, RStudio y Quarto. Los 3 son programas de ordenador, pero son muy diferentes. Conviene diferenciarlos y saber para qué sirve cada uno. Trato de explicarlo.
+
+## ¿Qué es R?
+
+R es un programa de ordenador, una pieza de software, **pero** principalmente es un **lenguaje de programación** y un entorno para hacer estadística o ciencia de datos.
+
+
+La [página oficial de R](https://www.r-project.org/about.html) dice que:
+
+> R is a language and environment for statistical computing and graphics.
+
+
+Actualmente **R es el principal lenguaje** usado (junto con Phyton) en el **campo de la estadística y la ciencia de datos**.
+
+
+R fue creado por 2 profesores de la universidad de Auckcland: Ross Ihaka y Robert Gentleman. Algunos dicen que el nombre R viene de sus iniciales, otros piensan que se debe a que para crear R se basaron en el lenguaje S^[Un programa para hacer estadística creado en los Bell Labs por John Chambers entre otros]. Quizás se deba a las 2 cosas.
+
+
+R. Ihaka y R. Gentleman crearon R en 1993 con el objetivo de tener un programa para enseñar estadística en sus clases. En 1995 decidieron que R pasase a ser a dominio público, de forma que actualmente es un proyecto GNU con licencia GPL; es decir, es **software libre**. 
+
+En 1997 se creo un "consejo de sabios" (The R Core Team) para desarrollar y extender las capacidades de R. La primera versión oficial de R, la 1.0.0 vio la luz en febrero de 2000.
+
+
+Actualmente el entorno R es el resultado de toda una comunidad de usuarios.
+
+
+
+::: {.callout-warning icon="false" collapse="true"}
+##### ¿R o Phyton?
+
+En la actualidad, en el campo de la ciencia de datos, hay 2 alternativas, Phyton o R. De hecho hay un intenso debate sobre cual es más adecuado. Hay muchas opiniones al respecto, pero yo he seleccionado [esta](https://mchow.com/posts/data-science-cbk/) y [esta](https://blog.shotwell.ca/posts/why_i_use_r/), aunque la verdad, tampoco es necesario elegir un sólo lenguaje, [R y Phyton pueden colaborar](https://blog.rstudio.com/2019/12/17/r-vs-python-what-s-the-best-for-language-for-data-science/).
+
+R se está convirtiendo en el software estadístico de referencia en la mayoría de los centros de investigación y universidades, y su uso se está extendiendo también dentro de la empresa privada. Entre las empresas que usan R están: Google, Facebook, Twitter, Microsoft, IBM, Uber, Ford, Airbnb, American Express,  Barclays Bank, [Bank of America](https://www.r-bloggers.com/bank-of-america-uses-r-for-reporting/) y muchas otras. [Aquí](https://github.com/ThinkR-open/companies-using-r) o [aquí](https://www.listendata.com/2016/12/companies-using-r.html) puedes encontrar un listado más completo. 
+
+Creo que en la actualidad R es el mejor programa para iniciarse y hacer análisis de datos. Si no me acabas de creer, o quieres leer algo sobre la importancia y capacidades de R puedes hacerlo [aquí](http://nadaesgratis.es/fernandez-villaverde/r) o [aquí](https://www.r-bloggers.com/why-r-is-the-best-data-science-language-to-learn-today/), o [aquí](https://shirinsplayground.netlify.com/2017/09/ode_to_r/) o más recientemente [aquí](https://www.eoda.de/en/wissen/blog/r-python-julia-data-science-2019). Elmo lo tiene super-claro: 
+
+
+```{r, echo = FALSE, eval = FALSE, fig.asp = 7/9}
+library(tweetrmd)   #- devtools::install_github("gadenbuie/tweetrmd")
+tweetrmd::tweet_embed("https://twitter.com/minebocek/status/1174382623499661312", theme = "dark", align = "center", dnt = TRUE, plain = TRUE, maxwidth = 300)
+```
+
+[![Elmo prefiere R](./imagenes/img_02.png)](https://twitter.com/minebocek/status/1174382623499661312)
+
+
+Si te gustan los rankings de lenguajes de programación, [aquí](https://redmonk.com/sogrady/2020/02/28/language-rankings-1-20/) tienes uno, de enero de 2020, en el Phyton está en segundo lugar mientras que R está en el puesto 13. Esto es lo que que se decía de R:
+
+>  In our first run of these rankings, R placed 17th. All these years later it jumps two spots from the last quarter’s edition up to #13. In the interim, it has ranked as high as 12th but mostly commonly is found in the 13-15 range. Given the language’s specialized focus, this is likely its effective ceiling, but it’s also an illustration of the remarkable popularity of a language whose usage is restricted for all intents and purposes to a single domain – those who work with and operate on data. R’s success is an example of the power of an academia-supported community to elevate a language beyond its expected threshold, and it is notable that the aforementioned growth of Python and its expansion into data analytics has not observably come at the expense of traction in R.
+
+El ranking más actual puedes verlo [aquí](https://www.tiobe.com/tiobe-index/).
+
+Para hacerte una idea de las capacidades de R puedes visitar:
+
+- [Listado de paquetes R agrupados por temática](https://cran.r-project.org/web/views/)
+- [Awesome R learning resources](https://github.com/iamericfletcher/awesome-r-learning-resources)
+- [Awesome R](https://github.com/iamericfletcher/awesome-r-learning-resources)
+
+- [Rviews](https://rviews.rstudio.com/): un blog sobre R. cada mes promocionan 4o paquetes nuevos, por ejemplo [este](https://rviews.rstudio.com/2023/01/03/november-2022-top-40-new-cran-packages/)
+
+- [Rweekly](https://rweekly.org/): publicación semanal sobre novedades en el mundo R.
+
+- [Big Book of R](https://www.bigbookofr.com/): libro electrónico con multitud de recursos sobre R.
+ 
+
+¿Aprender R es complicado? No, bueno, ya hablaré de eso en clase. No mires el siguiente tweet: 
+
+
+```{r, echo = FALSE, eval = FALSE}
+tweetrmd::tweet_embed("https://twitter.com/rogierK/status/730863729420701697", theme = "light", align = "center", dnt = TRUE, plain = TRUE, maxwidth = 400)
+```
+
+
+[![R is easy](./imagenes/img_01.png)](https://twitter.com/rogierK/status/730863729420701697)
+
+
+:::
+
+
+<br>
+
+## ¿Qué es RStudio?
+
+Sí, es un programa de ordenador, **pero** no es un programa para hacer estadística ni es un lenguaje de programación. RStudio nos servirá para poder interactuar con R de forma más cómoda y eficiente.
+
+Para entenderlo: cuando hacemos un análisis estadístico, R es el que hace los cálculos, gráficos etc...  R lo hace todo pero le damos las ordenes a R a través de RStudio. RStudio es una interfaz para acceder a R de manera más cómoda. Técnicamente RStudio es un IDE (Integrated development environment) diseñado especialmente para R. Intuitivamente es un programa que nos facilita dar nuestras ordenes a R: si R y RStudio formasen parte de un coche, R sería el motor y Rstudio el volante y los pedales.
+
+RStudio fue [creado en 2011](https://www.rstudio.com/blog/rstudio-new-open-source-ide-for-r/) y actualmente es el entorno, o IDE, más usado para programar con R.
+
+Todavía no sabemos que es Quarto, pero RStudio nos facilita la interacción tanto con R como con Quarto. Son ellos, son R y Quarto, los que harán el "trabajo duro", concretamente R hará los cálculos, si es que nuestro documento/informe es de índole cuantitativo, y Quarto generará el documento final, ya sea este un tutorial, unas slides, página web, etc ...
+
+A pesar de que Quarto y R son los que generan los resultados, nosotros no veremos habitualmente a estos dos programas, porque interactuaremos con ellos a través de RStudio.
+
+
+<br>
+
+## ¿Qué es Quarto?
+
+Sí, también es un programa de ordenador, por tanto tenemos que instalarlo.
+
+Es un programa sin interfaz gráfica (sin menús ni ventanas). Se maneja a través la Terminal con lineas de comandos, así que técnicamente es un programa de tipo CLI (command line interface), pero no sufras porque (casi siempre) interactuaremos con él a través de RStudio.
+
+Quarto es un programa para confeccionar documentos, documentos reproducibles. Se trata de escribir las ordenes que generan el documento en un archivo (source document) para que Quarto al procesarlo genere el documento final. Este documento final puede ser de diferentes tipos (tutoriales, informes, slides, webs, blogs, ...) y formatos (html, pdf, docx, ...).
+
+Parece complicado pero enseguida verás que es easy-peasy-lemon-squeezy!!
+
+
+En la [página oficial de Quarto](https://quarto.org/) se dice que: 
+
+> Quarto® is an open-source scientific and technical publishing system built on Pandoc
+
+Es un programa de código abierto que sirve para escribir documentos (en sentido amplio) de carácter técnico y científico; y sí, usa Pandoc que es ... otro programa!!
+
+Quarto es la segunda generación de Rmarkdown (otro entorno para hacer documentos técnicos) y podemos pensar que su anuncio semi-oficial se hizo con [este post](https://www.apreshill.com/blog/2022-04-we-dont-talk-about-quarto/) de Allison Hill, aunque su presentación a la sociedad y puesta de largo fue en el congreso [rstudio::conf(2022) ](https://www.rstudio.com/blog/four-announcements-from-rstudio-conf-2022/).
+
+Actualmente Quarto está en proceso de implantación por la comunidad R (pero también en las comunidades de Phyton y Julia) y es de esperar que cabe sustituyendo completamente al anterior sistema, Rmarkdown.
+
+
+::: {.callout-warning icon="false" collapse="true"}
+##### Un poco de historia: en un principio fueron los dinosaurios, luego Rmarkdown
+
+Quarto es la segunda generación de Rmarkdown y es el objeto de estudio del curso, así que ya lo veremos
+
+Quarto y Rmarkdown sirven para confeccionar documentos, especialmente documentos científico-técnicos. Estos documentos serán reproducibles.
+
+La idea de documentos reproducibles viene de Literate Programming de Donald Knuth
+
+
+En R siempre ha habido estas herramientas Sweave, pero después knitr
+:::

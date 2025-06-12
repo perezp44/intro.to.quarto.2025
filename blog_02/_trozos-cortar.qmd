@@ -1,0 +1,98 @@
+---
+title: "trozos para cortar"
+---
+
+# Si escribes esto ....
+
+::: columns
+::: {.column width="40%"}
+[Si escribes esto:]{.underline}
+
+``` md
+:::{style="color:#9A4665;"}
+Esto se verá en rojito
+:::
+```
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+[Verás esto:]{.underline}
+
+::: {style="color:#9A4665;"}
+Esto se verá en rojito
+:::
+:::
+:::
+
+
+----------------------------------------------
+
+# tabsets
+
+
+
+::: {.panel-tabset}
+#### Primer Tab
+
+Contenido del primer Tab
+
+#### Segundo Tab
+
+Contenido del segundo Tab
+:::
+
+
+<br>
+
+
+----------------------------------------------
+
+
+``` markdown
+:::: {.columns}
+::: {.column width="50%" style="text-align: left;"}
+Left column
+:::
+::: {.column width="50%" style="text-align: right;"}
+Right column
+:::
+::::
+```
+
+
+<br>
+
+::: {.panel-tabset}
+#### Si escribes esto:
+
+``` markdown
+:::: {.columns}
+::: {.column width="50%" style="text-align:left;"}
+Primera columna (**left aligned**)
+:::
+
+::: {.column width="50%" style="text-align:right;"}
+Segunda columna (**right aligned**)
+:::
+::::
+```
+#### Verás esto
+
+:::: {.columns}
+::: {.column width="50%" style="text-align:left;"}
+Primera columna (**left aligned**)
+:::
+
+::: {.column width="50%" style="text-align:right;"}
+Segunda columna (**right aligned**)
+:::
+::::
+
+:::
+
+
+
+

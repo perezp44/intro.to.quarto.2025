@@ -1,0 +1,11 @@
+::: {.callout-tip collapse="false" appearance="default" icon="false"}
+## ¿Qué haremos en este tutorial?
+
+-   En esta segunda parte del taller vamos a **mejorar/tunear un poco nuestro blog**. Nos servirá para afianzar nuestro conocimiento de la estructura de ficheros del blog
+
+-   En este tutorial nº 2, para hacer un **tuneado básico** del blog, modificaremos 3 archivos, concretamente los archivos: &ensp; `_quarto.yml`, &ensp; `index.qmd` &ensp; y &ensp;`about.qmd`. Iremos archivo por archivo
+
+- Finalmente modificaremos (un poco) el archivo &ensp; `styles.css`
+
+- En el tutorial nº 6 se profundiza en el tuneado del blog
+:::

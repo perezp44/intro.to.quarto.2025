@@ -1,0 +1,6 @@
+::: {layout-ncol=2}
+
+![Contenido de la carpeta `welcome` que genera el post titulado "Welcome to my blog"](./imagenes/tt_01/img_16.png){fig-align="center"}
+
+![Contenido del archivo `index.qmd`](./imagenes/tt_01/img_17.png){fig-align="center"}
+:::

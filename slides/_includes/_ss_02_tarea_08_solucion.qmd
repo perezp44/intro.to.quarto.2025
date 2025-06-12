@@ -1,0 +1,57 @@
+::: {.callout-important icon="false"}
+#### Una solución a la Tarea 2.8
+
+
+```yaml
+project:
+  type: website
+ 
+website:
+  title: "Mi web"
+  navbar:
+    background: "#DF55CB"
+    right: 
+      - text: "Info"
+        href: index.qmd
+      - text: "Más Info"
+        href: index.qmd
+    left: 
+      - icon: house-door
+        href: index.qmd       
+```
+
+:::
+
+
+::: {.fragment}
+::: {.callout-important icon="false"}
+#### Tarea 2.8b: Haz que se vean las slides en la web
+
+- Esta vez no hay solución
+
+:::
+:::
+
+
+::: {.fragment}
+::: {.callout-important icon="false"}
+#### Tarea 2.8c: Haz que se vea el fichero `prueba_02.pdf` en la web
+
+- Tampoco hay solución
+
+:::
+:::
+
+
+::: {.fragment}
+::: {.callout-important icon="false"}
+#### Tarea 2.8d: 
+
+- Prueba a cambiar el color de la barra de navegación. [Aquí](https://htmlcolorcodes.com/es/) o [aquí](https://www.color-hex.com/) puedes encontrar el código de los colores en hexadecimal.
+
+- Prueba a añadir un icono a la izquierda de la barra de navegación. Puedes usar los iconos de [Bootstrap](https://icons.getbootstrap.com/)
+
+- Prueba a añadir un poco de texto nuevo en index.qmd
+
+:::
+:::

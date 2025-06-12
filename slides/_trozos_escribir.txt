@@ -1,0 +1,41 @@
+
+## {background-color="#DCDCDC"}
+
+
+:::: {.columns}
+::: {.column width=45%}
+
+:::{.callout-warning icon="false" }
+#### Extensión: más formas de crear "hard line breaks" 
+
+
+#- trocitos para escribir SLIDES
+
+- Beautiful reports and presentations with Quarto | Led by Tom Mock, RStudio 
+- https://www.youtube.com/watch?v=hbf7Ai3jnxY
+
+- Quarto is stylest with Bootstrap 5, el CSS framework mas popular y tiene incorporados 25 tema de Bootwacht
+
+
+tiene ejemplos de parametrised y quarto render (puedes hacer el ejemplo de la inflación)
+
+- habla de "Pandoc fenced divs"   ::: {.class}  o [sometimes-class}
+::: {layout-ncol=2}   ::: {.panel-tabset}
+
+- habla de Pandoc bracketed spans
+[algo]{.fragment}
+
+
+en el yaml footnotes-hover  (minuto 25:26)
+
+layout image inline (minuto 26:53)   {.layout="[[30,70], 100]" }
+
+- pdf (rticles, pero tb page-title ( q permite poner una portada chula) en minuto 41:48)
+
+- absolute position (minuto 49:33)
+
+- Biblio: https://www.emilhvitfeldt.com/post/slidecraft-colors-fonts/
+https://meghan.rbind.io/blog/quarto-slides/
+
+
+GOOOOD: scss clases en minuto 57

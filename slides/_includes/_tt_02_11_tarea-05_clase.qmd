@@ -1,0 +1,15 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.5: Modificar `styles.css`
+
+- Simplemente sustituye el contenido original del fichero `styles.css` por el contenido del siguiente chunk:
+
+````{verbatim, lang="css"}
+/* css styles */
+
+
+/* justificar el texto */ 
+p, ul, ol {
+  text-align: justify; }       
+````
+
+:::

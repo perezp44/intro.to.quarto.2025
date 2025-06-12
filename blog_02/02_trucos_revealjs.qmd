@@ -1,0 +1,382 @@
+---
+title: "Trucos: Reveal.js"
+date: 2024-02-20
+categories: [Quarto]
+image: "./thumbnails/thumbnail_generico.png"
+#toc-location: left
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Recopilando **trucos sobre Reveal.js slides**.
+filters:
+  - collapse-social-embeds
+toc-depth: 3
+toc-expand: 1
+---
+
+
+
+# Texto
+
+
+
+### texto: r-fit-text
+
+Que un texto ocupe toda la slide, pero centrado verticalmente; para ello, has de combinar `r-fit-text` con the center class en el título de la slide. 
+
+```markdown
+## {.center}
+
+::: r-fit-text
+This fits perfectly!
+:::
+```
+
+<br>
+
+### texto: posición absoluta
+
+- puedes rotarlo con : `style="rotate: -10deg;"`
+
+```md
+[My textito]{.absolute left="50%" top="20%" style="rotate: -10deg;"}
+```
+
+<br>
+
+
+### texto: cuadritos en el texto
+
+- Lo vi [aquí](https://emilhvitfeldt.com/post/slidecraft-layout/#section). Lo utilizan para resaltar texto que pones encima de una foto
+
+- Puedes rotarlo poniendo `rotate: -10deg;`  dentro de `style = " ...."`
+
+```markdown
+::: {.absolute left="15%" top="5%" style="font-size:1.8em; padding: 0.75em 0.7em; background-color: rgba(44, 0, 142, .4);"}
+First we take Manhattan, 
+
+then we take Berlin
+:::
+```
+
+
+<br>
+
+-------------------
+
+<br>
+
+# Animaciones
+
+- Para hacer que un texto aparezca de forma incremental, pero ademas el nuevo texto que parece se hace grande y cambia de color. Puedes  ver un ejemplo en [esta slide](https://colorado.posit.co/rsc/inflation-explorer-slides/automated-quarto-dashboards.html#/quarto)
+
+```markdown
+<center>
+
+Quarto® is an
+
+::: {.fragment .grow .semi-fade-out}
+open-source
+:::
+
+::: {.fragment .grow .semi-fade-out}
+scientific and technical
+:::
+
+::: {.fragment .grow .semi-fade-out}
+publishing system
+:::
+
+::: {.fragment .grow .semi-fade-out}
+built on Pandoc.
+:::
+
+</center>
+```
+
+<br>
+
+-------------------
+
+<br>
+
+# Fondos
+
+### Hacer como si cambias el fondo de una slide
+
+- Puedes simular que cambias el fondo de una slide, para ello sólo hay que poner la misma slides pero añadiendo en su título: `# My slide que cambia {background-transition="fade" background-color="#B7D9F6"}`
+
+
+<br>
+
+-------------------
+
+<br>
+
+
+# Layout
+
+
+### Columnas incrementales
+
+- Puedes hacer que, si divides el layout en varias columnas, que estas se muestren una a una, vamos, que primero se muestre solo la primera columna (hay que poner en la segunda columna `::: {.column .fragment width="50%"}`^[Lo vi en [este repo](https://github.com/EmilHvitfeldt/talk-slc-slidecraft), concretamente en el fichero index.qmd]. Dentro de cada columna puedes hacer que los bullets sean incrementales o no. Por ejemplo:
+
+
+```markdown
+
+::: columns
+::: {.column width="50%"}
+::: {.incremental}
+- They sentenced me to 20 years of boredom
+
+
+- For trying to change the system from within
+:::
+:::
+
+::: {.column .fragment width="50%"}
+- Ah, remember me, I used to live for music
+
+- First we take Manhattan, then we take Berlin
+:::
+:::
+```
+
+
+
+
+
+
+<br>
+
+-------------------
+
+<br>
+
+
+
+
+# Listas
+
+### Highlight incremental bullets
+
+- Queda chulo hacer que una lista de bullets se resalte más el bullet actual y que los otros bullets se difuminen un poco. Se explica [aquí](https://emilhvitfeldt.com/post/slidecraft-7-tips-and-tricks/#highlight-incremental-slides).
+
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Has de poner esto en el .qmd:
+
+```markdown
+::: {.incremental .highlight-last}
+- thing 1
+- thing 2
+:::
+```
+:::
+::: {.column width="50%"}
+Pero para que funcione, has de poner esto en el .css:
+
+```markdown
+.highlight-last  {
+  color: grey;
+  .current-fragment {
+    color: #5500ff;
+  }
+}
+```
+La explicación es que se pone todo en gris y `.current-fragment` muestra en un color distinto el current bullet
+
+:::
+::::
+
+
+
+
+<br>
+
+-------------------
+
+<br>
+
+
+# Imágenes
+
+### Imagén con `{.r-stretch}` 
+
+- Hace que la imagen ocupe todo el espacio vertical restante. Documentación [aquí](https://quarto.org/docs/presentations/revealjs/advanced.html#stretch)
+
+```markdown
+## Slide 1 {.nostretch}
+
+![](imagenes/flor.jpg)
+
+## Slide 2
+
+![](imagenes/flor.jpg){.r-stretch}
+
+## Slide 3
+
+![](imagenes/flor.jpg){.nostretch fig-align="center" width="500px"}
+```
+
+<br>
+
+### Imagen cubriendo slide
+
+- Puedes hacer que una imagen cubra toda la slide. 
+
+
+```markdown
+# Datos: {background-image="./imagenes/flor.jpg" background-size="cover" background-opacity="0.5"}
+```
+<br>
+
+- Si lo que quieres es cubrir con una imagen la primera slide, la slide del título, entonces tendríaa que incorporar al yaml de las slides lo siguiente:
+
+```markdown
+title-slide-attributes:
+  data-background-image: ./imagenes/my_IA_img3.png
+  data-background-size: cover
+  data-background-opacity: "0.5"
+```
+
+<br>
+
+### opciones de chunks para imágenes
+
+
+```{{r}}
+#| fig-alt: "Chart showing ..."
+#| fig-height: 7
+#| fig-width: 10
+#| fig-align: center
+#| output-location: column #- {slide, column, column-fragment}
+
+library(tidyverse)
+g <- ggplot(
+  data = iris,
+  aes(x = Sepal.Length, y = Petal.Length)
+) +
+  geom_point()
+g
+```
+
+
+<br>
+
+-------------------
+
+<br>
+
+# Miscelanea
+
+
+### Extraer las speaker notes
+
+- Si quieres extraer las speaker notes de unas Revealjs slides, lo explican [aquí](https://github.com/melissavanbussel/posit-conf-2023). Abajo tienes  el código:
+
+<details>
+<summary>Código para extraer notas de orador en Reveal.js</summary>
+```r
+# Read input from an external text file
+input_text <- readLines("posit-conf-2023.qmd", warn = FALSE)
+
+# Combine lines into a single string
+input_text <- paste(input_text, collapse = "\n")
+
+# Define the regular expression
+regex_pattern <- ":::{\\.notes}\\n([^::]*)\\n:::"
+
+# Extract notes using regex
+notes <- gregexpr(regex_pattern, input_text, perl = TRUE)
+notes <- regmatches(input_text, notes)
+
+# Flatten the list of matches
+notes <- unlist(notes)
+
+# Clean up the notes
+notes <- gsub(x = notes, pattern = ":::{\\.notes}\\n\\n", replacement = "", perl = TRUE)
+notes <- gsub(x = notes, pattern = "\\n\\n:::", replacement = "", perl = TRUE)
+
+# Print the extracted notes
+for (note in notes) {
+  cat("----------------------", "\n", note, "\n")
+}
+```
+</details>
+
+
+
+<br>
+
+-------------------
+
+<br>
+
+# Themes
+
+- [Cinco De Mayo](https://github.com/EmilHvitfeldt/quarto-revealjs-cinco-de-mayo)
+
+
+<br>
+
+-------------------
+
+<br>
+
+
+# Extensiones
+
+- [gongtimer](https://github.com/andrie/quarto-gongtimer): añade una barrita muy fina en el borde inferior de las slides que te avisa del tiempo que falta para acabar la presentación.
+
+- [codewindow](https://github.com/EmilHvitfeldt/quarto-revealjs-codewindow): añade unos "styled codeblock windows for code". Salen muy chulos, es una alternativa a los cuadritos de los chunks tradicionales.
+
+
+- [highlightword](https://github.com/EmilHvitfeldt/quarto-revealjs-highlightword): permite marcar/subrayar un trozo específico de un chunk
+
+
+
+<br>
+
+-------------------
+
+<br>
+
+
+
+
+# Ejemplos de Slides
+
+- Slides sobre [epoxy](https://glue.tidyverse.org/) de Garrick Aden-Buie. El repo está [aquí](https://github.com/gadenbuie/slides/tree/gh-pages/epoxy-super-glue). El [video](https://www.youtube.com/watch?v=tq5Uwbexk3k) de la charla en posit::con(2023). Las slides son visualmente básicas pero hace cosas chulas, pero no he encontrado un link a ellas.
+
+- Unas slides chulas con **muchas transiciones** [aquí](https://melissavanbussel.quarto.pub/posit-conf-2023/). El [repo](https://github.com/melissavanbussel/posit-conf-2023)
+
+- Project Oriented Workflows with Shannon Pileggi (Sep 11 2023). Slides normalitas pero con bastante `scss`. El repo [aquí](https://github.com/rstats-wtf/wtf-project-oriented-workflow-slides/tree/main). El vídeo [aquí](https://www.youtube.com/watch?v=T4V1SMVllvY)
+
+- Las slides de Ken Roy [aquí](https://deepshamenghani.github.io/posit_plotly_crosstalk/?utm_source=3mw.albert-rapp.de&utm_medium=referral&utm_campaign=3mw-exciting-news-from-posit-conf-2023#/title-slide). Tienen plotly y crosstalk. El [repo](https://github.com/deepshamenghani/posit_plotly_crosstalk)
+
+- Slides de Nicola Rennie [Introduction to reproducible reporting with Quarto](https://nrennie.rbind.io/talks/rladies-edinburgh-quarto/slides#/title-slide).
+
+- [Forecasting with Generalised Additive Models (GAMs) in R](https://nrennie.rbind.io/f4sg-gams/#/title-slide). El [repo](https://github.com/nrennie/f4sg-gams)
+
+
+
+<br>
+
+-------------------
+
+<br>
+
+
+# Biblio/ejemplos/trucos
+
+- Charla de Emil Hvitfeldt [aquí](https://fosstodon.org/@emilhvitfeldt/110889474433747611) en NY. Tiene una slide que va fluyendo, está justo [aquí](https://emilhvitfeldt.github.io/talk-nyr-slidecraft/#/quarto-revealjs-basics)
+
+- Puedes usar `preview-links: true` para que los links no se abran en el navegador sino encima de las slides. Documentación [aquí](https://quarto.org/docs/presentations/revealjs/presenting.html#preview-links)
+
+- Un buen post con algunos truquillos de Revealjs [aquí](https://emilhvitfeldt.com/post/slidecraft-layout/). Prácticamente ya he incorporado los trucos abajo. Usa r-fit, strech las imágenes, poner un cuadro de texto encima de una imagen etc ...
+
+
+

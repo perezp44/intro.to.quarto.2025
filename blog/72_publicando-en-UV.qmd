@@ -1,0 +1,101 @@
+---
+title: "Publicando nuestra web en la UV"
+date: 2023-02-04
+categories: [Quarto, Publicando la web]
+image: "./thumbnails/thumbnail_72_web-UV.png"
+#subtitle: | 
+#  Practicando con Quarto
+description: |
+  Se describe el proceso para publicar nuestra web/blog en el espacio web que tenemos disponible en los servidores de la Universitat de València.
+---
+
+## Intro
+
+Durante el curso hemos aprendido a generar webs/blogs con Quarto. El último paso es **subirlas a Internet**, hacerlas visibles.  La documentación oficial de Quarto está [aquí](https://quarto.org/docs/publishing/)
+
+
+Hay **muchas opciones para publicar nuestra web**, quizás la más sencilla es hacerlo en en [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html): básicamente lo único que hay que hacer es ejecutar en la Terminal: `quarto publish quarto-pub`.
+
+
+Nosotros, como somos personal de la UV, tenemos un espacio web en los servidores de la UV, así que vamos a ver cómo podemos alojar nuestra web allí.
+
+
+## Proceso
+
+<br>
+
+### 2.1 Activando web UV
+
+
+Lo primero que necesitamos es estar seguros de que tenemos activado nuestro espacio web en la UV. Es muy probable que ya lo tengamos activado pero hay que asegurarse. ¿Cómo? Te lo explico:
+
+ 1. Primero, vas a tener que acceder a  <https://portal.uv.es/>. desde allí, 
+ 
+ 2. accedes al apartado "Mis cuentas" que está en la parte de arriba en pequeñito. 
+ 
+:::: {.columns}
+::: {.column width="7%"}
+:::
+::: {.column width="47%"}
+![  Paso 2: accede al apartado "Mis cuentas"](./imagenes/post_72_img_01.png){fig-align="left"}
+:::
+:::
+
+ 3. al pinchar te llevará a otra pantalla donde se puede activar y desactivar tu espacio web. Para ello solo tienes que pinchar en "Activar/Desactivar mi página web". 
+ 
+
+:::: {.columns}
+::: {.column width="7%"}
+:::
+::: {.column width="88%"}
+![Paso 3: entra en activar/desactivar](./imagenes/post_72_img_02.png)
+:::
+:::
+ 
+ 
+ 4. Te llevará a otra pantalla donde podrás activar tu web si no la tenías activada, **PERO**, cuidado, si ya tenías activado tu espacio web, entonces lo que te permitirá es borrar tu web^[Si te equivocas y la borras, lo único que tendrías que hacer es volver a activarla].
+
+<br>
+
+### 2.2 Instalación de `Filezilla`
+
+
+Para subir nuestra web al servidor de la UV **usaremos Filezilla** un programa para acceder a servidores `ftp`. Para instalar Filezilla, simplemente ve [aquí](https://filezilla-project.org/index.php) y descarga el "FileZilla client" adecuado para tu sistema operativo.
+
+<br>
+
+### 2.3 Subiendo nuestra web
+
+- Abrimos Filezilla y nos conectamos a `disco.uv.es` de la UV. Hemos de poner nuestro usuario y contraseña y clickamos en conexión rápida:
+
+
+![](./imagenes/ss_06_filezilla_01.png){fig-align="center" width="80%"}
+
+- Una vez creada la conexión accederemos a nuestra carpeta de usuario, en mi caso `pjperez`  en `usugru/usus`
+
+![](./imagenes/ss_06_filezilla_02.png){fig-align="center" width="80%"}
+
+- Pinchamos en la carpeta de usuario, en mi caso `pjperez` y veremos que dentro aparece una carpeta llamada `web`, ese es nuestro espacio web en la UV 
+
+![](./imagenes/ss_06_filezilla_03.png){fig-align="center" width="80%"}
+
+- Pincha ahora en la carpeta `web` y podrás ver en el panel inferior de Filezilla los ficheros y carpetas que tengamos en nuestro espacio web de la UV. Es posible que solo tengáis un fichero llamado `index.html`. Yo tengo además un par de carpetas ya alguna cosa más.
+
+
+![](./imagenes/ss_06_filezilla_04.png){fig-align="center" width="80%"}
+
+<br>
+
+- Fíjate que en el panel inferior de Filezilla tenemos a la derecha nuestro disco duro y a la izquierda nuestro espacio web, solo queda arrastrar los ficheros que queramos subir a nuestro espacio web. 
+
+<br>
+
+
+**Suerte!!** Seguro que te queda fenomenal!!
+
+
+<br>
+
+
+
+

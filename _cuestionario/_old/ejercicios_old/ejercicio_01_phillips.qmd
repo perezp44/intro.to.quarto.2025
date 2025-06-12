@@ -1,0 +1,240 @@
+---
+title: "Curva de Phillips, ¿sigue siendo válida?"
+author: Nosotros
+format: html
+---
+
+# Intro
+
+Estamos en el tercer día del [curso de Introducción a Quarto](https://perezp44.github.io/intro.to.quarto/) y estamos practicando cómo hacer un tutorial. Como algunos de los asistentes al curso es posible que no sepan mucho R, vamos a replicar y ampliar [este ejemplo](https://twitter.com/ThomIvar/status/1516114838996631563).
+
+# Marco teórico
+
+Nos da un poco igual pero el gráfico de @ThomIvar hace referencia a la **curva de Phillips** que según la Wikipedia es:
+
+> La curva de Phillips, en macroeconomía, representa una curva empírica de pendiente negativa que relaciona la tasa de inflación y la tasa de desempleo. -- Articulo de la Wiki [aquí](https://es.wikipedia.org/wiki/Curva_de_Phillips)
+
+Abajo tienes el gráfico que ilustra la Curva de Phillips en la Wikipedia:
+
+![Curva de Phillips en la Wikipedia](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/NAIRU-SR-and-LR_es.svg/280px-NAIRU-SR-and-LR_es.svg.png)
+
+Por mucho que me empeñe yo, $y_{t}=A_{1}y_{t-1}+A_{2}y_{t-2}+v_{t}$ no es la ecuación de la Curva de Phillips. Tampoco esta:
+
+$$A(L)=(I_{K}-A_{1}L^{1}-A_{2}L^{2}-...-A_{p}L^{p})$$
+
+# Datos
+
+Necesitamos datos de inflación y de tasa de desempleo. Vamos a usar los mimos datos que en el ejemplo original pero actualizados a `r Sys.Date()`. Los datos provienen de la OCDE.
+
+Antes de iniciar el análisis cargamos los paquetes de R que usaremos, solo que no vas a ver el chunk en el output final porque hemos puesto `#| include: false`.
+
+```{r}
+#| label: setup     #- se ejecutará siempre
+#| include: false   #- para que se ejecute pero no se muestre nada en el output
+library(tidyverse)
+library(ggtext)
+```
+
+## Inflación
+
+Descargamos datos de inflación con este código:
+
+```{r}
+#| echo: true
+#| eval: true
+url_inflation <- "https://stats.oecd.org/sdmx-json/data/DP_LIVE/.CPI.../OECD?contentType=csv&detail=code&separator=comma&csv-lang=en"
+ruta_inflation <- "./datos/DP_LIVE_22032023113248591.csv"
+# curl::curl_download(url_inflation, ruta_inflation)
+```
+
+## Desempleo
+
+Descargamos datos de desempleo con este código:
+
+```{r}
+url_unemployment <- "https://stats.oecd.org/sdmx-json/data/DP_LIVE/.HUR.../OECD?contentType=csv&detail=code&separator=comma&csv-lang=en"
+ruta_unemployment <- "./datos/DP_LIVE_12042023090537614.csv"
+# curl::curl_download(url_unemployment, ruta_unemployment)
+```
+
+# Resultados
+
+Importamos los datos al `Global env de R`:
+
+```{r}
+inflation_orig    <- readr::read_csv(ruta_inflation)
+unemployment_orig <- readr::read_csv(ruta_unemployment)
+```
+
+Trabajamos los datos:
+
+```{r}
+#- seleccionamos datos ---------------------------------------------------------
+inflation <- inflation_orig %>%
+  dplyr::filter(FREQUENCY == "M" & MEASURE == "AGRWTH", SUBJECT == "TOT") %>%
+  select(place = LOCATION, date = TIME, cpi = Value)
+
+unemployment <- unemployment_orig %>%
+  dplyr::filter(FREQUENCY == 'M', SUBJECT == 'TOT') %>%
+  select(place = LOCATION, date = TIME, rate = Value)
+
+#- fusionamos los 2 df's -------------------------------------------------------
+df <- left_join(inflation, unemployment) %>%
+       tidyr::drop_na() %>%
+       dplyr::mutate(group = case_when(
+           str_starts(date, "199") ~ "1991-1999",
+           str_starts(date, "200") ~ "2000-2009",
+           str_starts(date, "201") ~ "2010-2019",
+           str_starts(date, "202") ~ ">= 2020",
+           TRUE ~ "other" )) %>%
+      dplyr::filter(group != "other")
+```
+
+Hacemos el plot de [\@ThomIvar](https://twitter.com/ThomIvar). Primero el plot básico:
+
+```{r}
+my_country <- c("G-7")  #- seleccionamos "país"
+my_periodos <- c("2000-2009", "2010-2019") #- seleccionamos periodos
+
+df_1p <- df %>%
+  dplyr::filter(place == my_country) %>%
+  dplyr::filter(group %in% my_periodos)
+
+
+# -- make plot for 1 country
+p0 <- ggplot(df_1p, aes(x = rate, y = cpi, group = group, color = group)) +
+        geom_point(alpha = 0.5, size = 2.25)
+p0
+```
+
+Y ahora el super-gráfico:
+
+```{r}
+my_title <- glue::glue("What happened to the <b>Phillips Curve</b> in ", my_country  , "? (thanks to <b style='color:#fd5532'>@ThomIvar</b>)")
+
+p1 <- p0 + geom_smooth(method = 'lm', se = FALSE, linetype = 2) +
+  scale_color_manual(values = c('#d1495b', '#00798c')) +
+  annotate('text', x = 5.5, y = 3.75, label = '2000-2009', color = '#d1495b',
+           family = 'American Typewriter', fontface = 'bold') +
+  annotate('text', x = 4.5, y = 0.75, label = '2010-2019', color = '#00798c',
+           family = 'American Typewriter', fontface = 'bold') +
+   labs(title = my_title,
+       subtitle = "The Phillips curve is an economic concept that states that inflation
+       and unemployment have an inverse relationship. However, in the <b style='color:#00798c'>
+       last decade</b> this relationship appears to have vanished.",
+       caption = '@ThomIvar • source: OECD (monthly, G7 countries)',
+       x = 'Unemployment rate, %',
+       y = 'Inflation rate, %') +
+  theme_void() +
+  theme(text = element_text('American Typewriter', color = 'grey30'),
+    legend.position = 'none',
+    plot.title = element_textbox_simple(size = 20, margin = margin(b = 0.15, unit = 'cm')),
+    plot.subtitle = element_textbox_simple(size = 11, color = 'grey60',
+                                           margin = margin(b = 0.25, unit = 'cm')),
+    plot.background = element_rect(fill = '#fffef7', color = '#fffef7'),
+    plot.caption = element_text(size = 10, color = 'grey80'),
+    plot.margin = margin(1, 1, 1, 1, 'cm'),
+    panel.grid = element_line(color = 'grey70', linetype = 'dotted'),
+    axis.title = element_text(margin = margin(t = 0.2, r = 0.2, unit = 'cm'), color = 'grey50'),
+    axis.title.y = element_text(angle = 90),
+    axis.text = element_text(color = 'grey70', size = 9,
+                             margin = margin(t = 0.1, r = 0.1, unit = 'cm')),
+    axis.line = element_line(color = 'grey50'),
+    axis.ticks = element_line(color = 'grey50', size = 0.6),
+    axis.ticks.length = unit(0.10, 'cm'))
+
+p1
+```
+
+# Más resultados
+
+Por hacer algo nuevo vamos a hacer un faceted-graph:
+
+```{r}
+#- SEGUNDA parte (del script) --------------------------------------------------
+#- hacemos el gráfico para varios países ---------------------------------------
+my_paises <- c("ESP", "FRA", "GBR", "DEU", "USA", "JPN")
+my_periodos <- c("2000-2009", "2010-2019") 
+
+df_paises <- df %>%  
+  dplyr::filter(place %in% my_paises) %>% 
+  dplyr::filter(group %in% my_periodos)
+
+#- plot feo para luego hacer un facetting
+p0 <- ggplot(df_paises, aes(x = rate, y = cpi, color = group)) +
+  geom_point(alpha = 0.5, size = 0.75) +
+  geom_smooth(method = 'lm', se = FALSE, linetype = 1) +
+  scale_color_manual(values = c(  '#d1495b', '#00798c', '#099205','#8e0592'))
+
+#p0
+#p0 +  facet_wrap(vars(place))
+
+p1 <- p0 +
+  facet_wrap(vars(place), scales = "free")  +
+   labs(title = "What happened to the <b>Phillips Curve</b>? ",
+       subtitle = "The Phillips curve is an economic concept that states that inflation
+       and unemployment have a inverse relationship. However, we could find some exceptions for <b style='color:#d1495b'>
+       2000-2009</b> decade, and for the  <b style='color:#00798c'>
+       last decade (2010-2019) </b>.",
+       caption = "@pjpv4444  (thanks to  @ThomIvar) • source: OECD (monthly, G7 countries)",
+       x = 'Unemployment rate, %',
+       y = 'Inflation rate, %') +
+  theme_void() +
+  theme(text = element_text('American Typewriter', color = 'grey30'),
+    legend.position = 'none',
+    plot.title = element_textbox_simple(size = 20, margin = margin(b = 0.15, unit = 'cm')),
+    plot.subtitle = element_textbox_simple(size = 11, color = 'grey60',
+                                           margin = margin(b = 0.25, unit = 'cm')),
+    plot.background = element_rect(fill = '#fffef7', color = '#fffef7'),
+    plot.caption = element_text(size = 10, color = 'grey80'),
+    plot.margin = margin(1, 1, 1, 1, 'cm'),
+    panel.grid = element_line(color = 'grey70', linetype = 'dotted'),
+    axis.title = element_text(margin = margin(t = 0.2, r = 0.2, unit = 'cm'), color = 'grey50'),
+    axis.title.y = element_text(angle = 90),
+    axis.text = element_text(color = 'grey70', size = 9,
+                             margin = margin(t = 0.1, r = 0.1, unit = 'cm')),
+    axis.line = element_line(color = 'grey50'),
+    axis.ticks = element_line(color = 'grey50', size = 0.6),
+    axis.ticks.length = unit(0.10, 'cm'))
+
+
+p1
+```
+
+# Tablas
+
+Nos falta hacer una tabla, así que, por ejemplo, hacemos tabla de la inflación en el último mes que tengamos datos.
+
+
+```{r}
+df_tabla <- inflation_orig %>%
+  dplyr::filter(FREQUENCY == "M" & MEASURE == "AGRWTH") %>%
+  select(place = LOCATION, date = TIME, cpi = Value, tipo_inf = SUBJECT) %>% 
+  #filter(date == max(date, na.rm = TRUE)) %>% 
+  filter(date == "2023-02") %>% 
+  filter(place %in% my_paises) %>% 
+  pivot_wider(names_from = tipo_inf, values_from = cpi) %>% 
+  arrange(desc(TOT)) %>% 
+  select(1, TOT, everything()) %>% 
+  select(-date)
+```
+
+
+- Primero con el paquete `gt`
+
+```{r}
+gt::gt(df_tabla)
+```
+
+
+- Ahora con el paquete `DT`
+
+
+
+```{r}
+#| eval: false
+DT::datatable(df_tabla)
+```
+
+
+

@@ -1,0 +1,28 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.6e: Ahora vamos a cambiar el "theme" usado en el fichero <mark>`index.qmd`</mark>
+
+- El listado de "themes" lo tienes [aquí](https://quarto.org/docs/output-formats/html-themes.html)
+
+- Piensa bien cómo has de dejar el "yaml". Apóyate en lo que hemos hecho para las slides
+
+- La solución está más adelante, pero no la mires
+
+<br>
+
+::: {.fragment}
+- Solución: has de dejar el "YAML" del qmd como:
+
+```yaml
+---
+title: "Mi documento"
+author: "Nosotros"
+date: today
+format:
+  html:
+    theme: sandstone
+---
+```    
+:::
+  
+:::
+ 

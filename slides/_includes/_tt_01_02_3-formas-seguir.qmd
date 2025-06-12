@@ -1,0 +1,10 @@
+::: {.callout-warning collapse="false" appearance="default" icon="false"}
+
+#### Hay 3 formas de seguir el tutorial
+
+A) La forma recomendada: utilizando Quarto a través de **RStudio**
+
+B) Utilizar Quarto desde la **Terminal** y usar tu editor favorito (VScode ...)
+
+C) Utilizar **RStudio Cloud**
+:::

@@ -1,0 +1,133 @@
+---
+title: "Informes parametrizados"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+    Automatizando la creación de informes: generando grupos de informes utilizando conjuntos de parámetros.
+date: 2023-01-30
+categories: [reproducibilidad, Informes parametrizados]
+image: "./thumbnails/thumbnail_30_informes-parametrizados.png"
+title-block-banner: true #- {true, false }
+draft: false
+toc: true
+#toc-location: left
+toc-depth: 3
+number-sections: true
+number-depth: 2
+bibliography: bib_files/30_parametrised-reports.bib
+sort: "date asc"    #-"title"
+fields: [image, date, description, categories, title, author, reading-time]
+
+#css: assets/my_css_file.css
+#bibliography: references.bib
+#nocite: |
+#  @*
+---
+
+Evidentemente Quarto sirve para hacer informes, perfecto!! Hasta ahora, con un fichero .qmd hemos hecho un único informe, pero imagina que tienes que hacer un puñado de informes, todos muy parecidos pero que difieren en algunos aspectos; por ejemplo, puedes necesitar hacer un informe para cada mes o cada año, o un informe para cada cliente/estudiante/etc ..., o un informe con distintos datasets o que difieran en algunos supuestos. 
+
+En el contexto de Quarto a esta situación de la conoce como "Render parametrised reports", y nos permitirá generar de forma "automática" un puñado de informes personalizados para cada grupo o situación. Vamos a ello. [Aquí](https://quarto.org/docs/computations/parameters.html) la documentación oficial.
+
+## Intro
+
+Los informes parametrizados permiten modificar/personalizar el informe según los valores de determinados parámetros. Se trata de que en el momento de procesar (render) nuestro fichero .qmd se puedan pasar diferentes valores de ciertos parámetros de forma que se creen versiones diferentes de "un mismo" informe. Por ejemplo, los informes parametrizados pueden usarse para proporcionar a los estudiantes de un curso un informe con sus notas o crear un informe para cada cliente o zona.
+
+
+## ¿Cómo lo hacemos?
+
+Básicamente, solo hay que hacer **dos cosas**:
+
+1.  Definir la opción `params:` en el YAML del documento .qmd
+
+2.  Incorporar los parámetros cuando hagas el render de los documentos
+
+No parece muy costoso, pero vamos por partes.
+
+### Definir `params:` en el YAML
+
+``` yaml
+---
+params:
+  nombre: "Pedro"
+---
+```
+
+En este caso hemos definido un parámetro llamado "nombre" que tomará como valor por defecto "Pedro"; es decir, si no cambiamos el valor por defecto de "nombre", ese será el valor que tomará cuando se haga el render del fichero .qmd.
+
+Repito, cuando se haga el render del fichero .qmd, se usará el valor del parámetro "nombre", y aprenderemos a cambiar el valor de ese parámetro de manera "automática" para generar informes para distintos valores del parámetro; es decir, para distintos estudiantes.
+
+Además, hay que saber que el valor del parámetro que se usará durante el render puede ser accedido dentro del fichero .qmd. El valor del parámetro estará en `params$nombre` y podremos usarlo en los chunks de código y también como código inline. Si en un chunk de código ponemos por ejemplo: `filter(notas, estudiante == params$nombre)`, si utilizamos el valor por defecto del parámetro, quedará como `filter(notas, estudiante == "Pedro")` y los cálculos, el informe, se hará utilizando sólo los registros del estudiante Pedro.
+
+Incluso podemos usar más de un parámetro en el YAML. Por ejemplo:
+
+``` yaml
+---
+params:
+  municipio: "Pancrudo"
+  year: 2022
+---
+```
+
+Con el anterior YAML podrían hacerse informes personalizados de, por ejemplo, presupuesto de distintos municipios para diferentes años, utilizando la misma plantilla o documento .qmd.
+
+### Incorporar valores de los parámetros al proceso de render
+
+Nos queda ver cómo podemos ir variando los valores de los parámetros a la hora de procesar el documento .qmd.
+
+Se puede hacer de varias maneras pero la más intuitiva es (una vez tenemos nuestro documento .qmd que hace de plantilla para el informe) usar un bucle con `for` para procesar la plantilla para diferentes valores de los parámetros.
+
+Supón que tenemos la plantilla en el archivo `plantilla.qmd` con el siguiente YAML:
+
+``` yaml
+---
+params:
+  nombre: "Pedro"
+---
+```
+
+y que queremos hacer un informe personalizado para 4 estudiantes, en ese caso, el proceso quedaría como[^1]:
+
+[^1]: Puede mejorarse bastante pero creo que esto es lo más intuitivo. Código más à la tidyverse sería [este](https://thomasmock.quarto.pub/reports-presentations/#/render-with-parameters-1) y [este](https://twitter.com/CedScherer/status/1593288233256886272). Un ejemplo con dos parámetros [aquí](https://twitter.com/MeghanMHall/status/1573365069093937155).
+
+```{r}
+#| eval: false
+estudiantes <- c("Pedro", "Concha", "María", "José")
+nn_estudiantes <- length(estudiantes)
+
+for (ii in 1:nn_estudiantes){
+  my_estudiante = estudiantes[ii]
+    quarto::quarto_render(
+        input = "plantilla.qmd",
+        output_file = paste0("notas-", my_estudiante, ".pdf"),
+        execute_params = list(nombre = my_estudiante)
+        )
+}
+```
+
+Lógicamente habría que ejecutar el chunk anterior desde un script de R.
+
+Haremos una práctica sobre informes parametrizados durante el curso. I promise!!
+
+
+## Contexto
+
+
+Yo ya había hecho unos cuantos informes parametrizados, incluso un año, lo enseñé en clase, pero para redactar este post me he basado en [@helveston2023] y [@gwcoders2023a]. Entre otras cosas, me enteré de que Quarto tiene problemas, [fácilmente superables](https://fediscience.org/@jhelvy/109932107055926502), para usar data.frames como parámetros y para hacer el [render en una carpeta diferente](https://fediscience.org/@jhelvy/109801352523104934) de la raíz del Qproject (!!). 
+
+
+## Más
+
+- Ya en 2024, **Jadey Ryan** hizo un [workshop](https://jadeyryan.quarto.pub/rladies-dc-quarto-params/) para R-Ladies D.C. El título del workshop es Parameterized reporting using Quarto y está disponible la [charla](https://www.youtube.com/watch?v=MKjz_xkMgxY) de casi 2 horas y el [repo](https://github.com/jadeynryan/parameterized-quarto-workshop). Va a repetir el workshop en febrero de 2024 en [R-Ladies Abuja](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params/). Jadey Ryan ya dio una charla de 20 minutos sobre el tema en `posit::conf(2023)`, el vídeo [aquí](https://www.youtube.com/watch?v=lbE5uOqfT70), 20 minutos. Además tiene un [repo](https://github.com/WA-Department-of-Agriculture/soils) para hacer informes parametrizados en su organización. Este package fue revisado en directo por Luke Terney, vídeo [aquí](https://jadeyryan.com/blog/2024-01-22_package-review/)
+
+
+- [Aquí](https://twitter.com/WeAreRLadies/status/1599096598314754054), una preciosura de slides en las que se hace algo parecido; bueno en realidad usa `child documents` para crear unas slides donde hay una slide para cada persona de una organización.
+
+
+- Si quieres hacer el render **con parámetros** desde la Terminal : 
+
+    ```bash
+     quarto render annual_report.qmd -P year:2024
+    ```
+
+- [Aquí](https://meghan.rbind.io/blog/2022-09-25-tips-for-custom-parameterized-pdfs-in-quarto/) un post de Meghan Hall sobre informes parametrizados con énfasis en la personalización de los PDFs.
+

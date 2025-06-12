@@ -1,0 +1,66 @@
+---
+title: "Using R data with phyton"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+  Viendo cómo usar datos de R en chunks de Py con Quarto.
+date: 2023-01-28
+categories: [Quarto, Python]
+image: "./thumbnails/thumbnail_28_phyton.png"
+#title-block-banner: true #- {true, false }
+title-block-banner: thumbnails/thumbnail_28_phyton.png
+draft: false
+toc: true
+#toc-location: left
+toc-depth: 3
+#css: assets/my_css_file.css
+#bibliography: references.bib
+#nocite: |
+#  @*
+---
+
+Quarto ha hecho que me vuelva a interesar por Phyton!!!
+
+Es muy fácil combinar chunks de R con Py, solo hay que pasar los datos así: `my_py_data = r.df`
+
+```{r}
+library(reticulate)
+```
+
+
+
+```{r}
+df <- gapminder::gapminder
+iris <- iris
+```
+
+
+```{python}
+from siuba import _, group_by, summarize
+
+my_data = r.df
+
+(my_data
+  >> group_by(_.continent)
+  >> summarize(avg_lifeExp = _.lifeExp.mean())
+  )
+
+```
+
+
+```{python}
+from siuba import mutate, _
+from plotnine import ggplot, aes, geom_point
+
+my_data = r.iris
+
+(my_data
+  >> ggplot(aes("Sepal.Length", "Petal.Length", color = "Species"))
+   + geom_point()
+)
+```
+
+## Some biblio
+
+- [Quarto with Python](https://www.meyerperin.com/using-quarto/)
+

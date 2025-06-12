@@ -1,0 +1,33 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.2: Vamos a incorporar un chunk a nuestro `.qmd`
+
+- Utiliza el archivo `prueba_01.qmd` para insertar un chunk de código R con las siguientes instrucciones:
+
+
+  ```{{r}}
+  library(tidyverse)
+  ggplot(iris, aes(Sepal.Length, Petal.Length)) + geom_point()
+  ```
+
+  Si no tuvieses el paquete `tidyverse` instalado, puedes usar este otro chunk:
+
+
+  ```{{r}}
+  plot(iris$Petal.Length,iris$Petal.Width)
+  ```
+
+
+::: {.fragment}
+
+::: {.callout-warning icon="false"}
+#### Ayudita con las marcas de los chunks
+
+- Para incorporar las marcas que delimitan los chunks de código, puedes usar este atajo del teclado: {{< kbd Alt-Ctrl-I >}}
+
+:::
+
+:::
+
+<br>
+
+:::

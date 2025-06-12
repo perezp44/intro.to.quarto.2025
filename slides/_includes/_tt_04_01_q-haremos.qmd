@@ -1,0 +1,7 @@
+::: {.callout-tip collapse="false" appearance="default" icon="false"}
+## ¿Qué haremos en este tutorial?
+
+- Ver como podemos iniciar un nuevo post
+
+- (podemos marcar post todavía no acabados con `draft: true` en el yaml del post)
+:::

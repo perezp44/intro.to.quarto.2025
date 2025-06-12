@@ -1,0 +1,12 @@
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+
+# 1/ Opciones referentes al proyecto ----------------------------
+project:
+  type: website
+  output-dir: docs    #- podemos cambiar la carpeta donde se redirige el output (.html)
+  # execute-dir: project    #- cambiar el render directory: https://quarto.org/docs/projects/code-execution.html#working-dir
+  
+```

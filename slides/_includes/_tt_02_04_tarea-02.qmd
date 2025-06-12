@@ -1,0 +1,25 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.2: Crear el archivo `docencia.qmd`
+
+- Podemos crear `docencia.qmd` con cualquier contenido, incluso podría ser un documento sin contenido, PERO, mejor si lo creas así:
+
+```yaml
+---
+title: "Mi docencia"
+---
+
+Mi docencia es:
+
+## curso 2021-2022
+
+- [Econometría](./pdfs/econometria.pdf)
+
+## curso 2022-2023
+
+- [Algebra](/pdfs/econometria.pdf)
+
+## curso 2023-2024
+
+- [Intro a R](pdfs/econometria.pdf)
+````
+:::

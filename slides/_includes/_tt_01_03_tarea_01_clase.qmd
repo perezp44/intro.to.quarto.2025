@@ -1,0 +1,29 @@
+::: {.callout-important icon="false"}
+#### Tarea 1.1: Hemos de crear la carpeta que contendrá nuestro blog. 
+
+**La carpeta la creará Quarto, pero tenemos 2 formas de hacerlo**:
+
+<br>
+
+###### A) Crear la carpeta (o Qproject) desde **RStudio**
+
+-   En RStudio sigue la siguiente ruta de menús:   
+
+    `File > New Project > New Directory > Quarto Blog`
+    
+-   Mejor si llamas a la carpeta:  `blog_prueba_00`
+
+
+<br>
+
+###### B) Usando un Qproject ya creado con **RStudio Cloud**
+
+- Tienes que ir [aquí](https://rstudio.cloud/content/4743159). Se abrirá Rstudio en el navegador con un Qproject llamado `blog_prueba_00`.
+
+- Has de tener cuenta en [RStudio Cloud](https://rstudio.cloud/). Haz una copia permanente y trabaja sobre ella
+
+<br>
+
+De cualquiera de las 2 maneras **acabaremos teniendo una carpeta con todo o necesario para crear un blog**.
+:::
+

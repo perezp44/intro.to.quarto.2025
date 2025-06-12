@@ -1,0 +1,43 @@
+::: {.callout-important icon="false"}
+#### Tarea 5.3: Modificar encabezamiento de `./posts/my-primer-post/index.qmd` 
+
+- Tenemos que dejar el archivo `./posts/my-primer-post/index.qmd` así:
+
+
+````markdown
+---
+title: "Mi primer post con Quarto"
+description: |
+  Estoy aprendiendo Quarto
+author:
+  - name: Pedro J. Pérez
+    url: https://www.wikidata.org
+    affiliation: Universitat de València
+    affiliation-url: https://www.uv.es
+    orcid: 0000-xxxx
+date: "2022-10-25"
+categories: [R, quarto]
+#title-block-banner: true #- {true, false }
+title-block-banner: thumbnail.jpg
+title-block-banner-color: green
+---
+
+Este es mi **primer post** con Quarto!!!!
+
+```{{r}}
+sqrt(2 + 2)
+```
+
+Voy a poner una imagen:
+
+![](thumbnail.jpg)
+
+Acabé con mi primer post. FIN
+  
+````
+
+- Sustituye `thumbnail.jpg` por otro archivo
+
+
+- Vuelve a regenerar el blog: `Build > Render Website`
+:::

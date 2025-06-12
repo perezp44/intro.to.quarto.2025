@@ -1,0 +1,20 @@
+::: {.callout-note collapse="true" appearance="default" icon="false"}
+#### Resumen (tutorial nº 4)
+
+- En esta **cuarta parte del taller** hemos visto como podemos generar/escribir nuevos posts para nuestro blog: solo hay replicar una de las carpetas de anteriores posts y cambiarle el nombre.
+
+
+<br>
+
+- Hemos visto como cambiar la imagen que acompaña a los posts en la "listing page".
+
+<br>
+
+- Recuerda que podemos marcar un post con `draft: true` en el yaml del post.
+
+
+<br>
+
+- En el **siguiente tutorial** veremos en profundidad las posibilidades que nos ofrece Quarto para escribir nuestros posts.
+
+:::

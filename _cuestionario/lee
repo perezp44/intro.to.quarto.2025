@@ -1,0 +1,5 @@
+el cuestionario se confecciona en "01_cuestionario.qmd"
+
+El cuestionario tiene ejercicios. Los ejercicios los hago y pulo en el Qproject "quart.ej.cuestionario" pero luego guardo una copia con los ejercicios finales en ste mismo Qproject, concretamente en  "./cuestionario/ejercicios_cuestionario"
+
+en "./cuestionario/old/" estan los ejercicios inciales (antes usaba datos de la curva de Phillips y ahora uso datos de Eurovision)

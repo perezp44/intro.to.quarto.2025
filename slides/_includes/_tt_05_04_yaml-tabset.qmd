@@ -1,0 +1,22 @@
+::: {.panel-tabset}
+
+
+#### 1. nivel proyecto (_quarto.yml)
+
+Abajo el contenido del fichero `_quarto.yml` tal y como lo tenemos ahora en nuestro blog. Solo he añadido 3 comentarios para diferenciar entre secciones:
+
+
+![](./imagenes/tt_01/img_666a.png){fig-align="center"}
+
+
+#### 2. nivel carpeta (_metadata.yml)
+
+Abajo el, contenido del fichero `./posts/_metadata.yml`. Afectará a todos los ficheros `.qmd` que haya en la carpeta `./posts/`
+
+![](./imagenes/tt_01/img_666b.png){fig-align="center"}
+
+#### 3. nivel documento (index.qmd)
+
+![](./imagenes/tt_01/img_666c.png){fig-align="center"}
+
+:::

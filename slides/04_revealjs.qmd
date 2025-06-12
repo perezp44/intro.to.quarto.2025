@@ -1,0 +1,1527 @@
+---
+title: "Slides con Quarto"
+#date: 2024-05-20  #- ISO8601 YYYY-MM-DD format 
+subtitle: | 
+  {{< var my_subtitle2 >}}
+date-format: long
+lang: es
+format: 
+  revealjs:
+    #theme: dark
+    #logo: imagenes/economia.gif
+    #chalkboard: true
+    scrollable: true
+    slide-level: 2
+    height: 900
+    width: 1600
+    toc: false
+    from: markdown+emoji  #- usar emojis https://gist.github.com/rxaviers/7360908)
+    center-title-slide: true
+    title-slide-attributes: #- atributos para la slide de titulo
+      data-background-color: "#562457"   #- color de R-ladies
+      #data-background-image: /imagenes/economia.gif
+      #data-background-size: contain      
+    preview-links: auto  #- true: abre un iframe en lugar de abrir ventana
+    #multiplex: true  #- para que puedas manejar las slides del publico
+    link-external-newwindow: true
+    transition: fade
+    #height: 900
+    #width: 1600
+    fontcolor: "#262d36"
+    highlight-style: a11y
+    code-line-numbers: true
+    number-sections: false
+    slide-number: c/t   # https://pandoc.org/MANUAL.html#structuring-the-slide-show
+    incremental: false   # https://quarto.org/docs/presentations/#incremental-lists
+    #code-link: true
+
+#logo: imagenes/economia.gif
+#footer: |
+#        {{< var webcurso >}}
+revealjs-plugins: [pointer]
+  # - lightbox
+  # - pointer  # hay q apretar q
+css: assets/styles_para_mostrar_tuneado-en-las-slides.css
+    #theme: [moon, custom.scss]
+embed-resources: true
+---
+
+# Intro {background-color="#b8c2aa"}
+
+{{< var lineanaranja >}}
+
+
+
+0. [ChatGPT](https://twitter.com/Saboo_Shubham_/status/1636227441550315521?t=wXi4to4jKhVKJ0ZP6Oixpg&s=09) puede hacer slides, pero Quarto también
+
+. . .
+
+<br>
+
+
+1. Quarto puede hacer slides de varios tipos (ppt, slidy, beamer)
+
+2. Nos centraremos en **Revealjs**
+
+
+> Revealjs is highly recommended unless you have specific requirements for Office or LaTeX output
+
+
+
+
+# Presentaciones con Quarto (genérico) {.unnumbered background-color="#ebf5fb"} 
+
+{{< var lineanaranja >}}
+
+
+- Las slides se escriben en **QMD** ... así que ya sabemos 😉
+
+. . . 
+
+
+- Hay algunas especificidades que vamos a ver
+
+- Veremos primero aspectos comunes a todos los formatos de slides
+
+
+- [Documentación oficial](https://quarto.org/docs/presentations/)
+
+
+
+--- 
+
+## Creación de unas nuevas transparencias {.smaller}
+
+. . . 
+
+1. Has de seguir la siguiente ruta de menús:  
+    `File > New File > Quarto Presentation`.   
+2. Se abrirá una interfaz gráfica donde podrás elegir entre **3 formatos de slides** (Revealjs, Beamer y ppt). También podrás poner título y autor. 
+
+. . . 
+
+En imágenes:
+
+::: {layout-ncol=2}
+![](./imagenes/ss_04_img_01a.png){height=280}
+
+![](./imagenes/ss_04_img_01b.png_z){height=280}
+:::
+
+<br>
+
+
+--- 
+
+## Creación de una nueva slide
+
+
+- Los títulos de **primer nivel** crean una nueva slide  (y tb una nueva sección)
+
+- Los títulos de **segundo** nivel crean  una nueva slide. 
+
+. . . 
+
+- También se puede crear una nueva slide usando **3** o mas **guiones cortos**: `---`
+
+<br>
+
+. . . 
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión: modificar la generación de nuevas slides
+
+Hay que usar  `slide-level:` en el YAML. Por ejemplo:
+  
+  
+
+:::: {columns}
+
+::: {.column width="48%"}
+```yaml
+---
+title: "Mis slides"
+format: revealjs 
+---
+```
+Por defecto, los títulos de primer(#) y segundo nivel (##) crean nuevas slides
+:::
+::: {.column width="48%"}
+
+``` yaml
+---
+title: "Mis slides"
+format: 
+  revealjs:   
+  slide-level: 3
+---
+```
+Con este yaml, los títulos de tercer nivel (con `###`) también crearían una nueva slide
+:::
+::::
+:::
+
+
+<br>
+
+
+---
+
+## Pausas en la presentación
+
+- Por defecto, los elementos de una slide **se muestran todos de golpe**
+
+. . . 
+
+<br>
+
+> :warning:  Para crear pausas en la presentación has de usar las siguientes marcas: <span style="background-color: #e5e5e5; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"><code> . . .  </code></span>
+
+        (es decir, tres puntos separados por espacios)
+    
+<br>
+
+. . .
+
+- Por ejemplo:
+
+```default
+## Una nueva slide
+
+Contenido nº 1
+
+. . . 
+
+Contenido nº 2
+
+```
+
+    (para ver el Contenido nº 2 habrá que dar al avance página)
+
+
+---
+
+## Listas incrementales
+
+
+- Por defecto **las listas se muestran de golpe**
+
+. . . 
+
+- Si quieres que se muestren elemento a elemento, puedes controlarlo **desde el YAML**:
+
+
+```yaml
+title: "My Presentation"
+format:
+  revealjs:
+    incremental: true   
+```
+
+. . . 
+
+- Se puede ir **intercalando** listas incrementales, y no-incrementales, con los siguientes **fenced div's**:
+
+:::: {.columns}
+::: {.column width="45%" .fragment}
+
+Lista **incremental** :
+
+<br>
+
+```markdown
+::: {.incremental}
+- First we take Manhatan,
+- then we take Berlin
+:::
+```
+:::
+::: {.column width="45%" .fragment}
+
+Lista **no-incremental** :
+
+<br>
+
+``` markdown
+::: {.nonincremental}
+- First we take Manhatan,
+- then we take Berlin
+:::
+```
+:::
+::::
+
+---
+
+## Columas multiples {.smaller}
+
+:::: {.columns}
+::: {.column width="35%"}
+- Como puedes ver, se puede generar contenido en **varias columnas**. Para ello hay que usar "un **fenced div** con clase `columns`". 
+:::
+::: {.column width="60%"}
+> To put material in side by side columns, you can use a native div container with class .columns, containing two or more div containers with class .column and a width attribute. -- [Documentacion oficial](https://quarto.org/docs/presentations/#multiple-columns) de Quarto
+:::
+::::
+
+. . . 
+
+- Por ejemplo:
+
+
+```markdown
+:::: {.columns}
+
+::: {.column width="40%"}
+Mi contenido en la primera columna
+:::
+
+::: {.column width="60%"}
+Contenido en la segunda columna
+:::
+
+::::
+
+```
+
+
+<br>
+
+
+
+# Revealjs slides {.unnumbered background-color="#ebf5fb"} 
+
+{{< var lineanaranja >}}
+
+
+- [reveal.js](https://revealjs.com/) es un open source **HTML presentation framework**
+
+. . .
+
+- A mi me gustan: en mi opinión tienen unas cuantas ventajas
+
+<br>
+
+- Documentación oficial  [aquí](https://quarto.org/docs/presentations/revealjs/)
+
+- Listado (extenso) de opciones [aquí](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
+
+
+
+
+
+# Revealjs slides (elementos básicos) {.unnumbered background-color="#ebf5fb"} 
+
+{{< var lineanaranja >}}
+
+
+- Elementos "básicos", que mejoran bastante las slides
+
+
+
+---
+
+## Revealjs: Slide background
+
+<br>
+
+- Las slides **mejoran bastante estéticamente** si en alguna de ellas **cambiamos el fondo**. La documentación está [aquí](https://quarto.org/docs/presentations/revealjs/#slide-backgrounds)
+
+
+. . . 
+
+- Se pueden usar los siguientes elementos: **color**, **imagen**, **vídeo** e **iframe**. Por ejemplo:
+
+```markdown
+
+## Título de la slide {background-color="aquamarine"}
+
+## Título de la slide {background-color="#A9339A"}
+
+
+```
+
+<br>
+
+. . . 
+
+
+:::{.callout-warning icon="false" }
+#### Extensión: Opciones más complejas
+
+```markdown
+## Slide Title {background-video="video.mp4" background-video-loop="true" background-video-muted="true"}
+
+## Slide Title {background-color="black" background-image="https://placekitten.com/100/100" background-size="100px" background-repeat="repeat"}
+
+## Slide Title {background-iframe="https://www.uv.es"}
+```
+:::
+
+## Slide Backgrounds: ejemplo 1 (color) {background-color="aquamarine"}
+
+Para poner un color de fondo:
+
+```markdown
+
+## Slide Backgrounds: ejemplo 1 (color) {background-color="aquamarine"}
+
+```
+
+
+## Slide Backgrounds: ejemplo 2 (imagen) {background-image="imagenes/perro_blanco.jpg" background-size="cover"  background-opacity="0.7"} 
+
+Para poner una imagen de fondo:
+
+```markdown
+
+## Slide Backgrounds: ejemplo 2 (imagen) {background-image="imagenes/perro_blanco.jpg" background-size="cover"}
+
+```
+
+
+## {background-image="https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" background-size="contain" background-position="left"}
+
+::: columns
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+### Se pueden hacer cosas muy chulas como:
+
+::: incremental
+::: r-fit-text
+
+- [Slides Emil Hvitfeldt](https://emilhvitfeldt.github.io/useR2022-textrecipes)
+
+- Parallax background. Documentación [aquí](https://quarto.org/docs/presentations/revealjs/advanced.html#parallax-background)
+
+- [Quarto iFrame Examples](https://emilhvitfeldt.github.io/quarto-iframe-examples/). El [repo](https://github.com/EmilHvitfeldt/quarto-iframe-examples)
+
+:::
+:::
+:::
+:::
+
+::: footer
+Inspiración, vamos, copiado de <https://emilhvitfeldt.github.io/useR2022-textrecipes>
+:::
+
+## Revealjs: Tabsets 
+
+<br>
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- Por ejemplo este tabset
+
+::: {.panel-tabset}
+## Adivinanza
+
+Oro parece, plátano es ...
+
+## Solución
+
+😀
+:::
+
+:::
+
+
+::: {.column width="50%"}
+- se ha creado con este código:
+
+```markdown
+::: {.panel-tabset}
+## Adivinanza
+
+Oro parece, platano es ...
+
+## Solución
+
+😀
+:::
+
+```
+
+:::
+:::
+
+. . . 
+
+<br>
+
+
+
+
+## Revealjs: Numeración de las slides
+
+- Por defecto las slides están numeradas
+
+``` yaml
+---
+format:
+  revealjs:
+    slide-number: true #- {true, false}
+---
+```
+
+. . . 
+
+- Puedes hacer que una slide **no se cuente**:
+
+```markdown
+## Título de la slide  {visibility="uncounted"}
+```
+
+<br>
+
+. . . 
+
+- Puedes hacer cosas más complejas. Documentación oficial [aquí](https://quarto.org/docs/presentations/revealjs/presenting.html#slide-numbers)
+
+``` yaml
+---
+format:
+  revealjs:
+    slide-number: c/t   #- current/total {c/t, c, ...}
+---
+```
+
+## Revealjs: tunear con **themes**
+
+- Podemos cambiar la apariencia de las slides usando los **themes**. 
+
+- **Listado de themes** [aquí](https://quarto.org/docs/presentations/revealjs/themes.html#using-themes).
+
+. . . 
+
+- Para ello tenemos que incluir en el YAML el theme que queremos:
+
+```markdown
+---
+title: "Presentation"
+format:
+  revealjs: 
+    theme: dark
+---
+```
+
+<br>
+
+. . . 
+
+:::{.callout-warning icon="false" }
+### Hay extensiones para tunear
+
+- Además disponemos de muchos otros themes en **extensiones** en [la web de Quarto](https://quarto.org/docs/extensions/listing-revealjs.html) y en [Awesome Quarto](https://github.com/mcanouil/awesome-quarto#presentations)
+
+
+- Por ejemplo: los themes [4 estaciones](https://github.com/EmilHvitfeldt/quarto-revealjs-seasons),  [Inversa](https://github.com/EmilHvitfeldt/quarto-revealjs-inverse), [Insper](https://github.com/padsInsper/quarto-insper-theme), ... [Revealjs Earth theme](https://github.com/EmilHvitfeldt/quarto-revealjs-earth) impresiona.
+
+:::
+
+
+# Revealjs slides (más elementos) {.unnumbered background-color="#ebf5fb"} 
+
+{{< var lineanaranja >}}
+
+
+- "Más elementos", que no son imprescindibles
+
+
+
+## Revealjs: la primera slide 
+
+- La primera slide **se crea automáticamente** [si pones un título en el YAML]{.underline}  
+
+  - En ese caso, la 1ª slide contendrá los **metadatos**: title, subtitle, author, institute, date  
+  
+. . . 
+
+- La **apariencia de la primera slide** dependerá del tema elegido. **Listado de themes** [aquí](https://quarto.org/docs/presentations/revealjs/themes.html#using-themes).
+
+. . . 
+
+<br>
+
+- Tenemos muchas opciones para **personalizar las slides** y, en concreto, para [tunear la primera slide]{.underline}
+
+---
+
+## Revealjs: tuneando la primera slide {background-color="#DCDCDC"}
+
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión: modificar el aspecto de la primera slide con YAML
+
+Aquí tienes algunas opciones en el YAML para la primera slide
+
+```yaml
+---
+title: "Mys slides"
+format:
+  revealjs: 
+    theme: default
+    center-title-slide: true                #- centrado vertical
+title-slide-attributes:
+  data-background-color: "#562457"          #- color del backgroung
+  data-background-image: imagenes/my_imagen.jpg  #- ruta a imagén
+  data-background-size: cover               #- {cover, contain}
+  data-background-opacity: "0.4"
+---
+```
+:::
+
+<br>
+
+::: {.callout-warning collapse="true" appearance="default" icon="false"}
+#### Extensión: modificar el aspecto de la primera slide **manualmente**
+
+```markdown
+# My slides {background-image="imagenes/my_imagen.jpg" background-size="cover" background-color="#4f6952" background-opacity="0.5"}
+
+<h2>Tuneando la primera slide</h2>
+
+<h3>Pedro J. Pérez \| 2023-04-04</h3>
+```
+:::
+
+
+## Rvealjs: el Footer
+
+- Podemos incorporar contenido en el **píe de página** de las slides. 
+
+. . . 
+
+::: {style="position: absolute; height: 50px; width: 400px; background: #44709935; bottom: -20px; left: 630px;"}
+:::
+
+. . . 
+
+- El footer habitual de estas slides se haría así:
+
+```yaml
+---
+title: "My slides"
+format: 
+  revealjs:
+    footer: "[https://go.uv.es/pjperez/intro.to.quarto](https://go.uv.es/pjperez/intro.to.quarto)"
+---
+```
+
+<br>
+
+- Pero si te fijas, he cambiado el footer específicamente para esta slide. Lo he hecho con: 
+
+
+::: footer
+<https://www.uv.es>
+:::
+
+```markdown
+::: {.footer}
+<https://www.uv.es>
+:::
+```
+
+
+## Rvealjs: Logo
+
+- También podemos poner un logo. Por defecto se colocará en la esquina inferior-izquierda. La numeración pasaría a estar en la esquina superior-izquierda
+
+
+```yaml
+---
+title: "My slides"
+format: 
+  revealjs:
+    footer: "[https://go.uv.es/pjperez/intro.to.quarto](https://go.uv.es/pjperez/intro.to.quarto)"
+    #logo: imagenes/economia.gif
+    logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Esuni.GIF"
+---
+```
+
+
+<br>
+
+- Hay **extensiones** que permiten incorporar más elementos y dar más flexibilidad al footer y al header de nuestras slides. Por ejemplo [esta](https://github.com/shafayetShafee/reveal-header) extensión permite hacer slides como [estas](https://github.com/shafayetShafee/reveal-header/blob/main/images/revealjs_minimal_example_ss.png) 
+
+---
+
+## Revealjs: Content overflow
+
+Si el **contenido** que queremos poner es mucho y no se ajusta, **no cabe en la slide**, tenemos varias posibilidades:
+
+<br>
+
+. . . 
+
+1. Usar la `.smaller` class al crear la slide: 
+  
+```markdown
+
+## Título de la slide {.smaller}
+
+```
+    
+<br>
+  
+. . .     
+    
+2. Modificar el YAML para hacer las slides "scrollables":
+  
+ 
+```yaml
+---
+title: "My Presentation"
+format:
+  revealjs:
+      scrollable: true
+---      
+```
+
+-
+
+## Revealjs: Transiciones
+
+- Documentación oficial [aquí](https://quarto.org/docs/presentations/revealjs/advanced.html#slide-transitions)
+
++-------------+------------------------------------------------------------------------+
+| Transition  | Description                                                            |
++=============+========================================================================+
+| `none`      | No transition (switch instantly)                                       |
++-------------+------------------------------------------------------------------------+
+| `fade`      | Cross fade                                                             |
++-------------+------------------------------------------------------------------------+
+| `slide`     | Slide horizontally                                                     |
++-------------+------------------------------------------------------------------------+
+| `convex`    | Slide at a convex angle                                                |
++-------------+------------------------------------------------------------------------+
+| `concave`   | Slide at a concave angle                                               |
++-------------+------------------------------------------------------------------------+
+| `zoom`      | Scale the incoming slide so it grows in from the center of the screen. |
++-------------+------------------------------------------------------------------------+
+  
+
+. . .
+
+``` yaml
+---
+title: "Presentation"
+format:
+  revealjs:
+    transition: slide      #- transiciones de las slide: {none, fade, slide, convex, concave, or zoom}
+    transition-speed: fast #- {default, fast, slow}
+---
+```  
+
+
+## Revealjs: Transiciones {transition="convex" transition-speed="slow"}
+
+- Las transiciones se pueden fijar para una slide:
+
+```markdown
+## Título de la slide {transition="convex" transition-speed="slow"}
+```
+
+- y hacerlas más complejas
+
+
+```markdown
+## Título de la slide {transition="fade-in slide-out"}
+```
+
+
+
+## Revealjs: Auto-animaciones {background-color="#DCDCDC"}
+
+
+- Se puede auto-animar 2 slides próximas. Documentación [aquí](https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)
+
+. . . 
+
+```markdown
+
+# {auto-animate=true}
+
+¿Esto te gusta?
+
+## {auto-animate=true}
+
+¿Esto te gusta?
+
+Sí, esto me gusta
+
+## {auto-animate=true}
+
+Sí, esto me gusta **MUCHO**
+```
+
+. . .
+
+<br>
+
+- Se pueden usar **las siguientes propiedades CSS**: position, font-size, line-height, color, background-color, padding y margin.
+
+
+```markdown
+## {auto-animate=true}
+
+::: {style="margin-top: 100px;"}
+Contenido auto-anímado
+:::
+
+## {auto-animate=true}
+
+::: {style="margin-top: 200px; font-size: 3em; color: red;"}
+Contenido auto-anímado
+:::
+```
+
+<br>
+
+. . . 
+
+
+## Revealjs: Auto-animaciones (chunks) {background-color="#DCDCDC"}
+
+
+
+- También se puede **auto-animar chunks** de código. Documentación [aquí](https://quarto.org/docs/presentations/revealjs/advanced.html#code-animations)
+
+. . . 
+
+
+````markdown
+## {auto-animate="true"}
+
+```r
+#######- Hagamos un ggplot
+library(ggplot2)
+ggplot(iris) +
+```
+
+## {auto-animate=true}
+
+```r
+#######- Hagamos un ggplot
+library(ggplot2)
+ggplot(iris) +
+  geom_point(aes(x = Sepal.Length, 
+                 y = Petal.Length, 
+                 color = Species))
+```
+
+````
+
+
+
+## Revealjs: Asides  {background-color="#DCDCDC"}
+
+- Los "asides" son **similares a las notas al píe de página**, pero no llevan numeración.
+
+<br>
+
+- Su sintaxis es:
+
+```markdown
+::: aside
+El contenido de un aside se colocará al final de la slides, justo encima de las notas al píe
+:::
+```
+
+::: aside
+El contenido de un aside se colocará al final de la slides, justo encima de las notas al píe
+:::
+
+
+
+---
+
+## Revealjs: Más cosas  {background-color="#DCDCDC"}
+
+- Puedes **ocultar una slide**:
+
+```markdown
+## Título de la slide  {visibility="hidden"}
+```
+. . . 
+
+<br>
+
+- **Tamaño de las slides**. Documentación oficial [aquí](https://quarto.org/docs/presentations/revealjs/advanced.html#presentation-size)
+
+
+
+## Revealjs: Alineación de los títulos  {background-color="#DCDCDC"}
+
+-  Los títulos de primer nivel (#) aparecen verticalmente centrados 
+
+-  Los títulos de segundo nivel (##) aparecen en el margen superior
+
+. . . 
+
+- Todo se puede cambiar con CSS, o . . . 
+
+. . . 
+
+- Si quieres alinear un título a la derecha, una posibilidad es:
+
+. . .
+
+```markdown
+::: {style="text-align: right;"}
+
+<h2>Right aligned!</h2>
+
+### Right aligned  tb!
+:::
+```
+
+::: {style="text-align: right;"}
+
+<h2>Right aligned!</h2>
+
+### Right aligned tb!
+:::
+
+
+---
+
+
+##  Revealjs: ajustar texto con "r-fit-text"  {background-color="#DCDCDC"}
+
+:::: {columns}
+::: {.column width="70%"}
+
+::: r-fit-text
+NO
+
+QUIERO!!
+:::
+:::
+::: {.column width="25%"}
+```markdown
+::: r-fit-text
+NO
+
+QUIERO!!
+:::
+```
+:::
+::::
+
+
+## Revealjs: Fragments  {background-color="#DCDCDC"}
+
+
+- Los **fragments** se usan para resaltar o mostrar poco a poco algunos elementos de una slide: cada elemento con clase `.fragment` aparecerá sólo cuando avancemos a la siguiente slide. Documentación [aquí](https://quarto.org/docs/presentations/revealjs/advanced.html#fragments). Hay muchas [clases de fragments](https://quarto.org/docs/presentations/revealjs/advanced.html#fragment-classes)
+
+. . . 
+
+
+::::: {columns}
+:::: {.column width="48%"}
+
+```markdown
+::: {.fragment}
+Fade in
+:::
+
+::: {.fragment .fade-out}
+Fade out
+:::
+
+::: {.fragment .highlight-red}
+Highlight red
+:::
+
+::: {.fragment .fade-in-then-out}
+Fade in, then out
+:::
+
+::: {.fragment .fade-up}
+Slide up while fading in
+:::
+```
+::::
+
+:::: {.column width="38%"}
+::: {.fragment}
+Fade in
+:::
+
+::: {.fragment .fade-out}
+Fade out
+:::
+
+::: {.fragment .highlight-red}
+Highlight red
+:::
+
+::: {.fragment .fade-in-then-out}
+Fade in, then out
+:::
+
+::: {.fragment .fade-up}
+Slide up while fading in
+:::
+::::
+:::::
+
+## Revealjs: Fragments en **spans**   {background-color="#DCDCDC"}
+
+- El uso más directo que veo a los fragments es usarlos con spans para hacer esto:
+
+
+
+```markdown
+Esto es muy [importante!!]{.fragment .highlight-red}
+```
+
+<br>
+
+. . . 
+
+Esto es muy [importante!!]{.fragment .highlight-red}
+
+
+<br>
+
+. . . 
+
+- Otro ejemplo:
+
+```rmarkdown
+Los datos indican que [Quarto]{.fragment .highlight-green} mientras que [Rmarkdown]{.fragment .fade-in} va desapareciendo
+```
+<br>
+
+Los datos indican que [Quarto]{.fragment .highlight-green} crece mucho, mientras que [Rmarkdown]{.fragment .fade-in} va desapareciendo
+
+
+## Revealjs: **Imágenes**
+
+- Por defecto se alinean a la izquierda
+
+```markdown
+![](imagenes/perro_goya.jpg){fig-align="center"}
+```
+
+![](imagenes/imagen_ababol.jpg){fig-align="center"}
+
+
+
+## Imágenes: con o sin Stretch {.nostretch}
+
+- Por defecto, Revealjs hace que **las imágenes se ajusten al espacio vertical** que queda en la slide.
+
+. . .
+
+
+- Puedes **desactivar esta opción** en el YAML y/o en slide o imagen concreta. Documentación [aquí](https://quarto.org/docs/presentations/revealjs/advanced.html#stretch)
+
+
+::: {columns}
+::: {.column width="47%"}
+- En el YAML
+
+```yaml
+format: 
+  revealjs:
+    auto-stretch: false
+```
+:::
+::: {.column width="47%"}
+- En una slide o imagen concreta
+
+```yaml
+## Nueva slide {.nostretch}
+
+![](imagenes/imagen_ababol.jpg){.nostretch}
+
+```
+:::
+:::
+
+![](imagenes/imagen_ababol.jpg){.nostretch}
+
+
+## Imágenes: **Stack layout**
+
+<br>
+
+::: {columns}
+::: {.column width="48%"}
+```rmarkdown
+::: {.r-stack}
+![](imagenes/perro_blanco.jpg){.fragment width="350"}
+
+![](imagenes/perro_goya.jpg){.fragment width="400"}
+:::
+```
+:::
+::: {.column width="48%"}
+
+::: {.r-stack}
+![](imagenes/perro_blanco.jpg){.fragment width="350"}
+
+![](imagenes/perro_goya.jpg){.fragment width="400"}
+:::
+:::
+:::
+
+
+## Imágenes: **Posición absoluta**
+
+```markdown
+![](imagenes/perro_goya.jpg){.absolute top=500 left=0 width="250" height="100"}
+
+![](imagenes/perro_blanco.jpg){.absolute top=50 right=50 height="250"}
+
+![](imagenes/imagen_ababol.jpg){.absolute bottom=30 right=-100 width="300" height="300"}
+````
+
+
+![](imagenes/perro_goya.jpg){.absolute top=500 left=0 width="250" height="100"}
+
+![](imagenes/perro_blanco.jpg){.absolute top=50 right=50 height="250"}
+
+![](imagenes/imagen_ababol.jpg){.absolute bottom=30 right=-100 width="300" height="300"}
+
+
+
+
+# Revealjs: Código {background-image="https://data.nssmag.com/images/galleries/18043/code-matrix.jpg" background-size="cover" background-color="black"}
+
+Documentación [aquí](https://quarto.org/docs/reference/formats/presentations/revealjs.html#code)
+
+
+
+## Chunks: code line-highlighting
+
+- Podemos hacer que se enfaticen ciertas lineas de los chunks. Para ello has de poner ciertas opciones dentro de los chunks:
+
+
+
+::: {columns}
+::: {.column width="48%"}
+
+```markdown
+#| code-line-numbers: "3"
+```
+:::
+
+::: {.column width="48%"}
+```{r}
+#| code-line-numbers: "3"
+#| eval: false
+library(ggplot2)
+mtcars |> 
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess", formula = "y~x")
+```
+:::
+:::
+
+. . . 
+
+
+::: {columns}
+::: {.column width="48%"}
+
+```markdown
+#| code-line-numbers: "|4"
+```
+:::
+
+::: {.column width="48%"}
+```{r}
+#| code-line-numbers: "|4"
+#| eval : false
+library(ggplot2)
+mtcars |> 
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess", formula = "y~x")
+```
+:::
+:::
+
+
+. . . 
+
+
+::: {columns}
+::: {.column width="48%"}
+
+```markdown
+#| code-line-numbers: "|3|5|"
+```
+:::
+
+::: {.column width="48%"}
+```{r}
+#| code-line-numbers: "|3|5|"
+#| eval: false
+library(ggplot2)
+mtcars |> 
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess", formula = "y~x")
+```
+:::
+:::
+
+
+- Documentación oficial [aquí](https://quarto.org/docs/presentations/revealjs/#line-highlighting). Un buen [post](https://www.pipinghotdata.com/posts/2022-05-12-code-line-highlighting-in-quarto-revealjs-presentations/) sobre el tema, con otras opciones de sintáxis.
+
+## Chunks: Output location
+
+- La opción: `#| output-location: ` nos ayuda a colocar el código y los resultados side-by-side. Tiene los siguientes valores: {column-fragment, column, fragment, slide}
+
+. . . 
+
+- La opción que más me gusta es: `#| output-location: column-fragment,` porque coloca el chunk y el resultado side-by-side y los separa por una pausa. Documentación oficial [aquí](https://quarto.org/docs/presentations/revealjs/#output-location). Mine Çetinkaya-Rundel lo explica [aquí](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/05-output-location/)
+
+
+
+```{r}
+#| echo: fenced
+#| output-location: column-fragment
+library(ggplot2)
+mtcars |> 
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess", formula = "y~x")
+```
+
+
+
+
+# Revealjs: tuneando las slides {.unnumbered background-color="#ebf5fb"} 
+
+{{< var lineanaranja >}}
+
+- Lo mejor es elegir un "theme"
+
+- Hay otras opciones
+
+
+## Revealjs: tunear con **themes**
+
+- Podemos cambiar la apariencia de las slides usando los **themes**. 
+
+- **Listado de themes** [aquí](https://quarto.org/docs/presentations/revealjs/themes.html#using-themes).
+
+. . . 
+
+- Para ello tenemos que incluir en el YAML el theme que queremos:
+
+```markdown
+---
+title: "Presentation"
+format:
+  revealjs: 
+    theme: dark
+---
+```
+
+<br>
+
+. . . 
+
+:::{.callout-warning icon="false" }
+### Hay extensiones para tunear
+
+- Además disponemos de muchos otros themes en **extensiones** en [la web de Quarto](https://quarto.org/docs/extensions/listing-revealjs.html) y en [Awesome Quarto](https://github.com/mcanouil/awesome-quarto#presentations)
+
+
+- Por ejemplo: los themes [4 estaciones](https://github.com/EmilHvitfeldt/quarto-revealjs-seasons),  [Inversa](https://github.com/EmilHvitfeldt/quarto-revealjs-inverse), [Insper](https://github.com/padsInsper/quarto-insper-theme), ... [Revealjs Earth theme](https://github.com/EmilHvitfeldt/quarto-revealjs-earth) impresiona.
+
+:::
+
+
+## Revealjs: **Ejemplos** de presentaciones {.smaller}
+
+<br>
+
+. . . 
+
+- [Some good practices for research with R](https://www.good-practices.etiennebacher.com/#/title-slide) de Etienne Bacher, el repo [aquí](https://github.com/etiennebacher/good-practices)
+
+
+- [Debugging](https://rstats-wtf.github.io/wtf-debugging-slides/#/title-slide) de Shannon Pileggi, el repo [aquí](https://github.com/rstats-wtf/wtf-debugging-slides)
+
+- [The Genesis of Experimentation](https://emitanaka.org/slides/Ihaka2022/#/title-slide) de Emi Tanaka, el repo [aquí](https://github.com/emitanaka/talks/tree/master/Ihaka2022)
+
+- [ggdensity: Improved density visualization in R](https://jamesotto852.github.io/JSM-2022/#/) de James Otto y David Kahle, el repo [aquí](https://github.com/jamesotto852/JSM-2022)
+
+- [Extending ggplot2 with custom Geoms and Stats](https://jamesotto852.github.io/extending-ggplot2/#/) de James Otto, el repo [aquí](https://github.com/jamesotto852/extending-ggplot2)
+
+- [Quarto/RMarkdown - What’s Different?](https://laderast.github.io/qmd_rmd/#/title-slide), de TED Laderas. [Vídeo](https://www.youtube.com/watch?v=xC6I5OVOnKI)
+
+- [An Antarctic Tour of the Tidyverse](https://slides.silviacanelon.com/tour-of-the-tidyverse-v2/#/title-slide) de Silvia Canelon, el repo [aquí]()
+
+- [Hello Quarto](https://mine.quarto.pub/hello-quarto/#/hello-quarto-title) de Mine Çetinkaya-Rundel y Julia Stewart Lowndes, el repo [aquí](https://github.com/mine-cetinkaya-rundel/hello-quarto), [más cosas](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/31-hello-quarto/)
+
+- [Reproducible authoring with Quarto](https://mine-cetinkaya-rundel.github.io/2022-repro-toronto/#/title-slide) de  Mine Çetinkaya-Rundel, el repo [aquí](https://github.com/mine-cetinkaya-rundel/2022-repro-toronto)  &emsp;  &emsp; &emsp;  [veamos ,un poco, [estas slides]{style="color: red; background-color: yellow;"}]
+
+- [What can I do with Quarto?](https://nrennie.rbind.io/talks/2022-october-oxford-r-user-group/slides.html#/title-slide) de Nicola Rennie, su web [aquí](https://nrennie.rbind.io/)
+
+- [Reproducible Publications w/ Python and Quarto](https://thomasmock.quarto.pub/python/#/TitleSlide) de Thomas Mock
+
+- [Improvements in text preprocessing using textrecipes](https://emilhvitfeldt.github.io/useR2022-textrecipes/#/section) de Emil Hvitfeldt
+
+- [The Happiest Notebooks on Earth](https://apreshill.github.io/happiest-notebooks-on-earth/#/title-slide) de Allison Hill
+
+- [Quarto Presentations](https://quarto.org/docs/presentations/revealjs/demo/#/title-slide) by Quarto team, el repo [aquí](https://github.com/quarto-dev/quarto-web/blob/main/docs/presentations/revealjs/demo/index.qmd). Documentación oficial [aquí](https://quarto.org/docs/presentations/revealjs/)
+
+- [Intro to Quarto](https://ivelasq.quarto.pub/intro-to-quarto/#/section) de Isabella Velásquez, el repo [aquí](https://github.com/ivelasq/2022-10-27_intro-to-quarto)
+
+
+- [Un buen post sobre Revealjs slides](https://meghan.rbind.io/blog/quarto-slides/) de Meghan Hall
+
+- [Data Science Portfolio with Quarto](https://deepshamenghani.quarto.pub/portfolio-with-quarto-workshop/#/title-slide) de Deepsha Menghani, el repo [aquí](https://github.com/deepshamenghani/Portfolio_DeepshaM). Vídeo [aquí](https://www.youtube.com/watch?v=xtSFXtDf4cM)
+
+- [05 - Presentations Making Slides with Code](https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html#/presentations) y [02 - Authoring Quarto](https://jthomasmock.github.io/quarto-2hr-webinar/materials/02-authoring.html#/authoring-quarto) de Thomas Mock. Slides que pertenecen al siguiente taller [Get started with Quarto](https://rstudio-conf-2022.github.io/get-started-quarto/)
+
+- [Creating your data science portfolio](https://nrennie.rbind.io/talks/rladies-gaborone-data-science-portfolio/slides.html#/title-slide), de Nicola Rennie. Sus talks [aquí](https://github.com/nrennie/talks), el repo [aquí](https://github.com/nrennie/R-Ladies/tree/main/RLadiesGaborone/2023-03-29)
+
+```{r}
+#| echo: false
+
+#- - [](), el repo [aquí]()
+```
+
+
+
+
+# Revealjs: otras opciones de tuneado {.unnumbered background-color="#DCDCDC"} 
+
+{{< var lineanaranja >}}
+
+
+- Podemos cambiar la apariencia  con **CSS** ...
+
+- ... y con **SASS**
+
+
+## Tunear con CSS: ejemplo 1 (fenced divs), sacado de [aquí](https://jthomasmock.github.io/quarto-2hr-webinar/materials/02-authoring.html#/divs-and-spans) {background-color="#DCDCDC"}
+
+. . .
+
+| 1)  Si incluyes este trozo de CSS, que define la clase ".big-text" en un archivo `.css` o `.scss` 
+  
+```css
+  .big-text {
+  font-size: 88px;
+   }
+```
+
+. . . 
+  
+| 2) y lo referencias en el yaml de las slides con 
+
+|      - `theme: [default, assets/my_styles.scss]`  &emsp; &emsp; o con 
+
+. . . 
+  
+|      - `css: assets/my_styles.css`
+
+. . . 
+
+| 3) Entonces, puedes usar el siguiente `fenced div` con clase ".big-text":
+  
+```
+::: {.big-text}
+    Un párrafo con el texto muy grande
+:::
+```
+
+. . . 
+  
+|    Para conseguir que lo que escribas dentro del fenced div se vea muy grande, tal como ves abajo:
+  
+::: {.big-text}
+Un párrafo con el texto muy grande
+:::
+
+
+## Tunear con CSS: ejemplo 2 (spans) {background-color="#DCDCDC"}
+
+
+-  Ejemplo 2 (sacado de [aquí](https://jthomasmock.github.io/quarto-2hr-webinar/materials/02-authoring.html#/spans))
+
+- Para tunear un elemento dentro de una frase tenemos que usar spans
+
+<br>
+
+. . . 
+
+- La **sintaxis** es: `[span]{.class}`
+
+. . .
+
+<br>
+
+- De forma que, 
+
+    - si escribes esto: `Esta mañana ha llovido [mucho]{.big-text}` 
+    
+. . .
+
+  - verás esto: Esta mañana ha llovido [mucho]{.big-text}
+
+
+
+# Revealjs: "truquillos" {.unnumbered background-color="#ebf5fb"}  
+
+{{< var lineanaranja >}}
+
+
+
+## Revealjs: [Trucos](https://quarto.org/docs/presentations/revealjs/presenting.html) para usar durante una presentación
+
+<br>
+
+Por ejemplo:
+
+. . .
+
+- Tenemos el "hamburger menu" para movernos por las slides
+
+. . .
+
+
+- Podemos hacer **ZOOM** en cualquier elemento o trozo de las slides. Solo hay que mantener presionada la tecla {{< kbd ALT >}} y clickar en el ratón. En Linux es  la tecla {{< kbd CTRL >}} 
+
+. . . 
+
+- {{< kbd O >}}: permite hacer una **overview** de las slides. Para moverte por las slides en modo overview "usa las flechitas"
+
+. . .
+
+    
+- {{< kbd F >}}: slides a **pantalla completa**
+
+
+. . .
+
+- {{< kbd CTRL-SHIFT-F >}} : permite **buscar palabras** dentro de las slides. Dando a {{< kbd ENTER >}} avanzas a la siguiente coincidencia. Además, Si lo haces mientras las slides están en overview te marcará todas las coincidencias
+
+
+## Revealjs: EXTRAS
+
+Documentación [aquí](https://quarto.org/docs/presentations/revealjs/presenting.html#overview) y [aquí](https://quarto.org/docs/reference/formats/presentations/revealjs.html#slide-tools)
+
+
+
+- [Navigation menu](https://quarto.org/docs/presentations/revealjs/presenting.html#navigation-menu)
+
+- [Chalkboard](https://quarto.org/docs/presentations/revealjs/presenting.html#chalkboard)
+
+- [Multiplex](https://quarto.org/docs/presentations/revealjs/presenting.html#multiplex)
+
+- [Speaker view](https://quarto.org/docs/presentations/revealjs/#speaker-notes)
+
+- [Revealjs Plugins](https://quarto.org/docs/presentations/revealjs/advanced.html#reveal-plugins). Por ejemplo [fullscreen](https://quarto.org/docs/presentations/revealjs/advanced.html#example)
+
+
+
+
+# Otros formatos {.unnumbered background-color="#b8c2aa"} 
+
+
+{{< var lineanaranja >}}
+
+- Beamer
+
+- Power Point
+
+- Slidy
+
+
+
+# Beamer slides {.unnumbered background-color="#ebf5fb"} 
+
+{{< var lineanaranja >}}
+
+---
+
+## Beamer slides
+
+- Beamer es un formato de slides, basadas en Latex, **muy popular en el mundo académico**
+
+. . .
+
+- Quarto puede hacer Beamer slides. Sólo hay que usar los menús o este yaml:
+
+
+```yaml
+---
+title: "My Presentation"
+format: beamer
+---
+```
+
+. . . 
+
+<br>
+
+- La apariencia visual de las slides vendrá determinada por el `theme` y el `colortheme`.  [Aquí](https://hartwork.org/beamer-theme-matrix/) y [aquí](https://deic.uab.cat/~iblanes/beamer_gallery/) tienes ayuda para elegirlos. Por ejemplo:
+
+
+```yaml
+---
+title: "Presentation"
+format: 
+  beamer: 
+    aspectratio: 32
+    navigation: horizontal
+    theme: metropolis
+    colortheme: lily
+---
+```
+
+
+
+
+## Beamer slides (documentación)
+
+<br>
+
+. . . 
+
+
+- [User Guide](https://ctan.fisiquimicamente.com/macros/latex/contrib/beamer/doc/beameruserguide.pdf) oficial de Beamer
+
+
+- Documentación oficial Beamer de Quarto [aquí](https://quarto.org/docs/presentations/beamer.html#overview)
+
+- Opciones de YAMl de Beamer en Quarto [aquí](https://quarto.org/docs/presentations/beamer.html#beamer-options)
+
+
+- [Beamer en RMD](https://bookdown.org/yihui/rmarkdown/beamer-presentation.html#beamer-presentation)
+
+- [Beamer en StackOverflow](https://stackoverflow.com/questions/tagged/beamer). Por ejemplo:
+
+    - [Numeración de las slides como en Revealjs](https://stackoverflow.com/questions/74300235/frame-number-in-quarto-beamer-presentation)
+    
+    - [Justificar texto](https://es.stackoverflow.com/questions/587772/es-posible-modificar-la-alineaci%C3%B3n-de-un-p%C3%A1rrafo-en-una-presentaci%C3%B3n-beamer-pdf)
+
+
+
+
+# Más de slides {.unnumbered background-color="#ebf5fb"} 
+
+{{< var lineanaranja >}}
+
+<br>
+
+Puedes ver algunos truquillos sobre **Revealjs slides** [aquí](../blog_02/02_trucos_revealjs.qmd){target="_blank"}
+
+

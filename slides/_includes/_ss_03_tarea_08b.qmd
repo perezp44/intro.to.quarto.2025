@@ -1,0 +1,27 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.8: Markdown, incorporar una <mark> imagen de internet</mark>
+
+- Incorpora [esta imagen](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Nacho_Vegas_-_Rock_%26_Clown_-_A_Estrada.jpg/800px-Nacho_Vegas_-_Rock_%26_Clown_-_A_Estrada.jpg?20100711143100) al archivo `prueba_01.qmd` 
+
+- La ruta a la imagen es:
+
+```text
+https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Nacho_Vegas_-_Rock_%26_Clown_-_A_Estrada.jpg/800px-Nacho_Vegas_-_Rock_%26_Clown_-_A_Estrada.jpg
+```
+:::
+
+<br>
+
+::: {.fragment}
+
+::: {.callout-warning icon="false"}
+#### Tarea 3.8: solución
+
+```text
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Nacho_Vegas_-_Rock_%26_Clown_-_A_Estrada.jpg/800px-Nacho_Vegas_-_Rock_%26_Clown_-_A_Estrada.jpg)
+```
+
+:::
+:::
+
+

@@ -1,0 +1,70 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.2: Incluir `blog.qmd` en la web
+
+- Para que `blog.qmd`, la página que contiene el listado de posts, se muestre en nuestra web hay que refrenciarlo/incluirlo en `_quarto.yml`
+
+
+
+- Simplemente, tendríamos que modificar las lineas 8 y 9 que ahora están referenciando al fichero `about.qmd`. Por ejemplo podríamos **dejar las lineas 8 y 9 como se ve abajo** (a la derecha):
+
+
+
+![](./imagenes/tt_01/img_13gg-2.png){fig-align="center"}
+
+- Para hacerlo, es mejor copiar el código de abajo y pegarlo en `_quarto.yml`
+
+```{r, eval = FALSE}
+#| code-overflow: wrap   #- {scroll, wrap}
+#| code-line-numbers: true
+ 
+project:
+  type: website
+
+website:
+  title: "Mi blog (aún en pruebas)"
+  navbar:
+    logo: "profile.jpg"
+    #background: "#CCCCFF"    #- {“primary”, “secondary”,  “danger”, “warning”, “light”, “dark”, or hex color} (el backgroung de la navbar)
+    left: 
+      - text: "Docencia"
+        href: docencia.qmd
+      - text: "Más cosas"
+        menu:
+          - text: "Docencia 2"
+            href: docencia.qmd
+          - text: "Docencia 3"
+            href: docencia.qmd
+          - text: "---"
+          - text: "Docencia 4"
+            href: docencia.qmd
+    right:
+      - text: "Mi blog"
+        href: blog.qmd
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail@uv.es>"
+ 
+
+format:
+  html:
+    #- https://quarto.org/docs/output-formats/html-themes.html
+    theme: flatly  
+    css: styles.css
+    toc: true
+    #- https://quarto.org/docs/output-formats/html-code.html#highlighting
+    highlight-style: a11y
+
+```
+
+
+<br>
+
+:::
+
+- Aún no podemos refrescar la web porque ahora no tenemos archivo `index.qmd`. 
+
+
+

@@ -1,0 +1,166 @@
+---
+title: "Extensiones"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+  Intentando entender qué son y cómo usar las extensiones de Quarto
+date: 2023-01-23
+categories: [Quarto, extensiones]
+image: "./thumbnails/thumbnail_23_extensiones.png"
+#title-block-banner: true #- {true, false }
+title-block-banner: thumbnails/thumbnail_02.png
+draft: false
+toc: true
+#toc-location: left
+toc-depth: 3
+#css: assets/my_css_file.css
+#bibliography: references.bib
+#nocite: |
+#  @*
+---
+
+
+## Intro 
+
+Una de las novedades de Quarto es la posibilidad de usar **extensiones**.  Las extensiones se escriben en lenguaje [Lua](https://es.wikipedia.org/wiki/Lua). [Aquí](https://quarto.org/docs/extensions/starter-templates.html) la documentación oficial.
+
+Si quieres aprender a **hacer** extensiones, [aquí](https://www.paltmeyer.com/blog/posts/quarto-extensions/) tienes un buen un post.
+
+Vamos a aprender a usar las extensiones con un ejemplo: vamos a instalar la extensión "quarto-youtube-embed" que sirve para incluir vídeos de youtube en un documento `.qmd`.
+
+<br>
+
+## Un ejemplo (quarto-youtube-embed)
+
+Con Rmd alguna vez he puesto vídeos en mis slides o tutoriales. Usaba el paquete de R [vembed](https://github.com/ijlyttle/vembedr). Ahora, con Quarto, también podríamos hacerlo de esa forma, solo tendríamos que insertar en nuestro documento un chunk como:
+
+
+```{r}
+#| echo: fenced
+#| eval: false
+library("vembedr")
+embed_url("https://www.youtube.com/watch?v=ACv9zaBa1A4")
+```
+
+
+Pero, ahora, con Quarto, podemos también hacerlo usando la extensión  **"quarto-youtube-embed"**. [Aquí](https://github.com/sellorm/quarto-youtube-embed) está el repo de la extensión. Veamos cómo:
+
+
+{{< include ./_includes/_post_23_tarea_01_extensiones.qmd >}}
+
+
+<br>
+
+#####  El shortcode << video >>
+
+La extensión **"quarto-youtube-embed"** funcionaba perfectamente pero se ha quedado obsoleta porque Quarto ya incorpora de serie una extensión para incrustar vídeos. Solo hay que usar el siguiente [shortcode](https://quarto.org/docs/extensions/shortcodes.html):
+
+```{r, eval = FALSE}
+{{< video https://youtu.be/7SVYNyvi0wQ >}}
+```
+
+
+{{< video https://youtu.be/7SVYNyvi0wQ >}}
+
+<br>
+
+[Aquí](https://quarto.org/docs/authoring/videos.html) la documentación oficial del shortcode `{{ < video   >}}`. Como ves, se ha mejorado la extensión original ya que ahora permite, no sólo insertar vídeos de youtube, sino también de otros servicios como Vimeo, y puedes fijar el minuto en el que empieza el vídeo y algunas cosas más.
+
+
+
+<br>
+
+## Otro ejemplo (Lightbox)
+
+Vamos a **instalar y usar una nueva extensión**, concretamente la extensión **"Lightbox"**. 
+
+Lo que hace esta extensión es que podamos pinchar en una imagen y verla ampliada y con una descripción. [Aquí](https://quarto-ext.github.io/lightbox/) puedes ver ejemplos de lo que se puede hacer con "Lightbox". 
+
+En el [repo](https://github.com/quarto-ext/lightbox) se explica con más detalle lo que se puede hacer con "Lightbox".
+
+{{< include ./_includes/_post_23_tarea_02_extensiones.qmd >}}
+
+
+Resulta que tengo buen ojo, esta extensión también ha sido incorporada en Quarto 1.4. [Aquí](https://quarto.org/docs/output-formats/html-lightbox-figures.html) tienes la documentación oficial.
+
+Para habilitar **Lightbox** en nuestro documento `.qmd` solo tenemos que añadir `lightbox: true` en el YAML del documento:
+
+```yaml
+---
+title: Ejemplo de Lightbox
+lightbox: true
+---
+
+![Una foto chula](my-ruta/imagen-chula_01.jpg)
+
+![Otra imagen chula pero sin Lightbox Lovely Image](my-ruta/imagen-chula_02.jpg){.no-lightbox}
+
+
+Tambien se pueden agrupar imagenes en una "gallery"
+
+![A Lovely Image](mv-1.jpg){group="my-gallery"}
+
+![Another Lovely Image](mv-2.jpg){group="my-gallery"}
+
+```
+
+<br>
+
+Lightbox también funciona con imágenes (o gráficos) generadas con código R. [Aquí](https://quarto.org/docs/output-formats/html-lightbox-figures.html) tienes la documentación.
+
+Lightbox ofrece [más posibilidades](https://quarto.org/docs/output-formats/html-lightbox-figures.html) para tunear el efecto Lightbox.
+
+<br>
+
+## Otro ejemplo (tweets)
+
+Voy a instalar una nueva extensión, concretamente la extensión **Quarto social embeds**. Concretamente con esta extensión podremos insertar en nuestros documentos: **gists de GitHub**, **videos de Loom**, youtube y Vimeo y **tweets**. Realmente la instalo porque quiero tenerla disponible para insertar tweets.
+
+En el [repo](https://github.com/sellorm/quarto-social-embeds) se explica con más detalle lo que se puede hacer con **Quarto social embeds**.
+
+{{< include ./_includes/_post_23_tarea_03_extensiones.qmd >}}
+
+
+<br>
+
+
+## Listado de extensiones
+
+[Aquí](https://github.com/mcanouil/awesome-quarto#extensions) tienes un **listado de extensiones disponibles**. Las extensiones oficiales de Quarto están [aquí](https://quarto.org/docs/extensions/listing-filters.html).
+
+
+<br>
+
+## Algunas extensiones chulas
+
+Son simplemente algunas (de las muchas) que me han llamado la atención :smile:
+
+- Contar palabras: <https://fediscience.org/@andrew/110146498837984507>
+
+- [quarto-wordcount](https://fediscience.org/@andrew/111404991636098114): **cuenta las palabras** de un documento .qmd.
+
+- [quarto-revealjs-codewindow](https://fosstodon.org/@emilhvitfeldt/111015319218512208): genera chunk  de código muy chulos, y funciona lo de pegar, rotar, etc.
+
+- [slickR](https://ecoevo.social/@frod_san/111426211187866178): en realidad es un R pkg, pero sirve para hacer **carruseles de imágenes** o ... plots, tables, gifs, videos and objects embedded en iframes.
+
+
+- [fluctuator](https://github.com/m-jahn/fluctuator): también un R pkg que permite **manipular SVG's con R**. Apareció en [este toot](https://dads.cool/@elipousson/111013005640571121) donde preguntaban por incremental Mermaid diagrams in Quarto.
+
+- [annotate-equations](https://lpembleton.rbind.io/posts/annotate-equations/): sirve para colorear y anotar ecuaciones de Latex. En realidad es un paquete de Latex, pero él parece que lo ha adaptado a QMD. No lo he probado, pero me parece interesante.
+
+
+- [quarto-spotlight](https://github.com/mcanouil/quarto-spotlight): extensión para hacer highlight en la posición del ratón. Tiene opciones de tamaño, color, etc. Por defecto sale chulo, muy grande y con un color que me gusta, es como si fuese un foco apuntando a una parte de las slides.
+
+- [r2resize](https://r2resize.obi.obianom.com/index.html): es un R pkg que permite hacer "cards" redimensionables, de tamaño, de tamaño del texto, etc. Esta chulo, también hay la posibilidad de tener una card que muestre una pregunta y puedas luego mover para ver la respuesta. Está chulo
+
+
+- [quarto-roughnotation](https://genomic.social/@datascience/111719979505194845): sirve para en unas revelajs subrayar o marcar o tachar o ... trozos de texto. Es como si fuese un rotulador que solo aparece cuando aprietas la tecla R. Chulo pero no lo he probado y no sé la precisión. 
+
+
+- [add-code-files](https://github.com/shafayetShafee/add-code-files): permite **incluir el contenido de scripts** (o code files) en cajas d chunks en tus `.qmd's`, además, funciona lo del Code Folding y puedes poner que lineas se muestran en el documento final.
+
+- [hide-comment](https://github.com/shafayetShafee/hide-comment): para poner **comentarios ocultos en tus chunks**. Has de usar la marca `#>` para crearlos.
+
+
+ - [quartostamp](https://matt-dray.github.io/quartostamp/index.html): no es una extensión, es un paquete que contiene RStudio addings para insertar divs, callouts etc... Para mi ptse, PERO en [este post](https://www.rostrum.blog/2022/08/11/quartostamp-snorkel/) les encanta.
+ 

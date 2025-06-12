@@ -1,0 +1,6 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.2: Volver a generar el blog
+
+- Volvamos a crear el blog con `Build > Web page`.
+
+:::

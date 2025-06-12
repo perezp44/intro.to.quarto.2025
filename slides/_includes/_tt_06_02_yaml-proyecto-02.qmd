@@ -1,0 +1,71 @@
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+
+#- PAGINAS WEB: https://quarto.org/docs/websites/ --------------------------------------
+
+#- 2/ Opciones referentes a la estructura de la web -----------------
+#- Web navigation: https://quarto.org/docs/websites/website-navigation.html
+
+website:
+  title: "Mi blog (aún en pruebas)"
+  favicon: profile.jpg
+  reader-mode: true  
+  # site-url: https://....
+  # repo-url: https://....
+  # repo-actions: [edit, issue]
+  search:   #- https://quarto.org/docs/websites/website-search.html
+    location: navbar #- {navbar, sidebar}
+    type: overlay   #- {overlay, textbox}
+    copy-button: true
+  open-graph: true #-https://quarto.org/docs/websites/website-tools.html#twitter-cards
+  
+  twitter-card:
+    creator: "@tu-usuario-twitter"
+    card-style: summary_large_image
+  body-header: | 
+    This page brought to you by <https://example.com>
+  margin-header: |
+    ![Logo image](/img/logo.png)
+  # page-navigation: true
+
+  navbar:
+    logo: "profile.jpg"
+    #pinned: true
+    #background: "primary"    #- {“primary”, “secondary”, “success”, “danger”, “warning”, “info”, “light”, “dark”, or hex color} (el backgroung de la navbar)
+    #foreground: "warning"    #- color navigation elements, text and links that appear in the navbar.
+    #title: false
+    #collapse-below: lg
+    #pinned: true
+    right:
+      - text: "About me"
+        href: about.qmd
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario-twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail@uv.es>"
+    left: 
+      - icon: house-door
+        href: index.html
+      - text: "Docencia"
+        href: docencia.qmd
+  page-footer:
+    border: true
+    background: light
+    left: "© 2022 Pedro J. Pérez"
+    #left: |
+    #  Proudly supported by
+    #  [![](https://www.rstudio.com/wp-content/uploads/2018/10/RStudio-Logo-flat.svg){fig-alt="RStudio" width=65px}](https://www.rstudio.com)
+    center: "Hecho con [Quarto](https://quarto.org)"
+    right:
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario-twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail>@uv.es"
+
+```

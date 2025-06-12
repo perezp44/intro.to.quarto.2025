@@ -1,0 +1,87 @@
+::: {.callout-important icon="false"}
+#### Tarea 2.5a: Crear un fichero `.qmd` (Un Quarto document)
+
+- En el Qproject  `"my_primer_qproject"`, **crea un  "Quarto document"**
+:::
+
+<br>
+
+::: {.fragment}
+::: {.callout-caution icon="false"}
+
+##### Pistas/Ayuda
+
+- Para ello sólo has de seguir la siguiente ruta de menús: `File > New File > Quarto Document ...`
+
+- Durante el proceso de creación te pedirá un "Title" y un "Author": pon lo que quieras
+:::
+:::
+
+<br>
+
+::: {.fragment}
+- El fichero que acabamos de crear es nuestro [**documento fuente**]{.underline}
+:::
+
+---
+
+
+::: {.callout-important icon="false"}
+#### Tarea 2.5b: visionado del  fichero `.qmd` (Quarto document)
+
+- Antes de procesar el .qmd, pégale un vistazo al documento fuente para intentar descubrir sus partes
+
+:::
+
+
+<br>
+
+::: {.fragment}
+::: {.callout-caution icon="false"}
+
+##### Pistas/Ayuda
+- De momento, es mejor que visualicemos el documento en formato "Source"
+
+```{r echo = FALSE, comment = "",  out.width = '32%', fig.align = 'center'}
+knitr::include_graphics(here::here("slides", "imagenes",  "ss_02_tarea_2_5_source.png") )
+```
+
+:::
+:::
+
+
+
+
+---
+
+::: {.callout-important icon="false"}
+#### Tarea 2.5c: Procesar un fichero `.qmd` 
+
+- Procesa ("Render") el documento `.qmd` que acabamos de crear. 
+
+:::
+
+
+<br><br>
+
+::: {.fragment}
+::: {.callout-caution icon="false"}
+
+##### Pistas/Ayuda
+
+- Sólo has de pinchar en el icono con una flecha azul llamado "Render"
+
+- <mark>Al intentar procesarlo te pedirá un nombre. **LLamalo `index`**</mark>
+:::
+:::
+
+<br>
+
+::: {.fragment}
+::: {.callout-important icon="false"}
+#### Tarea 2.5d: Explica qué ha pasado finalmente
+
+- ¿Qué hemos hecho?
+
+:::
+:::

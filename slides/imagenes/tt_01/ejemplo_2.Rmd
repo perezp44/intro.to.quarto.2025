@@ -1,0 +1,46 @@
+---
+title: "Documentos Rmarkdown (.Rmd)"
+author: "Pedro J. Pérez"
+date: "`r Sys.Date()`"  
+output:
+  html_document:
+    code_folding: show
+    theme: journal
+    toc: yes
+    toc_float: yes
+---
+
+
+
+
+```{r}
+
+```
+
+
+```{r}
+# se pueden poner comentarios
+# de la forma habitual
+aa <- c(1, 4, 9, 16, 25)
+sqrt(aa)
+```
+
+
+```{r sumando, echo=TRUE, eval=FALSE}
+2 + 2
+```
+
+
+
+
+```{r}
+#| label: sumando2
+#| echo: true
+#| eval: false
+2 + 2
+```
+
+
+
+
+

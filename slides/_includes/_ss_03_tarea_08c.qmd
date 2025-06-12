@@ -1,0 +1,23 @@
+
+::: {.callout-important icon="false"}
+#### Tarea 3.8b: Markdown, incorporar una <mark> imagen local </mark>
+
+- Guarda [esta otra imagen](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Husky_sib%C3%A9rienne.JPG/640px-Husky_sib%C3%A9rienne.JPG) dentro de `my_qproject`, concretamente dentro de la carpeta `imagenes`
+
+
+- Incorpora esa imagen (guardada en tu ordenador) al archivo `prueba_01.qmd` 
+
+:::
+
+<br>
+
+::: {.fragment}
+::: {.callout-warning icon="false"}
+#### Tarea 3.8b: Solución
+
+```text
+![](./imagenes/my_imagen.jpg)
+```
+:::
+:::
+

@@ -1,0 +1,63 @@
+::: {.callout-important icon="false"}
+#### Tarea 5.1: Modificar `_quarto.yml`
+
+- Tenemos que dejar el archivo `_quarto.yml` así:
+
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+# 1/ Opciones referentes al proyecto ----------------------------
+project:
+  type: website
+  output-dir: _site    
+ 
+#- 2/ Opciones referentes a la estructura de la web -----------------
+website:
+  title: "Mi blog (aún en pruebas)"
+  navbar:
+    logo: "profile.jpg"
+    #background: "#CCCCFF"    #- {“primary”, “secondary”,  “danger”, “warning”, “light”, “dark”, or hex color} (el backgroung de la navbar)
+    right:
+      - text: "Mi blog"
+        href: blog.qmd
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario-twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail@uv.es>"
+    left: 
+      - icon: house-door
+        href: index.html
+      - text: "Docencia"
+        href: docencia.qmd
+      #- text: "Docencia"
+        #href: docencia.qmd
+  page-footer:
+    left: "© 2022 Pedro J. Pérez"
+    center: "Hecho con [Quarto](https://quarto.org)"
+    right:
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario-twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail>@uv.es"
+
+#- 3/ Opciones referentes al formato de salida  ---------------------
+format:
+  html:
+    #- https://quarto.org/docs/output-formats/html-themes.html
+    theme: flatly  
+    css: styles.css
+    toc: true
+    #- https://quarto.org/docs/output-formats/html-code.html#highlighting
+    highlight-style: a11y     
+```
+
+
+:::
+
+
+

@@ -1,0 +1,57 @@
+::: {.callout-tip collapse="true" appearance="default" icon="false"}
+
+#### Práctica 2.1: añadir una página más a nuestra web (`_quarto.yml`)
+
+Evidentemente puedes probar a añadir la página que quieras, pero te ofrezco la siguiente posibilidad:
+
+- Con las lineas 12 y siguientes crear una página más en nuestro blog. La página se llamará "Más cosas". Además, esta página nueva tiene la particularidad de que cuando recreemos el blog se convertirá en un desplegable con acceso a varias páginas: "Docencia 2", "Docencia 3" y "Docencia 4".
+
+- Fíjate que he puesto la nueva página a la izquierda (`left: `)
+
+- Además, puedes probar distintas opciones de `theme` (linea 34) y de `highlighting` (linea 38)
+
+- También puedes cambiar el color del fondo de la barra de navegación (linea 8)
+
+
+```yaml
+project:
+  type: website
+
+website:
+  title: "Mi blog (aún en pruebas)"
+  navbar:
+    logo: "profile.jpg"
+    #background: "#CCCCFF"    #- {“primary”, “secondary”,  “danger”, “warning”, “light”, “dark”, or hex color} (el backgroung de la navbar)
+    left: 
+      - text: "Docencia"
+        href: docencia.qmd
+      - text: "Más cosas"
+        menu:
+          - text: "Docencia 2"
+            href: docencia.qmd
+          - text: "Docencia 3"
+            href: docencia.qmd
+          - text: "---"
+          - text: "Docencia 4"
+            href: docencia.qmd
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/<tu-usuario-github>
+      - icon: twitter
+        href: https://twitter.com/<tu-usuario twitter>
+      - icon: envelope
+        url: "mailto:<tu-mail@uv.es>"
+ 
+
+format:
+  html:
+    #- https://quarto.org/docs/output-formats/html-themes.html
+    theme: flatly  
+    css: styles.css
+    toc: true
+    #- https://quarto.org/docs/output-formats/html-code.html#highlighting
+    highlight-style: a11y
+```
+:::
+

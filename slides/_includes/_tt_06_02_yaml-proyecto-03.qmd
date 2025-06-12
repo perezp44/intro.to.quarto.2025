@@ -1,0 +1,34 @@
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+
+#- 3/ Opciones referentes al formato de salida  ---------------------
+#- HTML basics: https://quarto.org/docs/output-formats/html-basics.html
+#- HTML options: https://quarto.org/docs/reference/formats/html.html
+
+format:
+  html:
+    #- https://quarto.org/docs/output-formats/html-themes.html
+    #theme:
+    #  light: [flatly, theme.scss]  
+    css: styles.css
+    toc: true
+    #- https://quarto.org/docs/output-formats/html-code.html#highlighting
+    highlight-style: a11y
+    code-copy: true
+    code-overflow: wrap
+    #include-after-body: js.html
+    theme:
+      light: flatly
+      dark: [darkly, theme-dark.scss]
+
+#- 4/ Más opciones  ----------------------------------------------------
+bibliography: references.bib
+filters:
+  - filters/tools-tabset.lua
+freeze: true
+editor: visual
+
+description: "Un blog para aprender y divertirme" #- necesario para RSS
+```

@@ -1,0 +1,35 @@
+::: {.callout-tip collapse="true" appearance="default" icon="false"}
+
+#### Práctica 2.2: Modificar la **apariencia del blog** (`index.qmd`)
+
+- Se trata de cambiar las opciones predefinidas de tu archivo **index.qmd**
+
+- Con ello podremos cambiar la **apariencia del listado de posts**
+
+- Para ello tienes que ir jugando con las opciones que nos ha proporcionado la plantilla de Quarto en el fichero `index.qmd`. 
+
+- la YAML inteligence te ayudará!! (vamos el autocompletado en el YAML)
+
+- No uses las opciones llamadas `custom`
+
+```{yaml}
+---
+title: "Mi listado de posts"
+description: |
+  Estoy tratando de hacer mi blog
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default        #- {default, table, grid, custom}
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full         #- {article, full, custom}
+title-block-banner: true  #- {true, false}
+---
+
+```
+`
+
+:::
+

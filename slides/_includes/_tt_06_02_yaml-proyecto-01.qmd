@@ -1,0 +1,15 @@
+```{r, eval = FALSE}
+#| code-line-numbers: true
+#| code-overflow: scroll   #- {scroll, wrap}
+
+# 1/ Opciones referentes al proyecto ----------------------------
+#- QUARTO PROJECTS: https://quarto.org/docs/projects/quarto-projects.html
+
+project:
+  type: website
+  output-dir: docs        #- carpeta donde se redirige el output (.html)
+  # execute-dir: project  #- render directory: https://quarto.org/docs/projects/code-execution.html#working-dir
+  # resources:
+  #   - "/docs/download/_download.json"
+  
+```

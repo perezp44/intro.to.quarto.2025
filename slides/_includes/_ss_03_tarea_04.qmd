@@ -1,0 +1,27 @@
+::: {.callout-important icon="false"}
+#### Tarea 3.4: Nuevas **opciones de los chunks**
+
+- Utiliza el archivo `prueba_01.qmd` para probar algunas de las nuevas opciones de los chunks en el YAML
+
+- Por ejemplo:
+
+
+```yaml
+format:
+  html:
+    code-fold: true
+    code-summary: "Para ver el código, pincha"
+    code-line-numbers: true
+```
+<br>
+
+- Puedes también probar a usar la opción `code-tools: true` y ver que ocurre.
+
+<br>
+
+La documentación oficial la tienes [aquí](https://quarto.org/docs/output-formats/html-code.html) y [aquí](https://quarto.org/docs/reference/cells/cells-knitr.html#code-output)
+
+
+<br>
+
+:::

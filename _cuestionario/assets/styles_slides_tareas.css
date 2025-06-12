@@ -1,0 +1,112 @@
+/* css styles */
+
+/* centrando contenido {style="text-align: center;"} */ 
+
+
+
+
+.rojito { color: #FF0504; }
+.verdecito { color: #10FF08; }
+.purple { color: #c077af; }
+.red { color: #ef342a; }
+.orange { color: #f57125; }
+.orange2 {color: #F58634;}
+.blue { color: #22b6ed; }
+.green { color: #1fb27f; }
+.green2 {color: #007965;}
+.yellow { color: #faca07; }
+.yellow2 {color: #FFCC29;}
+.brown {color: #a84d18; }
+
+
+/* defino algunos tamaños para usarlos en el texto*/ 
+.large { font-size: 140%; }
+.small { font-size: 80%; }
+
+
+.center{
+   text-align: center;
+}
+/* definiendo estilos de los párrafos */ 
+p, ul, ol {
+  text-align: justify; }        /* justificar el texto del body */      
+
+
+
+.reveal p {
+    text-align: justify;
+  }
+  
+.reveal ul {
+    display: justify;
+  }
+  
+.reveal ol {
+    display: justify;
+  }
+
+
+
+/* de: https://github.com/schochastics/quarto-schochastics/blob/main/styles.css */ 
+
+
+.quarto-grid-item img.thumbnail-image {
+    object-fit: contain;
+}
+
+.thumbnail-image:hover{
+  opacity:75%;
+}
+
+
+div.column.col-v-center{
+   vertical-align: middle;
+}
+
+.home-title{
+  font-size: 2em;
+}
+
+.socials{
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+}
+
+.socials a{
+  color: #9EEBCF;
+  margin-left: 0.5em;
+}
+
+
+
+/* Mine:  */ 
+
+
+.reveal .takeaway {
+  background-color: #e1ecf7;
+  text-align: center;
+}
+
+.reveal .takeaway h2 {
+  font-size: 1.7em;
+  font-weight: normal;
+  color: #0F1620;
+  text-align: center;
+}
+
+
+
+
+/* esto funciona para justificar en reveal js, PERO hay q ponerlo en el .qmd */
+
+<style type="text/css">
+  .reveal p {
+    text-align: justify;
+  }
+  .reveal ul {
+    text-align: justify;
+  }
+  .reveal ol {
+    text-align: justify;
+  }  
+</style>

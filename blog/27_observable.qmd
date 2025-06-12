@@ -1,0 +1,185 @@
+---
+title: "Observable JS"
+#subtitle: | 
+#  Viendo las posibilidades de Layout que tenemos en Quarto
+description: |
+  Intentando entender qué es y cómo usar **Observable JS** en R.
+date: 2023-01-27
+categories: [Quarto, Observable]
+image: "./thumbnails/thumbnail_27_observable.png"
+#title-block-banner: true #- {true, false }
+title-block-banner: thumbnails/thumbnail_27_observable.png
+draft: false
+toc: true
+#toc-location: left
+toc-depth: 3
+#css: assets/my_css_file.css
+#bibliography: references.bib
+#nocite: |
+#  @*
+execute:
+  cache: false  #- no ff. lo de cache
+---
+
+
+
+## Intro 
+
+Ya sabemos que [Quarto®](https://quarto.org/) is an open-source scientific and technical publishing system built on Pandoc que permite crear contenidos con R, Python, Julia y [Observable](https://observablehq.com/)
+
+Obervable JS (OJS) es *"a JavaScript flavor designed for data analysis"*. Observable tiene digamos la interactividad incorporada de serie: es sencillo incorporar filtros interactivos para controlar el output que muestran las tablas y gráficos. Esto abre nuevas posibilidades a los usuarios de R.
+
+La documentación oficial de Quarto para hacer disponibles los datos a OJS está [aquí](https://quarto.org/docs/interactive/ojs/data-sources.html).
+
+
+:::{.aside}
+<img src="imagenes/quarto.png" height="50"></img>
+:::
+
+Como señala Nicolas Lambert [aquí](https://neocarto.github.io/bertin/examples/quarto.html):
+
+> Combining R and Observable javascript allows to take advantage of the strengths of both languages. It allows to combine the statistical analysis possibilities of R and the reactive visualization features of Observable. A win win strategy.
+
+Algo parecido dice Sharon Machlis [aquí](https://www.infoworld.com/article/3674789/a-beginners-guide-to-using-observable-javascript-r-and-python-with-quarto.html):
+
+> Using Quarto with Observable JavaScript is a great solution for R and Python users who want to create more interactive and visually engaging reports. Using Quarto with Observable offers an elegant workflow if you want to combine data analysis in Python and R with reactivity. Finally, Observable was set up with collaboration in mind, so it's fairly easy to find and use someone else's open source code.
+
+
+Otra ventaja de Quarto:
+
+> Quarto’s rendered HTML files can be hosted on any web server or opened locally with a simple browser, with no separate language or framework installations required. That’s not the case for options like Shiny for R or Dash for Python (alpha Shiny for Python can run without a Shiny server, but it's not yet production-ready). Using Quarto with Observable offers an elegant workflow if you want to combine data analysis in Python and R with reactivity.
+
+
+Quarto puede ejecutar código de OJS. Sólo hay que colocar el código entre las marcas habituales : ` ```{ojs} `. Además se puede analizar los datos en R y luego enviarlos a OJS con la función `ojs_define()`. 
+
+## Un ejemplo
+
+Voy a adaptar un ejemplo sacado de [aquí](https://neocarto.github.io/bertin/examples/quarto.html)
+
+Por ejemplo, voy a crear un sf data.frame para ver si me lo acepta OJS:
+
+
+```{r}
+library(tidyverse)
+library("rnaturalearth")
+library("rnaturalearthdata")
+library(sf)
+df <- gapminder::gapminder %>% filter(year == 2007) 
+world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") %>% 
+       filter(subregion != "Antarctica") %>% 
+       filter(admin != "Greenland") %>% 
+       select(name, iso_a3, geometry) 
+df_world <- left_join(world, df,  by = c("name" = "country")) %>% #- solo 142
+  select(-year)
+```
+
+Para pasar `df_world` a OJS, como es un sf, necesitamos el paquete `geojsonsf`:
+
+
+```{r}
+#| echo: fenced
+#| eval: true
+library("geojsonsf")
+#ojs_define(my_ojs_data = df)
+ojs_define(data1 = sf_geojson(df_world))
+```
+
+Hay que hacer un paso más para poder usar datos los datos de R en Observable: hay que transformar los datos a un formato compatible con OJS, para ello usamos la función `transpose()`
+
+Las visualizaciones de JavaScript suelen utilizar un formato de datos diferente al de los marcos de datos rectangulares que normalmente se necesitan en R o Python. Aunque en este caso no ha hecho falta (!!)
+
+
+
+```{ojs}
+//| echo: false
+//mydata = transpose(data)
+countries = JSON.parse(data1) 
+Inputs.table(countries.features.map(d => d.properties))
+```
+
+
+Cargamos la librería `bertin`
+
+```{ojs}
+bertin = require("bertin@1.2.4")
+//bertin.quickdraw(countries)
+```
+
+
+
+<br>
+
+Hacemos una coropleta:
+
+
+```{ojs}
+// eval: true
+viewof nbreaks = Inputs.range([3, 9], { label: "nbreaks", step: 1, value: 7 })
+viewof method = Inputs.select(["jenks", "q6", "quantile", "equal", "msd"], {
+  label: "method",
+  value: "quantile"
+})
+choro = bertin.draw({
+  params: { projection: "Eckert3"},
+  layers: [
+    {
+      type: "layer",
+      geojson: countries,
+      fill: {
+        type: "choro",
+        values: "lifeExp",
+        nbreaks: nbreaks,
+        method: method,
+        colors: "RdYlGn",
+        leg_round: 3,
+        leg_title: `Lifeexperience 
+(in years)`,
+        leg_x: 30,
+        leg_y: 100
+      },
+      tooltip: ["$name", "Esperanza de vida", "$lifeExp",  "PIB per cápita", "$gdpPercap"]
+    },
+    { type: "graticule" },
+    { type: "outline" }
+  ]
+})
+```
+
+
+## Otro ejemplo
+
+Esta vez sacado de [aquí](https://timelyportfolio.github.io/quarto_tests/examples/quarto_observable_imports/quarto_observable_imports.html)
+
+
+```{ojs}
+import {viewof data} from "@observablehq/summary-table"
+viewof data
+```
+
+
+```{ojs}
+import {viewof summary_data} from "@observablehq/summary-table"
+viewof summary_data
+```
+
+
+## Observable 2.0
+
+Pues parece que con [Observable 2.0](https://observablehq.com/blog/observable-2-0) ha creado un espacio para generar webs estáticas, digamos similar a QuartoPub, y que se llama `Observable Framework`. [Aquí](https://aus.social/@jimjamslam/111937797597439288) un toot sobre ello.
+
+
+<br>
+
+
+## Biblio
+
+- [Let’s make maps with bertin.js in Quarto](https://neocarto.github.io/bertin/examples/quarto.html) y [aquí](https://neocarto.github.io/Quarto/r_ojs.html): post de Nicolas Lambert.
+
+- [Bertin.js](https://github.com/neocarto/bertin): a JavaScript library for visualizing geospatial data and make thematic maps for the web.
+
+- [A beginner's guide to using Observable JavaScript, R, and Python with Quarto](https://www.infoworld.com/article/3674789/a-beginners-guide-to-using-observable-javascript-r-and-python-with-quarto.html): una serie de 3 artículos de Infoworld de Sharon Machlis.
+
+- [Un ejemplo de boB Rudis, @hrbrmstr](https://twitter.com/hrbrmstr/status/1556308005225897984), [otro](https://rud.is/b/2022/08/19/bootstrapping-an-ojs-quarto-document-with-an-observable-notebook/), [conviriendo OJS notebook in Quarto projects](https://rud.is/b/2022/08/22/new-chrome-extension-to-turn-observable-notebooks-into-quarto-projects/)
+
+- [Paquete robservable](https://github.com/juba/robservable)
+

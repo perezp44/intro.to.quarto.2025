@@ -1,0 +1,95 @@
+
+## Layout  &emsp; ("general") {.unnumbered}
+
+
+- Además de yaml, texto y chunk, para escribir con Quarto **conviene conocer la estructura o layout de las páginas web** que generamos con Quarto.  Documentación [aquí](https://quarto.org/docs/output-formats/page-layout.html#overview) y [aquí](https://quarto.org/docs/authoring/article-layout.html).
+
+. . . 
+
+- Nuestra páginas web tienen [2 zonas si la miramos en horizontal]{.underline}: la **sidebar** y la zona reservada para **el artículo**. Puedes verlo [aquí](https://quarto.org/docs/output-formats/page-layout.html#html-page-layout)
+
+    - A su vez, [la zona del artículo se divide en 2]{.underline}:  **body** y **margin**.
+
+. . . 
+
+- A partir de la versión 1.3 de Quarto, se puede controlar estos componentes del layout. Puedes verlo [aquí](https://quarto.org/docs/output-formats/page-layout.html#grid-customization)
+
+
+. . . 
+
+- Además, el layout puede venir afectado por la opción `page-layout: full` que tiene 3 opciones: article, full y custom 
+
+<br>
+
+## Layout's &emsp; ("para secciones específicas") {.unnumbered}
+
+
+> :warning: **Importante!!**
+
+- Usando fenced-**divs** se puede hacer que **alguna sección de nuestra página ocupe un espacio mayor al habitual**; es decir, mayor al espacio habitualmente reservado para el "body".
+
+. . . 
+
+  - De esta forma podemos hacer que, por ejemplo, una imagen^[O un párrafo de texto, en realidad cualquier elemento de nuestros documentos] ocupe más espacio del habitual, más espacio del reservado al body, o incluso desplazarlo al "margin".
+
+
+<br>
+
+. . .
+
+- Veamos las **posibilidades que tenemos de layout** con [este post](../blog/21_layouts.qmd){target="_blank"} del blog del curso 
+
+<br>
+
+
+
+
+## Imágenes {.unnumbered}
+
+- Conocemos ya la sintaxis básica para insertar imágenes `![](<ruta-a-imagen>)`; ahora veremos posibilidades más avanzadas
+
+- Veamos como **insertar imágenes** con [este post](../blog/24_imagenes.qmd){target="_blank"} del blog del curso
+
+<br>
+
+
+
+
+## Extensiones {.unnumbered}
+
+- Una de las novedades de Quarto es la posibilidad de usar **extensiones**.  Las extensiones se escriben en lenguaje [Lua](https://es.wikipedia.org/wiki/Lua){target="_blank"}. 
+
+- Para ver como **instalar y usar extensiones** vamos a ir, otra vez, a otro de los post del blog del curso: concretamente [aquí](../blog/23_extensiones.qmd){target="_blank"} 
+
+
+<br>
+
+
+
+
+
+## Shortcodes {.unnumbered}
+
+- Un shortcode es un código (una etiqueta, un elemento) que podemos **insertar** para añadir algún tipo de **contenido sin tener que escribirlo directamente**.
+
+- Son muy **útiles** para insertar **contenido que se repite**
+
+
+- Podemos verlo en [este post](../blog/22_shortcodes.qmd){target="_blank"} del blog del curso o en la [documentación oficial](https://quarto.org/docs/extensions/shortcodes.html){target="_blank"}
+
+
+
+
+
+## Faltan 2 elementos {.unnumbered}
+
+
+<br>
+
+- **Callout blocks**: documentación [aquí](https://quarto.org/docs/authoring/callouts.html)
+
+<br>
+
+- **Divs** y **spans**: documentación [aquí](https://quarto.org/docs/authoring/markdown-basics.html#divs-and-spans)
+
+

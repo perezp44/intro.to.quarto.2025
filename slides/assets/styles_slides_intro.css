@@ -1,0 +1,50 @@
+/* css styles */
+
+/* centrando contenido {style="text-align: center;"} */ 
+
+.center{
+   text-align: center;
+}
+/* definiendo estilos de los párrafos */ 
+ /* justificar el texto del body */
+/*p, ul, ol {
+  text-align: justify; }    */         
+
+
+
+
+.rojito { color: #FF0504; }
+.verdecito { color: #10FF08; }
+.purple { color: #c077af; }
+.red { color: #ef342a; }
+.orange { color: #f57125; }
+.orange2 {color: #F58634;}
+.blue { color: #22b6ed; }
+.green { color: #1fb27f; }
+.green2 {color: #007965;}
+.yellow { color: #faca07; }
+.yellow2 {color: #FFCC29;}
+.brown {color: #a84d18; }
+
+
+/* defino algunos tamaños para usarlos en el texto*/ 
+.large { font-size: 140%; }
+.small { font-size: 80%; }
+
+
+/* defino estilo para títulos de 5 nivel */ 
+
+
+/* definiendo estilos de los títulos de h2 a h5 nivel */ 
+h4 { 
+  font-weight: bold;
+  text-align: center; 
+  font-size: 35px;
+  color: purple;
+  letter-spacing: 0.04em; } /* espaciado enre las letras (0.04 de la altura de la tipografía) */
+
+
+.color-header {
+  font-weight: bold;
+  text-align: center; 
+  color: purple; } 

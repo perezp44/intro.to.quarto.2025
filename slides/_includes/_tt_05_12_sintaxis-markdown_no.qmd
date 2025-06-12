@@ -1,0 +1,23 @@
+-  [Aquí](https://quarto.org/docs/authoring/markdown-basics.html) puedes ver o recordar la sintaxis básica, las principales reglas para escribir en `markdown`.
+
+- Como ejemplo:
+
++-----------------------------------+-------------------------------+
+| SI ESCRIBES ESTO:                 | SE VERÁ ESTO (output):        |
++===================================+===============================+
+| **Formato de texto**                                              |
++===================================+===============================+
+|     *cursiva* and **negrita**     | *cursiva* and **negrita**     |
++-----------------------------------+-------------------------------+
+|     superíndice^2^ / subíndice~2~ | superíndice^2^ / subíndice~2~ |
++-----------------------------------+-------------------------------+
+|     ~~strikethrough~~             | ~~strikethrough~~             |
++-----------------------------------+-------------------------------+
+|     `verbatim code`               | `verbatim code`               |
++===================================+===============================+
+| **TÍTULOS**                                                       |
++===================================+===============================+
+|     # Titulo de primer nivel      | # Titulo de primer nivel      |
++-----------------------------------+-------------------------------+
+|     ## Titulo de segundo nivel    | ## Titulo de segundo nivel    |
++-----------------------------------+-------------------------------+

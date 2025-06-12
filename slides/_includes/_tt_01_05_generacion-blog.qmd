@@ -1,0 +1,10 @@
+::: {.callout-important icon="false"}
+#### Tarea 1.2: Generación del blog
+
+-   Ir al cuadrante superior-derecha de RStudio, pinchar en la pestaña `Build` y pinchar en `Render Website`.
+
+- De esta forma, se procesarán los archivos del Qproject y se creará el blog.
+
+- Podremos verlo en el cuadrante inferior-derecha de RStudio, concretamente en la pestaña `Viewer`.
+:::
+

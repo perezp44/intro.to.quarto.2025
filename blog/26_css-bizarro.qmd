@@ -1,0 +1,208 @@
+---
+title: "Tuneando con CSS (cambios bizarros!!)"
+date: 2023-01-26
+categories: [Quarto, CSS]
+image: thumbnails/thumbnail_26_css-bizarro.png
+description: |
+  El contenido de este post es el mismo que el del anterior, **PERO** , pero ahora haciendo cambios **bizarros!!** con CSS.
+#css: ["assets/mis_estilos_01.css" , "assets/mis_estilos_02.css"]
+css: "assets/post_26.css"
+---
+
+
+La apariencia visual del blog puede cambiarse utilizando CSS. El objetivo no es dar una clase sobre CSS, de hecho yo sé muy poquito CSS, sino solo mostrar con un ejemplo cómo poder incorporar algunos cambios en nuestro blog mediante el uso de CSS.
+
+<br>
+
+## ¿Cómo incorporar cambios con CSS?
+
+### Utilizando **spans**
+
+En [este quarto-tip](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/11-spans/), Mine Çetinkaya-Rundel lo explica muy bien.
+
+Para cambiar la apariencia de un trozo de texto, tienes que meterlo dentro de `[]` y usando `{}` para definir el estilo que quieres aplicar a ese texto. Con un ejemplo se entiende mejor:
+
+::: panel-tabset
+#### Para que se muestre esto ...
+
+Para llamar la atención puedes escribir en [rojo]{style="color: red"} o con un [fondo amarillo]{style="background-color: yellow"}; o las [dos cosas a la vez]{style="color: red; background-color: yellow;"}.
+
+
+#### Has de escribir
+
+``` markdown
+Para llamar la atención puedes escribir en [rojo]{style="color: red"} 
+o con un [fondo amarillo]{style="background-color: yellow;"}; 
+o las [dos cosas a la vez]{style="color: red; background-color: yellow;"}.
+```
+:::
+
+<br>
+
+### Con ficheros `.css`
+
+Si piensas reutilizar algunos estilos, entonces es mejor definir los estilos en un archivo `.css`. 
+
+Si quisiéramos poder reutilizar los  estilos que hemos definido en la anterior sección, tendríamos que crearlos como clases en un archivo css. Por ejemplo crearíamos el archivo: `./assets/mis_estilos_01.css` con el siguiente contenido:
+
+```css
+/* css styles */
+
+.rojo {
+  color: red;
+}
+
+.yellow-background {
+  background-color: yellow;
+}
+
+.importante {
+  color: red;
+  background-color: yellow;
+}
+
+```
+
+Una vez creado el archivo `mis_estilos_01.css`para poder usar los estilos o clases allí definidos tendríamos que hacer 2 cosas:
+
+  1. Referenciar el archivo css en el yaml del documento o post^[O en `_metadata.yml` si quisiéramos usar los estilos en todos los posts]. Esto lo haríamos incluyendo `css: "assets/mis_estilos_01.css"` en el yaml.  
+  
+  2. Una vez incluido el fichero css en el yaml, ya podemos usar los estilos, para ello tendríamos que hacer lo siguiente:
+  
+  
+  
+::: panel-tabset
+#### Para que se muestre esto ...
+
+Para llamar la atención puedes escribir en [rojo]{.rojo} 
+o con un [fondo amarillo]{.yellow-background}; 
+o las [[dos cosas a la vez]{.rojo}]{.yellow-background}.
+
+#### Has de escribir
+
+``` markdown
+Para llamar la atención puedes escribir en [rojo]{.rojo} 
+o con un [fondo amarillo]{.yellow-background}; 
+o las [dos cosas a la vez]{.importante}.
+```
+
+#### También podríamos haberlo hecho así:
+
+
+``` markdown
+Para llamar la atención puedes escribir en [rojo]{.rojo} 
+o con un [fondo amarillo]{.yellow-background}; 
+o las [[dos cosas a la vez]{.rojo}]{.yellow-background}.
+```
+:::
+
+<br>
+
+## Algunos estilos útiles
+
+Con CSS se puede modificar la apariencia de todos los elementos de una página web. En el chunk de abajo muestro algunas de las posibilidades que usaba en mis `xaringan slides`.
+
+
+
+{{< include ./_includes/_post_05_01_css.qmd >}}
+
+
+<br>
+
+## Estilos útiles pero (un poco) bizarros!!
+
+En clase, para mostrar como podemos modificar algunos de los elementos de un documento hecho con Rmd (ahora con Quarto) usaba un archivo css con cambios digamos un poco raros: a lo mejor ponía el titulo en pink, el autor en verde etc.. etc... Sólo era un ejemplo para mostrar algunas de las posibilidades para modificar la apariencia de un documento con CSS.
+
+Si quieres ver como quedaría este mismo post pero sin utilizar las reglas CSS (bizarras) que puedes ver abajo, puedes hacerlo [aquí](/posts/post_05_css.html)
+
+```{r, eval = FALSE}
+#| code-fold: true
+
+/* definiendo estilos del body : de toda la página */ 
+body { 
+  background-color: aliceblue; }  /* color del fondo*/ 
+
+
+/* importo un tipo de letra */ 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300); 
+
+/* definiendo estilos de los párrafos */ 
+p {
+  text-align: justify;         /* justificar el texto del body */      
+  line-height: 1.4;            /* anchura entre las lineas 1.0 is the default in Firefox. 2.0 provides a large space */     
+  margin: 10px 0px 10px 0px;    /* margenes entre los párafos: top, izquierda, abajo, left */   
+  font-size: 13pt;                                     /* tamaño de letra */   
+  font-family: 'Open Sans', Helvetica, sans-serif; }   /* tipo de letra */  
+
+
+
+/* definiendo estilos de las cajas de código (chunks) */ 
+pre {
+  background-color: pink;  /* color de las cajas de código */ 
+	font-size: 10pt;
+ 	border-radius: 9px;     /* q los bordes de las cajas sean redondas */ 
+	font-family: Monaco, monospace;
+	border: 3px solid green; }
+
+/* hacer cambios en el texto en negrita, ahora el texto en negrita saldrá en verde!!! */ 
+strong {
+  color: green; }
+
+
+/* cambiar el color de los hipervinculos/enlaces  */
+a {
+  color: brown;
+  font-weight: bold; }
+
+
+/* cambiar el aspecto del TOC: 
+https://stackoverflow.com/questions/42546001/how-to-change-colors-and-attributes-of-table-of-contents-in-r-markdown-html-docu */
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+  color: darkgreen;
+  font-weight: bold;
+  background-color: gold; }
+   
+   
+/* para hacer cajas de texto de colorines*/
+
+.caja-darkkhaki { background-color:#bdb76b; border-radius: 4px; padding: 13px;}
+
+.caja-linea-verde {  color: #004346;
+  background-color: #fff;
+  border-top: 4pt solid #09bc8a;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  padding: 23px 10px 21px 10px;
+}
+
+
+/* Guía para los colores: https://htmlcolorcodes.com/es/nombres-de-los-colores/  */
+
+ 
+ /* para las quotes o citas */
+
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #DC143C;
+}
+
+
+/* para hacer lineas de colores */
+.linea-black {
+  border-top: 1px solid black;
+}
+
+
+.linea-red {
+  border-top: 2px dashed red;
+}
+
+```
+
+
+
+
+
