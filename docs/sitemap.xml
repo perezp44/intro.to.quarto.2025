@@ -1,68 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/02_que-es-quarto.html</loc>
-    <lastmod>2024-07-14T10:38:33.190Z</lastmod>
+    <loc>{{&lt; var my_url_web &gt;}}/info.html</loc>
+    <lastmod>2025-06-12T15:09:17.860Z</lastmod>
   </url>
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/27_observable.html</loc>
-    <lastmod>2024-02-18T16:53:32.240Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/72_publicando-en-UV.html</loc>
-    <lastmod>2024-02-18T16:55:26.870Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/22_shortcodes.html</loc>
-    <lastmod>2024-05-17T16:29:27.020Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/28_phyton.html</loc>
-    <lastmod>2024-02-18T17:17:19.110Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/31_referencias-cruzadas.html</loc>
-    <lastmod>2024-05-29T08:32:36.460Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/73_tablas-de-modelos.html</loc>
-    <lastmod>2024-02-18T16:55:37.000Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/75_webr.html</loc>
-    <lastmod>2024-05-19T06:45:04.480Z</lastmod>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/23_extensiones.html</loc>
+    <lastmod>2024-05-19T17:46:06.800Z</lastmod>
   </url>
   <url>
     <loc>{{&lt; var my_url_web &gt;}}/blog/71_tablas-con-R.html</loc>
     <lastmod>2024-02-18T16:55:09.160Z</lastmod>
   </url>
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/24_imagenes.html</loc>
-    <lastmod>2024-02-18T19:08:12.010Z</lastmod>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/72_publicando-en-UV.html</loc>
+    <lastmod>2024-02-18T16:55:26.870Z</lastmod>
   </url>
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog.html</loc>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/75_webr.html</loc>
+    <lastmod>2024-05-19T06:45:04.480Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/76_iconos.html</loc>
+    <lastmod>2024-05-19T17:36:00.980Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/66_soluciones-practica-5-1.html</loc>
+    <lastmod>2023-06-12T12:22:45.910Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/21_layouts.html</loc>
+    <lastmod>2024-05-17T16:29:31.460Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/30_informes-parametrizados.html</loc>
+    <lastmod>2024-06-03T10:52:49.180Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/28_phyton.html</loc>
+    <lastmod>2024-02-18T17:17:19.110Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/73_tablas-de-modelos.html</loc>
+    <lastmod>2024-02-18T16:55:37.000Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/slides/zz_sobre-mi.html</loc>
     <lastmod>2023-03-31T12:00:04.000Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/materiales.html</loc>
-    <lastmod>2025-04-22T07:47:54.420Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog_02.html</loc>
-    <lastmod>2024-02-19T11:57:47.600Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/slides/07_aun_mas_cosas.html</loc>
-    <lastmod>2025-04-22T11:04:24.810Z</lastmod>
   </url>
   <url>
     <loc>{{&lt; var my_url_web &gt;}}/slides/05_primer_web.html</loc>
     <lastmod>2025-04-22T11:03:56.760Z</lastmod>
   </url>
   <url>
+    <loc>{{&lt; var my_url_web &gt;}}/slides/01_presentacion.html</loc>
+    <lastmod>2025-04-22T11:02:30.950Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/slides/02_primeros_pasos.html</loc>
+    <lastmod>2025-04-22T14:35:40.030Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/slides/imagenes/tt_01/ejemplo_1.html</loc>
+    <lastmod>2023-03-31T12:00:04.000Z</lastmod>
+  </url>
+  <url>
     <loc>{{&lt; var my_url_web &gt;}}/slides/04_revealjs.html</loc>
     <lastmod>2025-04-22T15:39:22.630Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog_02/01_trucos_quarto.html</loc>
+    <lastmod>2024-05-28T09:26:46.660Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog_02/06_trucos_workflow.html</loc>
+    <lastmod>2024-06-03T10:03:34.780Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog_02/05_trucos_html.html</loc>
+    <lastmod>2024-05-20T11:14:33.510Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog_02/02_trucos_revealjs.html</loc>
+    <lastmod>2024-05-31T07:37:07.650Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/index.html</loc>
+    <lastmod>2025-04-23T07:47:31.600Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog_02.html</loc>
+    <lastmod>2024-02-19T11:57:47.600Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/about.html</loc>
+    <lastmod>2024-05-17T07:10:03.880Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog_02/03_trucos_webs.html</loc>
+    <lastmod>2024-05-20T10:27:31.290Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog_02/07_trucos_Rmarkdown.html</loc>
+    <lastmod>2024-05-31T07:58:09.250Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog_02/08_extras_de_Quarto.html</loc>
+    <lastmod>2024-05-31T11:01:14.080Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog_02/04_trucos_css.html</loc>
+    <lastmod>2024-05-20T11:16:17.590Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/materiales.html</loc>
+    <lastmod>2025-04-22T07:47:54.420Z</lastmod>
   </url>
   <url>
     <loc>{{&lt; var my_url_web &gt;}}/slides/05_primer_web_skim.html</loc>
@@ -73,111 +125,59 @@
     <lastmod>2023-03-31T12:00:04.000Z</lastmod>
   </url>
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog_02/08_extras_de_Quarto.html</loc>
-    <lastmod>2024-05-31T11:01:14.080Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog_02/02_trucos_revealjs.html</loc>
-    <lastmod>2024-05-31T07:37:07.650Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog_02/01_trucos_quarto.html</loc>
-    <lastmod>2024-05-28T09:26:46.660Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog_02/07_trucos_Rmarkdown.html</loc>
-    <lastmod>2024-05-31T07:58:09.250Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/about.html</loc>
-    <lastmod>2024-05-17T07:10:03.880Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog_02/06_trucos_workflow.html</loc>
-    <lastmod>2024-06-03T10:03:34.780Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog_02/03_trucos_webs.html</loc>
-    <lastmod>2024-05-20T10:27:31.290Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog_02/04_trucos_css.html</loc>
-    <lastmod>2024-05-20T11:16:17.590Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog_02/05_trucos_html.html</loc>
-    <lastmod>2024-05-20T11:14:33.510Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/slides/imagenes/tt_01/ejemplo_1.html</loc>
-    <lastmod>2023-03-31T12:00:04.000Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/slides/01_presentacion.html</loc>
-    <lastmod>2025-04-22T11:02:30.950Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/slides/zz_sobre-mi.html</loc>
-    <lastmod>2023-03-31T12:00:04.000Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/slides/02_primeros_pasos.html</loc>
-    <lastmod>2025-04-22T14:35:40.030Z</lastmod>
+    <loc>{{&lt; var my_url_web &gt;}}/slides/03_aprendiendo_Qmd.html</loc>
+    <lastmod>2025-04-22T11:03:39.960Z</lastmod>
   </url>
   <url>
     <loc>{{&lt; var my_url_web &gt;}}/slides/06_mas_cosas.html</loc>
     <lastmod>2025-04-22T11:04:17.630Z</lastmod>
   </url>
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/slides/03_aprendiendo_Qmd.html</loc>
-    <lastmod>2025-04-22T11:03:39.960Z</lastmod>
+    <loc>{{&lt; var my_url_web &gt;}}/slides/07_aun_mas_cosas.html</loc>
+    <lastmod>2025-04-22T11:04:24.810Z</lastmod>
   </url>
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/index.html</loc>
-    <lastmod>2025-04-23T07:47:31.600Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/info.html</loc>
-    <lastmod>2025-06-12T15:09:17.867Z</lastmod>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/27_observable.html</loc>
+    <lastmod>2024-02-18T16:53:32.240Z</lastmod>
   </url>
   <url>
     <loc>{{&lt; var my_url_web &gt;}}/blog/20_referencias-bibliograficas.html</loc>
     <lastmod>2024-06-03T06:30:09.490Z</lastmod>
   </url>
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/76_iconos.html</loc>
-    <lastmod>2024-05-19T17:36:00.980Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/30_informes-parametrizados.html</loc>
-    <lastmod>2024-06-03T10:52:49.180Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/70_botoncitos-web.html</loc>
-    <lastmod>2024-02-18T19:47:33.190Z</lastmod>
-  </url>
-  <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/21_layouts.html</loc>
-    <lastmod>2024-05-17T16:29:31.460Z</lastmod>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/22_shortcodes.html</loc>
+    <lastmod>2024-05-17T16:29:27.020Z</lastmod>
   </url>
   <url>
     <loc>{{&lt; var my_url_web &gt;}}/blog/25_css.html</loc>
     <lastmod>2024-02-18T16:52:46.680Z</lastmod>
   </url>
   <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/24_imagenes.html</loc>
+    <lastmod>2024-02-18T19:08:12.010Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/31_referencias-cruzadas.html</loc>
+    <lastmod>2024-05-29T08:32:36.460Z</lastmod>
+  </url>
+  <url>
     <loc>{{&lt; var my_url_web &gt;}}/blog/29_tuneado-yaml.html</loc>
     <lastmod>2024-02-18T16:54:05.320Z</lastmod>
   </url>
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/23_extensiones.html</loc>
-    <lastmod>2024-05-19T17:46:06.800Z</lastmod>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/02_que-es-quarto.html</loc>
+    <lastmod>2024-07-14T10:38:33.190Z</lastmod>
   </url>
   <url>
-    <loc>{{&lt; var my_url_web &gt;}}/blog/66_soluciones-practica-5-1.html</loc>
-    <lastmod>2023-06-12T12:22:45.910Z</lastmod>
+    <loc>{{&lt; var my_url_web &gt;}}/blog/70_botoncitos-web.html</loc>
+    <lastmod>2024-02-18T19:47:33.190Z</lastmod>
   </url>
   <url>
     <loc>{{&lt; var my_url_web &gt;}}/blog/26_css-bizarro.html</loc>
     <lastmod>2024-02-18T16:53:10.100Z</lastmod>
+  </url>
+  <url>
+    <loc>{{&lt; var my_url_web &gt;}}/blog.html</loc>
+    <lastmod>2023-03-31T12:00:04.000Z</lastmod>
   </url>
 </urlset>
