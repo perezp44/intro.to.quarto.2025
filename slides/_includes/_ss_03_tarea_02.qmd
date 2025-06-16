@@ -22,7 +22,8 @@
 ::: {.callout-warning icon="false"}
 #### Ayudita con las marcas de los chunks
 
-- Para incorporar las marcas que delimitan los chunks de código, puedes usar este atajo del teclado: {{< kbd Alt-Ctrl-I >}}
+- Para incorporar las marcas que delimitan los chunks de código, puedes usar este atajo del teclado: {{< kbd Alt+Ctrl+I >}} 
+
 
 :::
 
