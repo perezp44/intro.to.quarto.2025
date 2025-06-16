@@ -1,7 +1,7 @@
 ::: {.callout-important icon="false"}
 #### Tarea 2.8: Añade una nueva página a nuestra página web
 
-- Pista: puedes reutilizar el contenido del fichero `index.qmd`
+- Pista: puedes reutilizar el contenido del fichero `index.qmd` o de `prueba_01.qmd`
 
 :::
 

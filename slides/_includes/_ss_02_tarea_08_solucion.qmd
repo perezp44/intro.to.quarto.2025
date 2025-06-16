@@ -12,9 +12,9 @@ website:
     background: "#DF55CB"
     right: 
       - text: "Info"
-        href: index.qmd
+        href: prueba_01.qmd
       - text: "Más Info"
-        href: index.qmd
+        href: prueba_01.qmd
     left: 
       - icon: house-door
         href: index.qmd       
@@ -35,7 +35,7 @@ website:
 
 ::: {.fragment}
 ::: {.callout-important icon="false"}
-#### Tarea 2.8c: Haz que se vea el fichero `prueba_02.pdf` en la web
+#### Tarea 2.8c: Tienes que apañartelas para que se vean las slides y el pdf en nuestra web
 
 - Tampoco hay solución
 

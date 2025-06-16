@@ -10,11 +10,14 @@
 <br>
 
 ::: {.fragment}
-
 - Pega un vistazo a los 3 documentos que hay dentro del Qproject
-
 :::
 
 <br>
+
+
+::: {.fragment}
+- Finalmente, **borra** el documento `.qmd`
+:::
 
 :::

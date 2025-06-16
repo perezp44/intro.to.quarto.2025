@@ -462,6 +462,10 @@ knitr::include_graphics(here::here("slides", "imagenes",  "ss_02_img_03b.png") )
 
 {{< include ./_includes/_ss_02_tarea_04.qmd >}}
 
+
+
+
+
 # Creación de documentos `.qmd` {background-color="#b8c2aa"}
 
 {{< var lineanaranja >}}

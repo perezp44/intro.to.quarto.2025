@@ -29,7 +29,7 @@
 ::: {.callout-important icon="false"}
 #### Tarea 2.5b: visionado del  fichero `.qmd` (Quarto document)
 
-- Antes de procesar el .qmd, pégale un vistazo al documento fuente para intentar descubrir sus partes
+- Antes de que procesemos el `.qmd`, vamos a pegarle un vistazo al documento fuente para intentar descubrir sus partes
 
 :::
 
@@ -39,15 +39,52 @@
 ::: {.fragment}
 ::: {.callout-caution icon="false"}
 
-##### Pistas/Ayuda
-- De momento, es mejor que visualicemos el documento en formato "Source"
+##### Vamos a trabajar en formato "Source"
 
-```{r echo = FALSE, comment = "",  out.width = '32%', fig.align = 'center'}
+::: {.columns}
+::: {.column width="48%"}
+
+
+1. Para ello pincha en "Source":
+
+```{r echo = FALSE, comment = "",  out.width = '85%', fig.align = 'center'}
 knitr::include_graphics(here::here("slides", "imagenes",  "ss_02_tarea_2_5_source.png") )
 ```
 
 :::
+
+::: {.column width="4%"}
+<!-- empty column to create gap -->
 :::
+
+::: {.column width="48%"}
+
+:::{.fragment}
+2. Para evitar que el documento vuelta a formato "Visual", vamos a eliminar la linea con el texto: "`editor: visual`"
+
+
+
+::: {layout-ncol=2}
+![](./imagenes/visual_01.png)
+
+
+![](./imagenes/visual_02.png)
+:::
+
+
+
+:::
+
+:::
+:::
+
+
+:::
+:::
+
+
+
+
 
 
 
