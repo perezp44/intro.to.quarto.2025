@@ -1,7 +1,6 @@
 ::: {.callout-important icon="false"}
 #### Una solución a la Tarea 2.8
 
-
 ```yaml
 project:
   type: website
@@ -25,9 +24,12 @@ website:
 
 ::: {.fragment}
 ::: {.callout-important icon="false"}
-#### Tarea 2.8b: Haz que se vean las slides en la web
+#### Tarea 2.8b:
 
-- Esta vez no hay solución
+- Haz que se vean las slides en la web
+
+- Haz que se vea el pdf en nuestra web
+
 
 :::
 :::
@@ -35,23 +37,44 @@ website:
 
 ::: {.fragment}
 ::: {.callout-important icon="false"}
-#### Tarea 2.8c: Tienes que apañartelas para que se vean las slides y el pdf en nuestra web
+#### Tarea 2.8c: 
 
-- Tampoco hay solución
+- Cambia el color de la barra de navegación. [Aquí](https://htmlcolorcodes.com/es/) o [aquí](https://www.color-hex.com/) puedes encontrar el código de los colores en hexadecimal.
 
+- Añade un icono a la izquierda de la barra de navegación. Puedes usar los iconos de [Bootstrap](https://icons.getbootstrap.com/) y muchos mas ....
+
+- Prueba a añadir un poco de texto nuevo en el fichero `index.qmd`
 :::
 :::
 
 
-::: {.fragment}
+--------------------------------------------------------------------------------
+
+
 ::: {.callout-important icon="false"}
-#### Tarea 2.8d: 
+#### Una solución a Tarea 2.8c: 
 
-- Prueba a cambiar el color de la barra de navegación. [Aquí](https://htmlcolorcodes.com/es/) o [aquí](https://www.color-hex.com/) puedes encontrar el código de los colores en hexadecimal.
 
-- Prueba a añadir un icono a la izquierda de la barra de navegación. Puedes usar los iconos de [Bootstrap](https://icons.getbootstrap.com/)
-
-- Prueba a añadir un poco de texto nuevo en index.qmd
-
-:::
+```yaml
+project:
+  type: website
+ 
+website:
+  title: "Mi web"
+  navbar:
+    background: "#FF9922"     #- he puesto un "naranjita"
+    right: 
+      - text: "Info"
+        href: prueba_01.qmd
+      - text: "Más Info"
+        href: prueba_01.qmd
+      - text: "Las slides"     #- sección para incorporar prueba_02.qmd
+        href: prueba_02.qmd
+      - icon: file-pdf-fill    #- un icono para pdf
+        text: "PDF"            #- texto
+        href: prueba_02.pdf    #- referencia
+    left: 
+      - icon: house-door
+        href: index.qmd        
+```
 :::

@@ -1,5 +1,5 @@
 ---
-title: "Trucos: CSS y SASS"
+title: "Trucos: CSS y SCSS"
 date: 2024-02-22
 categories: [CSS , SASS]
 image: "./thumbnails/thumbnail_generico.png"
@@ -10,20 +10,32 @@ description: |
   Recopilando trucos/ejemplos de CSS y SASS
 toc-depth: 3
 toc-expand: 1
+css: assets/my_new.scss
+format:
+  html:
+    page-layout: full
+    theme:
+      - cosmo #sketchy #slate #- litera  superhero darkly
+      - assets/my_new.scss
 ---
 
 
 
 # CSS
 
-Para incorporar CSS en un documento `.qmd` se han de hacer dos cosas: 1) crear un documento `.css` , y 2) referenciarlo en el yaml del `.qmd`. Veámos cómo quedaría el yaml en 2 situaciones:
+Para incorporar CSS en un documento `.qmd` se han de hacer dos cosas: 
+
+  1. crear un documento `.css` , y 
+  
+  2. [referenciarlo en el yaml]{.underline} del `.qmd`. 
 
 
+Veámos **cómo referenciar el archivo `css`** en el yaml en [3 situaciones]{.underline}:
 
-:::: {.columns}
-::: {.column width="43%"}
 
-- Si el fichero `.css` estuviese [en la misma carpeta]{.underline} que el `.qmd`, entonces el yaml del documento `.qmd` sería algo como:
+::: {.xx-columnas-cajas}
+::: {.columna}
+1. Si el fichero `.css` estuviese [en la misma carpeta]{.underline} que el `.qmd`, entonces el yaml del documento `.qmd` sería algo como:
 
 ```md
 ---
@@ -33,13 +45,8 @@ css: my_styles.css
 ---
 ```
 :::
-::: {.column width="12%"}
-:::
-
-::: {.column width="45%"}
-
-- Si el fichero `.css` estuviese [en una subcarpeta]{.underline} llamada, por ejemplo, `assets`, el yaml del documento `.qmd` quedaría como:
-
+::: {.columna}
+2. Si el fichero `.css` que quieres referenciar estuviese en una subcarpeta llamada `assets` dentro de la carpeta donde está el `.qmd`, entonces, el yaml del documento `.qmd` quedaría como:
 
 ```md
 ---
@@ -49,7 +56,25 @@ css: asets/my_styles.css
 ---
 ```
 :::
-::::
+:::
+
+
+::: {.xx-columnas-cajas}
+::: {.columna}
+3. Si el fichero `.css` que quieres referenciar estuviese en la carpeta `assets`, en la raiz del Qproject, entonces, el yaml del documento `.qmd` quedaría como:
+
+```md
+---
+title: "Mi super-título"
+format: html
+css: "`r here::here('assets', 'ember.scss')`"
+---
+```
+:::
+:::
+
+
+
 
 
 <br>
@@ -59,8 +84,10 @@ css: asets/my_styles.css
 
 - Esta perfectamente explicado [aquí](https://stackoverflow.com/questions/76069903/rotate-images-in-quarto%3E)
 
-:::: {.columns}
-::: {.column width="42%"}
+
+
+::: {.xx-columnas-cajas}
+::: {.columna}
 - En el `.qmd` tendrías que incluir lo siguiente:
 
 ```md
@@ -70,9 +97,7 @@ css: asets/my_styles.css
 
 ```
 :::
-::: {.column width="7%"}
-:::
-::: {.column width="45%"}
+::: {.columna}
 - El fichero `my_styles.css` debería contener:
 
 ```css
@@ -81,16 +106,16 @@ css: asets/my_styles.css
 }
 ```
 :::
-::::
+:::
+
 
 <br>
 
-- También se puede rotar una imagen sin utilizar `.css`. Se haría utilizando un `div` , concretamente así:
+- También se puede rotar una imagen sin utilizar `.css`. Se haría utilizando un `fenced div` , concretamente así:
 
 ```md
-
 :::{.class .absolute top="35%" left="10%" width="350px" style="transform: rotate(-15deg);"}
-
+![](my_imagen.jpg)
 :::
 
 ```
@@ -103,7 +128,7 @@ css: asets/my_styles.css
 <br>
 
 
-# SASS
+# SCSS
 
 ## Biblio
 
@@ -121,6 +146,55 @@ css: asets/my_styles.css
 
 
 ## Trucos
+
+
+### Cajas flex
+
+Este `scss` crea una clase para un contenedor de columnas flexibles, donde cada columna es una caja con borde rosita, esquinas redondeadas y sombra. 
+
+
+::: {.xx-columnas-cajas}
+::: {.columna}
+```scss
+// my Estilo para las COLUMNAS con CAJAS (flex)
+// Variables de color
+$xxcol-bg: #f0f8ff;      // color de fondo de la caja
+$xxcol-border: #e75480;  // color del borde (rosa elegante)
+
+// Estilo para las columnas con cajas
+.xx-columnas-cajas {
+  display: flex;
+  gap: 1em;
+
+  .columna {
+    flex: 1;
+    background: $xxcol-bg;
+    border: 2px solid $xxcol-border;
+    border-radius: 10px;
+    padding: 1em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+}
+```
+:::
+
+::: {.columna}
+Para usar este estilo en tu documento `.qmd` tendrías que: 
+
+```scss
+::: {.xx-columnas-cajas}
+::: {.columna}
+:::
+::: {.columna}
+:::
+:::
+```
+
+El resultado seria más o menos lo que estas viendo ahora:
+
+:::
+:::
+
 
 <br>
 

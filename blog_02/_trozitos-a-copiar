@@ -1,0 +1,23 @@
+#- trozillos para copiar y pegar
+
+
+#- cajitas en columnas ---------------------------------------------------------
+
+::: {.xx-columnas-cajas}
+::: {.columna}
+:::
+::: {.columna}
+:::
+::: {.columna}
+:::
+:::
+
+
+#- tabset tuneado
+
+
+::: {.panel-tabset .tabset-personal}
+## ee
+
+## hh
+:::

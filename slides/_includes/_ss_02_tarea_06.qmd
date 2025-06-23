@@ -3,7 +3,10 @@
 
 - Vamos a crear un nuevo documento ".qmd". 
 
-- Procésalo. Esta vez  <mark>llámalo `prueba_01.qmd`</mark>
+- (Antes de procesarlo) Elimina la linea con el texto: `“editor: visual”`)]{.small}
+
+
+- **Procésalo**. Esta vez  <mark>llámalo `prueba_01.qmd`</mark>
 
 :::
 
@@ -16,7 +19,10 @@
 
 - Vamos a crear un nuevo documento ".qmd". 
 
-- Procésalo. Esta vez llámalo <mark>llámalo `prueba_02.qmd`</mark>
+- (Antes de procesarlo) Elimina la linea con el texto: `“editor: visual”`)]{.small}
+
+
+- **Procésalo**. Esta vez llámalo <mark>llámalo `prueba_02.qmd`</mark>
 :::
 :::
 

@@ -1,0 +1,80 @@
+/*-- scss:defaults --*/
+
+/*-- scss:defaults cosas nuevas para tunear --*/
+
+
+/*-- scss:rules --*/
+
+
+
+// my TABSET tuneada
+// defino colores principales
+$color-1-tabset: #86AAE7; 
+$color-2-tabset: #555555; 
+// colores derivados claros y oscuros
+$color-1-tabset-claro: lighten($color-1-tabset, 30%);
+$color-1-tabset-oscuro: darken($color-1-tabset, 15%);
+$color-2-tabset-claro: lighten($color-2-tabset, 30%);
+$color-2-tabset-oscuro: darken($color-2-tabset, 15%);
+
+
+// clase personalizada para tabsets
+.tabset-personal {
+  border: 2px solid $color-2-tabset;      // borde con color secundario
+  border-radius: 12px;                    // borde redondeado
+  background: $color-1-tabset-claro;
+  padding: 1em;
+
+  .nav-tabs {
+    background: $color-2-tabset-claro;
+    border-bottom: 2px solid $color-2-tabset-oscuro;
+    border-radius: 12px 12px 0 0;           // redondeo arriba
+  }
+
+  .nav-tabs .nav-link {
+    color: $color-2-tabset;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-tabs .nav-link.active {
+    background: $color-1-tabset;
+    color: #fff;
+    border-radius: 12px 0 0 0;
+    border: 3px solid $color-1-tabset-oscuro;
+    border-bottom: none;
+  }
+
+  .tab-content {
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    border: 1px solid $color-2-tabset;    // borde con color secundario
+    border-top: none;
+    padding: 1em;
+  }
+}
+
+
+
+// my Estilo para las COLUMNAS con CAJAS (flex)
+// Variables de color
+$xxcol-bg: #f0f8ff;      // color de fondo de la caja
+$xxcol-border: #e75480;  // color del borde (rosa elegante)
+
+// Estilo para las columnas con cajas
+.xx-columnas-cajas {
+  display: flex;
+  gap: 1em;
+
+  .columna {
+    flex: 1;
+    background: $xxcol-bg;
+    border: 2px solid $xxcol-border;
+    border-radius: 10px;
+    padding: 1em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+}
+
