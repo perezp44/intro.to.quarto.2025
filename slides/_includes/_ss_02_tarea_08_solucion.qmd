@@ -21,6 +21,7 @@ website:
 
 :::
 
+<br>
 
 ::: {.fragment}
 ::: {.callout-important icon="false"}
@@ -34,6 +35,36 @@ website:
 :::
 :::
 
+--------------------------------------------------------------------------------
+
+
+::: {.callout-important icon="false"}
+#### Una solución a Tarea 2.8b: 
+
+```yaml
+project:
+  type: website
+ 
+website:
+  title: "Mi web"
+  navbar:
+    background: "#DF55CB"
+    right: 
+      - text: "Info"
+        href: prueba_01.qmd
+      - text: "Más Info"
+        href: prueba_01.qmd
+      - text: "Las slides"     #- sección para incorporar prueba_02.qmd q generará las slides
+        href: prueba_02.qmd
+      - text: "PDF"            #- texto
+        href: prueba_02.pdf    #- referencia
+    left: 
+      - icon: house-door
+        href: index.qmd        
+```
+:::
+
+<br>
 
 ::: {.fragment}
 ::: {.callout-important icon="false"}
@@ -68,7 +99,7 @@ website:
         href: prueba_01.qmd
       - text: "Más Info"
         href: prueba_01.qmd
-      - text: "Las slides"     #- sección para incorporar prueba_02.qmd
+      - text: "Las slides"     
         href: prueba_02.qmd
       - icon: file-pdf-fill    #- un icono para pdf
         text: "PDF"            #- texto
