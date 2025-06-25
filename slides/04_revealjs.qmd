@@ -409,23 +409,6 @@ Inspiración, vamos, copiado de <https://emilhvitfeldt.github.io/useR2022-textre
 
 
 
-## Video background {background-video="imagenes/drums.mp4" background-video-loop="true" background-video-muted="true" background-opacity="0.9"}
-
-
-<br><br><br><br><br><br><br><br>
-
-
-> ```
-> ## Video background {
->   background-video="imagenes/drums.mp4" 
->   background-video-loop="true" 
->   background-video-muted="true" 
->   background-opacity="0.9"}
-> ```
-
-
-
-
 
 ## Revealjs: Tabsets 
 

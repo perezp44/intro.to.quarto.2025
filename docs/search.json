@@ -749,13 +749,6 @@
     "text": "Se pueden hacer cosas muy chulas como:\n\n\nSlides Emil Hvitfeldt\nParallax background. Documentación aquí\nQuarto iFrame Examples. El repo\n\n\n\n\nInspiración, vamos, copiado de https://emilhvitfeldt.github.io/useR2022-textrecipes"
   },
   {
-    "objectID": "slides/04_revealjs.html#video-background",
-    "href": "slides/04_revealjs.html#video-background",
-    "title": "Slides con Quarto",
-    "section": "Video background",
-    "text": "Video background\n\n\n## Video background {\n  background-video=\"imagenes/drums.mp4\" \n  background-video-loop=\"true\" \n  background-video-muted=\"true\" \n  background-opacity=\"0.9\"}"
-  },
-  {
     "objectID": "slides/04_revealjs.html#revealjs-tabsets",
     "href": "slides/04_revealjs.html#revealjs-tabsets",
     "title": "Slides con Quarto",
@@ -2188,7 +2181,7 @@
     "href": "blog/23_extensiones.html#otro-ejemplo-tweets",
     "title": "Extensiones",
     "section": "\n4 Otro ejemplo (tweets)",
-    "text": "4 Otro ejemplo (tweets)\nVoy a instalar una nueva extensión, concretamente la extensión Quarto social embeds. Concretamente con esta extensión podremos insertar en nuestros documentos: gists de GitHub, videos de Loom, youtube y Vimeo y tweets. Realmente la instalo porque quiero tenerla disponible para insertar tweets.\nEn el repo se explica con más detalle lo que se puede hacer con Quarto social embeds.\n\n\n\n\n\n\nInstalar y usar la extensión Quarto social embeds\n\n\n\nVamos a instalar y usar una nueva extensión, concretamente la extensión “Quarto social embeds”. Su repo está aquí.\n\nLo primero es instalar la extensión desde la Terminal:\n\n\nCódigoquarto install extension sellorm/quarto-social-embeds\n\n\n\nPara insertar un tweet has de:\n\nCódigo{{&lt; tweet user=&lt;username&gt; id=&lt;id&gt; &gt;}}\n\npor ejemplo:\n\n{{&lt; tweet user=ambitocultural id=1589543369512026112 &gt;}}"
+    "text": "4 Otro ejemplo (tweets)\nVoy a instalar una nueva extensión, concretamente la extensión Quarto social embeds. Concretamente con esta extensión podremos insertar en nuestros documentos: gists de GitHub, videos de Loom, youtube y Vimeo y tweets. Realmente la instalo porque quiero tenerla disponible para insertar tweets.\nEn el repo se explica con más detalle lo que se puede hacer con Quarto social embeds.\n\n\n\n\n\n\nInstalar y usar la extensión Quarto social embeds\n\n\n\nVamos a instalar y usar una nueva extensión, concretamente la extensión “Quarto social embeds”. Su repo está aquí.\n\nLo primero es instalar la extensión desde la Terminal:\n\n\nCódigoquarto install extension sellorm/quarto-social-embeds\n\n\n\nPara insertar un tweet has de:\n\nCódigo{{&lt; tweet user=&lt;username&gt; id=&lt;id&gt; &gt;}}\n\npor ejemplo:\n\n{{&lt; tweet user=ambitocultural id=1589543369512026112 &gt;}}\n\n\n\n\n\nPara insertar un gist de Github has de:\n\nCódigo{{&lt; gist sellorm 20525aff669acafb975b7495b8f2066e &gt;}}"
   },
   {
     "objectID": "blog/23_extensiones.html#listado-de-extensiones",
