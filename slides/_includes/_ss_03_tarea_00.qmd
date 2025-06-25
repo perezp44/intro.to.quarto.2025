@@ -5,8 +5,6 @@
 
 - Crea un nuevo Qproject llamado "my_qproject"
 
-- Inspecciona los documentos que hay dentro de "my_qproject"
-
 - Borra el archivo `my_qproject.qmd`
 
 - Crea un archivo `.qmd`

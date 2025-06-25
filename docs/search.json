@@ -749,6 +749,13 @@
     "text": "Se pueden hacer cosas muy chulas como:\n\n\nSlides Emil Hvitfeldt\nParallax background. Documentación aquí\nQuarto iFrame Examples. El repo\n\n\n\n\nInspiración, vamos, copiado de https://emilhvitfeldt.github.io/useR2022-textrecipes"
   },
   {
+    "objectID": "slides/04_revealjs.html#video-background",
+    "href": "slides/04_revealjs.html#video-background",
+    "title": "Slides con Quarto",
+    "section": "Video background",
+    "text": "Video background\n\n\n## Video background {\n  background-video=\"imagenes/drums.mp4\" \n  background-video-loop=\"true\" \n  background-video-muted=\"true\" \n  background-opacity=\"0.9\"}"
+  },
+  {
     "objectID": "slides/04_revealjs.html#revealjs-tabsets",
     "href": "slides/04_revealjs.html#revealjs-tabsets",
     "title": "Slides con Quarto",
@@ -1614,7 +1621,7 @@
     "href": "slides/03_aprendiendo_Qmd.html#para-poder-practicar-lo-que-vayamos-aprendiendo",
     "title": "Aprendiendo a escribir en QMD",
     "section": "Para poder practicar lo que vayamos aprendiendo …",
-    "text": "Para poder practicar lo que vayamos aprendiendo …\n\n\n\n\nTarea 3.0: Vamos a crear un nuevo Qproject\n\n\n\nCierra RStudio\nCrea un nuevo Qproject llamado “my_qproject”\nInspecciona los documentos que hay dentro de “my_qproject”\nBorra el archivo my_qproject.qmd\nCrea un archivo .qmd\nProcésalo y llámalo prueba_01.qmd"
+    "text": "Para poder practicar lo que vayamos aprendiendo …\n\n\n\n\nTarea 3.0: Vamos a crear un nuevo Qproject\n\n\n\nCierra RStudio\nCrea un nuevo Qproject llamado “my_qproject”\nBorra el archivo my_qproject.qmd\nCrea un archivo .qmd\nProcésalo y llámalo prueba_01.qmd"
   },
   {
     "objectID": "slides/03_aprendiendo_Qmd.html#los-documentos-.qmd-tienen-3-4-partes",
